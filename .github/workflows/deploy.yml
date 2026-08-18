@@ -54,7 +54,11 @@ jobs:
         env:
           BASE_PATH: ${{ steps.base.outputs.path }}
 
+      # enablement: true で、Settings → Pages を手で触らなくても
+      # ワークフロー側から Pages を有効化する。
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
