@@ -4,6 +4,7 @@ import Reveal from '../components/Reveal.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './NewsPage.module.css'
 import { asset } from '../utils/asset.js'
+import { apiUrl } from '../utils/api.js'
 
 // News index — a thumbnail grid in the style of a company news page
 // (date + category chip + title per card). Each card opens the full
@@ -14,11 +15,14 @@ function NewsPage({ navigate }) {
 
   // Newsletter posts appear automatically once the Substack feed is
   // configured server-side (see functions/api/newsletter.js). Local dev
-  // and unconfigured deploys silently render nothing extra.
+  // and unconfigured deploys silently render nothing extra — on a static
+  // host there is no backend, so the request is not made at all.
   const [newsletter, setNewsletter] = useState([])
   useEffect(() => {
+    const endpoint = apiUrl('/api/newsletter')
+    if (!endpoint) return undefined
     let cancelled = false
-    fetch('/api/newsletter')
+    fetch(endpoint)
       .then((res) => (res.ok ? res.json() : { posts: [] }))
       .then((data) => {
         if (!cancelled && Array.isArray(data.posts)) setNewsletter(data.posts.slice(0, 5))

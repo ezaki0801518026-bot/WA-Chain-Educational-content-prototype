@@ -5,8 +5,12 @@
 // fails silently: in local dev (no functions runtime) or before the D1
 // database is configured, events simply vanish. No personal data is
 // collected; see functions/api/event.js for what is stored.
+//
+// Without VITE_API_BASE there is no backend to send to (a static host such
+// as GitHub Pages), so nothing is queued and no request is ever made.
+import { apiUrl, hasApi } from './api.js'
 
-const ENDPOINT = '/api/event'
+const ENDPOINT = apiUrl('/api/event')
 const FLUSH_AFTER = 10
 const FLUSH_DELAY_MS = 3000
 
@@ -33,6 +37,7 @@ function flush() {
 }
 
 export function track(type, fields = {}) {
+  if (!hasApi) return
   try {
     queue.push({
       type,
