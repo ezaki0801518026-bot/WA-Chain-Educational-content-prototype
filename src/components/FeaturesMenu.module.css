@@ -1,0 +1,201 @@
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--accent);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+
+.trigger:hover,
+.trigger:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* See SearchModal: visual size unchanged, tap area grown to 44px. */
+@media (max-width: 768px) {
+  .trigger::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+.panel {
+  width: 100%;
+  max-width: 32rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  padding: var(--space-lg);
+}
+
+.panel:focus {
+  outline: none;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.panelTitle {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.closeButton {
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--accent);
+  width: 1.75rem;
+  height: 1.75rem;
+  cursor: pointer;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.sectionLabel {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: var(--space-md) 0 var(--space-sm);
+}
+
+.exploreList {
+  list-style: none;
+  margin: 0 0 var(--space-md);
+  padding: 0;
+}
+
+.exploreLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  color: var(--text);
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(var(--accent-rgb), 0.2);
+  padding: 0.7rem 0;
+  cursor: pointer;
+  text-align: left;
+  transition: color 150ms ease-out;
+}
+
+.exploreList li:last-child .exploreLink {
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+.exploreLink:hover,
+.exploreLink:focus-visible {
+  color: var(--accent);
+}
+
+.exploreArrow {
+  transition: transform 150ms ease-out;
+}
+
+.exploreLink:hover .exploreArrow,
+.exploreLink:focus-visible .exploreArrow {
+  transform: translateX(3px);
+}
+
+.panelIntro {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--accent);
+  margin: 0 0 var(--space-md);
+}
+
+.featureList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.featureItem {
+  border-top: 1px solid var(--accent);
+  padding: var(--space-sm) 0;
+}
+
+.featureItem:last-child {
+  padding-bottom: 0;
+}
+
+.featureTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 0.25rem;
+}
+
+.featureDesc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin: 0 0 0.35rem;
+}
+
+.featureBadge {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  margin: 0;
+}
+
+.featurePreviewLink {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.featurePreviewLink:hover,
+.featurePreviewLink:focus-visible {
+  color: var(--accent);
+}

@@ -1,0 +1,18 @@
+# Cloudflare Pages configuration — TEMPLATE.
+#
+# The event log stays dormant until this file is activated. To activate:
+#   1. npx wrangler login
+#   2. npx wrangler d1 create washi-events
+#      → copy the database_id it prints into the line below
+#   3. npx wrangler d1 execute washi-events --remote --file=./schema.sql
+#   4. Rename this file to wrangler.toml, commit, and push.
+# Full walkthrough: docs/backend-setup.md
+
+name = "washi-course"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-07-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "washi-events"
+database_id = "REPLACE_WITH_DATABASE_ID"

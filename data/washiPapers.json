@@ -1,0 +1,698 @@
+{
+  "_comment": "Washi dictionary for the origins map. Descriptions are in Japanese (source terminology, not translated). Each region maps to one or more prefecture JIS codes (data-code in src/assets/japan-prefectures.svg); markerCode is the prefecture that carries the region's dot/label.",
+  "regions": [
+    {
+      "id": "tohoku",
+      "name": "陸奥（東北）",
+      "nameEn": "Mutsu (Tōhoku)",
+      "codes": [
+        "2",
+        "3",
+        "4",
+        "7"
+      ],
+      "markerCode": "4",
+      "papers": [
+        "danshi"
+      ]
+    },
+    {
+      "id": "edo",
+      "name": "江戸（東京）",
+      "nameEn": "Edo (Tokyo)",
+      "codes": [
+        "13"
+      ],
+      "markerCode": "13",
+      "papers": [
+        "karakami"
+      ]
+    },
+    {
+      "id": "kyoto",
+      "name": "京都",
+      "nameEn": "Kyoto",
+      "codes": [
+        "26"
+      ],
+      "markerCode": "26",
+      "papers": [
+        "karakami"
+      ]
+    },
+    {
+      "id": "yoshino",
+      "name": "吉野（奈良）",
+      "nameEn": "Yoshino (Nara)",
+      "codes": [
+        "29"
+      ],
+      "markerCode": "29",
+      "papers": [
+        "misugami",
+        "udagami",
+        "yoshinogami"
+      ]
+    },
+    {
+      "id": "harima",
+      "name": "播磨（兵庫）",
+      "nameEn": "Harima (Hyōgo)",
+      "codes": [
+        "28"
+      ],
+      "markerCode": "28",
+      "papers": [
+        "suiharashi"
+      ]
+    },
+    {
+      "id": "sekishu",
+      "name": "石州（島根）",
+      "nameEn": "Sekishū (Shimane)",
+      "codes": [
+        "32"
+      ],
+      "markerCode": "32",
+      "papers": [
+        "sekishu-hanshi",
+        "sekishu-washi",
+        "kozoshi"
+      ]
+    },
+    {
+      "id": "sanuki",
+      "name": "讃岐（香川）",
+      "nameEn": "Sanuki (Kagawa)",
+      "codes": [
+        "37"
+      ],
+      "markerCode": "37",
+      "papers": [
+        "danshi"
+      ]
+    },
+    {
+      "id": "tosa",
+      "name": "土佐（高知）",
+      "nameEn": "Tosa (Kōchi)",
+      "codes": [
+        "39"
+      ],
+      "markerCode": "39",
+      "papers": [
+        "tosa-washi",
+        "tosa-tengujo",
+        "seichoshi",
+        "kozoshi"
+      ]
+    },
+    {
+      "id": "ibaraki",
+      "name": "茨城（西ノ内）",
+      "nameEn": "Ibaraki (Nishinouchi)",
+      "codes": [
+        "8"
+      ],
+      "markerCode": "8",
+      "papers": [
+        "nishinouchishi",
+        "kozoshi"
+      ]
+    },
+    {
+      "id": "tochigi",
+      "name": "栃木（烏山）",
+      "nameEn": "Tochigi (Karasuyama)",
+      "codes": [
+        "9"
+      ],
+      "markerCode": "9",
+      "papers": [
+        "hodomurashi",
+        "kozoshi"
+      ]
+    },
+    {
+      "id": "saitama",
+      "name": "埼玉（小川・東秩父）",
+      "nameEn": "Saitama (Ogawa / Higashi-Chichibu)",
+      "codes": [
+        "11"
+      ],
+      "markerCode": "11",
+      "papers": [
+        "hosokawashi"
+      ]
+    },
+    {
+      "id": "niigata",
+      "name": "新潟（小国）",
+      "nameEn": "Niigata (Oguni)",
+      "codes": [
+        "15"
+      ],
+      "markerCode": "15",
+      "papers": [
+        "ogunigami"
+      ]
+    },
+    {
+      "id": "toyama",
+      "name": "富山（五箇山・八尾）",
+      "nameEn": "Toyama (Gokayama / Yatsuo)",
+      "codes": [
+        "16"
+      ],
+      "markerCode": "16",
+      "papers": [
+        "etchu-washi"
+      ]
+    },
+    {
+      "id": "fukui",
+      "name": "福井（越前）",
+      "nameEn": "Fukui (Echizen)",
+      "codes": [
+        "18"
+      ],
+      "markerCode": "18",
+      "papers": [
+        "echizen-washi",
+        "echizen-hosho",
+        "echizen-torinoko",
+        "hoshogami",
+        "ganpishi"
+      ]
+    },
+    {
+      "id": "nagano",
+      "name": "長野（飯山）",
+      "nameEn": "Nagano (Iiyama)",
+      "codes": [
+        "20"
+      ],
+      "markerCode": "20",
+      "papers": [
+        "uchiyamagami"
+      ]
+    },
+    {
+      "id": "gifu",
+      "name": "岐阜（美濃）",
+      "nameEn": "Gifu (Mino)",
+      "codes": [
+        "21"
+      ],
+      "markerCode": "21",
+      "papers": [
+        "mino-washi",
+        "honminogami"
+      ]
+    },
+    {
+      "id": "tottori",
+      "name": "鳥取（因州）",
+      "nameEn": "Tottori (Inshū)",
+      "codes": [
+        "31"
+      ],
+      "markerCode": "31",
+      "papers": [
+        "inshu-washi"
+      ]
+    },
+    {
+      "id": "tokushima",
+      "name": "徳島（阿波）",
+      "nameEn": "Tokushima (Awa)",
+      "codes": [
+        "36"
+      ],
+      "markerCode": "36",
+      "papers": [
+        "awa-washi"
+      ]
+    },
+    {
+      "id": "ehime",
+      "name": "愛媛（大洲・宇和島）",
+      "nameEn": "Ehime (Ōzu / Uwajima)",
+      "codes": [
+        "38"
+      ],
+      "markerCode": "38",
+      "papers": [
+        "ozu-washi",
+        "senkashi"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "designated",
+      "name": "国指定・登録のある産地和紙",
+      "nameEn": "Nationally designated & UNESCO-listed washi",
+      "papers": [
+        "sekishu-hanshi",
+        "honminogami",
+        "hosokawashi",
+        "echizen-hosho",
+        "echizen-torinoko",
+        "etchu-washi",
+        "echizen-washi",
+        "mino-washi",
+        "inshu-washi",
+        "sekishu-washi",
+        "tosa-washi",
+        "awa-washi",
+        "ozu-washi",
+        "ogunigami",
+        "uchiyamagami",
+        "hodomurashi",
+        "nishinouchishi",
+        "tosa-tengujo",
+        "seichoshi",
+        "senkashi",
+        "yoshinogami"
+      ]
+    },
+    {
+      "id": "raw",
+      "name": "基本の和紙（原料による分類）",
+      "nameEn": "By raw fibre",
+      "papers": [
+        "kozoshi",
+        "ganpishi",
+        "mitsumatashi",
+        "mashi",
+        "kongoshi"
+      ]
+    },
+    {
+      "id": "regional",
+      "name": "産地・製法に特有の和紙",
+      "nameEn": "By place & method",
+      "papers": [
+        "misugami",
+        "udagami",
+        "suiharashi",
+        "danshi",
+        "hoshogami",
+        "doroiri"
+      ]
+    },
+    {
+      "id": "decorative",
+      "name": "装飾・加工された和紙",
+      "nameEn": "Decorated & processed",
+      "papers": [
+        "kumogami",
+        "suminagashi",
+        "tsugigami",
+        "karakami",
+        "chiyogami"
+      ]
+    },
+    {
+      "id": "imported",
+      "name": "外国からの輸入紙",
+      "nameEn": "Imported papers",
+      "papers": [
+        "senshi"
+      ]
+    }
+  ],
+  "papers": {
+    "kozoshi": {
+      "name": "楮紙",
+      "reading": "こうぞし",
+      "category": "raw",
+      "regionLabel": "那須・土佐・石州 ほか",
+      "desc": "日本で最も多く使われる和紙。太く強靭な繊維をもち、打紙加工や、米粉・胡粉などの填料を加えることで表情が大きく変わる。強度を要する和紙の中心的な存在。"
+    },
+    "ganpishi": {
+      "name": "雁皮紙",
+      "reading": "がんぴし",
+      "category": "raw",
+      "regionLabel": "野生のジンチョウゲ科（栽培困難）",
+      "desc": "和紙のなかで最もなめらかで光沢があり、書写料紙として最上とされる。半透明で緻密なため虫害が少なく、記録保存にも適す。振ると甲高い音が鳴るのも特徴。"
+    },
+    "mitsumatashi": {
+      "name": "三椏紙",
+      "reading": "みつまたし",
+      "category": "raw",
+      "regionLabel": "日本各地（近世以降に栽培普及）",
+      "desc": "雁皮ほどではないが光沢がある。繊維の強度は楮や雁皮にやや劣るが柔らかく、箔下紙などに使われた。"
+    },
+    "mashi": {
+      "name": "麻紙",
+      "reading": "まし",
+      "category": "raw",
+      "regionLabel": "中国由来（古代に日本へ）",
+      "desc": "大麻や苧麻の繊維を用いた、中国から伝わった最も古い紙。繊維が非常に長く強靭だが抄紙に手間がかかり、平安時代以降は衰退。古代には広く使われた。"
+    },
+    "kongoshi": {
+      "name": "混合紙",
+      "reading": "こんごうし",
+      "category": "raw",
+      "regionLabel": "—",
+      "desc": "楮と雁皮、三椏と楮など、複数の植物繊維を混合して漉いた紙。それぞれの繊維の特徴を併せ持つ。"
+    },
+    "misugami": {
+      "name": "美栖紙",
+      "reading": "みすがみ",
+      "category": "regional",
+      "regionLabel": "奈良県吉野町",
+      "desc": "楮に胡粉や白土を混入した打紙。漉いた紙を板床に重ねて脱水し乾燥板で自然乾燥させる「簀伏せ」により、非常にやわらかく仕上がる。掛軸の増裏・中裏の裏打ち紙に用いる。「表具用手漉和紙（美栖紙）製作」として国の選定保存技術に選定されている。",
+      "designations": [
+        "hozon"
+      ]
+    },
+    "udagami": {
+      "name": "宇陀紙",
+      "reading": "うだがみ",
+      "category": "regional",
+      "regionLabel": "奈良県吉野町",
+      "desc": "楮に白土を添加した紙。防虫効果があり、表装後に狂い（反りや波打ち）が生じにくい。掛軸の最後の裏打ちである総裏紙として重用される。「表具用手漉和紙（宇陀紙）製作」として国の選定保存技術に選定されている。",
+      "designations": [
+        "hozon"
+      ]
+    },
+    "suiharashi": {
+      "name": "杉原紙",
+      "reading": "すいはらし",
+      "category": "regional",
+      "regionLabel": "播磨国（兵庫県）杉原谷",
+      "desc": "楮を原料とした紙。播磨・杉原谷が発祥とされ、中世には武家文書などとして広く使われた。"
+    },
+    "danshi": {
+      "name": "檀紙 / 布目紙",
+      "reading": "だんし / ぬのめがみ",
+      "category": "regional",
+      "regionLabel": "陸奥（東北）・讃岐 ほか",
+      "desc": "高級紙として珍重された。布目紙は麻布や絹布の間に湿紙を挟み圧搾して布目模様をつけたもの。近世初頭までの檀紙はこの布目紙で、現在の檀紙は乾燥の工夫で皺を寄せたもの。"
+    },
+    "hoshogami": {
+      "name": "奉書紙",
+      "reading": "ほうしょがみ",
+      "category": "regional",
+      "regionLabel": "—",
+      "desc": "米粉を填料として加えた楮紙。老中奉書などの公文書や高級な浮世絵に用いた。米粉ゆえ虫害に遭いやすく、現在は滑石（タルク）で代用されることが多い。"
+    },
+    "doroiri": {
+      "name": "泥（土）入り間似合紙",
+      "reading": "どろいりまにあいがみ",
+      "category": "regional",
+      "regionLabel": "—",
+      "desc": "雁皮繊維に土（粘土）を添加して漉いた紙。表面が平滑で、水を通しても伸縮が抑えられる。色合わせ（間似合）などの装飾紙として作られ、襖の装飾にも用いる。"
+    },
+    "kumogami": {
+      "name": "雲紙・飛雲紙・羅文紙",
+      "reading": "くもがみ ほか",
+      "category": "decorative",
+      "regionLabel": "—",
+      "desc": "染め紙の技法の応用。雲紙は紙の上下2箇所に藍や紫の繊維を流し込み、飛雲紙は雲の形に散らし、羅文紙は着色繊維で網目状の文様を作った緻密な紙。"
+    },
+    "suminagashi": {
+      "name": "墨流し",
+      "reading": "すみながし",
+      "category": "decorative",
+      "regionLabel": "—",
+      "desc": "水面に墨汁を落とし、松脂などで拡散させてできる流動的な文様を、紙に写し取った装飾紙。"
+    },
+    "tsugigami": {
+      "name": "継ぎ紙",
+      "reading": "つぎがみ",
+      "category": "decorative",
+      "regionLabel": "—",
+      "desc": "種類・色彩・装飾の異なる紙を、破り継ぎや重ね継ぎで一枚に繋ぎ合わせたもの。西本願寺『三十六人家集』に見られる華麗な意匠が特徴。"
+    },
+    "karakami": {
+      "name": "唐紙",
+      "reading": "からかみ",
+      "category": "decorative",
+      "regionLabel": "京都（京唐紙）・江戸（江戸唐紙）",
+      "desc": "もとは唐（中国）渡来の紙で、のち日本で模造された。胡粉を引いた紙の上に、雲母（きら）で版木文様を刷った装飾紙。"
+    },
+    "chiyogami": {
+      "name": "千代紙",
+      "reading": "ちよがみ",
+      "category": "decorative",
+      "regionLabel": "—",
+      "desc": "さまざまな文様を木版で色刷りした紙。江戸時代に錦絵の影響を受けて発展した。"
+    },
+    "senshi": {
+      "name": "宣紙 / 竹紙",
+      "reading": "せんし / ちくし",
+      "category": "imported",
+      "regionLabel": "中国からの輸入",
+      "desc": "中国から輸入された、竹や青檀・稲藁などを原料とする紙。日本では主に書や水墨画に用いられ、江戸時代に国産の画仙紙が作られるきっかけともなった。"
+    },
+    "etchu-washi": {
+      "name": "越中和紙",
+      "reading": "えっちゅうわし",
+      "category": "designated",
+      "regionLabel": "富山県（五箇山・八尾ほか）",
+      "designations": [
+        "dento"
+      ],
+      "desc": "五箇山・八尾などで漉かれる富山の和紙の総称。障子紙から型染めの民藝紙まで幅が広く、雪深い土地の楮を活かした強い紙で知られる。"
+    },
+    "ogunigami": {
+      "name": "小国紙",
+      "reading": "おぐにがみ",
+      "category": "designated",
+      "regionLabel": "新潟県長岡市小国",
+      "designations": [
+        "sentaku"
+      ],
+      "desc": "豪雪地帯の「雪さらし」で仕上げる楮紙。雪上に紙を広げて日光で自然漂白する製法が特徴で、柔らかな白と強さを併せ持つ。"
+    },
+    "echizen-washi": {
+      "name": "越前和紙",
+      "reading": "えちぜんわし",
+      "category": "designated",
+      "regionLabel": "福井県越前市今立",
+      "designations": [
+        "dento"
+      ],
+      "desc": "1500年の歴史を誇る日本最大級の産地。紙の神「川上御前」を祀り、奉書・鳥の子・襖紙・美術用紙まで、あらゆる高級紙を漉き分ける。"
+    },
+    "echizen-hosho": {
+      "name": "越前奉書",
+      "reading": "えちぜんほうしょ",
+      "category": "designated",
+      "regionLabel": "福井県越前市",
+      "designations": [
+        "juyo"
+      ],
+      "desc": "楮の最高級厚紙。人間国宝・岩野市兵衛家が漉き継ぎ、浮世絵の復刻や版画用紙として世界の版画家に求められる。重要無形文化財。"
+    },
+    "echizen-torinoko": {
+      "name": "越前鳥の子紙",
+      "reading": "えちぜんとりのこし",
+      "category": "designated",
+      "regionLabel": "福井県越前市",
+      "designations": [
+        "juyo"
+      ],
+      "desc": "雁皮を主原料とする滑らかで丈夫な紙。卵殻色の紙肌から「鳥の子」と呼ばれ、料紙・襖紙の最高級品。重要無形文化財。"
+    },
+    "uchiyamagami": {
+      "name": "内山紙",
+      "reading": "うちやまがみ",
+      "category": "designated",
+      "regionLabel": "長野県飯山市ほか",
+      "designations": [
+        "sentaku"
+      ],
+      "desc": "楮100%を雪さらしで仕上げる信州の障子紙。通気性と保温性に優れ、日焼けしにくい強靭な紙として知られる。"
+    },
+    "inshu-washi": {
+      "name": "因州和紙",
+      "reading": "いんしゅうわし",
+      "category": "designated",
+      "regionLabel": "鳥取県鳥取市佐治・青谷",
+      "designations": [
+        "dento"
+      ],
+      "desc": "書道・水墨画用の画仙紙で全国有数のシェアを誇る産地。墨の濃淡が美しく出る滲みの調整技術に優れる。"
+    },
+    "sekishu-washi": {
+      "name": "石州和紙",
+      "reading": "せきしゅうわし",
+      "category": "designated",
+      "regionLabel": "島根県浜田市三隅",
+      "designations": [
+        "dento"
+      ],
+      "desc": "石見地方で漉かれる楮紙。強靭さで知られ、かつて大阪商人が帳簿に使い「火事の際は井戸に投げ込んで守った」と伝わる。"
+    },
+    "sekishu-hanshi": {
+      "name": "石州半紙",
+      "reading": "せきしゅうばんし",
+      "category": "designated",
+      "regionLabel": "島根県浜田市三隅",
+      "designations": [
+        "juyo",
+        "unesco"
+      ],
+      "desc": "石州和紙のうち伝統製法を守る楮半紙。重要無形文化財であり、2014年「和紙：日本の手漉和紙技術」としてユネスコ無形文化遺産に登録された3紙の一つ。"
+    },
+    "hodomurashi": {
+      "name": "程村紙",
+      "reading": "ほどむらし",
+      "category": "designated",
+      "regionLabel": "栃木県那須烏山市",
+      "designations": [
+        "sentaku"
+      ],
+      "desc": "烏山和紙を代表する厚手の楮紙。那須楮の強い繊維を活かした重厚な紙で、賞状用紙などに使われる。"
+    },
+    "nishinouchishi": {
+      "name": "西の内紙",
+      "reading": "にしのうちし",
+      "category": "designated",
+      "regionLabel": "茨城県常陸大宮市",
+      "designations": [
+        "sentaku"
+      ],
+      "desc": "那須楮100%の強靭な紙。水に濡れても破れにくく、江戸時代には水戸藩の専売品として商人の大福帳に重用された。"
+    },
+    "mino-washi": {
+      "name": "美濃和紙",
+      "reading": "みのわし",
+      "category": "designated",
+      "regionLabel": "岐阜県美濃市",
+      "designations": [
+        "dento"
+      ],
+      "desc": "1300年の歴史を持つ美濃の和紙。ムラのない薄さと美しさで「提灯・障子紙の最高峰」とされ、正倉院文書にもその名が残る。"
+    },
+    "honminogami": {
+      "name": "本美濃紙",
+      "reading": "ほんみのし",
+      "category": "designated",
+      "regionLabel": "岐阜県美濃市蕨生",
+      "designations": [
+        "juyo",
+        "unesco"
+      ],
+      "desc": "美濃和紙のうち最も厳格な伝統製法による楮紙。重要無形文化財、そしてユネスコ無形文化遺産「和紙」構成3紙の一つ。障子紙の理想とされる。"
+    },
+    "hosokawashi": {
+      "name": "細川紙",
+      "reading": "ほそかわし",
+      "category": "designated",
+      "regionLabel": "埼玉県小川町・東秩父村",
+      "designations": [
+        "juyo",
+        "unesco"
+      ],
+      "desc": "武州楮による強靭な楮紙。江戸の商家の帳簿・記録用紙を支えた。重要無形文化財、ユネスコ無形文化遺産「和紙」構成3紙の一つ。"
+    },
+    "awa-washi": {
+      "name": "阿波和紙",
+      "reading": "あわわし",
+      "category": "designated",
+      "regionLabel": "徳島県吉野川市",
+      "designations": [
+        "dento"
+      ],
+      "desc": "徳島の伝統産地。特産の藍で染めた藍染和紙が名高く、現代では美術用紙・インクジェット対応和紙など革新にも積極的。"
+    },
+    "tosa-washi": {
+      "name": "土佐和紙",
+      "reading": "とさわし",
+      "category": "designated",
+      "regionLabel": "高知県いの町・土佐市",
+      "designations": [
+        "dento"
+      ],
+      "desc": "仁淀川の清流と土佐楮に育まれた産地の総称。薄紙から厚紙まで品種の多さは全国随一で、近代製紙の祖・吉井源太を生んだ。"
+    },
+    "tosa-tengujo": {
+      "name": "土佐典具帖紙",
+      "reading": "とさてんぐじょうし",
+      "category": "designated",
+      "regionLabel": "高知県いの町",
+      "designations": [
+        "sentaku"
+      ],
+      "desc": "「カゲロウの羽」と呼ばれる世界最薄クラスの楮紙。厚さ0.02mmでも強く、ルーブル美術館や大英博物館など世界の修復現場で補修紙の国際標準として使われる。"
+    },
+    "seichoshi": {
+      "name": "清帳紙",
+      "reading": "せいちょうし",
+      "category": "designated",
+      "regionLabel": "高知県",
+      "designations": [
+        "sentaku"
+      ],
+      "desc": "土佐の伝統的な楮の帳面紙。丈夫で墨のりがよく、帳簿・記録用として使われてきた。国選択の無形文化財。"
+    },
+    "ozu-washi": {
+      "name": "大洲和紙",
+      "reading": "おおずわし",
+      "category": "designated",
+      "regionLabel": "愛媛県内子町五十崎",
+      "designations": [
+        "dento"
+      ],
+      "desc": "肱川流域で漉かれる伊予の和紙。薄く均質な書道半紙で名高く、凧合戦で知られる五十崎の大凧にも使われる。"
+    },
+    "senkashi": {
+      "name": "泉貨紙",
+      "reading": "せんかし",
+      "category": "designated",
+      "regionLabel": "愛媛県宇和島市ほか",
+      "designations": [
+        "sentaku"
+      ],
+      "desc": "漉いた紙を2枚重ねて1枚に仕上げる独特の製法による厚紙。非常に強靭で、江戸時代には帳簿や合羽に使われた。"
+    },
+    "yoshinogami": {
+      "name": "吉野紙",
+      "reading": "よしのがみ",
+      "category": "designated",
+      "regionLabel": "奈良県吉野町",
+      "designations": [
+        "hozon"
+      ],
+      "desc": "楮の極薄紙。柔らかく毛羽立ちが少ないため漆漉しに最適とされ、「漆濾紙」とも呼ばれる。製作技術が国の選定保存技術。"
+    }
+  },
+  "designations": [
+    {
+      "id": "dento",
+      "mark": "■",
+      "name": "伝統的工芸品（指定）",
+      "nameEn": "Designated Traditional Craft"
+    },
+    {
+      "id": "juyo",
+      "mark": "●",
+      "name": "重要無形文化財（指定）",
+      "nameEn": "Important Intangible Cultural Property"
+    },
+    {
+      "id": "sentaku",
+      "mark": "▲",
+      "name": "無形文化財（選択）",
+      "nameEn": "Selected Intangible Cultural Property"
+    },
+    {
+      "id": "hozon",
+      "mark": "◆",
+      "name": "選定保存技術",
+      "nameEn": "Selected Conservation Technique"
+    },
+    {
+      "id": "unesco",
+      "mark": "★",
+      "name": "ユネスコ無形文化遺産",
+      "nameEn": "UNESCO Intangible Cultural Heritage"
+    }
+  ]
+}

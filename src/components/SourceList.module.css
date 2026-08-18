@@ -1,0 +1,98 @@
+.panel {
+  margin: var(--space-lg) 0 0;
+  padding: var(--space-md);
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+  background: rgba(var(--accent-rgb), 0.04);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+}
+
+.sub {
+  font-size: 0.8125rem;
+  color: rgba(var(--accent-rgb), 0.85);
+  margin: 0 0 var(--space-sm);
+}
+
+.tableScroll {
+  overflow-x: auto;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 32rem;
+  font-size: 0.8125rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.18);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.table thead th {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(var(--accent-rgb), 0.85);
+  border-bottom-width: 1.5px;
+}
+
+.numCol {
+  width: 2rem;
+}
+
+.num {
+  color: var(--seal);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.type,
+.usedIn {
+  color: rgba(var(--accent-rgb), 0.9);
+  white-space: nowrap;
+}
+
+.share {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: rgba(var(--accent-rgb), 0.9);
+}
+
+.bar {
+  display: flex;
+  height: 6px;
+  margin: 0.55rem 0 0.35rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+  overflow: hidden;
+}
+
+.barPart {
+  display: block;
+  height: 100%;
+  background: var(--seal);
+}
+
+.weightNote,
+.aiNotice {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgba(var(--accent-rgb), 0.85);
+  margin: 0;
+}
+
+.aiNotice {
+  margin-top: var(--space-sm);
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(var(--accent-rgb), 0.18);
+}

@@ -1,0 +1,7 @@
+.indicator {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-sm);
+}

@@ -1,0 +1,19 @@
+{
+  "course": {
+    "src": "/images/hero/NTNU gunnnerus library (3).jpg",
+    "alt": "Spines of centuries-old books, several rebound and repaired with paper, on a shelf at the Gunnerus Library",
+    "isPlaceholder": false
+  },
+  "sections": {
+    "section-1": {
+      "src": "/images/hero/和紙の見本帳.jpg",
+      "alt": "A hand-held sample book of dyed washi papers",
+      "isPlaceholder": true
+    },
+    "section-4": {
+      "src": "/images/hero/漂泊した綺麗な楮繊維.JPG",
+      "alt": "Extreme close-up of bleached kōzo fiber",
+      "isPlaceholder": true
+    }
+  }
+}

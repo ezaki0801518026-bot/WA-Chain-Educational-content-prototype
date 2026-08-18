@@ -1,0 +1,884 @@
+/* Wider than before so the photo grids, timeline and member cards get the
+   room the full-width hero sets up. Paragraphs are NOT widened with it —
+   they keep their own max-widths, because a line of text running the whole
+   window is markedly harder to read. */
+.page {
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg) var(--space-xl);
+}
+
+.track_foundations {
+  --track-color: var(--track-foundations);
+}
+.track_diagnostics {
+  --track-color: var(--track-diagnostics);
+}
+.track_practice {
+  --track-color: var(--track-practice);
+}
+
+/* Hero ------------------------------------------------------------- */
+
+/* The words sit BESIDE the photo, never over it.
+   Why not a letterboxed banner: object-fit: cover crops whichever axis the
+   box is proportionally short of, and how much it crops depends on the
+   window's aspect ratio. The four here sit on a staircase and span 12%-46%
+   of the photo's HEIGHT, so any wide-and-short frame eats the back row on
+   one window shape and the front row on the next — unfixable by nudging
+   object-position. A tall photo column inverts that: the crop takes the
+   empty railings at the SIDES, and the group (21%-70% across) survives
+   every viewport. On narrow screens the photo is shown at its native 4:3,
+   so nothing is cropped at all. */
+.hero {
+  background: #211f1a;
+  color: #f5f0e8;
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-lg) var(--space-lg) var(--space-xl);
+}
+
+.heroFigure {
+  margin: 0;
+  min-width: 0;
+}
+
+.heroImg {
+  display: block;
+  width: 100%;
+  /* Subjects sit a little left of centre, so hold the horizontal crop there. */
+  object-position: 46% center;
+}
+
+/* Stacked: photo first, at its native ratio — no crop on any phone. */
+@media (max-width: 899px) {
+  .heroFigure {
+    order: -1;
+  }
+
+  .heroImg {
+    aspect-ratio: 4 / 3;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .heroText {
+    padding: var(--space-lg) var(--space-md) var(--space-lg);
+  }
+}
+
+/* Side by side: the photo column is taller than it is wide, so cover trims
+   the sides rather than the group. */
+@media (min-width: 900px) {
+  .heroInner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    align-items: stretch;
+    min-height: clamp(24rem, 72vh, 42rem);
+  }
+
+  /* The photo runs to the right edge; the copy is inset so that on a wide
+     window it still starts near the body measure rather than the far left. */
+  .heroText {
+    padding-left: max(var(--space-lg), calc((100vw - 90rem) / 2 + var(--space-lg)));
+  }
+
+  .heroImg {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.heroEyebrow {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c9bfa8;
+  margin: 0 0 var(--space-sm);
+}
+
+.heroHeadline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  font-weight: 500;
+  line-height: 1.18;
+  white-space: pre-line;
+  color: #f5f0e8;
+  margin: 0 0 var(--space-md);
+}
+
+.heroLede {
+  font-family: var(--font-body);
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.85;
+  white-space: pre-line;
+  color: #ddd6c6;
+  max-width: 34rem;
+  margin: 0;
+}
+
+/* Section pager ---------------------------------------------------- */
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.25);
+}
+
+.pagerLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-height: 44px;
+  padding: var(--space-sm) var(--space-md);
+  background: none;
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms ease-out, background-color 150ms ease-out;
+}
+
+.pagerNext {
+  text-align: right;
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+.pagerLink:hover,
+.pagerLink:focus-visible {
+  border-color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.05);
+}
+
+.pagerDir {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.pagerName {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pagerLink {
+    transition: none;
+  }
+}
+
+/* Tab bar ---------------------------------------------------------- */
+.tabBar {
+  display: flex;
+  gap: var(--space-md);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.25);
+  margin-bottom: var(--space-xl);
+}
+
+.tab {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: var(--space-sm) var(--space-xs);
+  cursor: pointer;
+  transition: color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.tab:hover,
+.tab:focus-visible {
+  color: var(--text);
+}
+
+.tabActive {
+  color: var(--text);
+  border-bottom-color: var(--track-foundations);
+}
+
+.tabContent {
+  animation: tabFadeIn 300ms ease-out;
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Mission ---------------------------------------------------------- */
+.missionCard {
+  background: #2b2b2b;
+  color: #f5f0e8;
+  border-radius: 6px;
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.missionLabel {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b8b2a3;
+  margin: 0 0 var(--space-xs);
+}
+
+.missionText {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 46rem;
+}
+
+/* Generic section -------------------------------------------------- */
+.section {
+  margin-bottom: var(--space-xl);
+}
+
+.sectionEyebrow {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+}
+
+.eyebrowFoundations {
+  color: var(--track-foundations);
+}
+.eyebrowDiagnostics {
+  color: var(--track-diagnostics);
+}
+.eyebrowPractice {
+  color: var(--track-practice);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.375rem, 3vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0 0 var(--space-sm);
+  max-width: 34rem;
+}
+
+.sectionBody {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  white-space: pre-line;
+  color: var(--text);
+  max-width: 38rem;
+  margin: 0 0 var(--space-md);
+}
+
+/* Text + image split ---------------------------------------------- */
+.splitBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+  margin-bottom: var(--space-lg);
+}
+
+@media (min-width: 720px) {
+  .splitBlock {
+    grid-template-columns: 1fr 0.85fr;
+  }
+  .splitReverse .splitText {
+    order: 2;
+  }
+  .splitReverse .splitFigure {
+    order: 1;
+  }
+}
+
+.splitText {
+  min-width: 0;
+}
+
+.splitFigure {
+  margin: 0;
+}
+
+.splitImg {
+  width: 100%;
+  max-height: 16rem;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Portrait shots (e.g. the washi racks) get more height so they don't
+   reduce to a thin cropped band. */
+.splitImgTall {
+  max-height: 22rem;
+}
+
+.wideFigure {
+  margin: var(--space-md) 0 0;
+}
+
+.wideImg {
+  width: 100%;
+  max-height: 15rem;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Stats ----------------------------------------------------------- */
+.statRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .statRow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bigStat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 6px;
+  background: var(--track-color);
+  color: #f5f0e8;
+}
+
+.bigStatValue {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.bigStatLabel {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+/* Quote block ----------------------------------------------------- */
+.quote {
+  border-left: 3px solid var(--track-foundations);
+  margin: var(--space-lg) 0;
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(var(--accent-rgb), 0.04);
+  border-radius: 0 6px 6px 0;
+}
+
+.quoteText {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.85;
+  margin: 0 0 var(--space-sm);
+  max-width: 36rem;
+}
+
+.quoteAttr {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--accent);
+  font-style: normal;
+  display: block;
+}
+
+/* Insight properties ----------------------------------------------- */
+.propGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 720px) {
+  .propGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.propCard {
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-top: 3px solid var(--track-color);
+  border-radius: 4px;
+  padding: var(--space-md) var(--space-md) var(--space-md);
+  background: rgba(var(--accent-rgb), 0.03);
+}
+
+.propNumber {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  color: var(--track-color);
+  margin-bottom: var(--space-xs);
+}
+
+.propTitle {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  margin: 0 0 var(--space-xs);
+}
+
+.propDesc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Solution --------------------------------------------------------- */
+.solutionSection {
+  background: rgba(var(--accent-rgb), 0.05);
+  border-left: 3px solid var(--track-diagnostics);
+  border-radius: 0 6px 6px 0;
+  padding: var(--space-lg);
+}
+
+/* Process video --------------------------------------------------- */
+.videoFigure {
+  margin: 0;
+}
+
+.videoCaption {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--accent);
+  margin-top: var(--space-sm);
+  max-width: 40rem;
+}
+
+/* Timeline -------------------------------------------------------- */
+.timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.35rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 2px;
+  background: rgba(var(--accent-rgb), 0.25);
+}
+
+.timelineItem {
+  position: relative;
+  padding-bottom: var(--space-lg);
+}
+
+.timelineItem:last-child {
+  padding-bottom: 0;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -1.15rem;
+  top: 0.45rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--track-foundations);
+  border-radius: 50%;
+}
+
+.timelineDate {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--track-foundations);
+  margin: 0 0 var(--space-xs);
+}
+
+.timelineTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 var(--space-xs);
+}
+
+.timelineDesc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--accent);
+  margin: 0;
+  max-width: 36rem;
+}
+
+/* Link from a timeline entry to the News article covering it. */
+.timelineLink {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--track-foundations);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.35);
+  padding-bottom: 1px;
+  margin-top: var(--space-sm);
+  transition: color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.timelineLink:hover,
+.timelineLink:focus-visible {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timelineLink {
+    transition: none;
+  }
+}
+
+/* Field photos under a timeline entry. Mixed portrait/landscape shots sit
+   in one row at a shared height, cropped by object-fit. */
+.timelinePhotos {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  max-width: 46rem;
+}
+
+.timelinePhoto {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 11rem;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+/* Portrait shots stand alone at their natural aspect ratio instead of
+   being cropped to a wide band. */
+.timelinePhotoPortrait {
+  flex: 0 0 auto;
+  width: auto;
+  height: 16rem;
+  object-fit: contain;
+}
+
+@media (max-width: 560px) {
+  .timelinePhotos {
+    flex-direction: column;
+  }
+
+  .timelinePhoto {
+    width: 100%;
+    height: 10rem;
+  }
+
+  .timelinePhotoPortrait {
+    width: auto;
+    max-width: 100%;
+    height: 14rem;
+    align-self: flex-start;
+  }
+}
+
+/* Track record ----------------------------------------------------- */
+.recordGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 720px) {
+  .recordGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.recordTile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 4px;
+}
+
+.recordValue {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--track-foundations);
+  font-variant-numeric: tabular-nums;
+}
+
+.recordLabel {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--accent);
+}
+
+/* Field-notes gallery ---------------------------------------------- */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 560px) {
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .galleryGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.galleryFigure {
+  margin: 0;
+}
+
+.galleryImg {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.galleryCaption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.65;
+  color: var(--accent);
+  margin-top: 0.4rem;
+}
+
+/* Findings -------------------------------------------------------- */
+.findingsSection {
+  background: rgba(var(--accent-rgb), 0.05);
+  border-left: 3px solid var(--track-practice);
+  border-radius: 0 6px 6px 0;
+  padding: var(--space-lg);
+}
+
+/* Team ------------------------------------------------------------- */
+
+/* Group shot above the member cards. Cropped to 3:2 and biased upward so
+   the faces stay clear of the crop on narrow screens. */
+.teamFigure {
+  margin: 0 0 var(--space-xl);
+}
+
+.teamPhoto {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center 38%;
+  border-radius: 6px;
+  display: block;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .teamGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Portrait column sized to the source crops (245px square): 7rem still
+   leaves ~1.75x for high-density screens, so the faces stay sharp. */
+.memberCard {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-top: 3px solid var(--track-color);
+  border-radius: 4px;
+  background: var(--bg);
+}
+
+.avatarPhoto {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 5px;
+  object-fit: cover;
+  /* Faces sit above centre in every crop. */
+  object-position: center 40%;
+  display: block;
+}
+
+@media (max-width: 460px) {
+  .memberCard {
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .avatarPhoto {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+.memberInfo {
+  min-width: 0;
+}
+
+.memberName {
+  font-family: var(--font-heading);
+  font-size: 1.1875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0 0 0.1rem;
+}
+
+.memberReading {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+/* A filled chip rather than muted small caps — the role is the thing a
+   reader scans for, so it should not be the faintest text on the card. */
+.memberRole {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #f5f0e8;
+  background: var(--track-color);
+  border-radius: 999px;
+  padding: 0.32rem 0.6rem;
+  margin: 0 0 var(--space-sm);
+}
+
+/* Faculty line, between the role chip and the bio. */
+.memberMajor {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--accent);
+  margin: 0 0 var(--space-xs);
+}
+
+.memberBio {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin: 0;
+}
+
+.memberLinks {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.6rem 0 0;
+}
+
+/* Icon-only links: the accessible name lives on aria-label. */
+.memberLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  color: var(--accent);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  text-decoration: none;
+  transition: color 150ms ease-out, border-color 150ms ease-out, background-color 150ms ease-out;
+}
+
+.memberLink:hover,
+.memberLink:focus-visible {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memberLink {
+    transition: none;
+  }
+}
+
+/* Closing ---------------------------------------------------------- */
+.closing {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.25);
+  text-align: center;
+}
+
+.closingText {
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  line-height: 1.5;
+  white-space: pre-line;
+  max-width: 34rem;
+  margin: 0 auto var(--space-md);
+}
+
+.closingMeta {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+.closingContact {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--accent);
+  margin: var(--space-sm) 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabContent {
+    animation: none;
+  }
+}

@@ -1,0 +1,54 @@
+.layer {
+  cursor: pointer;
+}
+
+.layerRect {
+  transition: stroke 150ms ease-out, stroke-width 150ms ease-out, opacity 150ms ease-out;
+}
+
+.layer:focus-visible .layerRect {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.detailPanel {
+  min-height: 3.5rem;
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-left: 2px solid var(--accent);
+  background: rgba(var(--accent-rgb), 0.05);
+}
+
+.detailLabel {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  margin: 0 0 0.25rem;
+  animation: fadeIn 200ms ease-out;
+}
+
+.detailDescription {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin: 0;
+  animation: fadeIn 200ms ease-out;
+}
+
+.detailHint {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

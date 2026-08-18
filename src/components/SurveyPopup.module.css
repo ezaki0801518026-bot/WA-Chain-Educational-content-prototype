@@ -1,0 +1,138 @@
+.popup {
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  z-index: 40;
+  width: 18rem;
+  max-width: calc(100vw - 2 * var(--space-md));
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  padding: var(--space-md);
+  padding-right: calc(var(--space-md) + 1.25rem);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeUp 250ms ease-out;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popup {
+    animation: none;
+  }
+}
+
+.dismissButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dismissButton:hover,
+.dismissButton:focus-visible {
+  color: var(--text);
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 var(--space-xs);
+  padding-right: 0.5rem;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--accent);
+  margin: 0 0 var(--space-sm);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.select,
+.textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  padding: 0.4rem 0.5rem;
+}
+
+.textarea {
+  resize: vertical;
+  margin-bottom: var(--space-xs);
+}
+
+.ctaButton {
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--accent);
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+
+.ctaButton:hover:not(:disabled),
+.ctaButton:focus-visible:not(:disabled) {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.ctaButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.resultText {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  margin: 0;
+  padding-right: 0.5rem;
+}
+
+.resultTextError {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--incorrect);
+  margin: 0 0 var(--space-sm);
+}
+
+@media (max-width: 480px) {
+  .popup {
+    left: var(--space-sm);
+    right: var(--space-sm);
+    width: auto;
+  }
+}

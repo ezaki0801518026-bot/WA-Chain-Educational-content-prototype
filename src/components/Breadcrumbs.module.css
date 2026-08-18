@@ -1,0 +1,59 @@
+.crumbs {
+  /* Fixed height so layouts can rely on --crumb-height (App.module.css). */
+  height: var(--crumb-height, 2rem);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-lg);
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.link {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 18rem;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--text);
+}
+
+.current {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.separator {
+  font-size: 0.75rem;
+  color: var(--accent);
+}

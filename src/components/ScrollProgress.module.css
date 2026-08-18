@@ -1,0 +1,34 @@
+/* Rides the very top edge of the window, above the sticky header. */
+.rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 200;
+  pointer-events: none;
+  background: transparent;
+}
+
+/* scaleX from a left origin: the browser can keep this on the compositor,
+   so the bar tracks the scroll without touching layout. */
+.fill {
+  height: 100%;
+  transform-origin: left center;
+  background: linear-gradient(
+    90deg,
+    var(--track-foundations) 0%,
+    var(--track-diagnostics) 48%,
+    var(--seal) 100%
+  );
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.45);
+  will-change: transform;
+}
+
+/* The bar is a scroll readout, so it must not lag behind the scroll — no
+   transition on the transform. Nothing here animates on its own. */
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,191 @@
+.megaNav {
+  position: relative;
+  background: var(--bg);
+  border-bottom: 1px solid var(--accent);
+}
+
+.trackList {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 calc(var(--space-lg) - 0.9rem);
+  list-style: none;
+  display: flex;
+  /* No gap: adjacent items share edges so there is no dead zone between
+     labels — sweeping the cursor sideways switches panels seamlessly. */
+  gap: 0;
+}
+
+.trackItem {
+  position: static;
+  display: flex;
+}
+
+.trackTrigger {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  background: none;
+  border: none;
+  /* Generous horizontal padding makes the whole label area (not just the
+     glyphs) a hover target, so there is continuous coverage across the bar. */
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+}
+
+/* A track-coloured underline grows in on hover/open, giving each category
+   its own identity and a clear "you are here" cue. */
+.trackTrigger::after {
+  content: '';
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.35rem;
+  height: 2px;
+  background: var(--track-color, var(--accent));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 160ms ease-out;
+}
+
+.trackTrigger:hover,
+.trackTrigger:focus-visible,
+.trackTrigger[aria-expanded='true'] {
+  color: var(--track-color, var(--accent));
+}
+
+.trackTrigger:hover::after,
+.trackTrigger:focus-visible::after,
+.trackTrigger[aria-expanded='true']::after {
+  transform: scaleX(1);
+}
+
+.track_foundations {
+  --track-color: var(--track-foundations);
+}
+
+.track_diagnostics {
+  --track-color: var(--track-diagnostics);
+}
+
+.track_practice {
+  --track-color: var(--track-practice);
+}
+
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--accent);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+.panelBody {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: var(--space-lg);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-lg);
+}
+
+.panelList {
+  min-width: 0;
+}
+
+.panelDesc {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--accent);
+  margin: 0 0 var(--space-md);
+  max-width: 32rem;
+}
+
+.sectionList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: var(--space-lg);
+}
+
+.sectionList li {
+  break-inside: avoid;
+  margin-bottom: 0.6rem;
+}
+
+.sectionLink {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--text);
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sectionLink:hover,
+.sectionLink:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.sectionInactive {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--accent);
+  opacity: 0.6;
+}
+
+.comingSoonTag {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.panelImage {
+  position: relative;
+  overflow: hidden;
+  background: #2b2b2b;
+}
+
+.panelImageEl {
+  width: 100%;
+  height: 100%;
+  min-height: 12rem;
+  object-fit: cover;
+  filter: url(#duotone);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .panelBody {
+    grid-template-columns: 1fr;
+  }
+
+  .panelImage {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .trackList {
+    /* Keep items edge-to-edge here too, so there is no hover dead zone. */
+    gap: 0;
+    padding: 0 calc(var(--space-md) - 0.9rem);
+    overflow-x: auto;
+  }
+
+  .sectionList {
+    columns: 1;
+  }
+}

@@ -1,0 +1,213 @@
+.page {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.header {
+  margin-bottom: var(--space-xl);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--track-practice);
+  margin: 0 0 var(--space-sm);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0 0 var(--space-sm);
+}
+
+.lede {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--accent);
+  max-width: 38rem;
+  margin: 0;
+}
+
+/* Newsletter strip (populated once the Substack feed is configured) -- */
+.newsletterBand {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-left: 3px solid var(--track-practice);
+  border-radius: 0 4px 4px 0;
+}
+
+.newsletterHeading {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 var(--space-sm);
+}
+
+.newsletterList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newsletterLink {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  text-decoration: none;
+}
+
+.newsletterTitle {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.newsletterLink:hover .newsletterTitle {
+  color: var(--track-foundations);
+}
+
+.newsletterDate {
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* Card grid --------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 560px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cardButton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cardButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.thumbWrap {
+  position: relative;
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+  background: #2b2b2b;
+}
+
+/* Display text laid over the thumbnail, in the style of designed news
+   banners (the Regal reference). */
+.kicker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.6rem 0.9rem 0.7rem;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #f5f0e8;
+  background: linear-gradient(180deg, rgba(43, 43, 43, 0) 0%, rgba(43, 43, 43, 0.66) 100%);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 400ms ease-out;
+}
+
+.cardButton:hover .thumb,
+.cardButton:focus-visible .thumb {
+  transform: scale(1.04);
+}
+
+:global(:root[data-theme='dark']) .thumb {
+  filter: brightness(0.88);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: 0.45rem;
+}
+
+.date {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.category {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--track-foundations);
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding: 0.1rem 0.45rem;
+}
+
+.cardTitle {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text);
+  transition: color 150ms ease-out;
+}
+
+.cardButton:hover .cardTitle,
+.cardButton:focus-visible .cardTitle {
+  color: var(--track-foundations);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb {
+    transition: none;
+  }
+}

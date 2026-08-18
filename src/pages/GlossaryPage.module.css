@@ -1,0 +1,122 @@
+.page {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.intro {
+  margin-bottom: var(--space-lg);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.3;
+  margin: 0 0 var(--space-sm);
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--accent);
+  margin: 0;
+}
+
+.mapLink {
+  display: inline-block;
+  margin-top: var(--space-md);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--bg);
+  background: var(--track-diagnostics);
+  border: 1px solid var(--track-diagnostics);
+  padding: 0.5rem 1.1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 150ms ease-out;
+}
+
+.mapLink:hover,
+.mapLink:focus-visible {
+  opacity: 0.88;
+}
+
+.srOnlyLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.search {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  padding: 0.6rem 0.9rem;
+  margin-bottom: var(--space-lg);
+}
+
+.empty {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--accent);
+}
+
+.list {
+  margin: 0;
+}
+
+.entry {
+  border-top: 1px solid var(--accent);
+  padding: var(--space-md) 0;
+}
+
+.entry:last-child {
+  border-bottom: 1px solid var(--accent);
+}
+
+.term {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0 0 0.3rem;
+}
+
+.native {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: normal;
+  color: var(--accent);
+}
+
+.definition {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.relatedLink {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.relatedLink:hover,
+.relatedLink:focus-visible {
+  color: var(--text);
+}

@@ -1,0 +1,10 @@
+{
+  "_comment": "Paste the unlisted YouTube/Vimeo link for the washi-process video into aboutVideo.url. Until it is set, the video block on the About page renders nothing. Example: https://youtu.be/XXXXXXXXXXX",
+  "aboutVideo": {
+    "url": "",
+    "caption": {
+      "en": "Neutralizing the acidic wastewater produced during washi making — field footage from a producing region.",
+      "ja": "和紙づくりの過程で出た酸性排水を中和する様子。産地で撮影した記録映像です。"
+    }
+  }
+}

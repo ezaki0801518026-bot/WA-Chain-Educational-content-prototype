@@ -1,0 +1,53 @@
+{
+  "_comment": "Video courses shown on The Course page. Each entry plays a single lecture video. Add a course by appending an object here — no code change needed.",
+  "courses": [
+    {
+      "id": "kozo-provenance",
+      "number": 1,
+      "title": {
+        "en": "Kōzo Provenance",
+        "ja": "楮の産地を知る"
+      },
+      "subtitle": {
+        "en": "Where the fibre comes from, and why it matters",
+        "ja": "その楮は、どこで育ったのか"
+      },
+      "description": {
+        "en": "The kōzo paper a conservator reaches for was grown somewhere. This lecture separates what can be said with confidence from what remains unknown, and draws together the character of each growing region and the washi it yields.",
+        "ja": "肌裏にも補紙にも使う楮紙は、必ずどこかの土地で育った楮からできています。産地ごとの違いと、その土地の和紙の性格を、公的資料と査読論文だけを根拠に整理した講義です。"
+      },
+      "video": "/videos/course-kozo-provenance.mp4",
+      "poster": "/images/hero/楮のかわはぎの様子.jpg",
+      "durationLabel": "10:23",
+      "durationSeconds": 623,
+      "topics": {
+        "en": ["Nasu", "Sekishū", "Tosa", "Awa", "Imported kōzo"],
+        "ja": ["那須", "石州", "土佐", "阿波", "輸入楮"]
+      }
+    },
+    {
+      "id": "three-fibers",
+      "number": 2,
+      "title": {
+        "en": "Washi Is Not a Single Type of Paper",
+        "ja": "和紙は一種類じゃない"
+      },
+      "subtitle": {
+        "en": "Kōzo, mitsumata and gampi — telling the three fibres apart",
+        "ja": "楮・三椏・雁皮 ― 三つの原料の違い"
+      },
+      "description": {
+        "en": "We say \"washi\" as if it were one thing, but its main raw materials are three. Which fibre a sheet is made from changes its strength, its surface, its permanence — and where it belongs in conservation.",
+        "ja": "「和紙」とひとことで言うけれど、その主原料は楮・三椏・雁皮の三種。どれで漉かれたかで、紙の強さ・肌ざわり・保存性、そして修復での使いどころが変わります。"
+      },
+      "video": "/videos/course-three-fibers.mp4",
+      "poster": "/images/hero/和紙の見本帳.jpg",
+      "durationLabel": "14:49",
+      "durationSeconds": 889,
+      "topics": {
+        "en": ["Kōzo", "Mitsumata", "Gampi", "Fibre length", "pH & permanence"],
+        "ja": ["楮", "三椏", "雁皮", "繊維長", "pHと保存性"]
+      }
+    }
+  ]
+}

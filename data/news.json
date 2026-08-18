@@ -1,0 +1,387 @@
+{
+  "posts": [
+    {
+      "id": "2026-07-section5",
+      "dateLabel": {
+        "en": "July 2026",
+        "ja": "2026年7月"
+      },
+      "category": {
+        "en": "Course update",
+        "ja": "コース更新"
+      },
+      "image": "/images/hero/メンバーが和紙を漉く様子.jpg",
+      "imageAlt": "WA-Chain members forming washi sheets by hand",
+      "title": {
+        "en": "New course section released: Nagashi-zuki and Neri",
+        "ja": "新セクション公開：「流し漉きとネリ」"
+      },
+      "paragraphs": {
+        "en": [
+          "Section 5 of the course is now open. Built from authoritative Japanese conservation references, it walks through the flowing sheet-forming technique (nagashi-zuki), the science of neri — the tororo-aoi mucilage that makes Japanese papermaking possible — and what formation decides about a paper's grain, face, and behavior in treatment, across eight steps and a five-question quiz.",
+          "The section includes video of neri filmed during our own papermaking fieldwork. Alongside the new material, we revised the existing sections against the same references — correcting the description of mitsumata fiber shape and the common claim that washi is inherently alkaline."
+        ],
+        "ja": [
+          "コースの第5セクション「流し漉きとネリ」を公開しました。装潢文化財修理の専門文献を情報源に、流し漉きの技法、ネリ（トロロアオイ）の科学、そして紙の「漉かれ方」が修復時の挙動をどう決めるかまでを、8ステップ＋確認クイズで解説しています。",
+          "フィールドワークで撮影したネリの動画も教材に収録しました。あわせて既存セクションも同じ文献に照らして精査し、三椏繊維の形状や「和紙はアルカリ性」という通説に関する記述を修正しています。"
+        ]
+      },
+      "photos": [
+        {
+          "src": "/images/hero/和紙の製造過程.jpg",
+          "alt": "Materials showing the washi production process",
+          "caption": {
+            "en": "The production process, from bark to sheet",
+            "ja": "原料から紙になるまで——和紙の製造過程"
+          }
+        }
+      ],
+      "kicker": {
+        "en": "Nagashi-zuki & Neri",
+        "ja": "流し漉きとネリ、開講"
+      }
+    },
+    {
+      "id": "2026-06-yamagata",
+      "dateLabel": {
+        "en": "June 2026",
+        "ja": "2026年6月"
+      },
+      "category": {
+        "en": "Conference",
+        "ja": "学会参加"
+      },
+      "image": "/images/hero/山形学会.jpg",
+      "imageAlt": "Signboard of the 48th annual meeting of the Japan Society for the Conservation of Cultural Property",
+      "title": {
+        "en": "At the 48th annual meeting of the Japan Society for the Conservation of Cultural Property",
+        "ja": "文化財保存修復学会 第48回大会（山形）に参加しました"
+      },
+      "paragraphs": {
+        "en": [
+          "We attended the society's 48th annual meeting, held at Yamagata Terrsa on June 6–7. Conservation scientists, conservators, and suppliers from across Japan gather here — for a student team working on washi's place in international conservation, there is no better room to be in.",
+          "We spoke with many professionals about WA-Chain's mission, received warm endorsement for the work, and secured cooperation for the interviews that will shape the course's next sections."
+        ],
+        "ja": [
+          "6月6日・7日に山形テルサで開催された、文化財保存修復学会の第48回大会に参加しました。保存科学の研究者、修復技術者、材料メーカーが全国から集まる場であり、和紙と国際的な保存修復の接点に取り組む私たちにとって、これ以上ない学びの場でした。",
+          "多くのプロフェッショナルにWA-Chainの活動を紹介し、温かい賛同の言葉と、今後のヒヤリングへの協力をいただきました。ここでの出会いは、コースの次のセクションづくりに活きていきます。"
+        ]
+      },
+      "photos": [],
+      "kicker": {
+        "en": "Conservation Society, 48th",
+        "ja": "文化財保存修復学会へ"
+      }
+    },
+    {
+      "id": "2026-05-mongolia",
+      "dateLabel": {
+        "en": "May 18, 2026",
+        "ja": "2026年5月18日"
+      },
+      "category": {
+        "en": "Talk",
+        "ja": "登壇"
+      },
+      "image": "/images/hero/モンゴル視察団発表.jpg",
+      "imageAlt": "Komatsu and Miyamoto presenting WA-Chain with Mongolian-language slides to a visiting delegation",
+      "title": {
+        "en": "Presented to a Mongolian delegation as a showcase of Hokkaido University's entrepreneurship education",
+        "ja": "モンゴル視察団に、北大アントレ教育の事例としてWA-Chainを発表しました"
+      },
+      "paragraphs": {
+        "en": [
+          "A delegation from Mongolia — small-business owners and local-government officials touring Hokkaido's startup ecosystem — visited Hokkaido University, and WA-Chain presented its work as one of three student teams chosen to represent the university's entrepreneurship education.",
+          "We prepared our slides in Mongolian for the occasion. Washi is a Japanese story, but the underlying question — how a traditional industry survives when its market disappears — crosses borders, and the exchange that followed gave us a new outside perspective on our own project."
+        ],
+        "ja": [
+          "北海道のスタートアップ・エコシステムを学ぶために来日した、モンゴルの中小企業経営者・自治体職員のみなさんによる視察団が北海道大学を訪問。北大アントレプレナーシップ教育の事例として選ばれた学生3チームの一つとして、WA-Chainが活動を発表しました。",
+          "この日のためにスライドはモンゴル語に翻訳して準備しました。和紙は日本の物語ですが、「市場を失った伝統産業はどう生き残るのか」という問いは国境を越えます。発表後の対話から、自分たちの事業を外から見つめ直す新しい視点をもらいました。"
+        ]
+      },
+      "photos": [],
+      "kicker": {
+        "en": "Hello, Mongolia",
+        "ja": "モンゴル語でピッチ"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Activity report by Hokkaido University ↗",
+            "ja": "北海道大学による活動レポート ↗"
+          },
+          "url": "https://hsfc.jp/reports/202606221532/"
+        }
+      ]
+    },
+    {
+      "id": "2026-03-kochi",
+      "dateLabel": {
+        "en": "March 2026",
+        "ja": "2026年3月"
+      },
+      "category": {
+        "en": "Field report",
+        "ja": "現地調査"
+      },
+      "image": "/images/hero/鹿敷製紙訪問.jpg",
+      "imageAlt": "Three WA-Chain members standing with their host at the entrance of Kashiki Paper Mill",
+      "title": {
+        "en": "Field report: Ino, Kōchi — staying at Kashiki Paper Mill",
+        "ja": "現地調査レポート：高知県いの町——鹿敷製紙に泊まり込みで"
+      },
+      "paragraphs": {
+        "en": [
+          "From Hokkaido to Ino-chō, Kōchi — one of Japan's great papermaking regions. We stayed at Kashiki Paper Mill and walked the whole journey from raw bark to finished sheet.",
+          "At Kashiki we watched the stages no textbook can convey: kōzo bark soaking back to life in water, and the bark being stripped with the dedicated heguri knife. Mr. Hamada's words — 'we buy domestic kōzo at a higher price than anyone else' — remain one of the starting points of our whole project. We also met Mark, who worked at Kashiki, and heard what drew him from abroad to Japanese papermaking.",
+          "We visited the Ino-chō Paper Museum — dedicated to Genta Yoshii, the great modernizer of Japanese papermaking — as well as the Paper Industry Technology Center, Naigai Tengujō-shi, and Hidaka Washi.",
+          "The Niyodo River and Kōchi's katsuo tataki are part of the memory too. Regions live through their food and their rivers as much as their craft."
+        ],
+        "ja": [
+          "北海道から、和紙の一大産地・高知県いの町へ。鹿敷製紙に宿泊させていただきながら、原料の楮が一枚の紙になるまでの現場を歩きました。",
+          "鹿敷製紙では、水に浸けられて戻っていく楮、専用の「へぐり包丁」による皮はぎなど、教科書では伝わらない工程を目の前で見せていただきました。濵田さんの「国産の楮を他の人より高く買っている」という言葉は、いまも私たちの事業の原点の一つです。鹿敷製紙で働いていたマークさんにもお会いし、海外から日本の紙づくりに惹かれた理由を伺いました。",
+          "近代製紙の祖・吉井源太を顕彰する、いの町紙の博物館も見学。紙産業技術センター、内外典具帖紙、ひだか和紙にも足を運びました。",
+          "仁淀川の景色と、高知名物カツオのたたきも、この旅の大切な記憶です。産地は、技だけでなく川と食とともに生きています。"
+        ]
+      },
+      "photos": [
+        {
+          "src": "/images/hero/水につけている楮.jpg",
+          "alt": "Kōzo bark soaking in a water bath at Kashiki Paper Mill",
+          "caption": {
+            "en": "Kōzo bark soaking back to flexibility",
+            "ja": "水に浸けられ、戻されていく楮"
+          }
+        },
+        {
+          "src": "/images/hero/楮のかわはぎの様子.jpg",
+          "alt": "Stripping the bark from kōzo",
+          "caption": {
+            "en": "Stripping kōzo bark",
+            "ja": "楮の皮はぎの様子"
+          }
+        },
+        {
+          "src": "/images/hero/こうぞの皮をはぐへぐりという工程に使う包丁.jpg",
+          "alt": "The heguri knife used for stripping kōzo bark",
+          "caption": {
+            "en": "The dedicated heguri knife",
+            "ja": "皮はぎ（へぐり）に使う専用の包丁"
+          }
+        },
+        {
+          "src": "/images/hero/鹿敷製紙で働いていたマークさん.jpg",
+          "alt": "Three members with Mark, who worked at Kashiki Paper Mill",
+          "caption": {
+            "en": "With Mark, who worked at Kashiki Paper Mill",
+            "ja": "鹿敷製紙で働いていたマークさんと"
+          }
+        },
+        {
+          "src": "/images/hero/紙の博物館でのチーム二人.jpg",
+          "alt": "Two members posing with the Genta Yoshii mascot at the Ino-chō Paper Museum",
+          "caption": {
+            "en": "At the Ino-chō Paper Museum, with Genta Yoshii",
+            "ja": "いの町紙の博物館——吉井源太先生と"
+          }
+        },
+        {
+          "src": "/images/hero/カツオのたたき！.jpg",
+          "alt": "Kōchi's famous katsuo tataki",
+          "caption": {
+            "en": "Kōchi's katsuo tataki",
+            "ja": "高知といえば、カツオのたたき"
+          }
+        }
+      ],
+      "kicker": {
+        "en": "Into Washi Country",
+        "ja": "和紙のふるさと、いの町へ"
+      }
+    },
+    {
+      "id": "2026-02-europe",
+      "dateLabel": {
+        "en": "February 2026",
+        "ja": "2026年2月"
+      },
+      "category": {
+        "en": "Overseas",
+        "ja": "海外調査"
+      },
+      "image": "/images/hero/ノルウェーの授業でピッチする様子.jpg",
+      "imageAlt": "Two WA-Chain members pitching in Norway in front of a WA-Chain slide",
+      "title": {
+        "en": "Norway & UK: Gunnerus Library, Windsor Castle, and the J-StarX Oxford pitch",
+        "ja": "ノルウェー・イギリス遠征——グンネラス図書館、ウィンザー城、J-StarX Oxford登壇"
+      },
+      "paragraphs": {
+        "en": [
+          "February took us across Europe. In Trondheim we visited the Gunnerus Library — Norway's oldest scientific library — and studied how washi is used in book conservation. Handing over the samples we had carried from Japan, we heard words we won't forget: 'We have never seen paper with this texture.' We also pitched WA-Chain in the classroom at NTNU.",
+          "In the UK we visited the conservation studio at Windsor Castle, where royal historical documents are restored, and Miyamoto presented WA-Chain as a J-StarX finalist at the University of Oxford's Saïd Business School.",
+          "Conversations from this trip — with conservators who use washi every day yet have few ways to learn about it — are the clearest evidence yet for the gap this course exists to close."
+        ],
+        "ja": [
+          "2月はヨーロッパへ。トロンハイムでは、ノルウェー最古の学術図書館であるグンネラス図書館を訪ね、和紙による蔵書修復の現場を視察しました。日本から持参した和紙を手渡したとき、「こんな質感の紙は初めて見た」という忘れられない言葉をいただきました。NTNU（ノルウェー科学技術大学）の授業でのピッチにも登壇しました。",
+          "イギリスでは、王家の歴史文書が修復されるウィンザー城の修復スタジオを訪問。さらにオックスフォード大学サイード・ビジネススクールで開かれたJ-StarXピッチに、宮本がファイナリストとして登壇しました。",
+          "「毎日和紙を使っているのに、学ぶ手段がほとんどない」——この遠征で出会った修復師たちの声は、このコースが埋めるべきギャップを何より明確に示しています。"
+        ]
+      },
+      "photos": [
+        {
+          "src": "/images/hero/グンネラスp図書館入口.jpg",
+          "alt": "The snowy entrance of the Gunnerus Library, Trondheim",
+          "caption": {
+            "en": "The Gunnerus Library, Trondheim",
+            "ja": "トロンハイムのグンネラス図書館"
+          }
+        },
+        {
+          "src": "/images/hero/ノルウェーグンネラス図書館で和紙を使う様子.jpg",
+          "alt": "Conservation tools, washi, and historical documents on a workbench at the Gunnerus Library",
+          "caption": {
+            "en": "Washi on the conservation workbench",
+            "ja": "修復作業台の上の和紙と歴史資料"
+          }
+        },
+        {
+          "src": "/images/hero/ピッチ in oxford宮本.jpg",
+          "alt": "Mayu Miyamoto pitching at the University of Oxford in front of a Paper Doctor slide",
+          "caption": {
+            "en": "Miyamoto pitching at Oxford",
+            "ja": "オックスフォードでピッチする宮本"
+          }
+        },
+        {
+          "src": "/images/hero/oxford said business schoolにて宮本.jpg",
+          "alt": "Mayu Miyamoto with mentors at the Saïd Business School",
+          "caption": {
+            "en": "At the Saïd Business School",
+            "ja": "サイード・ビジネススクールにて"
+          }
+        }
+      ],
+      "kicker": {
+        "en": "Norway → Oxford",
+        "ja": "北欧と英国の修復現場へ"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Activity report by Hokkaido University ↗",
+            "ja": "北海道大学による活動レポート ↗"
+          },
+          "url": "https://hsfc.jp/reports/20260310647/"
+        }
+      ]
+    },
+    {
+      "id": "2026-01-shimane",
+      "dateLabel": {
+        "en": "January 2026",
+        "ja": "2026年1月"
+      },
+      "category": {
+        "en": "Field report",
+        "ja": "現地調査"
+      },
+      "image": "/images/hero/安部記念館いろいろな和紙.jpg",
+      "imageAlt": "Long washi sheets hanging on display at the Abe Eishirō Memorial Museum",
+      "title": {
+        "en": "Field report: Shimane — Izumo washi country",
+        "ja": "現地調査レポート：島根県——出雲和紙の里へ"
+      },
+      "paragraphs": {
+        "en": [
+          "Through a university program, Komatsu traveled to Shimane Prefecture. At Shimane University he pitched washi and WA-Chain's mission to students and faculty.",
+          "At the Izumo Mingei-shi workshop he formed paper with his own hands, and at the Abe Eishirō Memorial Museum — dedicated to the papermaker designated a Living National Treasure — he saw the breadth of what Izumo washi can be."
+        ],
+        "ja": [
+          "大学のプログラムで、小松が島根県を訪問しました。島根大学では、学生や教員に向けて和紙とWA-Chainの構想についてピッチを行いました。",
+          "出雲民藝紙の工房では自らの手で紙を漉き、人間国宝の紙漉き職人を顕彰する安部榮四郎記念館では、出雲和紙の表現の幅広さに触れました。"
+        ]
+      },
+      "photos": [
+        {
+          "src": "/images/hero/島根大学にてピッチする様子小松.jpg",
+          "alt": "Hiroto Komatsu presenting a washi slide at Shimane University",
+          "caption": {
+            "en": "Pitching at Shimane University",
+            "ja": "島根大学でのピッチ"
+          }
+        },
+        {
+          "src": "/images/hero/和紙漉く様子小松in島根.jpg",
+          "alt": "Hiroto Komatsu examining a freshly formed sheet at the Izumo Mingei-shi workshop",
+          "caption": {
+            "en": "At the Izumo Mingei-shi workshop",
+            "ja": "出雲民藝紙の工房にて"
+          }
+        }
+      ],
+      "kicker": {
+        "en": "Izumo Paper Trail",
+        "ja": "出雲和紙の里へ"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Activity report by Hokkaido University ↗",
+            "ja": "北海道大学による活動レポート ↗"
+          },
+          "url": "https://hsfc.jp/reports/20260310642/"
+        }
+      ]
+    },
+    {
+      "id": "2025-12-mirai-sozo",
+      "dateLabel": {
+        "en": "December 2025",
+        "ja": "2025年12月"
+      },
+      "category": {
+        "en": "Award",
+        "ja": "受賞"
+      },
+      "image": "/images/hero/みらい創造ワークショップ10万円.jpg",
+      "imageAlt": "The four members receiving the Special Prize cheque on stage",
+      "title": {
+        "en": "Special Prize at the Mirai Sōzō Workshop 2025",
+        "ja": "みらい創造ワークショップ2025で特別賞を受賞しました"
+      },
+      "paragraphs": {
+        "en": [
+          "WA-Chain won the Special Prize at the Hokkaidō Society 5.0 Mirai Sōzō Workshop, a business contest co-hosted by SCSK Hokkaido and Hokkaido University — two months after the team was formed.",
+          "The prize brings ¥100,000 in funding and ongoing technical mentorship. It was the first external recognition of the idea that washi's future lies in conservation education, and it set the pace for everything that followed."
+        ],
+        "ja": [
+          "SCSK北海道と北海道大学が共催するビジネスコンテスト「北海道Society5.0 みらい創造ワークショップ」で、WA-Chainが特別賞を受賞しました。チーム結成からわずか2カ月でのことです。",
+          "10万円の活動資金と、技術面での継続的なメンタリングをいただけることになりました。「和紙の未来は保存修復の教育にある」という構想が初めて外部に認められた瞬間であり、その後のすべての活動の起点になりました。"
+        ]
+      },
+      "photos": [
+        {
+          "src": "/images/hero/みらい創造ワークショップチラシ.png",
+          "alt": "Flyer for the Mirai Sōzō Workshop 2025",
+          "caption": {
+            "en": "The contest flyer",
+            "ja": "コンテストの公式チラシ"
+          }
+        }
+      ],
+      "kicker": {
+        "en": "Special Prize",
+        "ja": "特別賞、受賞"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Activity report by Hokkaido University ↗",
+            "ja": "北海道大学による活動レポート ↗"
+          },
+          "url": "https://hsfc.jp/reports/20260130619/"
+        }
+      ]
+    }
+  ]
+}

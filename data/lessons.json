@@ -1,0 +1,1394 @@
+{
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "The Philosophy of Conservation — Sōkō and Reversibility",
+      "description": "Understand the conceptual foundations that distinguish Japanese mounting conservation from other traditions, and why reversibility is the discipline's central ethical commitment.",
+      "active": true,
+      "track": "foundations",
+      "topics": [
+        "The reversibility ethic",
+        "Honshi vs. mounting",
+        "Conservation priorities"
+      ],
+      "video": {
+        "src": "video/section-1-introduction.mp4",
+        "label": "Video introduction: What Is Sōkō?"
+      },
+      "summaryPoints": [
+        "Sōkō (装潢) encompasses both mounting a work for viewing and preparing the paper support — the two are inseparable.",
+        "The honshi (本紙), or primary support, is the cultural asset; the sōtei (装丁) mounting is a replaceable protective system.",
+        "All materials and adhesives must be removable with water so future conservators can treat the work with better technology.",
+        "Every treatment decision is grounded in observed deterioration, scientific data, and professional judgment — not routine.",
+        "Conservation priorities rank: (1) preservation of honshi, (2) structural stability, (3) visual harmony."
+      ],
+      "steps": [
+        {
+          "id": "s1-step-1",
+          "heading": "What Is Sōkō?",
+          "paragraphs": [
+            "The term sōkō (装潢) combines two characters that reveal its dual nature: sō (装), meaning to mount or dress, and kō (潢), referring to the dyeing and preparation of paper. Together they describe a discipline that is simultaneously technical craft and curatorial philosophy.",
+            "East Asian paintings and calligraphy are created on fragile primary supports — honshi (本紙) — made of washi paper or silk. Unlike Western panel paintings, these works depend from the moment of creation on a surrounding structure, the sōtei (装丁) or mounting, to be handled, stored, and displayed safely."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null,
+          "citations": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "s1-step-2",
+          "heading": "Honshi and Sōtei: Two Layers, One Purpose",
+          "paragraphs": [
+            "A hanging scroll is built in layers, each with a distinct job. Select a layer in the diagram below to see what it does and how it relates to the others."
+          ],
+          "svgRef": "StructureDiagram",
+          "svgInteractions": [
+            {
+              "key": "sotei",
+              "label": "Sōtei — outer mount",
+              "description": "The outermost fabric mounting. It carries the visual presentation and absorbs most handling stress, which is why it is the layer replaced most often."
+            },
+            {
+              "key": "hadaUragami",
+              "label": "Hada-uragami — first lining",
+              "description": "The lining directly behind the honshi. It reinforces the fragile support, and is deliberately bonded weakly enough to be removed with water during relining."
+            },
+            {
+              "key": "honshi",
+              "label": "Honshi — primary support",
+              "description": "The cultural asset itself: the paper or silk bearing the original artwork. Every other layer in the mounting exists to protect this one."
+            }
+          ],
+          "imageSlot": null,
+          "audioSrc": null,
+          "citations": [
+            1
+          ]
+        },
+        {
+          "id": "s1-step-3",
+          "heading": "The Mounting Is Replaceable — the Honshi Is Not",
+          "paragraphs": [
+            "A foundational principle of Japanese conservation is that the honshi is the cultural asset; the mounting is its protective and display apparatus. When a mounting component deteriorates to the point that it threatens the honshi — through mechanical stress, acidic migration, or biological damage — the correct response is not to preserve the mounting at the expense of the work.",
+            "If the hada-uragami (肌裏紙, first lining paper) has become brittle and is pulling the honshi's fibers apart, the lining is replaced even if the outer silk still looks intact. Every component of a new mounting must itself be stable and chemically neutral, because it will eventually need to be removed by someone else."
+          ],
+          "svgRef": null,
+          "imageSlot": {
+            "label": "Honshi and mounting separation",
+            "description": "The moment a honshi is separated from its sōtei during treatment — the primary support lifted free of the surrounding mounting structure.",
+            "src": "images/placeholder/scroll-separation.jpg",
+            "isPlaceholder": true
+          },
+          "audioSrc": null,
+          "citations": [
+            1,
+            3
+          ]
+        },
+        {
+          "id": "s1-step-4",
+          "heading": "Why Reversibility Matters",
+          "paragraphs": [
+            "Every intervention in Japanese conservation must be reversible — undoable, in principle, by a future conservator using only water and gentle mechanical action. No component should require a solvent, a blade, or significant force to remove. This is not merely a technical preference; it is an ethical commitment to the conservators of the next century, preserving their ability to apply techniques and materials that do not yet exist."
+          ],
+          "pullQuote": "Every intervention in Japanese conservation must be reversible — undoable, in principle, by a future conservator using only water and gentle mechanical action.",
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null,
+          "citations": [
+            2
+          ]
+        },
+        {
+          "id": "s1-step-5",
+          "heading": "How Reversibility Works: Paste, Water, Release",
+          "paragraphs": [
+            "The primary adhesive, wheat starch paste (nori), is stable when dry but releases cleanly when re-wetted. Washi linings are selected to be strong enough to protect the honshi in daily handling, yet weak enough at their fiber bonds to separate safely once dampened again."
+          ],
+          "svgRef": "ReversibilityDiagram",
+          "imageSlot": null,
+          "audioSrc": null,
+          "citations": [
+            2
+          ]
+        },
+        {
+          "id": "s1-step-6",
+          "heading": "The 100-Year Treatment Cycle",
+          "paragraphs": [
+            "Traditional Japanese conservation operates on an approximately 100-year cycle — not a bureaucratic interval, but a realistic reflection of how long organic materials such as paste, washi linings, and silk remain sound. When those materials near the end of their service life, the work is retreated using the same reversible logic."
+          ],
+          "svgRef": null,
+          "imageSlot": {
+            "label": "Wet lining removal demonstration",
+            "description": "A dampened hada-uragami being lifted from a honshi surface during re-lining, showing clean separation from the honshi without fiber damage — reversibility demonstrated in practice.",
+            "src": "images/placeholder/lining-removal-macro.jpg",
+            "isPlaceholder": true
+          },
+          "audioSrc": null,
+          "citations": [
+            1
+          ]
+        },
+        {
+          "id": "s1-step-7",
+          "heading": "Priorities When Goals Conflict",
+          "paragraphs": [
+            "When treatment options conflict, Japanese conservation follows a clear hierarchy: first, the physical preservation of the honshi itself; second, the structural stability of the remounted work; third, visual harmony with the original or surrounding aesthetic. A conservator may choose a visually imperfect repair if the chemically correct paper requires it."
+          ],
+          "svgRef": "PriorityDiagram",
+          "imageSlot": null,
+          "audioSrc": null,
+          "citations": [
+            3
+          ]
+        },
+        {
+          "id": "s1-step-8",
+          "heading": "Documentation Is Part of the Treatment",
+          "paragraphs": [
+            "Every material used, every condition observed, and every alternative considered is documented — not for its own sake, but because it is itself an expression of the reversibility ethic. Just as materials must be removable, reasoning must be transparent, so the next conservator can understand not only what was done, but why."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null,
+          "citations": [
+            4
+          ]
+        }
+      ],
+      "quiz": [
+        {
+          "id": "s1-q1",
+          "text": "A colleague argues that a beautifully preserved outer silk mounting justifies leaving a deteriorating hada-uragami in place to avoid disturbing the work. Which principle from Section 1 most directly challenges this argument?",
+          "options": [
+            {
+              "id": "s1-q1-a",
+              "text": "The sōtei is the cultural asset and must be protected at all costs."
+            },
+            {
+              "id": "s1-q1-b",
+              "text": "The honshi is the cultural asset; the mounting is a replaceable protective system."
+            },
+            {
+              "id": "s1-q1-c",
+              "text": "Visual harmony ranks above structural stability in the conservation priority hierarchy."
+            },
+            {
+              "id": "s1-q1-d",
+              "text": "Interventions should only be made when the mounting fabric is also damaged."
+            }
+          ],
+          "correctOptionId": "s1-q1-b",
+          "explanation": "The core principle of sōkō conservation is that the honshi is the irreplaceable cultural asset; the mounting exists to serve and protect it. When a mounting component — here the hada-uragami — threatens the honshi's integrity, it must be replaced regardless of the outer layers' appearance. Options A and D invert or misapply this hierarchy, and option C contradicts the explicit priority order (structural stability precedes visual harmony)."
+        },
+        {
+          "id": "s1-q2",
+          "text": "Why does Japanese conservation favor a roughly 100-year treatment cycle rather than using permanent adhesives that would never require retreatment?",
+          "options": [
+            {
+              "id": "s1-q2-a",
+              "text": "Permanent adhesives are more expensive and harder to source."
+            },
+            {
+              "id": "s1-q2-b",
+              "text": "Permanent adhesives are prohibited by international treaty."
+            },
+            {
+              "id": "s1-q2-c",
+              "text": "Reversible materials preserve the ability of future conservators to apply improved techniques."
+            },
+            {
+              "id": "s1-q2-d",
+              "text": "Organic materials naturally last exactly 100 years before failing."
+            }
+          ],
+          "correctOptionId": "s1-q2-c",
+          "explanation": "Reversibility is an ethical commitment to future practitioners. Permanent interventions foreclose options that do not yet exist. The 100-year interval is an approximate reflection of organic material lifespan, not a fixed biological fact (ruling out D), and is driven by philosophy rather than cost or regulation (ruling out A and B)."
+        },
+        {
+          "id": "s1-q3",
+          "text": "A hanging scroll arrives with a honshi in fragile condition and a mounting that is visually striking but chemically acidic. In what order should conservation goals be addressed?",
+          "options": [
+            {
+              "id": "s1-q3-a",
+              "text": "Visual harmony → structural stability → honshi preservation"
+            },
+            {
+              "id": "s1-q3-b",
+              "text": "Structural stability → honshi preservation → visual harmony"
+            },
+            {
+              "id": "s1-q3-c",
+              "text": "Honshi preservation → structural stability → visual harmony"
+            },
+            {
+              "id": "s1-q3-d",
+              "text": "Honshi preservation → visual harmony → structural stability"
+            }
+          ],
+          "correctOptionId": "s1-q3-c",
+          "explanation": "The explicit priority hierarchy from Section 1 is: (1) preservation of the honshi, (2) structural stability, (3) visual harmony. An acidic mounting migrating into a fragile honshi makes honshi preservation the immediate concern. Visual considerations come last and must never compromise the first two priorities."
+        },
+        {
+          "id": "s1-q4",
+          "text": "Which of the following best describes the role of wheat starch paste in the reversibility system?",
+          "options": [
+            {
+              "id": "s1-q4-a",
+              "text": "It creates a permanent bond stronger than the paper fibers to prevent future delamination."
+            },
+            {
+              "id": "s1-q4-b",
+              "text": "It is stable when dry but releases cleanly in water, allowing future re-treatment without mechanical force."
+            },
+            {
+              "id": "s1-q4-c",
+              "text": "It is used only as a consolidant for flaking pigment layers, not as a structural adhesive."
+            },
+            {
+              "id": "s1-q4-d",
+              "text": "It becomes more soluble over time, eventually dissolving on its own after 100 years."
+            }
+          ],
+          "correctOptionId": "s1-q4-b",
+          "explanation": "Wheat starch paste is the primary mounting adhesive precisely because it is reversible in water. It is strong enough to bond linings securely during use but releases without damaging fiber when re-wetted. Option A describes the opposite of the design goal; option C misidentifies its primary use; option D invents a self-dissolving property that does not exist."
+        },
+        {
+          "id": "s1-q5",
+          "text": "A conservator documents every material used in a treatment, the deterioration observed, and the alternatives considered. From the perspective of Section 1, why is this documentation itself part of the treatment?",
+          "options": [
+            {
+              "id": "s1-q5-a",
+              "text": "It satisfies legal requirements for cultural property handling in Japan."
+            },
+            {
+              "id": "s1-q5-b",
+              "text": "It allows the conservator to bill accurately for time and materials."
+            },
+            {
+              "id": "s1-q5-c",
+              "text": "It ensures future conservators understand the reasoning behind decisions, enabling informed re-treatment."
+            },
+            {
+              "id": "s1-q5-d",
+              "text": "It is required to obtain museum insurance for the work during treatment."
+            }
+          ],
+          "correctOptionId": "s1-q5-c",
+          "explanation": "Documentation is a direct expression of the reversibility ethic: just as materials must be removable, reasoning must be transparent. Future conservators cannot make informed decisions about re-treatment if they cannot understand what was done and why. Options A, B, and D describe administrative or financial motivations that are not part of the conservation philosophy outlined in Section 1."
+        }
+      ],
+      "sources": [
+        {
+          "id": 1,
+          "text": "大林賢太郎ほか『装潢文化財の保存修理 ― 東洋絵画・書跡修理の現在』国宝修理装潢師連盟, 2014",
+          "type": "権威書",
+          "steps": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "weight": 32
+        },
+        {
+          "id": 2,
+          "text": "加藤雅人 講義／東京文化財研究所『国際研修「紙の保存と修復」2019』",
+          "type": "公的機関",
+          "steps": [
+            1,
+            4,
+            5
+          ],
+          "weight": 28
+        },
+        {
+          "id": 3,
+          "text": "奈良国立博物館『和紙 ― 文化財を支える日本の紙』特集展示図録, 2015",
+          "type": "公的機関",
+          "steps": [
+            3,
+            7
+          ],
+          "weight": 22
+        },
+        {
+          "id": 4,
+          "text": "増田勝彦「修復素材としての和紙とその世界への普及」和紙文化研究会",
+          "type": "専門家",
+          "steps": [
+            8
+          ],
+          "weight": 18
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "The Composition of Washi — Cellulose and Permanence",
+      "description": "Understand the chemistry that separates paper that lasts a millennium from paper that crumbles within a lifetime, and why washi's raw materials make it inherently more stable than wood-pulp paper.",
+      "active": true,
+      "track": "foundations",
+      "topics": [
+        "Cellulose & lignin",
+        "Why paper yellows",
+        "pH & longevity"
+      ],
+      "summaryPoints": [
+        "Plant fiber is composed mainly of three polymers: cellulose (stable structural backbone), hemicellulose (aids bonding in moderation, harmful in excess), and lignin (unstable, the primary cause of yellowing and acidification).",
+        "Wood pulp is rich in lignin; washi's bast fibers, such as kōzo, contain very little, which is the chemical basis for washi's reputation for longevity.",
+        "Modern wood-pulp paper often becomes acidic through residual lignin breakdown and acidic sizing agents, driving a self-accelerating cycle of degradation.",
+        "Traditional washi processing — boiling fiber in wood-ash lye — removes lignin and impurities. Well-washed kōzo paper sits close to neutral (gampi tends acidic); the idea that washi is inherently alkaline is a misconception traceable to residual lye.",
+        "Any material introduced into a treatment, including repair and lining papers, must be neutral to weakly alkaline; strength and visual match cannot compensate for chemical incompatibility."
+      ],
+      "steps": [
+        {
+          "id": "s2-step-1",
+          "heading": "Why Does Old Paper Survive — or Fail?",
+          "paragraphs": [
+            "A conservator examining a thousand-year-old Buddhist sutra copy often finds the paper still flexible and bright. Meanwhile, a Western book printed in the 1880s may already be crumbling, its pages yellowed and brittle after barely 150 years.",
+            "The difference is not age — it is chemistry. This section examines the three chemical components common to all plant fiber, and why washi contains far less of the one that causes decay."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s2-step-2",
+          "heading": "The Backbone: Cellulose",
+          "paragraphs": [
+            "Plant fiber is built mainly from three polymers. Cellulose forms the fiber's structural backbone: glucose units joined into long, repeating chains — in the living plant, roughly ten thousand units long — that pack into crystalline regions, making it strong and chemically stable over centuries. Nearly every plant fiber used in papermaking — East or West — is majority cellulose."
+          ],
+          "svgRef": "CelluloseDiagram",
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s2-step-3",
+          "heading": "Hemicellulose: Useful, in Moderation",
+          "paragraphs": [
+            "Hemicellulose sits alongside cellulose and helps fibers bond to one another during sheet formation — a small amount improves strength. But hemicellulose is less chemically stable than cellulose, and in large quantities it accelerates the paper's long-term degradation rather than helping it.",
+            "The balance varies among washi fibers themselves: gampi and mitsumata both carry more hemicellulose than wood pulp does, and kōzo carries less than hardwood pulp but more than softwood pulp. Papers from different washi fibers therefore age with genuinely different characters — a nuance hidden by the single word \"washi.\""
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s2-step-4",
+          "heading": "Lignin: The Weak Link",
+          "paragraphs": [
+            "Lignin binds fibers together within the living plant, but it is unstable under light and heat, breaking down into acidic, yellowing byproducts over time. It is lignin — not cellulose — that turns paper brown and brittle.",
+            "Wood pulp is rich in lignin; the bast fibers used in washi, such as kōzo (paper mulberry, the primary washi fiber), contain very little. This is the central reason washi has a reputation for permanence: not tradition for its own sake, but a documented difference in raw-material chemistry."
+          ],
+          "pullQuote": "It is lignin — not cellulose — that turns paper brown and brittle.",
+          "svgRef": "LigninComparisonChart",
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s2-step-5",
+          "heading": "Why Modern Paper Turns Acidic",
+          "paragraphs": [
+            "Industrial wood-pulp paper compounds the problem: leftover lignin degrades into acids, and many 19th- and 20th-century papers were also sized with acidic compounds that accelerate self-destruction. Once acidic breakdown begins, it feeds on itself — a conservator cannot simply stop it, only slow it by removing acidic byproducts and buffering what remains."
+          ],
+          "svgRef": null,
+          "imageSlot": {
+            "label": "Acidic paper vs. ancient washi comparison",
+            "description": "Side-by-side photograph of a discolored, brittle 19th-century wood-pulp document beside a flexible, bright 1,000-year-old washi sutra copy, illustrating the visible effect of lignin content and pH on paper longevity.",
+            "src": null,
+            "isPlaceholder": false
+          },
+          "audioSrc": null
+        },
+        {
+          "id": "s2-step-6",
+          "heading": "Why Washi Resists This Fate",
+          "paragraphs": [
+            "Traditional washi fiber is prepared by boiling in wood-ash lye, which strips away lignin and other impurities before the sheet is even formed. From the Meiji era onward, caustic soda and soda ash also came into use — but caustic soda is a harsher alkali that attacks the fiber itself, and reference practice does not recommend it for papers meant to last.",
+            "One correction to a common belief: washi is often described as 'alkaline,' but measured alkalinity usually traces back to cooking lye that was never fully washed out — not to the fiber. Well-washed kōzo paper sits close to neutral, and gampi paper in fact tends toward the acidic side. 'Washi' is not automatically safe; each paper must be judged on its own chemistry."
+          ],
+          "svgRef": "AcidityScaleDiagram",
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s2-step-7",
+          "heading": "What This Means for Repair Papers",
+          "paragraphs": [
+            "This chemistry has a direct practical consequence: any paper introduced into a treatment — for lining, infill, or reinforcement — must itself be neutral to weakly alkaline. A repair paper with residual acidity, however strong or well-matched visually, will eventually damage the very honshi it was meant to protect."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s2-step-8",
+          "heading": "Chemistry as the Foundation of Longevity",
+          "paragraphs": [
+            "The sutra copy and the crumbling book are not different because one was treated more carefully. They are different because one is built from a fiber nearly free of lignin, prepared to be chemically neutral, and the other was not. Material choice, more than any single technique, determines whether a repair lasts decades or centuries."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        }
+      ],
+      "quiz": [
+        {
+          "id": "s2-q1",
+          "text": "A conservator is choosing between two candidate lining papers with similar tensile strength. Sample A yellows noticeably after accelerated light-aging tests; Sample B does not. Based on Section 2, what most likely explains the difference?",
+          "options": [
+            {
+              "id": "s2-q1-a",
+              "text": "Sample A contains more residual lignin than Sample B."
+            },
+            {
+              "id": "s2-q1-b",
+              "text": "Sample A contains more cellulose than Sample B."
+            },
+            {
+              "id": "s2-q1-c",
+              "text": "Sample A was boiled longer in wood-ash lye than Sample B."
+            },
+            {
+              "id": "s2-q1-d",
+              "text": "Sample A has a higher hemicellulose content, which is unrelated to yellowing."
+            }
+          ],
+          "correctOptionId": "s2-q1-a",
+          "explanation": "Lignin is the component responsible for light- and heat-driven yellowing and acidification, so a sample that yellows under light exposure most likely retains more of it. Cellulose (B) is chemically stable and does not cause yellowing. Longer lye-boiling (C) removes lignin rather than adding it, making that option inconsistent with more yellowing. Hemicellulose (D) affects bonding and long-term stability, but the yellowing described is specifically a lignin effect."
+        },
+        {
+          "id": "s2-q2",
+          "text": "Why does hemicellulose require careful judgment rather than a simple 'more is better' or 'less is better' rule when evaluating a candidate paper?",
+          "options": [
+            {
+              "id": "s2-q2-a",
+              "text": "It has no measurable effect on paper properties either way."
+            },
+            {
+              "id": "s2-q2-b",
+              "text": "A small amount aids fiber bonding, but excess accelerates long-term degradation."
+            },
+            {
+              "id": "s2-q2-c",
+              "text": "It is chemically identical to cellulose and can be ignored."
+            },
+            {
+              "id": "s2-q2-d",
+              "text": "It only matters for wood-pulp papers, never for washi."
+            }
+          ],
+          "correctOptionId": "s2-q2-b",
+          "explanation": "Hemicellulose sits between cellulose and lignin in behavior: a moderate amount improves fiber-to-fiber bonding, but an excess undermines long-term stability. That two-sided effect is exactly why it needs judgment rather than a blanket rule. Options A and C mischaracterize it as inert or identical to cellulose, and option D is false — hemicellulose is present in bast fibers used for washi as well."
+        },
+        {
+          "id": "s2-q3",
+          "text": "A 19th-century acidic wood-pulp document and a 1,000-year-old washi sutra are compared side by side. From a materials-chemistry standpoint, what best accounts for the sutra's far greater longevity?",
+          "options": [
+            {
+              "id": "s2-q3-a",
+              "text": "The sutra was stored in better environmental conditions for its entire history."
+            },
+            {
+              "id": "s2-q3-b",
+              "text": "Washi contains far less lignin and is processed to be neutral to weakly alkaline, unlike acidic wood-pulp paper."
+            },
+            {
+              "id": "s2-q3-c",
+              "text": "Cellulose degrades faster in wood pulp than in bast fiber."
+            },
+            {
+              "id": "s2-q3-d",
+              "text": "The sutra was never exposed to light, while the document was displayed regularly."
+            }
+          ],
+          "correctOptionId": "s2-q3-b",
+          "explanation": "Section 2's argument is about raw-material chemistry: lignin content and resulting pH, not storage history or display conditions, which aren't established by the material itself. Cellulose (C) is stable in both fiber types — it is lignin content that differs, not cellulose's degradation rate. Options A and D introduce unsupported assumptions about history rather than material composition."
+        },
+        {
+          "id": "s2-q4",
+          "text": "A candidate repair paper tests as strong and is visually well matched to the honshi, but has a mildly acidic pH. Based on Section 2, what should a conservator conclude?",
+          "options": [
+            {
+              "id": "s2-q4-a",
+              "text": "The paper is suitable, since strength and visual match are the primary criteria."
+            },
+            {
+              "id": "s2-q4-b",
+              "text": "The paper is unsuitable, because acidity will migrate and damage the honshi over time regardless of strength or appearance."
+            },
+            {
+              "id": "s2-q4-c",
+              "text": "The paper is suitable only for silk-backed honshi, not paper-backed honshi."
+            },
+            {
+              "id": "s2-q4-d",
+              "text": "The paper's acidity will neutralize naturally once bonded to the honshi with wheat starch paste."
+            }
+          ],
+          "correctOptionId": "s2-q4-b",
+          "explanation": "Section 2 states plainly that any material introduced into treatment must be neutral to weakly alkaline; strength and visual match cannot compensate for chemical incompatibility, since acidity migrates into and damages the honshi over time. Option D invents a self-neutralizing property that does not exist, and option C fabricates a distinction the text never makes."
+        },
+        {
+          "id": "s2-q5",
+          "text": "Which best describes the practical implication of lignin's instability for conservation practice?",
+          "options": [
+            {
+              "id": "s2-q5-a",
+              "text": "Lignin should be added to repair papers to help them bond faster."
+            },
+            {
+              "id": "s2-q5-b",
+              "text": "Papers with higher lignin content are safer because they are more common in modern supply chains."
+            },
+            {
+              "id": "s2-q5-c",
+              "text": "Lignin content is a key criterion for material selection, since low-lignin papers remain chemically stable far longer."
+            },
+            {
+              "id": "s2-q5-d",
+              "text": "Lignin only affects color, not structural integrity, so it can be disregarded when strength is the priority."
+            }
+          ],
+          "correctOptionId": "s2-q5-c",
+          "explanation": "Because lignin drives acidification and embrittlement as well as yellowing, low lignin content is directly tied to long-term chemical and structural stability, making it a key selection criterion. Options A and B invert the section's argument, and option D wrongly separates lignin's color effects from its structural consequences — the two are connected."
+        }
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "The Principle of Hydrogen Bonding — Water Makes Paper Strong",
+      "description": "Understand why paper holds together without any adhesive, why fiber length matters for strength, and how this hydrogen-bonding chemistry is the physical basis of everything Section 1 calls reversibility.",
+      "active": true,
+      "track": "foundations",
+      "topics": [
+        "Hydrogen bonding",
+        "Fiber length & strength",
+        "Water-reversible bonds"
+      ],
+      "summaryPoints": [
+        "Paper fibers are held together by hydrogen bonds that form between cellulose molecules as a sheet dries — not by any adhesive.",
+        "Longer fibers cross and touch more of their neighbors, creating more bond points and producing stronger paper; this is one reason kōzo yields such strong, thin sheets.",
+        "Hydrogen bonds are reversible: re-wetting paper interrupts them, allowing fibers to separate with only gentle mechanical action; drying re-forms them.",
+        "This water-reversible bonding is the physical mechanism underlying Section 1's reversibility principle, including the safe removal of an old hada-uragami.",
+        "Controlling how much and how long moisture is applied lets a conservator target specific layers or fiber depths without disturbing the whole structure."
+      ],
+      "steps": [
+        {
+          "id": "s3-step-1",
+          "heading": "How Can Old Paper Be Taken Apart Safely?",
+          "paragraphs": [
+            "A conservator needs to remove a decades-old lining from beneath a fragile honshi — without solvents, without a blade, and without damaging a single fiber. This is routine work in sōkō conservation, and it depends on a fact many people find counterintuitive: paper fibers are not held together by any adhesive at all."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s3-step-2",
+          "heading": "How a Sheet of Paper Forms",
+          "paragraphs": [
+            "When plant fibers are suspended in water and formed into a sheet, they are not glued — they are simply brought close together. As the water evaporates, the fibers are drawn tightly against one another, and hydrogen bonds form directly between adjacent cellulose molecules. It is this network of hydrogen bonds, not any adhesive, that gives dried paper its strength."
+          ],
+          "pullQuote": "It is this network of hydrogen bonds, not any adhesive, that gives dried paper its strength.",
+          "svgRef": "HydrogenBondingDiagram",
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s3-step-3",
+          "heading": "Why Longer Fibers Make Stronger Paper",
+          "paragraphs": [
+            "The more often two fibers cross and touch, the more hydrogen bonds can form between them. A long fiber inevitably crosses more of its neighbors than a short one, so longer fibers create far more bond points per sheet — one reason kōzo (paper mulberry) fiber, which is unusually long, produces paper that is strong even when made very thin.",
+            "Papermakers amplify this at the beating stage: pounding the fiber (kōkai) frays its surface into fine fibrils, multiplying the contact points available for bonding. The effect has a limit — beat too far and the individual fibers themselves weaken, and the strength of the whole sheet falls with them."
+          ],
+          "svgRef": "FiberBondDiagram",
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s3-step-4",
+          "heading": "Water Turns the Bond Off — Drying Turns It Back On",
+          "paragraphs": [
+            "Hydrogen bonds are strong but not permanent. Re-wetting paper interrupts them: water molecules insert themselves between the cellulose chains, and the bonds weaken enough for fibers to separate with only gentle mechanical action. Once the paper dries again, the fibers that remain in contact re-bond, and the sheet regains its strength.",
+            "The same behavior carries a warning. Once a work is formed, any re-wetting loosens surface bonds too — which is why poorly controlled aqueous treatment can raise a fine nap of loosened fibers (kebadachi) on a fragile sheet. Moisture is a tool precisely because it is never neutral."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s3-step-5",
+          "heading": "The Physical Basis of Reversibility",
+          "paragraphs": [
+            "This on-and-off behavior is not a side note — it is the physical mechanism behind everything Section 1 called reversibility. A hada-uragami (first lining paper) can be safely removed decades later precisely because dampening it interrupts the same hydrogen bonds that helped hold the paper structure together, not because of any special solvent property in water."
+          ],
+          "svgRef": null,
+          "imageSlot": {
+            "label": "Localized wetting demonstration",
+            "description": "A single drop of water placed on a sheet of washi, showing only the dampened area becoming soft and separable at the fiber level while the surrounding dry paper remains firm.",
+            "src": null,
+            "isPlaceholder": false
+          },
+          "audioSrc": null
+        },
+        {
+          "id": "s3-step-6",
+          "heading": "Practical Application: Controlled Wetting",
+          "paragraphs": [
+            "In practice, a conservator controls exactly how much bonding is interrupted by controlling moisture: a light misting loosens surface fibers without disturbing a lining several layers down, while sustained dampening is needed to fully release an old hada-uragami. Judging how much water — and how much time — is itself a skill built on this chemistry."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s3-step-7",
+          "heading": "Returning to the Opening Question",
+          "paragraphs": [
+            "The lining comes free without solvents or blades because it was never chemically bonded in the way a modern glued joint is. It was held by hydrogen bonds that formed as it dried — and those same bonds release, cleanly and predictably, whenever water is reintroduced."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        }
+      ],
+      "quiz": [
+        {
+          "id": "s3-q1",
+          "text": "A colleague claims paper fibers are held together by a natural adhesive produced during sheet formation. Based on Section 3, how would you correct this claim?",
+          "options": [
+            {
+              "id": "s3-q1-a",
+              "text": "Paper fibers are held together by hydrogen bonds that form as the sheet dries, not by any adhesive."
+            },
+            {
+              "id": "s3-q1-b",
+              "text": "Paper fibers are held together by static electricity generated during drying."
+            },
+            {
+              "id": "s3-q1-c",
+              "text": "Paper fibers are held together by residual moisture that never fully evaporates."
+            },
+            {
+              "id": "s3-q1-d",
+              "text": "Paper fibers are held together by lignin, which acts as a natural glue."
+            }
+          ],
+          "correctOptionId": "s3-q1-a",
+          "explanation": "Section 3 establishes hydrogen bonding, formed as water departs during drying, as the actual source of sheet strength — not an adhesive, static charge, or residual moisture. Option D is also wrong: Section 2 identifies lignin as a source of chemical instability, not as a bonding agent."
+        },
+        {
+          "id": "s3-q2",
+          "text": "Two candidate repair papers have identical fiber density but different average fiber lengths. Which is more likely to produce a stronger sheet, and why?",
+          "options": [
+            {
+              "id": "s3-q2-a",
+              "text": "The shorter-fiber paper, because short fibers pack more tightly."
+            },
+            {
+              "id": "s3-q2-b",
+              "text": "The longer-fiber paper, because longer fibers cross and bond with more neighbors, creating more bond points."
+            },
+            {
+              "id": "s3-q2-c",
+              "text": "Neither — fiber length has no effect on strength, only fiber density does."
+            },
+            {
+              "id": "s3-q2-d",
+              "text": "The shorter-fiber paper, because it absorbs water more evenly during drying."
+            }
+          ],
+          "correctOptionId": "s3-q2-b",
+          "explanation": "Longer fibers cross more of their neighbors as a sheet forms, creating more hydrogen-bond points and therefore a stronger sheet. Fiber density (C) affects strength too, but the question holds it constant, isolating length as the variable — ruling out A and D, which describe unrelated or invented mechanisms."
+        },
+        {
+          "id": "s3-q3",
+          "text": "A conservator wants to loosen only the surface fibers of a honshi for light surface cleaning, without disturbing a hada-uragami several layers beneath. Based on Section 3, what is the most defensible approach?",
+          "options": [
+            {
+              "id": "s3-q3-a",
+              "text": "Apply a strong solvent that dissolves all adhesive layers at once."
+            },
+            {
+              "id": "s3-q3-b",
+              "text": "Apply enough moisture to interrupt surface-level bonds only, avoiding the sustained dampening needed to release deeper layers."
+            },
+            {
+              "id": "s3-q3-c",
+              "text": "It is impossible to loosen only some layers; any moisture releases the entire structure at once."
+            },
+            {
+              "id": "s3-q3-d",
+              "text": "Use mechanical abrasion instead of moisture, since hydrogen bonds cannot be controlled precisely."
+            }
+          ],
+          "correctOptionId": "s3-q3-b",
+          "explanation": "Section 3 explains that the degree and duration of moisture exposure determines how much bonding is interrupted, allowing a conservator to target shallow fiber layers without releasing deeper ones. Option C overstates the case (control is possible), and A and D introduce approaches the section does not support."
+        },
+        {
+          "id": "s3-q4",
+          "text": "Why is it inaccurate to describe the removal of an old lining as a 'chemical reaction' between water and the paper?",
+          "options": [
+            {
+              "id": "s3-q4-a",
+              "text": "Because no measurable change occurs when paper is wetted."
+            },
+            {
+              "id": "s3-q4-b",
+              "text": "Because rewetting interrupts existing hydrogen bonds physically rather than creating new chemical compounds."
+            },
+            {
+              "id": "s3-q4-c",
+              "text": "Because only heat, not water, can affect hydrogen bonds."
+            },
+            {
+              "id": "s3-q4-d",
+              "text": "Because hydrogen bonds only form in the presence of an external adhesive."
+            }
+          ],
+          "correctOptionId": "s3-q4-b",
+          "explanation": "Hydrogen bond formation and release are physical, intermolecular effects — bonds form as fibers dry into proximity and are interrupted when water inserts itself between them — not a chemical reaction producing new compounds. Option A contradicts the visible softening effect; C and D introduce claims the section does not make."
+        },
+        {
+          "id": "s3-q5",
+          "text": "Which statement best summarizes the relationship between Section 1's concept of reversibility and Section 3's hydrogen bonding?",
+          "options": [
+            {
+              "id": "s3-q5-a",
+              "text": "They are unrelated; reversibility depends only on the type of adhesive used, not on fiber chemistry."
+            },
+            {
+              "id": "s3-q5-b",
+              "text": "Hydrogen bonding provides the physical mechanism that makes water-based reversibility possible in the first place."
+            },
+            {
+              "id": "s3-q5-c",
+              "text": "Hydrogen bonding replaces the need for reversibility as a conservation principle."
+            },
+            {
+              "id": "s3-q5-d",
+              "text": "Reversibility only applies to silk-mounted works, not paper affected by hydrogen bonding."
+            }
+          ],
+          "correctOptionId": "s3-q5-b",
+          "explanation": "Section 3 shows that the same hydrogen-bond chemistry that gives paper its strength is what makes it possible to safely reverse a treatment with water — the two ideas are directly connected, not separate. Options A, C, and D each sever or misstate that connection."
+        }
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "The Raw Materials of Washi — Kōzo, Gampi, and Mitsumata",
+      "description": "Learn to identify and select among the three principal washi fibers — kōzo, gampi, and mitsumata — by their physical properties, microscopic structure, and chemical staining response.",
+      "active": true,
+      "track": "foundations",
+      "topics": [
+        "Kōzo · gampi · mitsumata",
+        "Fiber identification",
+        "The C-stain test"
+      ],
+      "summaryPoints": [
+        "Kōzo (avg. 10.5mm), gampi (avg. 4.3mm), and mitsumata (avg. 3.7mm) are the three principal washi fibers, each suited to different roles based on length, texture, and surface qualities.",
+        "Kōzo's long, tangling fiber makes it the standard choice for honshi and hada-uragami, where maximum strength in a thin sheet is essential.",
+        "Gampi is prized for its smoothness, density, and insect resistance; mitsumata for its soft, refined sheen, especially under gold leaf.",
+        "Fiber identification combines microscope examination of fiber silhouettes (kōzo: rounded tip; gampi: flat, twisted ribbon; mitsumata: spindle shape, swollen at mid-fiber) with staining tests such as C-stain, since no single method is conclusive alone.",
+        "Wood pulp's average fiber length (about 1.3mm) is far shorter than any washi fiber, reinforcing why washi achieves strength-to-thickness ratios wood pulp cannot match."
+      ],
+      "steps": [
+        {
+          "id": "s4-step-1",
+          "heading": "How Do You Identify an Unlabeled Sheet of Paper?",
+          "paragraphs": [
+            "A conservator receives a roll of handmade paper with no documentation — no record of what fiber it contains or where it came from. Before it can be trusted anywhere near a fragile honshi, its fiber must be identified with certainty. Washi is made from several distinct plant fibers, each with different properties, and confusing one for another can compromise a repair."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s4-step-2",
+          "heading": "Kōzo: The Workhorse Fiber",
+          "paragraphs": [
+            "Kōzo (paper mulberry) has an average fiber length of about 10.5mm — long, thick, and prone to tangling into a strong, interlocking network. Under magnification the fiber runs nearly cylindrical, averaging about 0.023mm across, and is often wrapped in a thin, translucent sheath. This length is why kōzo paper is exceptionally strong even when made very thin — the standard choice for the honshi itself and for hada-uragami (first lining paper), the most structurally important reinforcing layer."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s4-step-3",
+          "heading": "Gampi: Smooth, Dense, and Insect-Resistant",
+          "paragraphs": [
+            "Gampi fiber averages about 4.3mm — shorter than kōzo, but naturally smooth, glossy, and dense. Paper made from gampi resists insect damage better than other washi and takes ink and pigment with unusual clarity, which is why it is prized for fine calligraphy papers and for thin, refined repair papers where bulk cannot be added.",
+            "One caution from the reference data: finished gampi papers tend to sit on the acidic side of neutral. Gampi's refinement is real, but so is its chemistry — weigh both before placing it in long-term contact with a honshi."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s4-step-4",
+          "heading": "Mitsumata: Soft and Refined",
+          "paragraphs": [
+            "Mitsumata fiber averages about 3.7mm and produces a soft sheet with a delicate, gentle sheen. It came into wide use only from the Edo period onward and is typically chosen for albums and as a substrate for gold leaf, where its fine surface and subtle luster matter more than raw strength."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s4-step-5",
+          "heading": "Comparing Fiber Length",
+          "paragraphs": [
+            "These differences in length are not incidental — they directly affect strength, as Section 3 explained. For reference, common Western wood pulp averages only about 1.3mm, roughly an eighth the length of kōzo, which is one reason wood-pulp paper cannot match washi's strength-to-thickness ratio."
+          ],
+          "svgRef": "FiberLengthChart",
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s4-step-6",
+          "heading": "Identifying Fiber Shape Under the Microscope",
+          "paragraphs": [
+            "Fiber length alone cannot always distinguish one material from another, so conservators examine fiber silhouettes under a microscope. Kōzo typically ends in a rounded, blunt tip. Gampi fibers are flat and ribbon-like — the flatness shows wherever the fiber twists. Mitsumata fibers are spindle-shaped: swollen at mid-fiber and tapering toward fine ends. Width confirms the reading: kōzo averages about 0.023mm across, gampi about 0.020mm, and mitsumata — the finest of the three — about 0.012mm."
+          ],
+          "svgRef": "FiberShapeDiagram",
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s4-step-7",
+          "heading": "Confirming by Eye: Microscope Comparison",
+          "paragraphs": [
+            "In practice, a conservator compares an unknown sample side by side with known reference fibers under magnification, checking tip shape, diameter, and surface texture together rather than relying on any single feature alone."
+          ],
+          "svgRef": null,
+          "imageSlot": {
+            "label": "Microscope fiber comparison",
+            "description": "Side-by-side microscope photographs of kōzo, gampi, and mitsumata fibers at equal magnification, showing their distinct tip shapes, diameters, and surface textures.",
+            "src": null,
+            "isPlaceholder": false
+          },
+          "audioSrc": null
+        },
+        {
+          "id": "s4-step-8",
+          "heading": "The C-Stain Color Test",
+          "paragraphs": [
+            "A faster field method uses a staining reagent — commonly called a C-stain — that reacts differently with different fibers. Kōzo typically turns reddish-purple, while wood pulp typically turns blue; observing the color reaction under a microscope gives a quick first indication of fiber type before more detailed examination."
+          ],
+          "svgRef": null,
+          "imageSlot": {
+            "label": "C-stain color reaction",
+            "description": "A microscope-stage photograph capturing the moment a C-stain reagent colors a fiber sample, showing the reddish-purple reaction characteristic of kōzo against an unstained control fiber.",
+            "src": null,
+            "isPlaceholder": false
+          },
+          "audioSrc": null
+        },
+        {
+          "id": "s4-step-9",
+          "heading": "From Plant to Paper: Choosing the Right Fiber",
+          "paragraphs": [
+            "Every property described in this section — length, tangling behavior, surface texture, chemical response — traces back to the plant the fiber came from. Correctly identifying that source, before a single repair fiber touches the honshi, is the foundation every later material decision depends on."
+          ],
+          "pullQuote": "Correctly identifying that source, before a single repair fiber touches the honshi, is the foundation every later material decision depends on.",
+          "svgRef": null,
+          "imageSlot": {
+            "label": "Raw fiber source plants",
+            "description": "Photograph of harvested kōzo, gampi, and mitsumata branches and inner bark side by side, showing the raw plant material before fiber processing begins.",
+            "src": null,
+            "isPlaceholder": false
+          },
+          "audioSrc": null
+        }
+      ],
+      "quiz": [
+        {
+          "id": "s4-q1",
+          "text": "A conservator needs to reinforce a hada-uragami on a heavily handled hanging scroll, where maximum strength-to-thickness ratio matters most. Which fiber is the standard choice, and why?",
+          "options": [
+            {
+              "id": "s4-q1-a",
+              "text": "Mitsumata, because of its refined surface sheen."
+            },
+            {
+              "id": "s4-q1-b",
+              "text": "Gampi, because of its insect resistance."
+            },
+            {
+              "id": "s4-q1-c",
+              "text": "Kōzo, because its long fiber length creates a strong, interlocking network even in a thin sheet."
+            },
+            {
+              "id": "s4-q1-d",
+              "text": "Wood pulp, because it is the most widely available fiber."
+            }
+          ],
+          "correctOptionId": "s4-q1-c",
+          "explanation": "Kōzo's unusually long fiber (avg. 10.5mm) creates far more bond points per sheet, giving it the highest strength-to-thickness ratio of the washi fibers — exactly why it is the standard choice for hada-uragami. Gampi and mitsumata are chosen for other qualities (insect resistance, refined sheen), and wood pulp's short fiber (avg. 1.3mm) makes it the weakest option here."
+        },
+        {
+          "id": "s4-q2",
+          "text": "A repair calls for a very thin, refined paper that will sit beneath gold leaf without adding bulk or disrupting a delicate surface. Which fiber is most appropriate?",
+          "options": [
+            {
+              "id": "s4-q2-a",
+              "text": "Kōzo, because it is the strongest fiber available."
+            },
+            {
+              "id": "s4-q2-b",
+              "text": "Mitsumata, because of its fine, soft sheet and delicate sheen."
+            },
+            {
+              "id": "s4-q2-c",
+              "text": "Wood pulp, because of its short fiber length."
+            },
+            {
+              "id": "s4-q2-d",
+              "text": "Gampi, because of its high tensile strength."
+            }
+          ],
+          "correctOptionId": "s4-q2-b",
+          "explanation": "Mitsumata's soft sheet and subtle sheen are precisely why it is the traditional choice for gold-leaf substrates and albums. Raw strength (A, D) is not the deciding factor for this application, and wood pulp (C) is not a washi fiber suited to fine conservation work at all."
+        },
+        {
+          "id": "s4-q3",
+          "text": "Under the microscope, an unknown fiber sample is spindle-shaped — swollen at mid-fiber, tapering to fine ends — and measures roughly 0.012mm across. Based on Section 4, what is the most defensible next step?",
+          "options": [
+            {
+              "id": "s4-q3-a",
+              "text": "Conclude immediately that the sample is wood pulp, since a tapering silhouette is unique to industrial fiber."
+            },
+            {
+              "id": "s4-q3-b",
+              "text": "Treat the spindle shape and fine width as consistent with mitsumata, and confirm with a C-stain test before final identification."
+            },
+            {
+              "id": "s4-q3-c",
+              "text": "Discard the sample, since a swollen mid-fiber indicates damage rather than a natural species trait."
+            },
+            {
+              "id": "s4-q3-d",
+              "text": "Assume the sample is kōzo, since kōzo is the most common washi fiber."
+            }
+          ],
+          "correctOptionId": "s4-q3-b",
+          "explanation": "Section 4 emphasizes combining evidence: a spindle-shaped, notably fine fiber is consistent with mitsumata, but a single feature should be confirmed with a second method such as C-stain before concluding identification. Option A misattributes the silhouette to wood pulp, C wrongly treats a natural trait as damage, and D substitutes assumption for evidence."
+        },
+        {
+          "id": "s4-q4",
+          "text": "A C-stain test on a candidate repair paper produces a blue color reaction. What should a conservator conclude?",
+          "options": [
+            {
+              "id": "s4-q4-a",
+              "text": "The paper is very likely wood pulp and needs further verification before use on a historical honshi."
+            },
+            {
+              "id": "s4-q4-b",
+              "text": "The paper is definitely kōzo, since blue is kōzo's signature reaction."
+            },
+            {
+              "id": "s4-q4-c",
+              "text": "The color reaction has no bearing on fiber identity, only on pH."
+            },
+            {
+              "id": "s4-q4-d",
+              "text": "The paper should be used immediately, since blue indicates high fiber purity."
+            }
+          ],
+          "correctOptionId": "s4-q4-a",
+          "explanation": "A blue C-stain reaction is characteristic of wood pulp, not kōzo (which typically turns reddish-purple), so this result should raise concern and prompt further checks before use — consistent with Section 2's warning about wood pulp's chemical instability. Option B reverses the actual color association, and C and D dismiss or misread the test's purpose."
+        },
+        {
+          "id": "s4-q5",
+          "text": "Why does Section 4 emphasize combining multiple identification methods — fiber length, tip shape, staining — rather than relying on just one?",
+          "options": [
+            {
+              "id": "s4-q5-a",
+              "text": "Because each method alone can be ambiguous or inconclusive, and together they build reliable confidence before a fiber is used in treatment."
+            },
+            {
+              "id": "s4-q5-b",
+              "text": "Because regulations require at least three independent tests for any conservation material."
+            },
+            {
+              "id": "s4-q5-c",
+              "text": "Because fiber length alone is always sufficient, and the other methods are optional formalities."
+            },
+            {
+              "id": "s4-q5-d",
+              "text": "Because staining tests are more reliable than microscopy and should replace it entirely."
+            }
+          ],
+          "correctOptionId": "s4-q5-a",
+          "explanation": "No single method in Section 4 is presented as fully conclusive on its own — length, shape, and staining each narrow the possibilities, and together they give reliable confidence. Option B invents a regulatory requirement not in the text, and C and D each wrongly elevate one method as sufficient on its own."
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "Nagashi-zuki and Neri — The Sheet-Forming Technique and Its Formation Aid",
+      "active": true,
+      "track": "foundations",
+      "description": "Understand how a washi sheet is actually formed — the nagashi-zuki flowing technique, the neri formation aid that makes it possible, and what both decide about a paper's grain, face, and behavior in treatment.",
+      "topics": [
+        "Nagashi-zuki technique",
+        "Neri (tororo-aoi)",
+        "Formation & pressing"
+      ],
+      "summaryPoints": [
+        "Nagashi-zuki forms the sheet in motion: charges of fiber suspension are rocked across a su-geta mould so long bast fibers entangle through the sheet's thickness, giving washi its interlayer strength.",
+        "Neri (classically tororo-aoi root mucilage) is a formation aid, not an adhesive — it keeps fibers evenly suspended and slows drainage so the papermaker has time to work the sheet.",
+        "Neri's molecular structure (hydrophilic and hydrophobic regions) lets freshly formed sheets be stacked wet and parted cleanly after pressing.",
+        "Paper's strength is completed at the press: hydrogen bonds form as water is driven out under gradually increasing load.",
+        "Formation decides behavior in treatment: rocking sets fiber orientation (directional tear strength), the board-dried face is the smooth 'front,' and drainage pauses between charges create the internal boundaries that make thick papers prone to splitting (ai-hegi)."
+      ],
+      "steps": [
+        {
+          "id": "s5-step-1",
+          "heading": "Two Sheets, Same Fiber, Different Paper",
+          "paragraphs": [
+            "Hand a conservator two sheets of pure kōzo paper and they may still behave like different materials — one parts into layers when dampened, the other holds fast; one tears straight along its length and raggedly across. Nothing about the fiber explains this. What explains it is how each sheet was formed at the vat — and that story is written into every sheet of washi a conservator will ever handle."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s5-step-2",
+          "heading": "Before the Vat: Cooking, Cleaning, Beating",
+          "paragraphs": [
+            "Raw bast fiber becomes papermaking stock through three preparations. First, cooking (shajuku): the fiber is boiled in an alkaline bath — traditionally wood-ash lye — to dissolve lignin and other non-fiber matter. Second, cleaning: workers pick out remaining bark and debris entirely by hand, the single most time-consuming stage of making washi. Third, beating (kōkai): the softened fiber is pounded so the strands separate and their surfaces fray into fine fibrils — multiplying the bonding surface that Section 3 showed is the basis of paper strength.",
+            "Some makers add a final washing in cloth bags after beating. It costs time, but rinsing away residual non-fiber matter raises whiteness and reduces the discoloration the sheet will develop over decades — a quality difference invisible on the day the paper is made."
+          ],
+          "svgRef": null,
+          "imageSlot": {
+            "label": "Kōzo bark soaking before processing",
+            "description": "Stripped kōzo bark soaking in a water bath at a paper mill, the first stage of fiber preparation.",
+            "src": "/images/hero/%E6%B0%B4%E3%81%AB%E3%81%A4%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E6%A5%AE.jpg",
+            "isPlaceholder": false
+          },
+          "audioSrc": null
+        },
+        {
+          "id": "s5-step-3",
+          "heading": "Nagashi-zuki: A Sheet Formed in Motion",
+          "paragraphs": [
+            "Japanese papermaking's defining technique is nagashi-zuki — the 'flowing' method. The papermaker scoops fiber suspension onto a su-geta (a flexible bamboo screen seated in a hinged wooden frame) and rocks it rhythmically, sending waves across the screen as the water drains. Each charge lays down a thin veil of fiber; repeated charges build the sheet. The rocking does two things at once: it aligns fibers along the direction of motion, and it entangles each new veil with the one beneath, locking the sheet together through its thickness. This is unlike tame-zuki — the accumulation method behind most Western handmade paper — where the stock is scooped once and simply settles as it drains."
+          ],
+          "svgRef": null,
+          "imageSlot": {
+            "label": "Working the vat",
+            "description": "Hands at the edge of a papermaking vat filled with fiber suspension, ready to charge the mould.",
+            "src": "/images/hero/和紙漉き体験.jpg",
+            "isPlaceholder": false
+          },
+          "audioSrc": null
+        },
+        {
+          "id": "s5-step-4",
+          "heading": "Neri: The Substance That Makes It Possible",
+          "paragraphs": [
+            "None of this would work in plain water: long bast fibers clump and sink within seconds, and water drains through the screen far too fast to rock the mould even once. The papermaker's answer is neri — a clear, viscous mucilage, classically pressed from the root of tororo-aoi (aibika) or the inner bark of noriutsugi. Stirred into the vat, neri surrounds each fiber, holding the stock in even suspension, and thickens the water so it drains slowly enough for the sheet to be worked.",
+            "Neri is often mistaken for a glue. It is not — it contributes no adhesion to the finished sheet, which is held, as always, by hydrogen bonds alone. Neri is a formation aid, and the distinction is worth keeping precise."
+          ],
+          "videoSrc": "/videos/neri.mov",
+          "videoCaption": "Neri drawn from tororo-aoi root — the viscosity that holds fibers in suspension. Filmed during WA-Chain's papermaking fieldwork.",
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s5-step-5",
+          "heading": "Why Wet Sheets Can Be Stacked — and Parted",
+          "paragraphs": [
+            "Freshly formed sheets are couched directly one on top of another, wet on wet, with nothing between them — then pressed as a single block. That they can later be peeled apart one by one seems impossible until you look at neri's chemistry: its molecules carry both water-attracting and water-repelling regions. The hydrophilic parts associate with the cellulose surfaces while the hydrophobic parts face outward and refuse the neighboring sheet, so adjacent sheets never truly join. The press is also where the paper's strength is completed — load is applied gradually, water is driven out, and the hydrogen bonds of the finished sheet form under pressure."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s5-step-6",
+          "heading": "A Living Material, with Limits",
+          "paragraphs": [
+            "Neri is a fresh plant extract, and it behaves like one: its viscosity collapses as temperature rises, which is why tororo-aoi becomes difficult to use in summer heat — and one reason papermaking settled into the cold months, when icy vat water keeps the mucilage strong. Modern workshops sometimes substitute synthetic aids such as polyacrylamide (PAM), which hold viscosity reliably in any season; when a maker specifies 'traditional neri,' this is the trade-off being named."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s5-step-7",
+          "heading": "What Formation Decides for the Conservator",
+          "paragraphs": [
+            "Everything in this section leaves fingerprints a conservator must read. Rocking gives the sheet a grain: tear strength is higher along the fiber orientation and lower across it — the reason Japanese has the idiom yokogami-yaburi, 'tearing paper against the grain,' for perverse behavior. Drying leaves a face: the side dried against the wooden board is smooth and treated as the front, while the back carries faint brush marks (hakeme) from being pasted up.",
+            "Formation also sets a failure mode. If one charge drains too long before the next is laid down, the two veils never entangle — and the finished sheet carries an internal boundary where it can split into layers, a defect called ai-hegi. The thicker the paper, the greater the risk. For a lining that must one day be removed, or a sheet that must survive repeated humidification, these are not curiosities; they are the mechanical biography of the sheet."
+          ],
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        },
+        {
+          "id": "s5-step-8",
+          "heading": "Reading the Vat in Every Sheet",
+          "paragraphs": [
+            "The two kōzo sheets from the opening are no longer mysterious. One was formed in well-timed, continuous charges and parts nowhere; the other drained between charges and splits along its hidden boundary. One tears straight with its orientation and ragged against it. A conservator who can read formation — technique, neri, pressing, drying — reads the sheet’s future behavior before ever wetting it."
+          ],
+          "pullQuote": "A conservator who can read formation reads the sheet’s future behavior before ever wetting it.",
+          "svgRef": null,
+          "imageSlot": null,
+          "audioSrc": null
+        }
+      ],
+      "quiz": [
+        {
+          "id": "s5-q1",
+          "text": "A student describes neri as \"the glue that holds washi together.\" What is the accurate correction?",
+          "options": [
+            {
+              "id": "s5-q1-a",
+              "text": "No correction needed — neri bonds the fibers as the sheet dries."
+            },
+            {
+              "id": "s5-q1-b",
+              "text": "Neri is a formation aid: it suspends fibers evenly and slows drainage during forming, while the finished sheet is held by hydrogen bonds alone."
+            },
+            {
+              "id": "s5-q1-c",
+              "text": "Neri is a sizing agent whose purpose is to make the sheet water-resistant."
+            },
+            {
+              "id": "s5-q1-d",
+              "text": "Neri is a bleaching agent that raises the whiteness of the stock."
+            }
+          ],
+          "correctOptionId": "s5-q1-b",
+          "explanation": "Neri contributes no adhesion to the finished sheet — its work (even suspension, slowed drainage) ends when the water leaves, and dried paper is held by hydrogen bonds, as Section 3 established. It is neither a glue, a sizing, nor a bleach."
+        },
+        {
+          "id": "s5-q2",
+          "text": "Freshly formed washi sheets are stacked wet, pressed as a block, and later peeled apart cleanly. What makes this possible?",
+          "options": [
+            {
+              "id": "s5-q2-a",
+              "text": "Felt interleaves placed between each sheet, as in Western papermaking."
+            },
+            {
+              "id": "s5-q2-b",
+              "text": "Each sheet is fully dried before the next is couched on top."
+            },
+            {
+              "id": "s5-q2-c",
+              "text": "Neri's molecules present hydrophobic regions outward from each sheet's surface, preventing neighboring sheets from truly joining."
+            },
+            {
+              "id": "s5-q2-d",
+              "text": "The press is kept too light for hydrogen bonds to form between sheets."
+            }
+          ],
+          "correctOptionId": "s5-q2-c",
+          "explanation": "Japanese couching uses no interleaving felts and no drying between sheets — the amphiphilic structure of neri (hydrophilic parts toward the cellulose, hydrophobic parts outward) is what keeps stacked sheets separable after full pressing."
+        },
+        {
+          "id": "s5-q3",
+          "text": "Why did traditional washi production concentrate in the cold months?",
+          "options": [
+            {
+              "id": "s5-q3-a",
+              "text": "Because neri's viscosity collapses in heat — cold vat water keeps the mucilage effective (and slows spoilage)."
+            },
+            {
+              "id": "s5-q3-b",
+              "text": "Because kōzo can only be harvested in winter, so fiber was unavailable at other times."
+            },
+            {
+              "id": "s5-q3-c",
+              "text": "Because hydrogen bonds only form at low temperatures."
+            },
+            {
+              "id": "s5-q3-d",
+              "text": "Purely by custom, with no material basis."
+            }
+          ],
+          "correctOptionId": "s5-q3-a",
+          "explanation": "Tororo-aoi mucilage loses viscosity as temperature rises, making the vat unworkable in summer heat — the material basis for winter papermaking. Hydrogen bonding (C) is not temperature-gated this way, and (B) overstates the harvest constraint."
+        },
+        {
+          "id": "s5-q4",
+          "text": "A thick lining paper splits cleanly into two layers during humidification. Based on Section 5, what is the most likely cause?",
+          "options": [
+            {
+              "id": "s5-q4-a",
+              "text": "The fiber was over-beaten, weakening individual strands."
+            },
+            {
+              "id": "s5-q4-b",
+              "text": "Too much neri was used, gluing the layers only weakly."
+            },
+            {
+              "id": "s5-q4-c",
+              "text": "A drainage pause between charges at forming left two veils unentangled — an internal boundary (ai-hegi) built into the sheet."
+            },
+            {
+              "id": "s5-q4-d",
+              "text": "The paper was made from gampi, which always delaminates."
+            }
+          ],
+          "correctOptionId": "s5-q4-c",
+          "explanation": "Ai-hegi — splitting into layers — traces to formation: when one charge drains too long before the next, the veils never entangle, leaving a hidden boundary. The risk grows with sheet thickness. Neri is not an adhesive (B), and over-beating (A) weakens the sheet generally rather than creating clean layers."
+        },
+        {
+          "id": "s5-q5",
+          "text": "A repair paper tears straight and easily in one direction but raggedly in the other. What explains this, and what should the conservator do with the information?",
+          "options": [
+            {
+              "id": "s5-q5-a",
+              "text": "The paper is defective and should be discarded."
+            },
+            {
+              "id": "s5-q5-b",
+              "text": "Rocking at the vat oriented the fibers, so strength is directional — the grain should be noted and aligned deliberately in the treatment."
+            },
+            {
+              "id": "s5-q5-c",
+              "text": "Humidity has weakened one direction only; conditioning will equalize it."
+            },
+            {
+              "id": "s5-q5-d",
+              "text": "The tearing difference reflects the neri concentration used."
+            }
+          ],
+          "correctOptionId": "s5-q5-b",
+          "explanation": "Directional tear behavior is the normal signature of fiber orientation set by rocking during nagashi-zuki — the source of the idiom yokogami-yaburi. It is information, not a defect: grain direction should be identified and aligned with the mechanical demands of the treatment."
+        }
+      ]
+    },
+    {
+      "id": "section-6",
+      "title": "The Science of Processed Paper — Uchigami and Dōsa",
+      "active": false,
+      "track": "foundations"
+    },
+    {
+      "id": "section-7",
+      "title": "The Structure of Silk",
+      "active": false,
+      "track": "foundations"
+    },
+    {
+      "id": "section-8",
+      "title": "The Structure of the Pigment Layer",
+      "active": false,
+      "track": "foundations"
+    },
+    {
+      "id": "section-9",
+      "title": "Pigments and Dyes",
+      "active": false,
+      "track": "foundations"
+    },
+    {
+      "id": "section-10",
+      "title": "The Science of Animal Glue (Nikawa)",
+      "active": false,
+      "track": "foundations"
+    },
+    {
+      "id": "section-11",
+      "title": "Wheat Starch Paste — Fresh Paste and Aged Paste",
+      "active": false,
+      "track": "foundations"
+    },
+    {
+      "id": "section-12",
+      "title": "The Production of Repair Silk",
+      "active": false,
+      "track": "foundations"
+    },
+    {
+      "id": "section-13",
+      "title": "Damage to the Pigment Layer",
+      "active": false,
+      "track": "diagnostics"
+    },
+    {
+      "id": "section-14",
+      "title": "Damage to the Primary Support",
+      "active": false,
+      "track": "diagnostics"
+    },
+    {
+      "id": "section-15",
+      "title": "Visual Deterioration — Foxing, Paste Staining, and Related Conditions",
+      "active": false,
+      "track": "diagnostics"
+    },
+    {
+      "id": "section-16",
+      "title": "Biological and Environmental Factors",
+      "active": false,
+      "track": "diagnostics"
+    },
+    {
+      "id": "section-17",
+      "title": "Non-Destructive Analysis — IR, UV, and X-Ray",
+      "active": false,
+      "track": "practice"
+    },
+    {
+      "id": "section-18",
+      "title": "The Theory of Cleaning",
+      "active": false,
+      "track": "practice"
+    },
+    {
+      "id": "section-19",
+      "title": "Consolidation of Flaking Pigment",
+      "active": false,
+      "track": "practice"
+    },
+    {
+      "id": "section-20",
+      "title": "The Structure of Lining",
+      "active": false,
+      "track": "practice"
+    },
+    {
+      "id": "section-21",
+      "title": "Hada-Uragami Replacement — Wet Method",
+      "active": false,
+      "track": "practice"
+    },
+    {
+      "id": "section-22",
+      "title": "Hada-Uragami Replacement — Dry Method",
+      "active": false,
+      "track": "practice"
+    },
+    {
+      "id": "section-23",
+      "title": "Infilling Losses",
+      "active": false,
+      "track": "practice"
+    },
+    {
+      "id": "section-24",
+      "title": "Fold-Line Reinforcement (Oribuse)",
+      "active": false,
+      "track": "practice"
+    },
+    {
+      "id": "section-25",
+      "title": "The Function of Mounting Formats",
+      "active": false,
+      "track": "practice"
+    }
+  ]
+}

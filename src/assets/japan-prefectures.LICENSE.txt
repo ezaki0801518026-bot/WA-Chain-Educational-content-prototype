@@ -1,0 +1,7 @@
+japan-prefectures.svg
+Source: geolonia/japanese-prefectures (https://github.com/geolonia/japanese-prefectures)
+Licence: MIT — Copyright (c) Geolonia (https://geolonia.com/)
+
+Used as the base map for the Washi origins page. Each prefecture is a
+<g class="... prefecture" data-code="NN"> group; the app recolours and
+highlights these groups but does not alter the geometry.

@@ -1,0 +1,386 @@
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.intro {
+  max-width: 44rem;
+  margin-bottom: var(--space-lg);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 1.3;
+  margin: 0 0 var(--space-sm);
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* National designation chips (■●▲◆★, from the designation chart) */
+.desigLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: var(--space-sm);
+}
+
+.desigRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.35rem 0;
+}
+
+.desigChip {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding: 0.1rem 0.4rem;
+  white-space: nowrap;
+}
+
+.desig_dento {
+  color: var(--incorrect);
+}
+.desig_juyo {
+  color: var(--track-foundations);
+}
+.desig_sentaku {
+  color: var(--track-diagnostics);
+}
+.desig_hozon {
+  color: var(--seal);
+}
+.desig_unesco {
+  color: var(--track-practice);
+}
+
+/* Category colours (shared by pins, badges, headings) */
+.catDesignated {
+  --cat-color: var(--seal);
+}
+.catRaw {
+  --cat-color: var(--track-foundations);
+}
+.catRegional {
+  --cat-color: var(--track-diagnostics);
+}
+.catDecorative {
+  --cat-color: var(--track-practice);
+}
+.catImported {
+  --cat-color: var(--accent);
+}
+
+/* Map + panel layout ------------------------------------------------ */
+.mapLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+@media (min-width: 820px) {
+  .mapLayout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+}
+
+.figure {
+  margin: 0;
+  background: rgba(var(--accent-rgb), 0.04);
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
+  border-radius: 8px;
+  padding: var(--space-md);
+}
+
+/* Injected prefecture map ------------------------------------------- */
+.mapHost {
+  width: 100%;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+  overflow: visible;
+}
+
+/* Base: every prefecture reads as quiet paper-toned land. Inner paths
+   inherit fill from their group in the source SVG, so recolouring the
+   paths directly overrides the file's grey. */
+.mapHost :global(.prefecture) path {
+  fill: rgba(var(--accent-rgb), 0.1);
+  stroke: rgba(var(--accent-rgb), 0.35);
+  stroke-width: 0.8;
+  transition: fill 180ms ease-out;
+}
+
+/* Prefectures that make a washi in the dictionary — a touch stronger and
+   clickable, so the eye is drawn to them. */
+.mapHost :global(.prefecture.wp-target) {
+  cursor: pointer;
+}
+
+.mapHost :global(.prefecture.wp-target) path {
+  fill: rgba(var(--accent-rgb), 0.2);
+}
+
+.mapHost :global(.prefecture.wp-target):focus {
+  outline: none;
+}
+
+/* Selected prefecture(s): filled in the paper's category colour. */
+.mapHost :global(.prefecture.wp-active) path {
+  fill: var(--cat, var(--accent));
+  stroke: var(--bg);
+  stroke-width: 1;
+}
+
+/* Marker dots sit at each region's centre and pulse gently to invite a
+   click; the active region's marker holds a steady, larger ring. */
+.mapHost :global(.wp-marker) {
+  fill: var(--cat, var(--accent));
+  stroke: var(--bg);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: markerIdle 2400ms ease-in-out infinite;
+}
+
+.mapHost :global(.wp-marker.wp-marker-active) {
+  animation: none;
+  transform: scale(1.5);
+}
+
+@keyframes markerIdle {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mapHost :global(.wp-marker) {
+    animation: none;
+  }
+}
+
+/* Info panel -------------------------------------------------------- */
+.panel {
+  min-height: 12rem;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 8px;
+}
+
+.hint {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+.panelRegion {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  color: var(--text);
+  margin: 0 0 var(--space-md);
+}
+
+.panelRegionLabel {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.15rem;
+}
+
+.panelPaper {
+  animation: fadeIn 260ms ease-out;
+}
+
+.panelPaper + .panelPaper {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.panelPaperHead {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.panelPaperName {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.panelReading {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--accent);
+}
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.03em;
+  color: #f5f0e8;
+  background: var(--cat-color, var(--accent));
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  margin: 0.5rem 0;
+}
+
+.panelRegionLine {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--accent);
+  margin: 0 0 var(--space-sm);
+}
+
+.panelDesc {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Full list --------------------------------------------------------- */
+.listHeading {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 500;
+  margin: var(--space-xl) 0 var(--space-md);
+}
+
+.catSection {
+  margin-bottom: var(--space-lg);
+}
+
+.catHeading {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--cat-color, var(--accent));
+  margin: 0 0 var(--space-sm);
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--cat-color, var(--accent));
+}
+
+.paperGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--space-md);
+}
+
+.paperCard {
+  text-align: left;
+  background: rgba(var(--accent-rgb), 0.03);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 6px;
+  padding: var(--space-md);
+  cursor: pointer;
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out;
+}
+
+.paperCard:hover,
+.paperCard:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.paperCardActive {
+  border-color: var(--track-foundations);
+  box-shadow: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.08);
+}
+
+.paperCardHead {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.paperName {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.paperReading {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.paperPin {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  color: var(--track-diagnostics);
+  margin-bottom: 0.4rem;
+}
+
+.paperDesc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--accent);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pin {
+    animation: none;
+    opacity: 1;
+  }
+  .pulse {
+    animation: none;
+  }
+  .panelPaper {
+    animation: none;
+  }
+}

@@ -1,0 +1,102 @@
+.gateway {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-lg) 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 720px) {
+  .gateway {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.door {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  text-align: left;
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+.door:hover,
+.door:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+}
+
+.door:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Two doors, two materials: ink for the international course, paper for
+   the Japanese story — mirrored so neither reads as the "default". */
+.doorInk {
+  background: #2b2b2b;
+  color: #f5f0e8;
+  border: 1px solid #2b2b2b;
+}
+
+.doorPaper {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--accent);
+}
+
+.doorKicker {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.doorTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.doorSub {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  opacity: 0.85;
+  max-width: 30rem;
+}
+
+.doorHint {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 0.35rem;
+}
+
+.doorArrow {
+  position: absolute;
+  right: var(--space-md);
+  bottom: var(--space-sm);
+  font-size: 1.25rem;
+  transition: transform 180ms ease-out;
+}
+
+.door:hover .doorArrow,
+.door:focus-visible .doorArrow {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .door,
+  .doorArrow {
+    transition: none;
+  }
+}

@@ -1,0 +1,71 @@
+# GitHub Pages へ自動デプロイ
+#
+# main に push すると、ここでビルドしてそのまま公開されます。
+# リポジトリ名は自動で読み取るので、この YAML を書き換える必要はありません。
+#
+# 初回だけ GitHub 側の設定が必要:
+#   リポジトリ → Settings → Pages → Build and deployment → Source を
+#   「GitHub Actions」にする
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 公開中に次のデプロイが割り込まないようにする
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # プロジェクトサイト（https://<user>.github.io/<repo>/）はサブパスで
+      # 配信されるので、base をリポジトリ名に合わせる。
+      # <user>.github.io という名前のリポジトリだけはルート配信なので '/'。
+      - name: Determine base path
+        id: base
+        run: |
+          name='${{ github.event.repository.name }}'
+          if [[ "$name" == *.github.io ]]; then
+            echo "path=/" >> "$GITHUB_OUTPUT"
+          else
+            echo "path=/$name/" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build
+        run: npm run build
+        env:
+          BASE_PATH: ${{ steps.base.outputs.path }}
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

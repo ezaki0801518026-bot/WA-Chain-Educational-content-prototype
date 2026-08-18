@@ -1,0 +1,57 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin: 0 0 var(--space-md);
+}
+
+.toggle {
+  display: inline-flex;
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.option {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  transition: background 150ms ease-out, color 150ms ease-out;
+}
+
+.option + .option {
+  border-left: 1px solid rgba(var(--accent-rgb), 0.4);
+}
+
+.optionActive {
+  color: var(--bg);
+  background: var(--track-foundations);
+}
+
+.option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* Marks the option as not yet available without disabling it. */
+.optionPending {
+  opacity: 0.72;
+}
+
+.pendingMark {
+  font-size: 0.625rem;
+  letter-spacing: 0.02em;
+  margin-left: 0.35rem;
+  opacity: 0.85;
+}
+
+.hint {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--accent);
+}

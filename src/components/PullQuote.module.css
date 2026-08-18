@@ -1,0 +1,15 @@
+.quote {
+  margin: var(--space-md) 0;
+  padding: 0.2rem 0 0.2rem var(--space-md);
+  border-left: 2px solid var(--accent);
+  max-width: 32rem;
+}
+
+.text {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.3125rem;
+  line-height: 1.5;
+  color: var(--accent);
+  margin: 0;
+}

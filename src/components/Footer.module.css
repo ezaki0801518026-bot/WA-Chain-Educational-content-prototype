@@ -1,0 +1,129 @@
+.footer {
+  margin-top: var(--space-xl);
+  background: #2b2b2b;
+  color: #e8e3d8;
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+}
+
+.inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 20rem) repeat(3, minmax(0, 11rem));
+  gap: var(--space-lg);
+}
+
+.brandColumn {
+  grid-column: 1;
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  margin: 0 0 var(--space-xs);
+  color: #f5f0e8;
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #b8b2a3;
+  margin: 0;
+  max-width: 26rem;
+}
+
+/* WA-Chain's own accounts. Icon-only, so the accessible name is on the
+   link's aria-label. */
+.socialRow {
+  display: flex;
+  gap: 0.5rem;
+  margin: var(--space-sm) 0 0;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: #e8e3d8;
+  border: 1px solid #45443d;
+  text-decoration: none;
+  transition: color 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.socialLink:hover,
+.socialLink:focus-visible {
+  color: #2b2b2b;
+  background: #e8e3d8;
+  border-color: #e8e3d8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socialLink {
+    transition: none;
+  }
+}
+
+.columnHeading {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8f8a7c;
+  margin: 0 0 var(--space-sm);
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footerLink {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: #e8e3d8;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: color 150ms ease-out;
+}
+
+.footerLink:hover,
+.footerLink:focus-visible {
+  color: #f5f0e8;
+  text-decoration: underline;
+}
+
+.footerLinkDisabled {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: #8f8a7c;
+}
+
+.copyright {
+  max-width: 80rem;
+  margin: var(--space-lg) auto 0;
+  padding-top: var(--space-sm);
+  /* Clears the floating back-to-top button pinned to the bottom-right. */
+  padding-right: 3.5rem;
+  border-top: 1px solid #45443d;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #8f8a7c;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}

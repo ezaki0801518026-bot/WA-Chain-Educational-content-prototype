@@ -1,0 +1,40 @@
+{
+  "entries": [
+    {
+      "date": "2026-07-10",
+      "tag": "design",
+      "title": {
+        "en": "A warmer, more visual home",
+        "ja": "より温かく、視覚的なホームへ"
+      },
+      "body": {
+        "en": "Full-bleed photo headers, a hover mega-menu, colour-coded lesson cards that show what each section teaches, a refreshed pricing page, and a new WA-Chain story page.",
+        "ja": "全面写真のヘッダー、ホバーで開くメガメニュー、各セクションで学べることが分かる色分けカード、刷新した料金ページ、そして新しいWA-Chain紹介ページを追加しました。"
+      }
+    },
+    {
+      "date": "2026-07-10",
+      "tag": "feature",
+      "title": {
+        "en": "Send us feedback",
+        "ja": "フィードバック機能を追加"
+      },
+      "body": {
+        "en": "A new feedback form lets you report a content error or share an idea from anywhere on the site.",
+        "ja": "サイトのどこからでも、内容の誤りの報告やご提案を送れるフィードバックフォームを追加しました。"
+      }
+    },
+    {
+      "date": "2026-06-01",
+      "tag": "content",
+      "title": {
+        "en": "First four sections live",
+        "ja": "最初の4セクションを公開"
+      },
+      "body": {
+        "en": "The Foundations track opens with sōkō philosophy, washi chemistry, hydrogen bonding, and raw-material identification — each with a full lesson flow and a factual quiz.",
+        "ja": "基礎編として、装潢の理念・和紙の化学・水素結合・原料の識別の4セクションを公開。各セクションに講義とクイズを備えています。"
+      }
+    }
+  ]
+}

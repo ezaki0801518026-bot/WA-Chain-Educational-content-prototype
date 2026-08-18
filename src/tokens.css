@@ -1,0 +1,121 @@
+/* Global design tokens and element resets, shared by every entry point.
+   Deliberately a plain stylesheet, NOT a CSS module: a side-effect-only
+   import of a *.module.css is tree-shaken out of a production build (it is
+   treated as an exports-only module), which silently strips these tokens
+   from any entry that does not otherwise use the module's class names.
+   Import this from each entry's bootstrap file. */
+
+:root {
+  /* Colour tokens (light theme, default) */
+  --bg: #f5f0e8;
+  --text: #1a1a1a;
+  --accent: #4a4a3a;
+  --accent-rgb: 74, 74, 58;
+  --correct: #4f6a52;
+  --correct-rgb: 79, 106, 82;
+  --incorrect: #b5533c;
+  --incorrect-rgb: 181, 83, 60;
+
+  /* Font stacks */
+  --font-heading: "Lora", Georgia, "Noto Serif", serif;
+  --font-body: system-ui, sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  /* Layout */
+  --header-height: 3.25rem;
+
+  /* Per-track accent colours — muted, earthy tones that sit on the paper
+     background. Used for lesson-card covers, track pills, and mega-menu
+     accents so each curriculum track has a consistent visual identity. */
+  --track-foundations: #2f4a52;
+  --track-diagnostics: #4c5a3c;
+  --track-practice: #7a4a38;
+
+  /* Vermillion seal (落款) accent — used sparingly as a stamp-like mark. */
+  --seal: #a63f2e;
+}
+
+:root[data-theme='dark'] {
+  --track-foundations: #3d6069;
+  --track-diagnostics: #61724d;
+  --track-practice: #9a5f49;
+  --seal: #c05a41;
+}
+
+/* Dark theme — same calm, academic tone inverted (warm dark ink background,
+   paper-toned text), not a separate design language. Toggled via a
+   data-theme attribute on <html>, set by ThemeContext. */
+:root[data-theme='dark'] {
+  --bg: #211f1a;
+  --text: #ece5d6;
+  --accent: #b3ab8e;
+  --accent-rgb: 179, 171, 142;
+  --correct: #8fae8f;
+  --correct-rgb: 143, 174, 143;
+  --incorrect: #d97e5f;
+  --incorrect-rgb: 217, 126, 95;
+}
+
+/* Single responsive breakpoint (tablet and narrower — see PLAN.md Open
+   Questions). Tightening the two largest spacing tokens here cascades to
+   every page's side padding and vertical rhythm without per-page rules. */
+@media (max-width: 768px) {
+  :root {
+    --space-lg: 1.75rem;
+    --space-xl: 2.75rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  /* Thin, brand-toned scrollbars (inherits to nested scroll areas). */
+  scrollbar-color: rgba(var(--accent-rgb), 0.5) transparent;
+}
+
+::selection {
+  background: rgba(var(--accent-rgb), 0.3);
+}
+
+/* Form-control unification: every input inherits the site's type stack,
+   uses the brand accent for native widgets (radios, checkboxes), and gets
+   one consistent focus ring — regardless of which page styled it. */
+input,
+textarea,
+select {
+  font-family: inherit;
+  accent-color: var(--accent);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+body {
+  background-color: var(--bg);
+  /* Faint paper-fibre grain (~5% alpha noise, well under the 10% cap) so
+     the flat background reads as paper rather than a solid UI colour. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  transition: background-color 150ms ease-out;
+}

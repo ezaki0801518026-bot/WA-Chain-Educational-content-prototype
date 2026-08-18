@@ -1,0 +1,19 @@
+.wrapper {
+  margin: var(--space-sm) 0;
+}
+
+.button {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--accent);
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+}

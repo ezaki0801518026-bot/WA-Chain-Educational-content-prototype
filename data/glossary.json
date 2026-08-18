@@ -1,0 +1,102 @@
+{
+  "terms": [
+    {
+      "id": "soko",
+      "term": "Sōkō",
+      "native": "装潢",
+      "definition": "The discipline of mounting and preparing East Asian paintings and calligraphy — combining the technical craft of construction with the conservation philosophy that guides it.",
+      "relatedSectionId": "section-1"
+    },
+    {
+      "id": "honshi",
+      "term": "Honshi",
+      "native": "本紙",
+      "definition": "The primary support — the paper or silk actually bearing the original artwork. In sōkō conservation, the honshi is the irreplaceable cultural asset; everything else exists to protect it.",
+      "relatedSectionId": "section-1"
+    },
+    {
+      "id": "sotei",
+      "term": "Sōtei",
+      "native": "装丁",
+      "definition": "The mounting structure surrounding the honshi — linings, fabric borders, rollers, and related components. Unlike the honshi, the sōtei is treated as a replaceable protective system.",
+      "relatedSectionId": "section-1"
+    },
+    {
+      "id": "hada-uragami",
+      "term": "Hada-uragami",
+      "native": "肌裏紙",
+      "definition": "The first lining paper, applied directly to the back of the honshi. It reinforces the fragile support while remaining weak enough at its bonds to be safely removed with water during future treatment.",
+      "relatedSectionId": "section-1"
+    },
+    {
+      "id": "reversibility",
+      "term": "Reversibility",
+      "native": null,
+      "definition": "The principle that every conservation intervention must be undoable — in practice, removable with water and gentle mechanical action alone — so future conservators retain the freedom to re-treat a work with better materials or techniques.",
+      "relatedSectionId": "section-1"
+    },
+    {
+      "id": "nori",
+      "term": "Nori",
+      "native": "糊",
+      "definition": "Wheat starch paste, the traditional mounting adhesive. Stable when dry but releases cleanly when re-wetted, making it central to the reversibility of Japanese mounting practice.",
+      "relatedSectionId": "section-1"
+    },
+    {
+      "id": "cellulose",
+      "term": "Cellulose",
+      "native": null,
+      "definition": "The structural backbone polymer of plant fiber. Chemically stable and crystalline, cellulose is what gives paper its long-term strength and durability.",
+      "relatedSectionId": "section-2"
+    },
+    {
+      "id": "hemicellulose",
+      "term": "Hemicellulose",
+      "native": null,
+      "definition": "A polymer alongside cellulose in plant fiber that aids fiber-to-fiber bonding in small amounts, but accelerates long-term degradation when present in excess.",
+      "relatedSectionId": "section-2"
+    },
+    {
+      "id": "lignin",
+      "term": "Lignin",
+      "native": null,
+      "definition": "An unstable plant polymer that breaks down under light and heat into acidic, yellowing byproducts. Washi fiber contains very little lignin compared to wood pulp, which is the chemical basis for its longevity.",
+      "relatedSectionId": "section-2"
+    },
+    {
+      "id": "hydrogen-bonding",
+      "term": "Hydrogen bonding",
+      "native": null,
+      "definition": "The intermolecular attraction between cellulose chains that forms as a paper sheet dries, giving it strength without any adhesive. Re-wetting interrupts these bonds, which is the physical basis of reversibility.",
+      "relatedSectionId": "section-3"
+    },
+    {
+      "id": "kozo",
+      "term": "Kōzo",
+      "native": "楮",
+      "definition": "Paper mulberry — the primary washi fiber, with an unusually long average fiber length (~10.5mm) that creates a strong, interlocking sheet even when made very thin. The standard choice for honshi and hada-uragami.",
+      "relatedSectionId": "section-4"
+    },
+    {
+      "id": "gampi",
+      "term": "Gampi",
+      "native": "雁皮",
+      "definition": "A washi fiber (avg. ~4.3mm) prized for its smoothness, density, insect resistance, and clarity with ink and pigment — used for fine calligraphy papers and thin repair papers.",
+      "relatedSectionId": "section-4"
+    },
+    {
+      "id": "mitsumata",
+      "term": "Mitsumata",
+      "native": "三椏",
+      "definition": "A washi fiber (avg. ~3.7mm) with a soft, delicate sheen, used from the Edo period onward for albums and as a substrate for gold leaf.",
+      "relatedSectionId": "section-4"
+    },
+    {
+      "id": "c-stain",
+      "term": "C-stain",
+      "native": null,
+      "definition": "A staining reagent used to help identify fiber type under a microscope by its color reaction — one of several methods combined for reliable fiber identification before a repair paper is chosen.",
+      "relatedSectionId": "section-4"
+    }
+  ]
+}

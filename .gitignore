@@ -1,0 +1,40 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Vite
+.vite/
+
+# Claude Code local settings (personal, not shared project config)
+.claude/settings.local.json
+# Machine-specific preview launch config (hardcoded local paths)
+.claude/launch.json
+
+# Large source videos are ignored by default…
+*.MOV
+*.mov
+# …except videos the course UI actually serves
+!public/videos/*.mov
+
+# 公開リポジトリから外すもの（手元のフォルダには残る）
+# 出典の書き起こし：書籍本文に近い分量なので公開しない。サイトの動作には不要。
+docs/sources/
+# チーム内の生のメモ（実名入り）と、使用済みの元写真11MB
+input/

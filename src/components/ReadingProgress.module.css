@@ -1,0 +1,50 @@
+.track {
+  position: relative;
+  height: 2px;
+  background: rgba(var(--accent-rgb), 0.14);
+}
+
+/* Width rather than scaleX: a transform would stretch the gradient and
+   distort the head dot with it. At 2px tall the layout cost is nil. */
+.fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    var(--track-foundations) 0%,
+    var(--track-diagnostics) 55%,
+    var(--track-practice) 100%
+  );
+  border-radius: 0 999px 999px 0;
+  transition: width 420ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Leading dot, so the eye can find the position at a glance without
+   making the bar itself any heavier. */
+.fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  margin-right: -2px;
+  border-radius: 50%;
+  background: var(--track-practice);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.14);
+  transition: opacity 200ms ease-out;
+}
+
+.empty::after {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .fill::after {
+    transition: none;
+  }
+}

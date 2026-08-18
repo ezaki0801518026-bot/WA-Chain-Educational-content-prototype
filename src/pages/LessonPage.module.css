@@ -1,0 +1,183 @@
+.pageGrid {
+  /* Fills the viewport below the sticky header and the breadcrumb row
+     (--crumb-height is set on the app root while breadcrumbs render). */
+  height: calc(100vh - var(--header-height) - var(--crumb-height, 0rem));
+  max-height: calc(100vh - var(--header-height) - var(--crumb-height, 0rem));
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-height: 0;
+}
+
+@media (min-width: 1100px) {
+  .pageGrid {
+    grid-template-columns: 16rem 1fr 16rem;
+  }
+}
+
+.lesson {
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 50rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-lg) var(--space-sm);
+}
+
+/* Step meta (step count, section title) and the format toggle share one
+   compact row, so vertical space goes to the lesson text itself. */
+.lessonHeader {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.lessonMeta {
+  min-width: 0;
+}
+
+/* Step-progress bar bleeding to the column edges, above the top bar. */
+.progressSlot {
+  flex-shrink: 0;
+  margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-lg)) var(--space-sm);
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.checkPulse {
+  color: var(--accent);
+  font-size: 0.9rem;
+  animation: checkFade 700ms ease-out;
+}
+
+@keyframes checkFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  color: var(--accent);
+  margin: 0.2rem 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-xs) 0;
+}
+
+/* Auto margins centre a short step vertically, but — unlike
+   justify-content: center — collapse to zero when the step is taller than
+   the viewport, so the top of the text stays reachable by scrolling. */
+.content > * {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.slideForward {
+  animation: slideInForward 220ms ease-out;
+}
+
+.slideBackward {
+  animation: slideInBackward 220ms ease-out;
+}
+
+@keyframes slideInForward {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInBackward {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.navButton {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--accent);
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: background 150ms ease-out, color 150ms ease-out;
+}
+
+.navButton:hover:not(:disabled),
+.navButton:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.navButton:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.notFound {
+  font-family: var(--font-body);
+  padding: var(--space-xl);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slideForward,
+  .slideBackward,
+  .checkPulse {
+    animation: none;
+  }
+}

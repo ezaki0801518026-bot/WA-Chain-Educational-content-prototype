@@ -1,0 +1,403 @@
+.page {
+  padding-bottom: var(--space-xl);
+}
+
+/* ── Hero ───────────────────────────────────────────── */
+/* Capped rather than a bare 62vh: on a very tall window an uncapped hero
+   grows until the four feature tiles fall below the fold, which defeats the
+   point of the page. */
+.hero {
+  position: relative;
+  min-height: min(62vh, 34rem);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.heroImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: grayscale(0.2);
+}
+
+.heroVeil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 18, 14, 0.42) 0%, rgba(20, 18, 14, 0.2) 40%, rgba(20, 18, 14, 0.82) 100%);
+}
+
+.heroInner {
+  position: relative;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  color: #f3ede1;
+}
+
+.heroEyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  color: #ddd2bd;
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5.2vw, 3.4rem);
+  line-height: 1.14;
+  font-weight: 600;
+  margin: 0 0 0.7rem;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
+.heroLede {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.7;
+  margin: 0 0 var(--space-md);
+  max-width: 44ch;
+  color: #e6ddcc;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.primaryCta,
+.secondaryCta {
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  border: 1px solid #f3ede1;
+}
+
+.primaryCta {
+  background: #f3ede1;
+  color: #1a1a1a;
+}
+
+.secondaryCta {
+  background: transparent;
+  color: #f3ede1;
+}
+
+.primaryCta:hover,
+.primaryCta:focus-visible,
+.secondaryCta:hover,
+.secondaryCta:focus-visible {
+  opacity: 0.88;
+}
+
+/* ── Bands ──────────────────────────────────────────── */
+.band,
+.bandQuiet {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg) 0;
+}
+
+.bandQuiet {
+  padding-top: var(--space-lg);
+}
+
+.bandHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+.bandTitle {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.bandSub {
+  font-size: 0.88rem;
+  color: rgba(var(--accent-rgb), 0.9);
+  margin: 0;
+}
+
+.moreLink {
+  font: inherit;
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: rgba(var(--accent-rgb), 0.95);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.moreLink:hover,
+.moreLink:focus-visible {
+  color: var(--text);
+}
+
+/* ── Four core tiles ────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-md);
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: rgba(var(--accent-rgb), 0.04);
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--text);
+  transition: border-color 160ms ease-out, transform 160ms ease-out;
+}
+
+.tile:hover,
+.tile:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.tileImgWrap {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.tileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease-out;
+}
+
+.tile:hover .tileImg {
+  transform: scale(1.04);
+}
+
+.tileBody {
+  display: block;
+  padding: var(--space-sm) var(--space-sm) var(--space-md);
+}
+
+.tileNum {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--seal);
+  margin-bottom: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tileTitle {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.tileDesc {
+  display: block;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: rgba(var(--accent-rgb), 0.95);
+  margin-bottom: 0.7rem;
+}
+
+.tileCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.arrow {
+  width: 1.35rem;
+  height: 0.6rem;
+  transition: transform 160ms ease-out;
+}
+
+.tile:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ── Watch now ──────────────────────────────────────── */
+.watchRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: var(--space-md);
+}
+
+.watchCard {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--text);
+}
+
+.watchThumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+  line-height: 0;
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+}
+
+.watchThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 200ms ease-out, transform 400ms ease-out;
+}
+
+.watchCard:hover .watchThumb img,
+.watchCard:focus-visible .watchThumb img {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.playBadge {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.durBadge {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 0.1rem 0.4rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+
+.watchMeta {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--seal);
+  margin: 0.6rem 0 0.2rem;
+}
+
+.watchTitle {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.watchSub {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(var(--accent-rgb), 0.95);
+  line-height: 1.6;
+}
+
+/* ── News ───────────────────────────────────────────── */
+.newsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: var(--space-md);
+}
+
+.newsCard {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--text);
+}
+
+.newsThumb {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  line-height: 0;
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
+}
+
+.newsThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease-out;
+}
+
+.newsCard:hover .newsThumb img {
+  transform: scale(1.03);
+}
+
+.newsDate {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(var(--accent-rgb), 0.85);
+  margin: 0.5rem 0 0.15rem;
+}
+
+.newsTitle {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 54vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .tileImg,
+  .arrow,
+  .watchThumb img,
+  .newsThumb img {
+    transition: none;
+  }
+}

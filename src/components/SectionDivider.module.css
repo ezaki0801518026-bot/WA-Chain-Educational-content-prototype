@@ -1,0 +1,8 @@
+.divider {
+  display: block;
+  width: 8rem;
+  height: 0.85rem;
+  margin: var(--space-lg) auto;
+  fill: var(--accent);
+  opacity: 0.55;
+}

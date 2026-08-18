@@ -1,0 +1,200 @@
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 1.75rem;
+  min-width: 1.75rem;
+  /* Keeps the outline at 1.75rem while the tappable box reaches 44px. */
+  position: relative;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--accent);
+  padding: 0 0.35rem;
+  cursor: pointer;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+
+.trigger:hover,
+.trigger:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* On touch screens the button stays 28px tall but the area that responds
+   to a finger reaches 44px, via an invisible overlay. */
+@media (max-width: 768px) {
+  .trigger::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+  }
+}
+
+/* Shortcut hint — the "/" and Ctrl-K shortcuts exist, but nobody finds an
+   invisible shortcut. Hidden on touch-first (narrow) viewports. */
+.kbdHint {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  letter-spacing: 0.03em;
+  color: inherit;
+  opacity: 0.75;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  padding: 0.05rem 0.3rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .kbdHint {
+    display: none;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8vh var(--space-md) var(--space-md);
+}
+
+.panel {
+  width: 100%;
+  max-width: 36rem;
+  max-height: 76vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: searchIn 180ms ease-out;
+}
+
+@keyframes searchIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.3);
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.input {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  padding: 0.3rem 0;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.closeButton {
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.results {
+  overflow-y: auto;
+  padding: var(--space-sm);
+}
+
+.message {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--accent);
+  margin: var(--space-md);
+}
+
+.group {
+  margin-bottom: var(--space-sm);
+}
+
+.groupLabel {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: var(--space-sm) var(--space-sm) 0.35rem;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.result {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  padding: 0.55rem 0.7rem;
+  cursor: pointer;
+}
+
+.resultActive {
+  background: rgba(var(--accent-rgb), 0.12);
+}
+
+.resultTitle {
+  font-size: 0.9375rem;
+  color: var(--text);
+}
+
+.resultSubtitle {
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}

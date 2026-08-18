@@ -1,0 +1,139 @@
+.page {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-lg) var(--space-xl);
+}
+
+.back {
+  font: inherit;
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: var(--space-md);
+  color: rgba(var(--accent-rgb), 0.9);
+  cursor: pointer;
+}
+
+.back:hover,
+.back:focus-visible {
+  color: var(--text);
+}
+
+.head {
+  margin-bottom: var(--space-md);
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--seal);
+  margin: 0 0 0.4rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 0.35rem;
+  text-wrap: balance;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(var(--accent-rgb), 0.9);
+  margin: 0;
+}
+
+.playerWrap {
+  background: #000;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+}
+
+.player {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.resume {
+  font: inherit;
+  font-size: 0.85rem;
+  margin-top: var(--space-sm);
+  padding: 0.5rem 0.9rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  cursor: pointer;
+}
+
+.resume:hover,
+.resume:focus-visible {
+  opacity: 0.9;
+}
+
+.body {
+  margin-top: var(--space-lg);
+  max-width: 40rem;
+}
+
+.aboutHeading {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-xs);
+}
+
+.description {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+}
+
+.topic {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  color: rgba(var(--accent-rgb), 0.95);
+}
+
+.nav {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+.navButton {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.55rem 1.1rem;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  cursor: pointer;
+}
+
+.navButton:hover,
+.navButton:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.notFound {
+  max-width: 40rem;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-lg);
+}

@@ -1,0 +1,17 @@
+{
+  "name": "WA-Chain — The Online School of Washi & Conservation",
+  "short_name": "WA-Chain",
+  "description": "A structured introduction to the scientific and philosophical foundations of Japanese mounting conservation (sōkō).",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f0e8",
+  "theme_color": "#f5f0e8",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
