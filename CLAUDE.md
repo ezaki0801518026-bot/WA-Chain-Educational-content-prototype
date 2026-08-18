@@ -266,6 +266,22 @@ BASE_PATH=/WA-Site/ npm run build
 - `.github/workflows/deploy.yml` がリポジトリ名から `BASE_PATH` を自動決定して公開する。
   手順は `DEPLOY.md`。
 
+**公開先: https://ezaki0801518026-bot.github.io/WA-Chain-Educational-content-prototype/**
+（`main` に push すると自動デプロイ）
+
+### ⚠ `/api/...` は既定で呼ばない
+
+`functions/api/` は Cloudflare Pages 専用で、GitHub Pages には存在しない。
+以前は全ページビューで `POST /api/event` と `GET /api/newsletter` が 404/405 になっていた。
+現在は `src/utils/api.js` の `apiUrl()` / `hasApi` を通し、**`VITE_API_BASE` が
+未設定なら通信そのものを行わない**。Cloudflare へ戻すときは `VITE_API_BASE=/` を付けてビルドする。
+
+### 公開リポジトリから除外しているもの
+
+`.gitignore` に `docs/sources/`（書籍の書き起こし＝著作権上公開できない）と
+`input/`（実名入りの内部メモ・使用済み写真11MB）を追加済み。**手元には残っている**ので、
+§10 の出典作業ではローカルの `docs/sources/` を参照してよい。
+
 ---
 
 ## 11. その他の注意

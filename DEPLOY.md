@@ -1,6 +1,16 @@
 # GitHub Pages へ公開する手順
 
-新しいリポジトリを作って push するだけで公開されます。**リポジトリ名は何でも構いません**
+## 公開中のURL
+
+**https://ezaki0801518026-bot.github.io/WA-Chain-Educational-content-prototype/**
+
+リポジトリ: https://github.com/ezaki0801518026-bot/WA-Chain-Educational-content-prototype
+
+`main` に push するたびに自動で更新されます（`.github/workflows/deploy.yml`）。
+
+---
+
+以下は、別のリポジトリで一から公開する場合の手順です。**リポジトリ名は何でも構いません**
 （ビルド時に自動で読み取ってパスを合わせます）。
 
 ---
@@ -22,10 +32,14 @@ git remote add origin https://github.com/<ユーザー名>/<リポジトリ名>.
 git push -u origin main
 ```
 
-## 3. Pages を有効にする（初回だけ）
+## 3. Pages を有効にする（初回だけ・手動が必要）
 
 リポジトリの **Settings → Pages → Build and deployment → Source** を
 **「GitHub Actions」** に変更します。
+
+> **この操作は自動化できません。** 新規リポジトリでは GITHUB_TOKEN から Pages サイトを
+> 作成できず、ワークフローが `Create Pages site failed: Resource not accessible by
+> integration` で失敗します。有効化したあと Actions タブで **Re-run all jobs** してください。
 
 これで `.github/workflows/deploy.yml` が動き、数分後に
 
@@ -76,6 +90,29 @@ BASE_PATH=/<リポジトリ名>/ npx vite preview
 
 その場合だけルート配信（`https://<user>.github.io/`）になります。
 ワークフローが自動で判定して `BASE_PATH=/` にするので、こちらも設定変更は不要です。
+
+### バックエンド（`/api/...`）は既定でオフ
+
+`functions/api/` の3本（event / newsletter / stats）は **Cloudflare Pages 専用**で、
+GitHub Pages には存在しません。有効なまま公開すると全ページで 404 / 405 が出るため、
+`VITE_API_BASE` を指定したときだけ呼ぶようにしてあります（`src/utils/api.js`）。
+
+```bash
+VITE_API_BASE=/ npm run build   # Cloudflare Pages 向け（アクセス計測とメルマガ取得が有効に）
+```
+
+GitHub Pages 側は未指定のままで構いません。サイトの表示・動画再生には影響しません。
+
+### 公開リポジトリから外しているもの
+
+`.gitignore` で以下を除外しています（手元のフォルダには残っています）。
+
+| 除外 | 理由 |
+|---|---|
+| `docs/sources/` | 書籍の書き起こし。分量が本文に近く、公開すると著作権上の問題になる |
+| `input/` | 実名入りのチーム内メモと、使用済みの元写真11MB |
+
+どちらもサイトの動作には不要です。
 
 ### Jekyll
 
