@@ -160,3 +160,42 @@
   color: var(--accent);
   margin: var(--space-sm) 0 0;
 }
+
+/* Assistant mode ----------------------------------------------------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.secondary {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.9rem;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  cursor: pointer;
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  border-color: var(--accent);
+}
+
+.secondary:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* A refusal or an outage is not a normal answer — mark it so the eye
+   separates "the assistant replied" from "the assistant could not". */
+.bubbleNotice {
+  border-left: 3px solid var(--seal);
+}
+
+.bubblePending {
+  opacity: 0.7;
+  font-style: italic;
+}

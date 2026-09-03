@@ -284,6 +284,59 @@ BASE_PATH=/WA-Site/ npm run build
 
 ---
 
+## 10.7 ★相談AIチャットボット（Claude Sonnet 5）
+
+`#/chat` の「専門家に相談する」。**Cloudflare でのみ動く**（GitHub Pages には Functions がないため、
+そちらでは自動的に従来の「質問をメールでチームに送る」フォームにフォールバックする）。
+
+| 直したいもの | ファイル |
+|---|---|
+| **AIの人格・口調・禁止事項** | **`data/chat-persona.js`** ← ここだけ直せばよい |
+| モデル・effort・上限トークン・履歴長 | 同ファイルの `CHAT_CONFIG` |
+| サーバー側の処理 | `functions/api/chat.js` |
+| チャット画面 | `src/pages/ChatPage.jsx` |
+
+### 設計の要点
+
+- **参照範囲は自社教材のみ。** `data/lessons.json` の公開中セクション（約7,000トークン）を
+  **全文システムプロンプトに入れてキャッシュ**している。検索（RAG）は無い。
+  教材を足せば自動で参照範囲に入る。
+  **`docs/sources/` の書籍書き起こしは絶対に参照させない**（他者の著作物）。
+- **「教材に無い」と答えるのが正しい振る舞い。** 推測で埋めさせない。
+  答えられないときは既存の人間へのエスカレーション（メール送信）に渡す。
+- 出典はセクション番号をインラインで書かせる。
+
+### 必要な設定
+
+| 場所 | 変数 | 値 |
+|---|---|---|
+| Cloudflare Pages の **Secret** | `ANTHROPIC_API_KEY` | Anthropic のキー |
+| Cloudflare Pages の **ビルド環境変数** | `VITE_API_BASE` | `/` ← **これが無いとUIがAPIを呼ばない** |
+
+ローカル検証は `.dev.vars`（gitignore 済み）に鍵を置いて:
+
+```bash
+npm run build            # VITE_API_BASE=/ を付けてビルド
+npx wrangler pages dev dist --port 8788
+```
+
+### Sonnet 5 の API 上の制約
+
+- **`temperature` / `top_p` / `top_k` は送ると400。** 口調の調整はプロンプトの文言だけで行う
+- `budget_tokens` は廃止。`thinking: {type:'adaptive'}` ＋ `output_config: {effort}` を使う
+- アシスタントのプリフィル不可、会話中の `role:'system'` も Sonnet 5 では不可
+
+### エラーコードの意味（`functions/api/chat.js` の `classify()`）
+
+| code | 原因 | UI の挙動 |
+|---|---|---|
+| `budget` | 支出上限に到達（400 または `enforced_spend_limit_reached` の429） | 再試行させず、人間の経路へ誘導 |
+| `busy` | レート上限（429） | 少し待って再試行を促す |
+| `unconfigured` | 鍵が無い・無効（401/403） | 利用不可を表示 |
+| `error` | その他 | 汎用エラー＋人間の経路 |
+
+---
+
 ## 11. その他の注意
 
 - **写真は圧縮してから入れる**。長辺1600px前後・JPEG品質80・1枚300KB以下が目安。

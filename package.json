@@ -10,6 +10,7 @@
     "verify": "node scripts/verify.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.123.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

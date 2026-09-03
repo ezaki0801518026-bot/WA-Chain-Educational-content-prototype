@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { submitForm } from '../formConfig.js'
+import { apiUrl, hasApi } from '../utils/api.js'
+import { track } from '../utils/analytics.js'
 import styles from './ChatPage.module.css'
 
-// Seeded example exchanges shown at the top so an observer immediately sees
-// the concept's value. Content stays in English, like the lesson material
-// (course content is never localised — only the UI chrome is).
+// Seeded example exchanges shown before the first question, so an observer
+// immediately sees what the assistant is for. Content stays in English, like
+// the lesson material (course content is never localised — only UI chrome).
 const SAMPLES = [
   {
     q: 'Which fiber is best for a very thin repair tissue on a work on paper?',
@@ -13,26 +15,95 @@ const SAMPLES = [
   },
   {
     q: 'How can I check whether a washi is acidic before using it on an artwork?',
-    a: 'A surface pH reading on a discreet edge — a pH pen, or a cold-water extraction with an electrode — is the usual quick check. Conservation-grade kōzo papers are typically neutral to mildly alkaline. Section 2 covers why pH is what decides a paper’s lifespan.',
+    a: 'A surface pH reading on a discreet edge — a pH pen, or a cold-water extraction with an electrode — is the usual quick check. Conservation-grade kōzo papers are typically neutral to mildly alkaline. Section 2 covers why pH is what decides a paper lifespan.',
   },
 ]
 
-// "Ask a conservator" — the third product pillar, built as a Wizard of Oz:
-// there is no live AI. A question is emailed (via the shared submitForm
-// helper) to the team, who reply by hand. The seeded samples plus the
-// human-in-the-loop framing let a validation session gauge demand for the
-// feature (hypothesis E-3) without building any real automation yet.
+const MAX_CHARS = 2000
+
+const ERROR_KEYS = {
+  budget: 'chatErrorBudget',
+  busy: 'chatErrorBusy',
+  unconfigured: 'chatErrorUnavailable',
+}
+
+function lastUserQuestion(turns) {
+  for (let i = turns.length - 1; i >= 0; i -= 1) {
+    if (turns[i].role === 'user') return turns[i].content
+  }
+  return ''
+}
+
+// "Ask a conservator" — the third product pillar.
+//
+// Two modes, chosen by whether a backend exists (src/utils/api.js):
+//   - With one (Cloudflare): the assistant answers from the course material.
+//   - Without one (GitHub Pages, local dev): the original Wizard of Oz — the
+//     question is emailed to the team, who reply by hand.
+// The human route stays available in both, because the assistant is built to
+// refuse rather than guess, and a refusal needs somewhere to go.
 function ChatPage() {
   const { t } = useLanguage()
+  const [turns, setTurns] = useState([]) // { role, content, code? }
   const [question, setQuestion] = useState('')
-  const [email, setEmail] = useState('')
-  const [sent, setSent] = useState([]) // questions submitted this session
   const [phase, setPhase] = useState('idle') // idle | sending | error
   const [error, setError] = useState('')
+  const [escalating, setEscalating] = useState(false)
+  const [email, setEmail] = useState('')
+  const threadEndRef = useRef(null)
 
-  const submit = async (event) => {
+  useEffect(() => {
+    threadEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  }, [turns, phase])
+
+  const askAssistant = async (event) => {
     event.preventDefault()
-    if (!question.trim()) {
+    const asked = question.trim()
+    if (!asked) {
+      setError(t('chatValidationQ'))
+      return
+    }
+    setError('')
+    setPhase('sending')
+    setQuestion('')
+
+    // Notices (budget, errors) are display-only — never replay them as context.
+    const history = [...turns.filter((turn) => turn.role !== 'system' && !turn.code), { role: 'user', content: asked }]
+    setTurns(history)
+    track('chat_ask', {})
+
+    try {
+      const response = await fetch(apiUrl('/api/chat'), {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          messages: history.map(({ role, content }) => ({ role, content })),
+        }),
+      })
+      const data = await response.json().catch(() => ({}))
+
+      if (data.reply) {
+        setTurns([...history, { role: 'assistant', content: data.reply }])
+      } else {
+        // Budget exhausted, upstream busy, or misconfigured — each gets its own
+        // message, and all of them point at the human route.
+        const key = ERROR_KEYS[data.code] || 'chatErrorGeneric'
+        setTurns([...history, { role: 'assistant', content: t(key), code: data.code || 'error' }])
+      }
+    } catch {
+      setTurns([...history, { role: 'assistant', content: t('chatErrorGeneric'), code: 'error' }])
+    } finally {
+      setPhase('idle')
+    }
+  }
+
+  // The fallback path, and the escape hatch when the assistant declines:
+  // send the question to the team by email.
+  const sendToTeam = async (event) => {
+    event.preventDefault()
+    const typed = question.trim()
+    const asked = typed || lastUserQuestion(turns)
+    if (!asked) {
       setError(t('chatValidationQ'))
       return
     }
@@ -42,15 +113,19 @@ function ChatPage() {
     }
     setError('')
     setPhase('sending')
-    const asked = question.trim()
     try {
       await submitForm({
         _subject: 'Washi Course — conservator question',
         question: asked,
         replyTo: email.trim(),
       })
-      setSent((prev) => [...prev, asked])
+      setTurns((prev) => [
+        ...prev,
+        ...(typed ? [{ role: 'user', content: asked }] : []),
+        { role: 'system', content: t('chatReceived') },
+      ])
       setQuestion('')
+      setEscalating(false)
       setPhase('idle')
     } catch {
       setPhase('error')
@@ -58,42 +133,69 @@ function ChatPage() {
     }
   }
 
+  const sending = phase === 'sending'
+  const showEscalation = !hasApi || escalating
+
   return (
     <div className={styles.page}>
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('chatTitle')}</h1>
-        <p className={styles.description}>{t('chatIntro')}</p>
+        <p className={styles.description}>{hasApi ? t('chatIntroAi') : t('chatIntro')}</p>
       </div>
 
       <div className={styles.thread}>
-        <p className={styles.sampleLabel}>{t('chatSampleLabel')}</p>
-        {SAMPLES.map((s, i) => (
-          <div key={i} className={styles.exchange}>
-            <div className={`${styles.bubble} ${styles.bubbleYou}`}>
-              <span className={styles.who}>{t('chatYou')}</span>
-              {s.q}
-            </div>
-            <div className={`${styles.bubble} ${styles.bubbleExpert}`}>
-              <span className={styles.who}>{t('chatConservator')}</span>
-              {s.a}
-            </div>
-          </div>
-        ))}
+        {turns.length === 0 && (
+          <>
+            <p className={styles.sampleLabel}>{t('chatSampleLabel')}</p>
+            {SAMPLES.map((sample, i) => (
+              <div key={`sample-${i}`} className={styles.exchange}>
+                <div className={`${styles.bubble} ${styles.bubbleYou}`}>
+                  <span className={styles.who}>{t('chatYou')}</span>
+                  {sample.q}
+                </div>
+                <div className={`${styles.bubble} ${styles.bubbleExpert}`}>
+                  <span className={styles.who}>{t('chatAssistant')}</span>
+                  {sample.a}
+                </div>
+              </div>
+            ))}
+          </>
+        )}
 
-        {/* Questions asked this session: the reader's message, then the
-            "received, we'll reply by email" acknowledgement. */}
-        {sent.map((q, i) => (
-          <div key={`sent-${i}`} className={styles.exchange}>
-            <div className={`${styles.bubble} ${styles.bubbleYou}`}>
-              <span className={styles.who}>{t('chatYou')}</span>
-              {q}
+        {turns.map((turn, i) => {
+          if (turn.role === 'system') {
+            return (
+              <div key={`turn-${i}`} className={styles.exchange}>
+                <div className={`${styles.bubble} ${styles.bubbleSystem}`}>{turn.content}</div>
+              </div>
+            )
+          }
+          const mine = turn.role === 'user'
+          return (
+            <div key={`turn-${i}`} className={styles.exchange}>
+              <div
+                className={`${styles.bubble} ${mine ? styles.bubbleYou : styles.bubbleExpert} ${
+                  turn.code ? styles.bubbleNotice : ''
+                }`}
+              >
+                <span className={styles.who}>{mine ? t('chatYou') : t('chatAssistant')}</span>
+                {turn.content}
+              </div>
             </div>
-            <div className={`${styles.bubble} ${styles.bubbleSystem}`}>{t('chatReceived')}</div>
+          )
+        })}
+
+        {sending && (
+          <div className={styles.exchange}>
+            <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.bubblePending}`}>
+              {t('chatThinking')}
+            </div>
           </div>
-        ))}
+        )}
+        <div ref={threadEndRef} />
       </div>
 
-      <form className={styles.form} onSubmit={submit}>
+      <form className={styles.form} onSubmit={showEscalation ? sendToTeam : askAssistant}>
         <label className={styles.label} htmlFor="chat-question">
           {t('chatQuestionLabel')}
         </label>
@@ -101,36 +203,54 @@ function ChatPage() {
           id="chat-question"
           className={styles.textarea}
           rows={3}
+          maxLength={MAX_CHARS}
           placeholder={t('chatQuestionPlaceholder')}
           value={question}
           onChange={(event) => {
             setQuestion(event.target.value)
             if (error) setError('')
           }}
-          disabled={phase === 'sending'}
+          disabled={sending}
         />
 
-        <label className={styles.label} htmlFor="chat-email">
-          {t('chatEmailLabel')}
-        </label>
-        <input
-          id="chat-email"
-          type="email"
-          className={styles.input}
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value)
-            if (error) setError('')
-          }}
-          disabled={phase === 'sending'}
-        />
+        {showEscalation && (
+          <>
+            <label className={styles.label} htmlFor="chat-email">
+              {t('chatEmailLabel')}
+            </label>
+            <input
+              id="chat-email"
+              type="email"
+              className={styles.input}
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.value)
+                if (error) setError('')
+              }}
+              disabled={sending}
+            />
+          </>
+        )}
 
         {error && <p className={styles.error}>{error}</p>}
 
-        <button type="submit" className={styles.submit} disabled={phase === 'sending'}>
-          {phase === 'sending' ? t('chatSending') : t('chatSend')}
-        </button>
-        <p className={styles.disclaimer}>{t('chatDisclaimer')}</p>
+        <div className={styles.actions}>
+          <button type="submit" className={styles.submit} disabled={sending}>
+            {sending ? t('chatSending') : showEscalation ? t('chatSend') : t('chatAsk')}
+          </button>
+          {hasApi && (
+            <button
+              type="button"
+              className={styles.secondary}
+              onClick={() => setEscalating((value) => !value)}
+              disabled={sending}
+            >
+              {escalating ? t('chatBackToAssistant') : t('chatEscalate')}
+            </button>
+          )}
+        </div>
+
+        <p className={styles.disclaimer}>{hasApi ? t('chatDisclaimerAi') : t('chatDisclaimer')}</p>
       </form>
     </div>
   )

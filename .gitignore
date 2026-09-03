@@ -38,3 +38,9 @@ Thumbs.db
 docs/sources/
 # チーム内の生のメモ（実名入り）と、使用済みの元写真11MB
 input/
+
+# Local secrets for `wrangler pages dev` (never commit)
+.dev.vars
+
+# wrangler local dev state
+.wrangler/
