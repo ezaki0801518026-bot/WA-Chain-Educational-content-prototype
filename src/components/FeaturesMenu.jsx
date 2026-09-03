@@ -11,6 +11,7 @@ const EXPLORE = [
   { labelKey: 'navWashiMap', route: '/washi-map' },
   { labelKey: 'navTour', route: '/tour' },
   { labelKey: 'navPricing', route: '/pricing' },
+  { labelKey: 'navChat', route: '/chat' },
   { labelKey: 'navNews', route: '/news' },
   { labelKey: 'navAbout', route: '/about' },
 ]

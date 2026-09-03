@@ -20,6 +20,7 @@ const SAMPLES = [
 
 const MAX_CHARS = 2000
 const ENDPOINT = '/api/chat'
+const CHAT_PREFILL_KEY = 'wa-chain-chat-prefill'
 
 const ERROR_KEYS = {
   budget: 'chatErrorBudget',
@@ -55,6 +56,19 @@ function ChatPage() {
   // it is served, with no environment variable to remember to set.
   const [assistant, setAssistant] = useState(null)
   const threadEndRef = useRef(null)
+
+  // A question typed on the home page arrives here, ready to send.
+  useEffect(() => {
+    try {
+      const draft = sessionStorage.getItem(CHAT_PREFILL_KEY)
+      if (draft) {
+        setQuestion(draft)
+        sessionStorage.removeItem(CHAT_PREFILL_KEY)
+      }
+    } catch {
+      /* private mode: nothing to carry over */
+    }
+  }, [])
 
   useEffect(() => {
     let cancelled = false

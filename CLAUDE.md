@@ -295,6 +295,10 @@ BASE_PATH=/WA-Site/ npm run build
 | モデル・effort・上限トークン・履歴長 | 同ファイルの `CHAT_CONFIG` |
 | サーバー側の処理 | `functions/api/chat.js` |
 | チャット画面 | `src/pages/ChatPage.jsx` |
+| トップページの入口（質問入力欄） | `src/pages/HubPage.jsx` の `.ask` ブロック |
+
+トップに打った質問は `sessionStorage` の `wa-chain-chat-prefill` 経由で
+チャット画面に引き継がれる（ハッシュルーターにはURLで渡す場所が無いため）。
 
 ### 設計の要点
 

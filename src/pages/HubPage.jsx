@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import coursesData from '../../data/courses.json'
 import news from '../../data/news.json'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
@@ -29,10 +30,29 @@ function Arrow() {
   )
 }
 
+// Carries a question typed on the home page through to the chat page. A
+// hash router leaves no clean place to put it in the URL, and it is a draft
+// the visitor has not sent yet — sessionStorage suits both.
+export const CHAT_PREFILL_KEY = 'wa-chain-chat-prefill'
+
 function HubPage({ navigate }) {
   const { t, lang } = useLanguage()
   const pick = (field) => (field && (field[lang] ?? field.en)) || ''
   const latest = news.posts.slice(0, 2)
+  const [askDraft, setAskDraft] = useState('')
+
+  const openChat = (event) => {
+    event.preventDefault()
+    const draft = askDraft.trim()
+    if (draft) {
+      try {
+        sessionStorage.setItem(CHAT_PREFILL_KEY, draft)
+      } catch {
+        /* private mode: the chat page just opens empty */
+      }
+    }
+    navigate('/chat')
+  }
 
   return (
     <div className={styles.page}>
@@ -83,6 +103,34 @@ function HubPage({ navigate }) {
             </button>
           ))}
         </div>
+      </Reveal>
+
+      {/* A question is the other way in. The box is the door: typing here goes
+          straight to the assistant with the question already in it, which asks
+          less of a visitor than finding a page called "Ask a conservator". */}
+      <Reveal as="section" className={styles.band}>
+        <form className={styles.ask} onSubmit={openChat}>
+          <p className={styles.askEyebrow}>{t('hubAskEyebrow')}</p>
+          <h2 className={styles.askTitle}>{t('hubAskTitle')}</h2>
+          <p className={styles.askLede}>{t('hubAskLede')}</p>
+          <div className={styles.askRow}>
+            <label className={styles.askLabel} htmlFor="hub-ask">
+              {t('hubAskLabel')}
+            </label>
+            <input
+              id="hub-ask"
+              type="text"
+              className={styles.askInput}
+              maxLength={2000}
+              placeholder={t('hubAskPlaceholder')}
+              value={askDraft}
+              onChange={(event) => setAskDraft(event.target.value)}
+            />
+            <button type="submit" className={styles.askButton}>
+              {t('hubAskCta')}
+            </button>
+          </div>
+        </form>
       </Reveal>
 
       {/* The lectures themselves, so a visitor can start without a detour. */}

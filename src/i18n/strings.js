@@ -39,6 +39,13 @@ const strings = {
     hubWatchSub: 'Both available now, in English',
     hubNewsTitle: 'News',
     hubNewsMore: 'All news',
+    hubAskEyebrow: 'Ask',
+    hubAskTitle: 'Ask about washi',
+    hubAskLede:
+      'Fibre differences, pH, lining decisions — answered from the course material, with the section it came from. Where the material has no answer, you are told so rather than guessed at.',
+    hubAskLabel: 'Your question',
+    hubAskPlaceholder: 'e.g. Which fibre suits a thin repair tissue?',
+    hubAskCta: 'Ask',
 
     // Video courses
     courseLabel: 'Lecture {{n}}',
@@ -626,6 +633,13 @@ const strings = {
     hubWatchSub: '2本とも公開中（英語）',
     hubNewsTitle: 'お知らせ',
     hubNewsMore: 'すべて見る',
+    hubAskEyebrow: '質問する',
+    hubAskTitle: '和紙のことを聞く',
+    hubAskLede:
+      '三原料の違い、pH、裏打ちの考え方——公開中の教材にもとづき、該当セクションを添えて回答します。教材に記載がないことは、推測せずその旨をお伝えします。',
+    hubAskLabel: '質問',
+    hubAskPlaceholder: '例：薄い補修紙にはどの繊維が向いていますか？',
+    hubAskCta: '質問する',
 
     // 動画講義
     courseLabel: '第{{n}}講',

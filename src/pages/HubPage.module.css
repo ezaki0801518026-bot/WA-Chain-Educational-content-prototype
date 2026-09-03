@@ -334,6 +334,86 @@
   line-height: 1.6;
 }
 
+/* ── Ask box ────────────────────────────────────────── */
+.ask {
+  border: 1px solid rgba(var(--accent-rgb), 0.28);
+  background: rgba(var(--accent-rgb), 0.04);
+  padding: var(--space-md);
+}
+
+.askEyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--seal);
+  margin: 0 0 0.35rem;
+}
+
+.askTitle {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+}
+
+.askLede {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(var(--accent-rgb), 0.95);
+  margin: 0 0 var(--space-sm);
+  max-width: 52ch;
+}
+
+.askRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* The heading already says what the box is for; the label is for screen
+   readers, which do not get to read the heading as the field's name. */
+.askLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.askInput {
+  flex: 1 1 20rem;
+  min-width: 0;
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.65rem 0.8rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+}
+
+.askInput:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.askButton {
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+}
+
+.askButton:hover,
+.askButton:focus-visible {
+  opacity: 0.9;
+}
+
 /* ── News ───────────────────────────────────────────── */
 .newsRow {
   display: grid;
