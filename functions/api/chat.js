@@ -85,8 +85,16 @@ function classify(error) {
 //  - `ready` says whether the API key is actually bound, which is the one
 //    thing that cannot be diagnosed from outside when a POST comes back
 //    "unconfigured" — a missing secret and a rejected key look identical.
-export function onRequestGet({ env }) {
-  return json({ code: 'method_not_allowed', ready: Boolean(env.ANTHROPIC_API_KEY) }, 405)
+export function onRequestGet({ request, env }) {
+  const body = { code: 'method_not_allowed', ready: Boolean(env.ANTHROPIC_API_KEY) }
+  // TEMPORARY (2026-09-04): the secret is set in the dashboard but the Function
+  // cannot see it, and a typo in the name looks identical to a missing binding
+  // from outside. ?diag=1 lists binding NAMES only — never values — so the two
+  // can be told apart. Remove this branch once the key is wired.
+  if (new URL(request.url).searchParams.get('diag') === '1') {
+    body.bindings = Object.keys(env).sort()
+  }
+  return json(body, 405)
 }
 
 export async function onRequestPost({ request, env }) {
