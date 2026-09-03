@@ -85,20 +85,27 @@ function classify(error) {
 //  - `ready` says whether the API key is actually bound, which is the one
 //    thing that cannot be diagnosed from outside when a POST comes back
 //    "unconfigured" — a missing secret and a rejected key look identical.
-export function onRequestGet({ request, env }) {
-  const body = { code: 'method_not_allowed', ready: Boolean(env.ANTHROPIC_API_KEY) }
-  // TEMPORARY (2026-09-04): the secret is set in the dashboard but the Function
-  // cannot see it, and a typo in the name looks identical to a missing binding
-  // from outside. ?diag=1 lists binding NAMES only — never values — so the two
-  // can be told apart. Remove this branch once the key is wired.
-  if (new URL(request.url).searchParams.get('diag') === '1') {
-    body.bindings = Object.keys(env).sort()
+export function onRequestGet({ env }) {
+  return json({ code: 'method_not_allowed', ready: Boolean(apiKey(env)) }, 405)
+}
+
+// ANTHROPIC_API_KEY is the name to use. But Cloudflare's dashboard just asks
+// for a "name", with nothing on that screen to say it has to match what the
+// code reads — so a secret called something sensible like "ClaudeAIChat" binds
+// correctly, looks right in the dashboard, and reaches nothing. Falling back to
+// the value's shape means a well-meant name cannot silently disable the
+// assistant. Only an Anthropic key starts with sk-ant-.
+function apiKey(env) {
+  if (env.ANTHROPIC_API_KEY) return env.ANTHROPIC_API_KEY
+  for (const value of Object.values(env)) {
+    if (typeof value === 'string' && value.startsWith('sk-ant-')) return value
   }
-  return json(body, 405)
+  return null
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!env.ANTHROPIC_API_KEY) return json({ code: 'unconfigured' }, 503)
+  const key = apiKey(env)
+  if (!key) return json({ code: 'unconfigured' }, 503)
 
   let body
   try {
@@ -111,7 +118,7 @@ export async function onRequestPost({ request, env }) {
   if (messages.length === 0) return json({ code: 'bad_request' }, 400)
 
   const client = new Anthropic({
-    apiKey: env.ANTHROPIC_API_KEY,
+    apiKey: key,
     // One retry, not the default two: a budget error never succeeds on retry,
     // and a visitor should not wait through a long backoff.
     maxRetries: 1,

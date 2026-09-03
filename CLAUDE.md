@@ -310,8 +310,20 @@ BASE_PATH=/WA-Site/ npm run build
 
 | 場所 | 変数 | 値 |
 |---|---|---|
-| Cloudflare Pages の **Secret** | `ANTHROPIC_API_KEY` | Anthropic のキー |
-| Cloudflare Pages の **ビルド環境変数** | `VITE_API_BASE` | `/` ← **これが無いとUIがAPIを呼ばない** |
+| Cloudflare Pages の **Secret**（Production） | `ANTHROPIC_API_KEY` | Anthropic のキー |
+
+**これ1つだけ。** ビルド時の環境変数は不要（チャットの有無はページ読み込み時に
+`GET /api/chat` を叩いて実行時に判定する。`VITE_API_BASE` は analytics 用で、チャットとは無関係）。
+
+> ⚠ **Secret の名前でハマった実例（2026-09-04）。** ダッシュボードは「名前」を聞くだけで、
+> それがコード側の変数名と一致する必要があることを画面上どこにも書かない。
+> 用途が分かる名前（例 `ClaudeAIChat`）を付けると、**設定は正しく見えるのに Function には何も届かない。**
+> 対策として `functions/api/chat.js` の `apiKey()` は、名前で見つからなければ
+> **値が `sk-ant-` で始まる binding を探す**。名前を間違えても動く。
+> 新規に設定するなら `ANTHROPIC_API_KEY` を使うこと。
+
+> 💡 **切り分け方:** ブラウザで `/api/chat` を開くと `{"code":"method_not_allowed","ready":true/false}`
+> が返る。`ready` が鍵の結線状態を示すので、**外から自分で確認できる。**
 
 ローカル検証は `.dev.vars`（gitignore 済み）に鍵を置いて:
 
