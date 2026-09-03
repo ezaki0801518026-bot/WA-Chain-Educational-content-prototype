@@ -78,10 +78,15 @@ function classify(error) {
   return 'error'
 }
 
-// Without this a GET falls through to the static handler and returns the
-// SPA shell with a 200, which reads like a working endpoint when it isn't.
-export function onRequestGet() {
-  return json({ code: 'method_not_allowed' }, 405)
+// Doubles as the capability probe the chat page uses on load. Two jobs:
+//
+//  - Without it a GET falls through to the static handler and returns the SPA
+//    shell with a 200, which reads like a working endpoint when it isn't.
+//  - `ready` says whether the API key is actually bound, which is the one
+//    thing that cannot be diagnosed from outside when a POST comes back
+//    "unconfigured" — a missing secret and a rejected key look identical.
+export function onRequestGet({ env }) {
+  return json({ code: 'method_not_allowed', ready: Boolean(env.ANTHROPIC_API_KEY) }, 405)
 }
 
 export async function onRequestPost({ request, env }) {

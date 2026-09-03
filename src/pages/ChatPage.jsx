@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { submitForm } from '../formConfig.js'
-import { apiUrl, hasApi } from '../utils/api.js'
 import { track } from '../utils/analytics.js'
 import styles from './ChatPage.module.css'
 
@@ -20,6 +19,7 @@ const SAMPLES = [
 ]
 
 const MAX_CHARS = 2000
+const ENDPOINT = '/api/chat'
 
 const ERROR_KEYS = {
   budget: 'chatErrorBudget',
@@ -36,8 +36,8 @@ function lastUserQuestion(turns) {
 
 // "Ask a conservator" — the third product pillar.
 //
-// Two modes, chosen by whether a backend exists (src/utils/api.js):
-//   - With one (Cloudflare): the assistant answers from the course material.
+// Two modes, chosen by probing /api/chat on load:
+//   - With a backend (Cloudflare): the assistant answers from the material.
 //   - Without one (GitHub Pages, local dev): the original Wizard of Oz — the
 //     question is emailed to the team, who reply by hand.
 // The human route stays available in both, because the assistant is built to
@@ -50,7 +50,26 @@ function ChatPage() {
   const [error, setError] = useState('')
   const [escalating, setEscalating] = useState(false)
   const [email, setEmail] = useState('')
+  // null while probing, then true/false. Asking the endpoint whether it is
+  // there beats a build-time flag: the page then behaves correctly wherever
+  // it is served, with no environment variable to remember to set.
+  const [assistant, setAssistant] = useState(null)
   const threadEndRef = useRef(null)
+
+  useEffect(() => {
+    let cancelled = false
+    fetch(ENDPOINT, { method: 'GET' })
+      .then((response) => (response.status === 405 ? response.json() : null))
+      .then((data) => {
+        if (!cancelled) setAssistant(data?.code === 'method_not_allowed')
+      })
+      .catch(() => {
+        if (!cancelled) setAssistant(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   useEffect(() => {
     threadEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
@@ -73,7 +92,7 @@ function ChatPage() {
     track('chat_ask', {})
 
     try {
-      const response = await fetch(apiUrl('/api/chat'), {
+      const response = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
@@ -134,13 +153,14 @@ function ChatPage() {
   }
 
   const sending = phase === 'sending'
-  const showEscalation = !hasApi || escalating
+  const hasAssistant = assistant === true
+  const showEscalation = !hasAssistant || escalating
 
   return (
     <div className={styles.page}>
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('chatTitle')}</h1>
-        <p className={styles.description}>{hasApi ? t('chatIntroAi') : t('chatIntro')}</p>
+        <p className={styles.description}>{hasAssistant ? t('chatIntroAi') : t('chatIntro')}</p>
       </div>
 
       <div className={styles.thread}>
@@ -238,7 +258,7 @@ function ChatPage() {
           <button type="submit" className={styles.submit} disabled={sending}>
             {sending ? t('chatSending') : showEscalation ? t('chatSend') : t('chatAsk')}
           </button>
-          {hasApi && (
+          {hasAssistant && (
             <button
               type="button"
               className={styles.secondary}
@@ -250,7 +270,7 @@ function ChatPage() {
           )}
         </div>
 
-        <p className={styles.disclaimer}>{hasApi ? t('chatDisclaimerAi') : t('chatDisclaimer')}</p>
+        <p className={styles.disclaimer}>{hasAssistant ? t('chatDisclaimerAi') : t('chatDisclaimer')}</p>
       </form>
     </div>
   )
