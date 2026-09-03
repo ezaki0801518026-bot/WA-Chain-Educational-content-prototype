@@ -85,8 +85,23 @@ function classify(error) {
 //  - `ready` says whether the API key is actually bound, which is the one
 //    thing that cannot be diagnosed from outside when a POST comes back
 //    "unconfigured" — a missing secret and a rejected key look identical.
-export function onRequestGet({ env }) {
-  return json({ code: 'method_not_allowed', ready: Boolean(apiKey(env)) }, 405)
+export function onRequestGet({ request, env }) {
+  const body = {
+    code: 'method_not_allowed',
+    ready: Boolean(apiKey(env)),
+    // Which commit is actually serving. Cheap to expose (the repository is
+    // public) and it settles "did my change deploy?" without guesswork.
+    commit: (env.CF_PAGES_COMMIT_SHA || '').slice(0, 7),
+  }
+  // ?diag=1 lists binding NAMES only — never values — so a mistyped name, a
+  // variable set on the wrong environment, and a wrong project can be told
+  // apart from outside. Remove once the assistant is answering.
+  if (new URL(request.url).searchParams.get('diag') === '1') {
+    body.bindings = Object.keys(env).sort()
+    body.branch = env.CF_PAGES_BRANCH || null
+    body.url = env.CF_PAGES_URL || null
+  }
+  return json(body, 405)
 }
 
 // ANTHROPIC_API_KEY is the name to use. But Cloudflare's dashboard just asks
