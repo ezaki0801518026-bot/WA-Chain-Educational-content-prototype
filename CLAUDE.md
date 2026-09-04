@@ -342,6 +342,26 @@ npx wrangler pages dev dist --port 8788
 - `budget_tokens` は廃止。`thinking: {type:'adaptive'}` ＋ `output_config: {effort}` を使う
 - アシスタントのプリフィル不可、会話中の `role:'system'` も Sonnet 5 では不可
 
+### 応答はストリーミング（NDJSON）
+
+`POST /api/chat` は**改行区切りJSON**を流す。1行が1イベント。
+
+| 行 | 意味 |
+|---|---|
+| `{"t":"..."}` | 回答テキストの断片。届いた順に吹き出しへ追記する |
+| `{"done":true,"truncated":false,"usage":{...}}` | 完了。`truncated` は `max_tokens` に当たったか |
+| `{"code":"..."}` | 生成中に失敗。**HTTPステータスは200のまま**なので、必ず `code` を見る |
+
+- **鍵が無い・リクエストが不正**な場合だけは、従来どおり JSON ＋ 実ステータス（400/503）。
+  クライアントは `content-type` が `ndjson` かどうかで両者を判別する。
+- ストリームを cancel すると `stream.abort()` が走り、離脱後のトークン課金を止める。
+
+### 回答の書式
+
+**Markdown はレンダリングしない。** 吹き出しは `white-space: pre-wrap` の素のテキスト。
+`**太字**` を書かせると記号がそのまま出るので、人格定義側で「装飾なし・段落は空行・箇条書きは `- `」
+を指示している（`data/chat-persona.js` の FORMATTING）。ここを緩めると表示が崩れる。
+
 ### エラーコードの意味（`functions/api/chat.js` の `classify()`）
 
 | code | 原因 | UI の挙動 |
