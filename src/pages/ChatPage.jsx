@@ -179,21 +179,21 @@ function ChatPage() {
 
       <div className={styles.thread}>
         {turns.length === 0 && (
-          <>
+          <div className={styles.samples}>
             <p className={styles.sampleLabel}>{t('chatSampleLabel')}</p>
             {SAMPLES.map((sample, i) => (
-              <div key={`sample-${i}`} className={styles.exchange}>
-                <div className={`${styles.bubble} ${styles.bubbleYou}`}>
+              <div key={`sample-${i}`} className={`${styles.exchange} ${styles.sampleExchange}`}>
+                <div className={`${styles.bubble} ${styles.bubbleYou} ${styles.sampleBubble}`}>
                   <span className={styles.who}>{t('chatYou')}</span>
                   {sample.q}
                 </div>
-                <div className={`${styles.bubble} ${styles.bubbleExpert}`}>
+                <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.sampleBubble}`}>
                   <span className={styles.who}>{t('chatAssistant')}</span>
                   {sample.a}
                 </div>
               </div>
             ))}
-          </>
+          </div>
         )}
 
         {turns.map((turn, i) => {
