@@ -44,3 +44,7 @@ input/
 
 # wrangler local dev state
 .wrangler/
+
+# Local screenshot/measurement scratch (never commit)
+.shots/
+*.tmp.mjs
