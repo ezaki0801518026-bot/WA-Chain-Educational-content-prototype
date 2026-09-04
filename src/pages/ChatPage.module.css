@@ -48,6 +48,9 @@
 }
 
 .bubble {
+  /* Replies arrive as plain text with real line breaks in them. Without this
+     a list of three fibres collapses into one unreadable paragraph. */
+  white-space: pre-wrap;
   max-width: 85%;
   font-family: var(--font-body);
   font-size: 0.9375rem;
