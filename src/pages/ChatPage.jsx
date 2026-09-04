@@ -133,6 +133,7 @@ function ChatPage() {
       let buffer = ''
       let text = ''
       let code = null
+      let truncated = false
 
       for (;;) {
         const { done, value } = await reader.read()
@@ -151,6 +152,7 @@ function ChatPage() {
             continue // a line split across chunks is impossible here, but never throw on the visitor
           }
           if (event.code) code = event.code
+          if (event.done && event.truncated) truncated = true
           if (typeof event.t !== 'string') continue
           text += event.t
           // The bubble replaces the "looking through the material" notice as
@@ -161,7 +163,11 @@ function ChatPage() {
       }
 
       if (text) {
-        setTurns([...history, { role: 'assistant', content: text }])
+        setTurns([
+          ...history,
+          { role: 'assistant', content: text },
+          ...(truncated ? [{ role: 'system', content: t('chatTruncated') }] : []),
+        ])
       } else {
         fail(code || 'error')
       }

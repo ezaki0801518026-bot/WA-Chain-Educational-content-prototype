@@ -178,6 +178,9 @@ export async function onRequestPost({ request, env }) {
         controller.enqueue(
           line({
             done: true,
+            // The ceiling should not be reached, but if it is the reader is
+            // told rather than left with a sentence that stops mid-word.
+            truncated: final.stop_reason === 'max_tokens',
             usage: {
               input: final.usage?.input_tokens ?? 0,
               cacheRead: final.usage?.cache_read_input_tokens ?? 0,

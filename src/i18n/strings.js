@@ -349,6 +349,7 @@ const strings = {
     chatErrorBusy: 'The assistant is busy right now. Try again in a moment, or send the question to the team.',
     chatErrorUnavailable: 'The assistant is not available on this site. Send your question to the team and we’ll reply by email.',
     chatErrorGeneric: 'Something went wrong reaching the assistant. Send the question to the team and we’ll reply by email.',
+    chatTruncated: 'This answer reached its length limit and stops early. Ask a narrower question, or send it to the team.',
 
     // Updates / changelog page
     updatesTitle: 'Updates',
@@ -942,6 +943,7 @@ const strings = {
     chatErrorBusy: 'アシスタントが混み合っています。少し待って再試行するか、質問をチームに送ってください。',
     chatErrorUnavailable: 'このサイトではアシスタントを利用できません。質問をチームに送っていただければ、メールで回答します。',
     chatErrorGeneric: 'アシスタントに接続できませんでした。質問をチームに送っていただければ、メールで回答します。',
+    chatTruncated: 'この回答は長さの上限に達したため、途中で終わっています。質問を絞るか、チームに送ってください。',
 
     // Updates / changelog ページ
     updatesTitle: '更新情報',
