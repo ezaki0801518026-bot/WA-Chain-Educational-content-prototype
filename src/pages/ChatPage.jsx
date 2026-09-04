@@ -105,6 +105,9 @@ function ChatPage() {
     setTurns(history)
     track('chat_ask', {})
 
+    const fail = (code) =>
+      setTurns([...history, { role: 'assistant', content: t(ERROR_KEYS[code] || 'chatErrorGeneric'), code }])
+
     try {
       const response = await fetch(ENDPOINT, {
         method: 'POST',
@@ -113,18 +116,57 @@ function ChatPage() {
           messages: history.map(({ role, content }) => ({ role, content })),
         }),
       })
-      const data = await response.json().catch(() => ({}))
 
-      if (data.reply) {
-        setTurns([...history, { role: 'assistant', content: data.reply }])
+      // A guard rejected the request outright (no key, malformed body); those
+      // still answer in plain JSON with a real status.
+      if (!(response.headers.get('content-type') || '').includes('ndjson')) {
+        const data = await response.json().catch(() => ({}))
+        fail(data.code || 'error')
+        return
+      }
+
+      // The answer arrives as it is written. Each line is {t: "..."} for a
+      // piece of text, or {code: "..."} when the model call failed after the
+      // response had already begun.
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+      let text = ''
+      let code = null
+
+      for (;;) {
+        const { done, value } = await reader.read()
+        if (done) break
+        buffer += decoder.decode(value, { stream: true })
+
+        let newline
+        while ((newline = buffer.indexOf('\n')) !== -1) {
+          const raw = buffer.slice(0, newline).trim()
+          buffer = buffer.slice(newline + 1)
+          if (!raw) continue
+          let event
+          try {
+            event = JSON.parse(raw)
+          } catch {
+            continue // a line split across chunks is impossible here, but never throw on the visitor
+          }
+          if (event.code) code = event.code
+          if (typeof event.t !== 'string') continue
+          text += event.t
+          // The bubble replaces the "looking through the material" notice as
+          // soon as there is something to read.
+          setPhase('streaming')
+          setTurns([...history, { role: 'assistant', content: text, streaming: true }])
+        }
+      }
+
+      if (text) {
+        setTurns([...history, { role: 'assistant', content: text }])
       } else {
-        // Budget exhausted, upstream busy, or misconfigured — each gets its own
-        // message, and all of them point at the human route.
-        const key = ERROR_KEYS[data.code] || 'chatErrorGeneric'
-        setTurns([...history, { role: 'assistant', content: t(key), code: data.code || 'error' }])
+        fail(code || 'error')
       }
     } catch {
-      setTurns([...history, { role: 'assistant', content: t('chatErrorGeneric'), code: 'error' }])
+      fail('error')
     } finally {
       setPhase('idle')
     }
@@ -166,7 +208,9 @@ function ChatPage() {
     }
   }
 
-  const sending = phase === 'sending'
+  // Both states lock the form; only 'sending' shows the waiting notice,
+  // because once text is arriving the bubble itself is the progress.
+  const sending = phase !== 'idle'
   const hasAssistant = assistant === true
   const showEscalation = !hasAssistant || escalating
 
@@ -210,7 +254,7 @@ function ChatPage() {
               <div
                 className={`${styles.bubble} ${mine ? styles.bubbleYou : styles.bubbleExpert} ${
                   turn.code ? styles.bubbleNotice : ''
-                }`}
+                } ${turn.streaming ? styles.bubbleStreaming : ''}`}
               >
                 <span className={styles.who}>{mine ? t('chatYou') : t('chatAssistant')}</span>
                 {turn.content}
@@ -219,7 +263,7 @@ function ChatPage() {
           )
         })}
 
-        {sending && (
+        {phase === 'sending' && (
           <div className={styles.exchange}>
             <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.bubblePending}`}>
               {t('chatThinking')}

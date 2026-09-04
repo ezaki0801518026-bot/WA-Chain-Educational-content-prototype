@@ -233,3 +233,29 @@
   font-size: 0.5625rem;
   margin: 0 0.4rem 0 0;
 }
+
+/* A caret while the answer is still being written, so a pause mid-sentence
+   reads as "still going" rather than "finished, awkwardly". */
+.bubbleStreaming::after {
+  content: '';
+  display: inline-block;
+  width: 0.45em;
+  height: 1em;
+  margin-left: 0.15em;
+  vertical-align: -0.15em;
+  background: currentColor;
+  opacity: 0.55;
+  animation: caret 1s step-end infinite;
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubbleStreaming::after {
+    animation: none;
+  }
+}

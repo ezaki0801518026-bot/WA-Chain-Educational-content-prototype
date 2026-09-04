@@ -133,48 +133,80 @@ export async function onRequestPost({ request, env }) {
     maxRetries: 1,
   })
 
-  try {
-    const response = await client.messages.create({
-      model: CHAT_CONFIG.model,
-      max_tokens: CHAT_CONFIG.maxTokens,
-      // Adaptive thinking is what makes "the material does not cover this"
-      // reliable — the judgement it protects is exactly the one that matters.
-      thinking: { type: 'adaptive' },
-      output_config: { effort: CHAT_CONFIG.effort },
-      // One cached block: the persona and the whole course never change
-      // between requests, so every turn after the first reads them at a
-      // fraction of the price and they stop counting toward the rate limit.
-      system: [
-        {
-          type: 'text',
-          text: `${PERSONA}\n\nCOURSE MATERIAL\n${courseMaterial()}`,
-          cache_control: { type: 'ephemeral' },
-        },
-      ],
-      messages,
-    })
-
-    const reply = response.content
-      .filter((block) => block.type === 'text')
-      .map((block) => block.text)
-      .join('\n')
-      .trim()
-
-    if (!reply) return json({ code: 'error' }, 502)
-
-    return json({
-      reply,
-      usage: {
-        input: response.usage?.input_tokens ?? 0,
-        cacheRead: response.usage?.cache_read_input_tokens ?? 0,
-        cacheWrite: response.usage?.cache_creation_input_tokens ?? 0,
-        output: response.usage?.output_tokens ?? 0,
+  // Newline-delimited JSON rather than one reply: the answer starts appearing
+  // in about a second instead of after the whole thing is written. Each line is
+  // either {t: "..."} for a piece of text or {code: "..."} for a failure.
+  //
+  // Upstream failures cannot use a status code here — by the time Anthropic
+  // rejects the request this Response has already been handed to the runtime
+  // with a 200 — so they travel as a line in the stream and the browser reads
+  // the code, not the status. The guards above still answer with real statuses.
+  const stream = client.messages.stream({
+    model: CHAT_CONFIG.model,
+    max_tokens: CHAT_CONFIG.maxTokens,
+    // Adaptive thinking is what makes "the material does not cover this"
+    // reliable — the judgement it protects is exactly the one that matters.
+    thinking: { type: 'adaptive' },
+    output_config: { effort: CHAT_CONFIG.effort },
+    // One cached block: the persona and the whole course never change between
+    // requests, so every turn after the first reads them at a fraction of the
+    // price and they stop counting toward the rate limit.
+    system: [
+      {
+        type: 'text',
+        text: `${PERSONA}\n\nCOURSE MATERIAL\n${courseMaterial()}`,
+        cache_control: { type: 'ephemeral' },
       },
-    })
-  } catch (error) {
-    const code = classify(error)
-    // Logged for `wrangler pages deployment tail`; never returned to the browser.
-    console.error('chat failed', code, error?.status, error?.message)
-    return json({ code }, code === 'busy' || code === 'unconfigured' ? 503 : 502)
-  }
+    ],
+    messages,
+  })
+
+  const encoder = new TextEncoder()
+  const line = (value) => encoder.encode(`${JSON.stringify(value)}\n`)
+
+  const ndjson = new ReadableStream({
+    async start(controller) {
+      let wrote = false
+      try {
+        for await (const event of stream) {
+          if (event.type === 'content_block_delta' && event.delta?.type === 'text_delta') {
+            wrote = true
+            controller.enqueue(line({ t: event.delta.text }))
+          }
+        }
+        const final = await stream.finalMessage()
+        controller.enqueue(
+          line({
+            done: true,
+            usage: {
+              input: final.usage?.input_tokens ?? 0,
+              cacheRead: final.usage?.cache_read_input_tokens ?? 0,
+              cacheWrite: final.usage?.cache_creation_input_tokens ?? 0,
+              output: final.usage?.output_tokens ?? 0,
+            },
+          })
+        )
+        if (!wrote) controller.enqueue(line({ code: 'error' }))
+      } catch (error) {
+        const code = classify(error)
+        // Logged for `wrangler pages deployment tail`; the browser only sees the code.
+        console.error('chat failed', code, error?.status, error?.message)
+        controller.enqueue(line({ code }))
+      } finally {
+        controller.close()
+      }
+    },
+    cancel() {
+      // The visitor navigated away or hit stop. Abandon the generation rather
+      // than paying for tokens nobody will read.
+      stream.abort()
+    },
+  })
+
+  return new Response(ndjson, {
+    headers: {
+      'content-type': 'application/x-ndjson; charset=utf-8',
+      'cache-control': 'no-store',
+    },
+  })
 }
