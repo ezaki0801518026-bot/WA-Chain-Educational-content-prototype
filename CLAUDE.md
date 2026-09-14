@@ -247,6 +247,22 @@ ffmpeg -i 元.mp4 -vf scale=1280:-2 -c:v libx264 -crf 28 -preset medium \
 
 `-movflags +faststart` は**必須**（これがないと先頭のシークまで全体をダウンロードする）。
 
+### 再生コントロール（倍速・10秒移動）
+
+`src/components/PlaybackControls.jsx`。講義動画（`CourseVideoPage`）とセクション冒頭動画（`VideoPage`）の両方で使う。
+ブラウザ標準の `controls` は**残したまま**、下にツールバーを足す構成（シーク・音量・全画面・字幕は標準のほうが良い）。
+
+| 操作 | 内容 |
+|---|---|
+| 倍速 | 0.75〜2倍の6段階。`localStorage` の `wa-chain-playback-rate` に保存し、他の講義にも引き継ぐ |
+| ボタン | 10秒戻る／10秒進む（先頭・末尾で止まる） |
+| キー | ← → ／ J L で±10秒、K で再生停止、`<` `>` で速度を1段階変更。**全画面中も効く** |
+
+- **矢印キーを既にページ移動に使っているページでは `arrowKeys={false}` を渡す**（`VideoPage` は → で講義へ進むため）。
+- キー操作は **window の capture フェーズ**で受けている。動画要素にフォーカスがあると、ブラウザ標準の
+  5秒シークが先に走り、bubble フェーズの `preventDefault` では止まらず**二重にシークしていた**（+10のはずが+16）。
+  capture で `stopPropagation` して解消済み。ここを bubble に戻すと再発する。
+
 ---
 
 ## 10.6 ★配信先とパス（GitHub Pages 対応）

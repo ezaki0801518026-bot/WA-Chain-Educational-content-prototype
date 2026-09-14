@@ -1,9 +1,11 @@
+import { useRef } from 'react'
 import lessons from '../../data/lessons.json'
 import ProgressIndicator from '../components/ProgressIndicator.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { useArrowKeyNav } from '../hooks/useArrowKeyNav.js'
 import styles from './VideoPage.module.css'
 import { asset } from '../utils/asset.js'
+import PlaybackControls from '../components/PlaybackControls.jsx'
 
 // Optional section intro video, shown before the lesson when the section
 // data defines one (data/lessons.json section.video). Video → Lecture →
@@ -12,6 +14,7 @@ function VideoPage({ sectionId, onContinue }) {
   const { t } = useLanguage()
   const section = lessons.sections.find((s) => s.id === sectionId)
   const hasVideo = Boolean(section?.video)
+  const videoRef = useRef(null)
 
   // Hooks must run unconditionally on every render, so this sits above the
   // early return below.
@@ -31,6 +34,7 @@ function VideoPage({ sectionId, onContinue }) {
         <p className={styles.sectionTitle}>{section.title}</p>
         <div className={styles.playerWrapper}>
           <video
+            ref={videoRef}
             className={styles.player}
             controls
             preload="metadata"
@@ -38,6 +42,8 @@ function VideoPage({ sectionId, onContinue }) {
             aria-label={section.video.label}
           />
         </div>
+        {/* Arrows already mean "next page" here (useArrowKeyNav), so skip on J/L only. */}
+        <PlaybackControls videoRef={videoRef} arrowKeys={false} />
         <nav className={styles.nav}>
           <button type="button" className={styles.navButton} onClick={() => onContinue(sectionId)}>
             {t('continueToLecture')}

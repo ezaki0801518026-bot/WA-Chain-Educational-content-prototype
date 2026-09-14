@@ -1,0 +1,88 @@
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.25rem;
+  /* Flush against the player, with no top border, so it reads as part of
+     the video frame rather than a separate block below it. */
+  margin-top: 0;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+  border-top: none;
+  background: rgba(var(--accent-rgb), 0.04);
+}
+
+.skips {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.skip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font: inherit;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  padding: 0.35rem 0.6rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  cursor: pointer;
+}
+
+.skip:hover,
+.skip:focus-visible {
+  border-color: var(--accent);
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.rates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.rateLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: rgba(var(--accent-rgb), 0.95);
+  margin-right: 0.35rem;
+}
+
+.rate {
+  font: inherit;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 2.9rem;
+  padding: 0.3rem 0.45rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.rate:hover,
+.rate:focus-visible {
+  border-color: rgba(var(--accent-rgb), 0.4);
+}
+
+/* The speed in effect has to be readable at a glance from across a desk. */
+.rate[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.hint {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.7rem;
+  color: rgba(var(--accent-rgb), 0.85);
+}

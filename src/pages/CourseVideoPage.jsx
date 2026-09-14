@@ -4,6 +4,7 @@ import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { track } from '../utils/analytics.js'
 import styles from './CourseVideoPage.module.css'
 import { asset } from '../utils/asset.js'
+import PlaybackControls from '../components/PlaybackControls.jsx'
 
 const WATCH_KEY = 'wa-chain-watch'
 
@@ -96,6 +97,7 @@ function CourseVideoPage({ courseId, navigate }) {
           onEnded={() => writeWatch(course.id, 0)}
         />
       </div>
+      <PlaybackControls videoRef={videoRef} />
 
       {resumeFrom > 0 && !resumed && (
         <button type="button" className={styles.resume} onClick={jumpToResume}>
