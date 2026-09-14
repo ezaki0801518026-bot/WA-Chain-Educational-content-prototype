@@ -263,6 +263,24 @@ ffmpeg -i 元.mp4 -vf scale=1280:-2 -c:v libx264 -crf 28 -preset medium \
   5秒シークが先に走り、bubble フェーズの `preventDefault` では止まらず**二重にシークしていた**（+10のはずが+16）。
   capture で `stopPropagation` して解消済み。ここを bubble に戻すと再発する。
 
+### ★動画の Range 配信（`server/range.js`）
+
+**Cloudflare Pages の静的配信は Range リクエストを無視する**（実測：途中からの要求にも 200 でファイル全体を返し、
+`Accept-Ranges` も付かない）。ブラウザはこの状態だと**ダウンロード済みの範囲しかシークできない**ため、
+再開ボタン・±10秒・シークバーのドラッグがすべて本番で効かなかった。GitHub Pages は正しく 206 を返すので気づきにくい。
+
+- `functions/videos/[[path]].js` と `functions/video/[[path]].js` が動画パスだけを受け、206 を切り出して返す
+- **ファイルサイズはビルド時に `scripts/media-sizes.mjs` が `server/media-sizes.json` に書き出す**。
+  アセット側は `transfer-encoding: chunked` で Content-Length を返さず、実行時にサイズを知る方法が無いため
+- 表に無いパスは 404（しないと SPA の index.html が 200 で返る）
+- `npm run build` が自動で表を再生成する。**動画を追加・差し替えたら必ずビルドを通すこと**（表が古いと末尾が欠ける）
+
+確認コマンド（206 と `Content-Range` が返れば正常）:
+
+```bash
+curl -s -D - -o /dev/null -r 5000000-5001023 https://<サイト>/videos/course-kozo-provenance.mp4
+```
+
 ---
 
 ## 10.6 ★配信先とパス（GitHub Pages 対応）
