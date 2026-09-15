@@ -5,6 +5,7 @@ import { track } from '../utils/analytics.js'
 import styles from './CourseVideoPage.module.css'
 import { asset } from '../utils/asset.js'
 import PlaybackControls from '../components/PlaybackControls.jsx'
+import CourseReflection from '../components/CourseReflection.jsx'
 
 const WATCH_KEY = 'wa-chain-watch'
 
@@ -39,6 +40,12 @@ function CourseVideoPage({ courseId, navigate }) {
   const videoRef = useRef(null)
   const [resumeFrom, setResumeFrom] = useState(0)
   const [resumed, setResumed] = useState(false)
+  // The questions and the "your view" form open when the lecture ends. Only
+  // the real end scrolls the page to them; opening it from the entry button,
+  // or once playback is into the closing seconds, leaves the page where it is
+  // so nobody is yanked away from the last lines of the lecture.
+  const [reflectionOpen, setReflectionOpen] = useState(false)
+  const [reflectionScroll, setReflectionScroll] = useState(false)
 
   const course = coursesData.courses.find((c) => c.id === courseId)
   const pick = (field) => (field && (field[lang] ?? field.en)) || ''
@@ -59,6 +66,17 @@ function CourseVideoPage({ courseId, navigate }) {
   const onTimeUpdate = (e) => {
     const v = e.currentTarget
     if (!v.paused && Math.floor(v.currentTime) % 2 === 0) writeWatch(course.id, v.currentTime)
+    // Same "effectively finished" line the resume prompt uses.
+    if (!reflectionOpen && Number.isFinite(v.duration) && v.currentTime >= v.duration - 15) {
+      setReflectionOpen(true)
+    }
+  }
+
+  const onEnded = () => {
+    writeWatch(course.id, 0)
+    if (!reflectionScroll) setReflectionScroll(true)
+    if (!reflectionOpen) track('reflection_open', { section: course.id, detail: 'ended' })
+    setReflectionOpen(true)
   }
 
   const jumpToResume = () => {
@@ -94,7 +112,7 @@ function CourseVideoPage({ courseId, navigate }) {
           preload="metadata"
           playsInline
           onTimeUpdate={onTimeUpdate}
-          onEnded={() => writeWatch(course.id, 0)}
+          onEnded={onEnded}
         />
       </div>
       <PlaybackControls videoRef={videoRef} />
@@ -104,6 +122,14 @@ function CourseVideoPage({ courseId, navigate }) {
           {t('videoResumeFrom', { time: formatTime(resumeFrom) })}
         </button>
       )}
+
+      <CourseReflection
+        course={course}
+        videoRef={videoRef}
+        open={reflectionOpen}
+        onOpen={() => setReflectionOpen(true)}
+        autoScroll={reflectionScroll}
+      />
 
       <div className={styles.body}>
         <h2 className={styles.aboutHeading}>{t('videoAboutHeading')}</h2>

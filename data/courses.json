@@ -1,5 +1,5 @@
 {
-  "_comment": "Video courses shown on The Course page. Each entry plays a single lecture video. Add a course by appending an object here — no code change needed.",
+  "_comment": "Video courses shown on The Course page. Each entry plays a single lecture video. Add a course by appending an object here — no code change needed. Each course may carry a `reflection`: two keyword questions shown when the video ends (each with `rewatchAt`, seconds into THIS video file, for the jump back), then an open `prompt` asking for the viewer's own view. Timestamps are measured against the file actually served — re-measure them whenever a video is replaced.",
   "courses": [
     {
       "id": "kozo-provenance",
@@ -21,8 +21,122 @@
       "durationLabel": "10:23",
       "durationSeconds": 623,
       "topics": {
-        "en": ["Nasu", "Sekishū", "Tosa", "Awa", "Imported kōzo"],
-        "ja": ["那須", "石州", "土佐", "阿波", "輸入楮"]
+        "en": [
+          "Nasu",
+          "Sekishū",
+          "Tosa",
+          "Awa",
+          "Imported kōzo"
+        ],
+        "ja": [
+          "那須",
+          "石州",
+          "土佐",
+          "阿波",
+          "輸入楮"
+        ]
+      },
+      "reflection": {
+        "quiz": [
+          {
+            "id": "kozo-q1",
+            "keyword": {
+              "en": "Kōzo",
+              "ja": "楮"
+            },
+            "question": {
+              "en": "The lecture warns that “kōzo” is not a single plant. What is the difference between the kōzo cultivated in Japan and imported “Thai kōzo”?",
+              "ja": "講義では「楮は一種類の植物ではない」と注意していました。日本で栽培される楮と、輸入される「タイ楮」の違いは何でしょう。"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "They are the same species; only the processing differs.",
+                  "ja": "同じ種で、違うのは加工方法だけ"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Japanese cultivated kōzo is generally a hybrid of hime-kōzo and kajinoki; Thai kōzo is kajinoki alone.",
+                  "ja": "日本の栽培楮はヒメコウゾとカジノキの雑種が一般的で、タイ楮はカジノキのみ"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Thai kōzo is mitsumata sold under the kōzo name.",
+                  "ja": "タイ楮は、楮の名で流通している三椏である"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Thai kōzo is makōzo, the “true kōzo” of Iwami.",
+                  "ja": "タイ楮は、石見の「真楮」のことである"
+                }
+              }
+            ],
+            "correct": "b",
+            "explanation": {
+              "en": "Cultivated kōzo in Japan is generally a hybrid of hime-kōzo and kajinoki, while imported “Thai kōzo” is kajinoki alone — strictly a different line. A difference of species hides inside the one word, and it matters when you look for an equivalent paper. Makōzo is the old name for Sekishū kōzo.",
+              "ja": "日本で栽培される楮は、一般にヒメコウゾとカジノキの雑種です。一方、輸入の「タイ楮」はカジノキのみで、厳密には別の系統です。「楮」という一語の中に種の違いが隠れていて、同等の紙を探すときに効いてきます。なお「真楮」は石州楮の古い呼び名です。"
+            },
+            "rewatchAt": 194
+          },
+          {
+            "id": "kozo-q2",
+            "keyword": {
+              "en": "Tengujō",
+              "ja": "典具帖紙"
+            },
+            "question": {
+              "en": "Tosa's tengujō tissue is supplied specifically for cultural-property conservation. What is it known for?",
+              "ja": "土佐の典具帖紙は、文化財修復向けに供給されている紙です。何で知られているでしょう。"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Toughness from keeping the inner bark (ama-kawa).",
+                  "ja": "甘皮を残すことで生まれる強靭さ"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Being made only with kōzo from Daigo, Ibaraki.",
+                  "ja": "茨城県大子町の楮だけで漉かれていること"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Extreme thinness with strength — about 2.0 g/m², among the thinnest papers in the world.",
+                  "ja": "薄さと強さの両立。坪量約2.0 g/㎡で、世界で最も薄い部類の紙"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "A glossy, torinoko-like surface from gampi fibre.",
+                  "ja": "雁皮繊維による、鳥の子紙のような光沢"
+                }
+              }
+            ],
+            "correct": "c",
+            "explanation": {
+              "en": "Tosa kōzo's signature is thinness and strength together — “a mayfly's wing.” Tengujō reaches about 2.0 g/m² and is supplied for conservation. Keeping the inner bark (ama-kawa) is the hallmark of Sekishū, and Daigo kōzo is the material of honmino-shi and echizen hōsho.",
+              "ja": "土佐楮の特徴は、薄さと強さの両立です（「かげろうの羽」と呼ばれるほど）。典具帖紙は坪量約2.0 g/㎡に達し、文化財修復向けに供給されています。甘皮を残す製法は石州の特徴で、大子町の楮は本美濃紙や越前奉書の原料です。"
+            },
+            "rewatchAt": 374
+          }
+        ],
+        "prompt": {
+          "en": "Would knowing where a kōzo paper's fibre was grown change how you choose paper for a treatment? There is no right answer — we would like to hear what you think, and why.",
+          "ja": "その楮紙の原料がどこで育ったかを知ることは、あなたが修復で紙を選ぶときの判断を変えるでしょうか。正解はありません。考えと、その理由を聞かせてください。"
+        }
       }
     },
     {
@@ -42,11 +156,129 @@
       },
       "video": "/videos/course-three-fibers.mp4",
       "poster": "/images/hero/和紙の見本帳.jpg",
-      "durationLabel": "14:49",
-      "durationSeconds": 889,
+      "durationLabel": "16:13",
+      "durationSeconds": 973,
       "topics": {
-        "en": ["Kōzo", "Mitsumata", "Gampi", "Fibre length", "pH & permanence"],
-        "ja": ["楮", "三椏", "雁皮", "繊維長", "pHと保存性"]
+        "en": [
+          "Kōzo",
+          "Mitsumata",
+          "Gampi",
+          "Fibre length",
+          "pH & permanence"
+        ],
+        "ja": [
+          "楮",
+          "三椏",
+          "雁皮",
+          "繊維長",
+          "pHと保存性"
+        ]
+      },
+      "reflection": {
+        "quiz": [
+          {
+            "id": "fibers-q1",
+            "keyword": {
+              "en": "Kōzo",
+              "ja": "楮"
+            },
+            "question": {
+              "en": "Kōzo makes the strongest sheet of the three even when it is thin. According to the lecture, why?",
+              "ja": "楮は、薄くても三つの中で最も強い紙になります。講義によると、その理由は何でしょう。"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Its fibres are the widest of the three.",
+                  "ja": "三つの中で繊維が最も太いから"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "It contains the most lignin, which binds the fibres together.",
+                  "ja": "リグニンを最も多く含み、それが繊維をつなぐから"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Its fibre is by far the longest, so each fibre touches more neighbours and forms more hydrogen-bonding points.",
+                  "ja": "繊維が群を抜いて長く、隣の繊維と触れる点が多いため、水素結合の接点が増えるから"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "An adhesive is added in forming that the other two fibres do not need.",
+                  "ja": "漉くときに、他の二つには不要な接着剤を加えるから"
+                }
+              }
+            ],
+            "correct": "c",
+            "explanation": {
+              "en": "Washi becomes paper without adhesive, through hydrogen bonds between fibres. Kōzo averages about 9.4 mm against about 3 mm for mitsumata and gampi, so it has more contact points. Fibre width overlaps across all three (roughly 10–30 µm), and bast fibres contain less lignin than wood pulp.",
+              "ja": "和紙は接着剤を使わず、繊維同士の水素結合で紙になります。楮の繊維は平均約9.4 mmで、三椏・雁皮の約3 mmより長いため、接点が多くなります。繊維の太さは三つとも重なっていて（およそ10〜30 µm）、靭皮繊維は木材パルプよりリグニンが少ないのも特徴です。"
+            },
+            "rewatchAt": 370
+          },
+          {
+            "id": "fibers-q2",
+            "keyword": {
+              "en": "Gampi",
+              "ja": "雁皮"
+            },
+            "question": {
+              "en": "The lecture corrects a claim you may have heard: “gampi paper is acidic.” What does the measured data show?",
+              "ja": "講義では「雁皮紙は酸性である」という説を訂正していました。測定データは何を示していたでしょう。"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Mitsumata and gampi papers measured about pH 6.6–8.6 — neutral to mildly alkaline, like kōzo paper.",
+                  "ja": "三椏・雁皮紙は pH 約6.6〜8.6。楮紙と同じく中性〜弱アルカリ性の範囲だった"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Gampi paper is the most acidic of the three, below pH 5.",
+                  "ja": "雁皮紙は三つの中で最も酸性で、pH 5を下回る"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Only burnished gampi paper turns acidic.",
+                  "ja": "打ち（仕上げ）を施した雁皮紙だけが酸性になる"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "No measurements exist, so the claim cannot be checked.",
+                  "ja": "測定値が存在しないため、確かめようがない"
+                }
+              }
+            ],
+            "correct": "a",
+            "explanation": {
+              "en": "Traditionally made washi keeps a little alkali from cooking. Measured values put kōzo paper at pH 6.3–9.5 and mitsumata and gampi paper at 6.6–8.6, all neutral to mildly alkaline — so “gampi paper is acidic” conflicts with the data. What mainly drives embrittlement is acidity, not lignin itself.",
+              "ja": "伝統的な製法の和紙は、煮熟に使うアルカリがわずかに残ります。測定値は楮紙が pH 6.3〜9.5、三椏・雁皮紙が 6.6〜8.6 で、どれも中性〜弱アルカリ性。「雁皮紙は酸性」という説はこのデータと食い違います。紙がもろくなる主な原因は、リグニンそのものより酸性度です。"
+            },
+            "rewatchAt": 460
+          }
+        ],
+        "prompt": {
+          "en": "In your own work, which of the three fibres do you reach for most — and after this lecture, is there a situation where you would now choose differently? There is no right answer; we would like to hear your view.",
+          "ja": "普段の仕事で、三つの原料のうちどれを最もよく使いますか。この講義を見て、選び方を変えたくなった場面はありますか。正解はありません。あなたの考えを聞かせてください。"
+        },
+        "hint": {
+          "en": "If you have the washi sampler, feel free to include what you noticed in your hands.",
+          "ja": "和紙サンプルがお手元にあれば、手に取って気づいたことも書いてみてください。"
+        }
       }
     }
   ]
