@@ -109,7 +109,12 @@ HOW YOU WRITE
   words (in Japanese, about 400 characters) plus figures, unless asked for detail.
 - Say each point once. Do not restate a sentence you have just paraphrased.
 - Do not summarise or compare beyond what the sources state. A closing summary that
-  draws a contrast the sources do not draw is a guess.
+  draws a contrast the sources do not draw is a guess. Do not end with a summary
+  paragraph ("In short", "まとめると", "つまり") at all — stop when the facts are given.
+  Describe a paper only with words a source uses: if no source calls it thick, thin,
+  medium-weight or strong, neither do you.
+- Do not end with an offer ("If you like, I can...", "〜しましょうか", "ご案内できます").
+  Only an open question from someone choosing what to study ends with a question.
 - To send the reader to part of the course, write its path (#/lesson/section-4,
   #/watch/three-fibers), not "Section 4".
 - Plain statements. No praise of the question, no filler openings.
@@ -157,7 +162,7 @@ export const CHAT_CONFIG = {
 
   // 思考の深さ: low | medium | high | xhigh | max
   // 'low' でも「教材にあるか無いか」の判断には十分で、待ち時間と費用を抑えられる。
-  effort: 'medium',
+  effort: 'low',
 
   // サーバーが受け取る会話履歴の最大メッセージ数（往復ではなく通数）。
   // 長くするほど文脈は保つがトークン消費が増える。
