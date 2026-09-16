@@ -10,7 +10,7 @@
 // The persona lives in data/chat-persona.js. Edit that file, not this one.
 
 import { PERSONA, CHAT_CONFIG } from '../../data/chat-persona.js'
-import { courseDocuments } from '../../data/chat-corpus.js'
+import { courseDocuments, courseMap } from '../../data/chat-corpus.js'
 
 const API = 'https://api.anthropic.com/v1/messages'
 
@@ -40,8 +40,9 @@ function sanitiseMessages(input) {
   return out
 }
 
-// The course travels as documents with citations switched on, attached to the
-// first user turn (documents cannot go in the system prompt). Every answer
+// The course and WA-Chain's research travel as documents with citations
+// switched on, attached to the first user turn (documents cannot go in the
+// system prompt). Every answer
 // then carries machine-checked pointers to the passages it used, and the page
 // shows those instead of trusting the model to write "(Section 4)" correctly.
 //
@@ -117,20 +118,26 @@ export async function onRequestPost({ request, env }) {
   const messages = sanitiseMessages(body?.messages)
   if (messages.length === 0) return json({ code: 'bad_request' }, 400)
 
-  const payload = JSON.stringify({
-    model: CHAT_CONFIG.model,
-    max_tokens: CHAT_CONFIG.maxTokens,
-    stream: true,
-    // Adaptive thinking is what makes "the material does not cover this"
-    // reliable — the judgement it protects is exactly the one that matters.
-    // The thinking itself is not shown, and not sent to the browser.
-    thinking: { type: 'adaptive', display: 'omitted' },
-    output_config: { effort: CHAT_CONFIG.effort },
-    system: PERSONA,
-    messages: withCourse(messages),
-  })
+  const request_ = (withSearch) =>
+    JSON.stringify({
+      model: CHAT_CONFIG.model,
+      max_tokens: CHAT_CONFIG.maxTokens,
+      stream: true,
+      // Adaptive thinking is what makes "the material does not cover this"
+      // reliable — the judgement it protects is exactly the one that matters.
+      // The thinking itself is not shown, and not sent to the browser.
+      thinking: { type: 'adaptive', display: 'omitted' },
+      output_config: { effort: CHAT_CONFIG.effort },
+      // Anthropic runs the search itself; results come back inside the same
+      // stream, with citations that carry the page address.
+      ...(withSearch && CHAT_CONFIG.webSearches > 0
+        ? { tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: CHAT_CONFIG.webSearches }] }
+        : {}),
+      system: `${PERSONA}\n\nCOURSE MAP\n${courseMap()}`,
+      messages: withCourse(messages),
+    })
 
-  const call = () =>
+  const call = (withSearch = true) =>
     fetch(API, {
       method: 'POST',
       headers: {
@@ -138,12 +145,23 @@ export async function onRequestPost({ request, env }) {
         'anthropic-version': '2023-06-01',
         'content-type': 'application/json',
       },
-      body: payload,
+      body: request_(withSearch),
     })
 
   let upstream
   try {
     upstream = await call()
+    // Web search has to be switched on for the organisation in the Claude
+    // Console. If it is off, answer without it rather than not at all.
+    if (upstream.status === 400) {
+      const detail = await upstream.text()
+      if (/web.?search/i.test(detail)) {
+        console.error('chat: web search unavailable, answering without it', detail.slice(0, 300))
+        upstream = await call(false)
+      } else {
+        upstream = new Response(detail, { status: 400 })
+      }
+    }
     // One retry, not more: a budget error never succeeds on retry, and a
     // visitor should not wait through a long backoff.
     if (upstream.status === 429 || upstream.status >= 500) {

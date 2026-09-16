@@ -1,0 +1,185 @@
+/* Figures inside an assistant reply. The bubble is white-space: pre-wrap for
+   the prose, so every figure resets to normal wrapping first. */
+.figure {
+  white-space: normal;
+  margin: 0.75rem 0;
+  padding: 0.6rem 0.7rem 0.7rem;
+  background: var(--bg);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 6px;
+}
+
+.title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.refs {
+  font-size: 0.7em;
+  font-weight: normal;
+  margin-left: 0.2em;
+}
+
+.note {
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+/* table ----------------------------------------------------------------- */
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.18);
+}
+
+.table thead th {
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom-color: rgba(var(--accent-rgb), 0.4);
+}
+
+.table tbody th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* bars and ranges -------------------------------------------------------- */
+/* One grid for the whole figure, rows as display: contents, so every track
+   starts and ends at the same place whatever the label and value widths. */
+.bars,
+.ranges {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  /* No media query (site rule: one breakpoint, 768px): the label column is
+     capped so the track keeps room even in a phone-width bubble. */
+  grid-template-columns: minmax(3.5rem, 7.5rem) 1fr auto;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+  font-size: 0.8125rem;
+}
+
+.barRow,
+.rangeRow,
+.axisRow {
+  display: contents;
+}
+
+.barLabel {
+  overflow-wrap: anywhere;
+}
+
+.barTrack,
+.rangeTrack {
+  position: relative;
+  height: 0.7rem;
+  background: rgba(var(--accent-rgb), 0.12);
+  border-radius: 2px;
+}
+
+.barFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--track-foundations);
+  border-radius: 2px;
+}
+
+.rangeFill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 3px;
+  background: var(--track-foundations);
+  border-radius: 2px;
+}
+
+.marker {
+  position: absolute;
+  top: -0.2rem;
+  bottom: -0.2rem;
+  width: 1px;
+  background: var(--seal);
+  z-index: 1;
+}
+
+.barValue {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  font-size: 0.75rem;
+}
+
+.axis {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.axisMarker {
+  position: absolute;
+  transform: translateX(-50%);
+  color: var(--seal);
+  white-space: nowrap;
+}
+
+/* routes ----------------------------------------------------------------- */
+.routes {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.route {
+  padding: 0.5rem 0.6rem;
+  border-left: 3px solid var(--track-foundations);
+  background: rgba(var(--accent-rgb), 0.06);
+}
+
+.routeName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.routeFit {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin: 0.1rem 0 0.3rem;
+}
+
+.routeSteps {
+  margin: 0;
+  padding-left: 1.3rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.routeSteps a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--accent-rgb), 0.5);
+  text-underline-offset: 2px;
+}

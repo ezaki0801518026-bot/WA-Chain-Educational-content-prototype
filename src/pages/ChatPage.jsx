@@ -5,33 +5,88 @@ import { track } from '../utils/analytics.js'
 import { setSectionStep } from '../utils/progress.js'
 import { readAnswer } from '../utils/chatStream.js'
 import { sourceFor } from '../../data/chat-corpus.js'
+import ChatVisual from '../components/ChatVisual.jsx'
 import styles from './ChatPage.module.css'
 
 // Example exchanges, shown under the input before the first question so an
 // observer sees what the assistant is for. Content stays in English, like the
 // lesson material (course content is never localised — only UI chrome).
 //
-// Written the way a real answer comes back: every claim is from the course,
-// and the sources are real passages looked up with sourceFor(document, block)
-// — block 0 is a section's overview, block N its step N.
+// Written the way a real answer comes back: every claim is from the course or
+// WA-Chain's research, and each source is a real passage looked up with
+// sourceFor(document, block) — see data/chat-corpus.js for the numbering
+// (documents 0–4 are Sections 1–5, then one per research topic).
+const sample = (q, segments, sources) => ({
+  q,
+  answer: { segments, sources: sources.map((source, i) => ({ ...source, n: i + 1 })), searched: [], searching: '' },
+})
+
 const SAMPLES = [
-  {
-    q: 'Which fiber suits a thin repair paper where no bulk can be added?',
-    parts: [
-      { text: 'The material points to gampi: its short, smooth, dense fiber is prized for thin, refined repair papers where bulk cannot be added.', refs: [1] },
-      { text: ' It also puts identifying the fiber of the original first, before any repair material is chosen.', refs: [2] },
+  sample(
+    'I mostly work with Western paper. Where should I start with washi?',
+    [
+      { type: 'text', parts: [{ text: 'That depends on what you need first. Two ways in:', refs: [] }] },
+      {
+        type: 'visual',
+        refs: [],
+        spec: {
+          type: 'routes',
+          routes: [
+            {
+              name: 'Choosing a repair paper',
+              fit: 'You need to pick, and trust, a tissue soon',
+              steps: [
+                { title: 'Washi Is Not a Single Type of Paper', link: '#/watch/three-fibers', note: '16 min' },
+                { title: 'Section 4: The Raw Materials of Washi', link: '#/lesson/section-4' },
+              ],
+            },
+            {
+              name: 'Why washi treatments are reversible',
+              fit: 'You want the principles behind lining and its removal',
+              steps: [
+                { title: 'Section 1: Sōkō and Reversibility', link: '#/lesson/section-1' },
+                { title: 'Section 3: Hydrogen Bonding', link: '#/lesson/section-3' },
+              ],
+            },
+          ],
+        },
+      },
+      { type: 'text', parts: [{ text: 'Which is closer to your work right now?', refs: [] }] },
     ],
-    sources: [sourceFor(3, 3), sourceFor(3, 9)],
-  },
-  {
-    q: 'Is gampi paper acidic?',
-    parts: [
-      { text: 'No. Measured values put mitsumata and gampi paper at pH 6.6–8.6, the same neutral-to-mildly-alkaline band as kōzo paper at 6.3–9.5.', refs: [1] },
-      { text: ' Any repair paper must itself be neutral to weakly alkaline, so each sheet is judged by measurement, not by its fiber.', refs: [2] },
+    []
+  ),
+  sample(
+    'Is gampi paper acidic?',
+    [
+      {
+        type: 'text',
+        parts: [
+          {
+            text: 'No. Measured values put gampi and mitsumata paper at pH 6.6–8.6, the same neutral-to-mildly-alkaline band as kōzo paper.',
+            refs: [1],
+          },
+          { text: ' WA-Chain checked the claim that gampi paper is acidic and found no independent support for it.', refs: [2] },
+        ],
+      },
+      {
+        type: 'visual',
+        refs: [1],
+        spec: {
+          type: 'ranges',
+          title: 'Measured pH of washi',
+          min: 5,
+          max: 10,
+          marker: { value: 7, label: 'neutral' },
+          items: [
+            { label: 'Kōzo paper', from: 6.3, to: 9.5 },
+            { label: 'Gampi, mitsumata', from: 6.6, to: 8.6 },
+          ],
+        },
+      },
     ],
-    sources: [sourceFor(3, 3), sourceFor(1, 7)],
-  },
-].map((sample) => ({ ...sample, sources: sample.sources.map((source, i) => ({ ...source, n: i + 1 })) }))
+    [sourceFor(3, 3), sourceFor(6, 1)]
+  ),
+]
 
 const MAX_CHARS = 2000
 const ENDPOINT = '/api/chat'
@@ -43,11 +98,40 @@ const ERROR_KEYS = {
   unconfigured: 'chatErrorUnavailable',
 }
 
+const external = { target: '_blank', rel: 'noopener noreferrer' }
+
 function lastUserQuestion(turns) {
   for (let i = turns.length - 1; i >= 0; i -= 1) {
     if (turns[i].role === 'user') return turns[i].content
   }
   return ''
+}
+
+function hostOf(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return ''
+  }
+}
+
+// Addresses the assistant writes — a web page, or a page on this site — are
+// made clickable. Anything else stays text.
+const LINK = /(https?:\/\/[^\s<>()（）「」、。]+|#\/(?:watch|lesson|course|glossary|washi-map|tour)(?:\/[\w-]+)?)/g
+
+function Linked({ text }) {
+  return text.split(LINK).map((piece, i) => {
+    if (i % 2 === 0) return piece
+    const href = piece.replace(/[.,;:]+$/, '')
+    return (
+      <span key={i}>
+        <a className={styles.inlineLink} href={href} {...(href.startsWith('http') ? external : {})}>
+          {href}
+        </a>
+        {piece.slice(href.length)}
+      </span>
+    )
+  })
 }
 
 // Footnote markers go before any line break that ends the text, so "…9.5.[1]"
@@ -58,7 +142,7 @@ function AnswerText({ parts }) {
     const tail = part.text.slice(body.length)
     return (
       <span key={i}>
-        {body}
+        <Linked text={body} />
         {part.refs.length > 0 && <sup className={styles.ref}>[{part.refs.join(', ')}]</sup>}
         {tail}
       </span>
@@ -66,6 +150,9 @@ function AnswerText({ parts }) {
   })
 }
 
+// Three kinds of source, each labelled so the reader knows what stands behind
+// a claim: the course itself, WA-Chain's own checked research, or a page from
+// the open web that WA-Chain has not checked.
 function SourceList({ sources }) {
   const { t } = useLanguage()
   if (!sources?.length) return null
@@ -79,19 +166,53 @@ function SourceList({ sources }) {
       /* storage blocked: the lesson opens at its first step */
     }
   }
+  const quote = (source) => (source.quote ? source.quote.slice(0, 280) : undefined)
   return (
     <div className={styles.sources}>
       <p className={styles.sourcesLabel}>{t('chatSources')}</p>
       <ol className={styles.sourceList}>
         {sources.map((source) => (
           <li key={source.n} value={source.n}>
-            <a
-              href={`#/lesson/${source.sectionId}`}
-              onClick={() => open(source)}
-              title={source.quote ? source.quote.slice(0, 280) : undefined}
-            >
-              Section {source.sectionNumber} · {source.stepHeading ?? source.sectionTitle}
-            </a>
+            {source.kind === 'course' && (
+              <>
+                <span className={styles.kind}>{t('chatSourceCourse')}</span>
+                <a href={`#/lesson/${source.sectionId}`} onClick={() => open(source)} title={quote(source)}>
+                  Section {source.sectionNumber} · {source.stepHeading ?? source.sectionTitle}
+                </a>
+              </>
+            )}
+            {source.kind === 'research' && (
+              <>
+                <span className={`${styles.kind} ${styles.kindResearch}`}>{t('chatSourceResearch')}</span>
+                <span title={quote(source)}>{source.factTitle}</span>
+                {source.references?.length > 0 && (
+                  <span className={styles.references}>
+                    {' — '}
+                    {source.references.map((ref, i) => (
+                      <span key={i}>
+                        {i > 0 && '; '}
+                        {ref.url ? (
+                          <a href={ref.url} {...external}>
+                            {ref.label}
+                          </a>
+                        ) : (
+                          ref.label
+                        )}
+                      </span>
+                    ))}
+                  </span>
+                )}
+              </>
+            )}
+            {source.kind === 'web' && (
+              <>
+                <span className={`${styles.kind} ${styles.kindWeb}`}>{t('chatSourceWeb')}</span>
+                <a href={source.url} {...external} title={quote(source)}>
+                  {source.title}
+                </a>
+                <span className={styles.host}> {hostOf(source.url)}</span>
+              </>
+            )}
           </li>
         ))}
       </ol>
@@ -99,18 +220,66 @@ function SourceList({ sources }) {
   )
 }
 
+// When a search ran but no page from it was cited, the pages it found are
+// still listed, so the reader can follow them up.
+function SearchedList({ pages }) {
+  const { t } = useLanguage()
+  if (!pages?.length) return null
+  return (
+    <div className={styles.sources}>
+      <p className={styles.sourcesLabel}>{t('chatSearched')}</p>
+      <ul className={styles.sourceList}>
+        {pages.map((page) => (
+          <li key={page.url}>
+            <a href={page.url} {...external}>
+              {page.title}
+            </a>
+            <span className={styles.host}> {hostOf(page.url)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function AnswerBody({ answer }) {
+  const { t } = useLanguage()
+  return (
+    <>
+      {answer.segments.map((segment, i) => {
+        if (segment.type === 'text') return <AnswerText key={i} parts={segment.parts} />
+        if (segment.type === 'visual') return <ChatVisual key={i} spec={segment.spec} refs={segment.refs} />
+        return (
+          <span key={i} className={styles.status}>
+            {t('chatDrawing')}
+          </span>
+        )
+      })}
+      {answer.searching && (
+        <span className={styles.status}>
+          {t('chatSearching')}
+          {answer.searching.trim() && ` — ${answer.searching.trim()}`}
+        </span>
+      )}
+      <SourceList sources={answer.sources} />
+      <SearchedList pages={answer.searched} />
+    </>
+  )
+}
+
 // "Ask a conservator" — the third product pillar.
 //
 // Two modes, chosen by probing /api/chat on load:
-//   - With a backend (Cloudflare): the assistant answers from the material.
+//   - With a backend (Cloudflare): the assistant answers from the course,
+//     WA-Chain's research and, when needed, the web.
 //   - Without one (GitHub Pages, local dev): the original Wizard of Oz — the
 //     question is emailed to the team, who reply by hand.
 // The human route stays available in both, because the assistant is built to
 // refuse rather than guess, and a refusal needs somewhere to go.
 function ChatPage() {
   const { t } = useLanguage()
-  // { role, content, parts?, sources?, code?, streaming? } — content is the
-  // plain text, which is what is replayed to the model as history.
+  // { role, content, answer?, code?, streaming? } — content is the plain
+  // text, which is what is replayed to the model as history.
   const [turns, setTurns] = useState([])
   const [question, setQuestion] = useState('')
   const [phase, setPhase] = useState('idle') // idle | sending | streaming | error
@@ -196,11 +365,11 @@ function ChatPage() {
         }
 
         const { answer, truncated, code } = await readAnswer(response, (sofar) => {
-          if (!sofar.text) return
+          if (!sofar.text && !sofar.searching) return
           // The bubble replaces the "looking through the material" notice as
-          // soon as there is something to read.
+          // soon as there is something to read, or a search to report.
           setPhase('streaming')
-          setTurns([...history, { role: 'assistant', content: sofar.text, parts: sofar.parts, streaming: true }])
+          setTurns([...history, { role: 'assistant', content: sofar.text, answer: sofar, streaming: true }])
         })
 
         if (!answer.text) {
@@ -210,7 +379,7 @@ function ChatPage() {
         const notice = truncated ? 'chatTruncated' : code ? 'chatInterrupted' : null
         setTurns([
           ...history,
-          { role: 'assistant', content: answer.text, parts: answer.parts, sources: answer.sources },
+          { role: 'assistant', content: answer.text, answer },
           ...(notice ? [{ role: 'system', content: t(notice) }] : []),
         ])
       } catch {
@@ -306,11 +475,10 @@ function ChatPage() {
                 <div
                   className={`${styles.bubble} ${mine ? styles.bubbleYou : styles.bubbleExpert} ${
                     turn.code ? styles.bubbleNotice : ''
-                  } ${turn.streaming ? styles.bubbleStreaming : ''}`}
+                  } ${turn.streaming ? styles.bubbleStreaming : ''} ${turn.answer ? styles.bubbleAnswer : ''}`}
                 >
                   <span className={styles.who}>{mine ? t('chatYou') : t('chatAssistant')}</span>
-                  {turn.parts ? <AnswerText parts={turn.parts} /> : turn.content}
-                  {turn.sources && <SourceList sources={turn.sources} />}
+                  {turn.answer ? <AnswerBody answer={turn.answer} /> : turn.content}
                 </div>
               </div>
             )
@@ -395,16 +563,15 @@ function ChatPage() {
       {turns.length === 0 && phase === 'idle' && (
         <div className={styles.samples}>
           <p className={styles.sampleLabel}>{t('chatSampleLabel')}</p>
-          {SAMPLES.map((sample, i) => (
+          {SAMPLES.map((example, i) => (
             <div key={`sample-${i}`} className={`${styles.exchange} ${styles.sampleExchange}`}>
               <div className={`${styles.bubble} ${styles.bubbleYou} ${styles.sampleBubble}`}>
                 <span className={styles.who}>{t('chatYou')}</span>
-                {sample.q}
+                {example.q}
               </div>
-              <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.sampleBubble}`}>
+              <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.sampleBubble} ${styles.bubbleAnswer}`}>
                 <span className={styles.who}>{t('chatAssistant')}</span>
-                <AnswerText parts={sample.parts} />
-                <SourceList sources={sample.sources} />
+                <AnswerBody answer={example.answer} />
               </div>
             </div>
           ))}

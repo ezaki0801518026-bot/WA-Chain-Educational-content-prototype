@@ -325,3 +325,66 @@
 .sampleBubble .sourceList {
   font-size: 0.75rem;
 }
+
+/* Research, web and figures (2026-09-17) ---------------------------------- */
+/* Answers can carry a chart or table, which needs more of the width. */
+.bubbleAnswer {
+  max-width: 94%;
+}
+
+.inlineLink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--accent-rgb), 0.5);
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+
+/* "Searching the web — …" / "Drawing a figure…" while the reply is written. */
+.status {
+  display: block;
+  white-space: normal;
+  margin: 0.4rem 0;
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* Which kind of source a numbered entry is. Colour follows the trust order:
+   the course in the house colour, WA-Chain research in its own, the open web
+   plain — it has not been checked by anyone at WA-Chain. */
+.kind {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0 0.3rem;
+  margin-right: 0.35rem;
+  border-radius: 2px;
+  color: var(--bg);
+  background: var(--track-foundations);
+  vertical-align: 0.1em;
+}
+
+.kindResearch {
+  background: var(--track-diagnostics);
+}
+
+.kindWeb {
+  color: var(--text);
+  background: transparent;
+  border: 1px solid rgba(var(--accent-rgb), 0.5);
+}
+
+.references {
+  color: var(--accent);
+}
+
+.references a {
+  color: var(--accent);
+}
+
+.host {
+  font-size: 0.6875rem;
+  color: var(--accent);
+}
