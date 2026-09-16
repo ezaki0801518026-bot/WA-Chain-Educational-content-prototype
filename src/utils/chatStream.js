@@ -102,7 +102,9 @@ export function assemble(blocks) {
         if (!refs.includes(n)) refs.push(n)
       }
     }
-    parts.push({ text: block.text, refs: refs.sort((a, b) => a - b) })
+    // Nothing renders Markdown here, and the persona says so, but a stray
+    // **bold** still slips through now and then — never show the asterisks.
+    parts.push({ text: block.text.replace(/\*\*/g, ''), refs: refs.sort((a, b) => a - b) })
   }
 
   return { parts, sources, text: parts.map((part) => part.text).join('') }
