@@ -372,6 +372,8 @@ BASE_PATH=/WA-Site/ npm run build
 | サーバー側の処理 | `functions/api/chat.js` |
 | チャット画面 | `src/pages/ChatPage.jsx` |
 | 教材→document 変換と出典番号の対応 | `data/chat-corpus.js`（Worker とブラウザ共用） |
+| **WA-Chain調べ（AIが根拠にする事実）** | **`data/wa-chain-facts.json`** |
+| 回答内の図（表・棒・範囲・学習ルート） | `src/components/ChatVisual.jsx` |
 | ストリームの読み取り・出典の組み立て | `src/utils/chatStream.js` |
 | トップページの入口（質問入力欄） | `src/pages/HubPage.jsx` の `.ask` ブロック |
 
@@ -380,12 +382,27 @@ BASE_PATH=/WA-Site/ npm run build
 
 ### 設計の要点
 
-- **参照範囲は自社教材のみ。** `data/lessons.json` の公開中セクション（約11,400トークン）を
-  **全文、Citations 付きの document として最初の user ターンに入れてキャッシュ**している。
-  検索（RAG）は無い。教材を足せば自動で参照範囲に入る。
+- **根拠は3段（人格 v2, 2026-09-16〜）。信頼度の順に:**
+  1. **教材** `data/lessons.json` の公開中セクション
+  2. **WA-Chain調べ** `data/wa-chain-facts.json` — WA-Chain がファクトチェック済みの事実だけを
+     自分の言葉で書いたもの（トピック＝document、事実＝block、各事実に `sources`（リンク）と `confidence`）。
+     回答の出典欄には「WA-Chain調べ」ラベル＋元の出典リンクが出る。
+     **調査で新しく裏取りした事実はここに足す**（id は変えない。book の書き起こしは入れない）。
+  3. **Web検索** — Anthropic のサーバーツール `web_search_20250305`（`CHAT_CONFIG.webSearches` 回まで、0で停止）。
+     引用された Web ページは「Web」ラベル＋リンク、引用なしで検索だけした場合は「検索で見つかったページ」。
+  1・2 は全文を Citations 付き document として最初の user ターンに入れてキャッシュ（約22,500トークン）。
   **`docs/sources/` の書籍書き起こしは絶対に参照させない**（他者の著作物）。
-- **「教材に無い」と答えるのが正しい振る舞い。** 推測で埋めさせない。
+- **どれにも無ければ「無い」と答えるのが正しい振る舞い。** 推測・記憶で埋めさせない（名前も含む）。
   答えられないときは既存の人間へのエスカレーション（メール送信）に渡す。
+- **漠然とした質問 → 学習ルート。** システムプロンプト末尾の `COURSE MAP`（`chat-corpus.js` の `courseMap()`、
+  courses.json と lessons.json から自動生成）にある講義・レッスンだけを使って2〜3ルートを図で示す。
+- **図示。** モデルが `<visual>{JSON}</visual>` を書き、`chatStream.js` が切り出し、
+  `src/components/ChatVisual.jsx` が描く（table / bars / ranges / routes の4種、値は検証・件数上限・
+  リンクは `#/…` と https のみ）。書きかけの `<visual>` は「図を作成しています…」で隠す。
+- **Web検索の可否は外から確認できる。** 応答ヘッダー `x-wa-web-search`: `on` / `off`（設定で0）/
+  `unavailable`（Claude Console の組織設定で無効 → 自動で検索なしで回答）。
+- **effort は low のまま。** medium を本番で試したが、根拠のない形容の混入は減らず時間だけ増えた（2026-09-16 実測）。
+  品質の問題は人格の文言（具体的なパターン名での禁止）で直す。
 
 ### ★出典は API の Citations で出す（2026-09-16〜）
 
