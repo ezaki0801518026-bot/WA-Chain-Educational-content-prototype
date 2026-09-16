@@ -371,6 +371,8 @@ BASE_PATH=/WA-Site/ npm run build
 | モデル・effort・上限トークン・履歴長 | 同ファイルの `CHAT_CONFIG` |
 | サーバー側の処理 | `functions/api/chat.js` |
 | チャット画面 | `src/pages/ChatPage.jsx` |
+| 教材→document 変換と出典番号の対応 | `data/chat-corpus.js`（Worker とブラウザ共用） |
+| ストリームの読み取り・出典の組み立て | `src/utils/chatStream.js` |
 | トップページの入口（質問入力欄） | `src/pages/HubPage.jsx` の `.ask` ブロック |
 
 トップに打った質問は `sessionStorage` の `wa-chain-chat-prefill` 経由で
@@ -378,13 +380,25 @@ BASE_PATH=/WA-Site/ npm run build
 
 ### 設計の要点
 
-- **参照範囲は自社教材のみ。** `data/lessons.json` の公開中セクション（約7,000トークン）を
-  **全文システムプロンプトに入れてキャッシュ**している。検索（RAG）は無い。
-  教材を足せば自動で参照範囲に入る。
+- **参照範囲は自社教材のみ。** `data/lessons.json` の公開中セクション（約11,400トークン）を
+  **全文、Citations 付きの document として最初の user ターンに入れてキャッシュ**している。
+  検索（RAG）は無い。教材を足せば自動で参照範囲に入る。
   **`docs/sources/` の書籍書き起こしは絶対に参照させない**（他者の著作物）。
 - **「教材に無い」と答えるのが正しい振る舞い。** 推測で埋めさせない。
   答えられないときは既存の人間へのエスカレーション（メール送信）に渡す。
-- 出典はセクション番号をインラインで書かせる。
+
+### ★出典は API の Citations で出す（2026-09-16〜）
+
+モデルに「(Section 4)」と**手で書かせるのはやめた**（番号を間違えうる）。
+`data/chat-corpus.js` が教材を **1セクション＝1 document、block 0＝概要、block N＝ステップN** に
+組み、`citations: {enabled: true}` で送る。回答に付く `content_block_location` の
+(document_index, block_index) を、**同じファイルの `sourceFor()`** で「Section 4 · Kōzo: …」に戻す。
+
+- API は**実在する位置しか返さない**ので、出典欄の項目は必ず教材に実在する箇所を指す。
+  リンクを押すとそのステップを開く（`setSectionStep` で保存位置を合わせてから `#/lesson/<id>`）。
+- `chat-corpus.js` は **Worker とブラウザの両方が import する。** 番号付けを片方だけで変えないこと。
+- 人格側は「本文にセクション番号を書かない」「引用はその箇所に citation を付ける」を指示。
+- 実測（本番・5問）: 引用 43件すべて解決、本文に手書きの Section 番号 0件。
 
 ### 必要な設定
 
@@ -418,25 +432,44 @@ npx wrangler pages dev dist --port 8788
 - `budget_tokens` は廃止。`thinking: {type:'adaptive'}` ＋ `output_config: {effort}` を使う
 - アシスタントのプリフィル不可、会話中の `role:'system'` も Sonnet 5 では不可
 
-### 応答はストリーミング（NDJSON）
+### ★応答は Anthropic の SSE を**素通し**（Worker では一切パースしない）
 
-`POST /api/chat` は**改行区切りJSON**を流す。1行が1イベント。
+`POST /api/chat` は Anthropic の `text/event-stream` を**そのままブラウザへ流す**。
+パースはブラウザ側の `src/utils/chatStream.js`（`readAnswer()` / `assemble()`）。
+SDK（`@anthropic-ai/sdk`）は使っていない（`fetch` 直叩き）。
 
-| 行 | 意味 |
-|---|---|
-| `{"t":"..."}` | 回答テキストの断片。届いた順に吹き出しへ追記する |
-| `{"done":true,"truncated":false,"usage":{...}}` | 完了。`truncated` は `max_tokens` に当たったか |
-| `{"code":"..."}` | 生成中に失敗。**HTTPステータスは200のまま**なので、必ず `code` を見る |
+> ⚠ **「回答が文の途中で切れる」の真因（2026-09-16 実測）。** 以前は Worker 内で SDK の
+> `messages.stream()` を回し、イベントを1つずつ NDJSON に詰め替えていた。
+> Cloudflare 無料プランの **CPU 10ms/リクエスト** を長めの回答の2〜4秒目で使い切り、
+> **Worker が強制終了** → `done` も `code` も来ないままストリームが閉じていた。
+> `max_tokens` の問題ではない（上限に当たれば `stop_reason` が返る）。
+> **Worker でストリームを読む処理を足すと再発する。** 素通しなら何分流しても CPU を使わない。
+> 修正後: 1,600トークン超・24秒の回答も最後まで届く。
 
-- **鍵が無い・リクエストが不正**な場合だけは、従来どおり JSON ＋ 実ステータス（400/503）。
-  クライアントは `content-type` が `ndjson` かどうかで両者を判別する。
-- ストリームを cancel すると `stream.abort()` が走り、離脱後のトークン課金を止める。
+- ストリーム開始前の失敗（鍵なし・不正・予算・混雑）は **JSON `{code}` ＋ 実ステータス**。
+  クライアントは `content-type` が `event-stream` かどうかで判別する。
+- 生成途中の失敗は SSE の `error` イベント。`message_stop` が来ないまま閉じたら
+  「接続が切れました」（`chatInterrupted`）、`stop_reason: max_tokens` なら `chatTruncated` を表示。
+- `thinking: {type:'adaptive', display:'omitted'}` なので思考内容はブラウザに流れない（実測 0文字）。
+- 429/5xx は Worker で1回だけ再試行（予算切れは再試行しない）。
+- 訪問者が離脱すると body が cancel され、上流接続も切れて生成が止まる。
+- `.dev.vars` の鍵は無効なダミー（44文字）。**実 API の確認は本番で行った。**
+  Preview 環境には Secret が無い（`ready:false`）。
+
+### 送信と例の配置
+
+- トップの入力欄から来た質問は、`GET /api/chat` の判定が `true` になった時点で**自動送信**
+  （1回押せば1回質問される）。アシスタントが無い環境では入力欄に入れるだけ（メールが要るため）。
+- チャット欄では **Enter で送信、Shift+Enter で改行**。IME 変換中の Enter は送信しない。
+- 「質問の例」は**入力欄の下**。会話が始まったら消える。例の出典も `sourceFor()` で引いた実在箇所。
 
 ### 回答の書式
 
 **Markdown はレンダリングしない。** 吹き出しは `white-space: pre-wrap` の素のテキスト。
-`**太字**` を書かせると記号がそのまま出るので、人格定義側で「装飾なし・段落は空行・箇条書きは `- `」
-を指示している（`data/chat-persona.js` の FORMATTING）。ここを緩めると表示が崩れる。
+人格定義側で「装飾なし・段落は空行・箇条書きは `- `」を指示している（FORMATTING）。
+それでも `**` や行頭の `# ` がたまに出る（本番で実測）ので、`assemble()` で除去している。
+日本語の質問には**全文日本語**で答えさせる（Citations を有効にすると英文をそのまま貼る傾向が出たため、
+人格定義で禁止）。
 
 ### エラーコードの意味（`functions/api/chat.js` の `classify()`）
 

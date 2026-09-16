@@ -103,8 +103,10 @@ export function assemble(blocks) {
       }
     }
     // Nothing renders Markdown here, and the persona says so, but a stray
-    // **bold** still slips through now and then — never show the asterisks.
-    parts.push({ text: block.text.replace(/\*\*/g, ''), refs: refs.sort((a, b) => a - b) })
+    // **bold** or a "# " heading still slips through now and then (both seen
+    // on production) — never show the marks themselves.
+    const text = block.text.replace(/\*\*/g, '').replace(/(^|\n)#{1,6} /g, '$1')
+    parts.push({ text, refs: refs.sort((a, b) => a - b) })
   }
 
   return { parts, sources, text: parts.map((part) => part.text).join('') }
