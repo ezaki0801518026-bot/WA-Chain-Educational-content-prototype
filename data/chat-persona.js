@@ -157,7 +157,7 @@ export const CHAT_CONFIG = {
 
   // 思考の深さ: low | medium | high | xhigh | max
   // 'low' でも「教材にあるか無いか」の判断には十分で、待ち時間と費用を抑えられる。
-  effort: 'low',
+  effort: 'medium',
 
   // サーバーが受け取る会話履歴の最大メッセージ数（往復ではなく通数）。
   // 長くするほど文脈は保つがトークン消費が増える。
