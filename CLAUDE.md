@@ -383,11 +383,16 @@ BASE_PATH=/WA-Site/ npm run build
 ### 設計の要点
 
 - **根拠は3段（人格 v2, 2026-09-16〜）。信頼度の順に:**
-  1. **教材** `data/lessons.json` の公開中セクション
-  2. **WA-Chain調べ** `data/wa-chain-facts.json` — WA-Chain がファクトチェック済みの事実だけを
+  1. **WA-Chain調べ** `data/wa-chain-facts.json` — WA-Chain がファクトチェック済みの事実だけを
      自分の言葉で書いたもの（トピック＝document、事実＝block、各事実に `sources`（リンク）と `confidence`）。
      回答の出典欄には「WA-Chain調べ」ラベル＋元の出典リンクが出る。
      **調査で新しく裏取りした事実はここに足す**（id は変えない。book の書き起こしは入れない）。
+  2. **テキスト教材（試作版）** `data/lessons.json` の公開中セクション。出典欄ラベルは「教材（試作）」。
+     > ⚠ **テキスト教材 Section 1〜5 はファクトチェック済みではない。** `washi-course-prompt.md`（専門書の要約アウトライン）
+     > から生成AIが書き下ろしたもので、2026-09-16 に動画講義と重なる箇所（Section 2・4 の一部）を直しただけ。
+     > 講座ページと全ステップに「プロトタイプ（試作版）」の注記を出している（`courseLessonsDraftNote` / `lessonDraftNotice`）。
+     > ファクトチェックを終えたセクションが出たら、注記と人格の扱いを見直すこと。
+     > Section 1 の出典欄の AI 表記「Every source was checked and the text reviewed by hand」は照合記録が無く、要確認。
   3. **Web検索** — Anthropic のサーバーツール `web_search_20250305`（`CHAT_CONFIG.webSearches` 回まで、0で停止）。
      引用された Web ページは「Web」ラベル＋リンク、引用なしで検索だけした場合は「検索で見つかったページ」。
   1・2 は全文を Citations 付き document として最初の user ターンに入れてキャッシュ（約22,500トークン）。
