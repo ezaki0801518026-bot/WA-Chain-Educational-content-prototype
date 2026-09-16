@@ -122,9 +122,9 @@ const strings = {
     sourceColUsedIn: 'Used in',
     sourceColShare: 'Share',
     sourceWeightNote:
-      'Largest single source: #{{n}}, {{pct}}% of this section — within our 35% limit, so no one work carries the lesson.',
+      'Largest listed share: #{{n}}, {{pct}}%. These shares are estimates made when the sources were listed; they have not been checked against the text.',
     aiDisclosure:
-      'WA-Chain wrote this lesson with the help of generative AI (Claude, by Anthropic) for research, structure, diagrams, and drafting. Every source was checked and the text reviewed by hand.',
+      'WA-Chain drafted this lesson with generative AI (Claude, by Anthropic) from a summary of Japanese reference literature. The text has not yet been checked against the sources listed above or reviewed by a specialist, so it is a prototype draft. Where it differs from the video lectures, follow the lectures.',
     continueToNextSection: 'Continue to next section',
     returnToCourseHome: 'Return to course home',
     pageNotFound: 'Page not found.',
@@ -759,9 +759,9 @@ const strings = {
     sourceColUsedIn: '本文での対応箇所',
     sourceColShare: '比重',
     sourceWeightNote:
-      '最大比重の出典：#{{n}}（このセクションの{{pct}}%）― 社内基準の35%以下に収まっており、特定の一冊に依存していません。',
+      '最大比重の出典：#{{n}}（{{pct}}%）。この比重は出典一覧を作成した時点の見積もりで、本文との照合による確認はしていません。',
     aiDisclosure:
-      '本講義は WA-Chain が生成AI（Claude／Anthropic）を用いて資料調査・構成・作図・文章生成を行い、人手で出典照合・監修したものです。',
+      '本講義は、日本語の専門文献の要約をもとに、WA-Chain が生成AI（Claude／Anthropic）で下書きしたものです。上記の出典と本文の照合、および専門家による監修はまだ行っていないため、試作版です。動画講義と食い違う場合は、動画講義に従ってください。',
     continueToNextSection: '次のセクションへ進む',
     returnToCourseHome: 'コースホームへ戻る',
     pageNotFound: 'ページが見つかりません。',
