@@ -855,7 +855,7 @@
           "id": "s4-step-6",
           "heading": "Identifying Fiber Shape Under the Microscope",
           "paragraphs": [
-            "Fiber length alone cannot always distinguish one material from another, so conservators examine fiber silhouettes under a microscope. Kōzo typically ends in a rounded, blunt tip. Gampi fibers are flat and ribbon-like — the flatness shows wherever the fiber twists. Mitsumata fibers are spindle-shaped: swollen at mid-fiber and tapering toward fine ends. Width confirms the reading: kōzo averages about 0.023mm across, gampi about 0.020mm, and mitsumata — the finest of the three — about 0.012mm."
+            "Fiber length alone cannot always distinguish one material from another, so conservators examine fiber silhouettes under a microscope. Kōzo typically ends in a rounded, blunt tip. Gampi fibers are flat and ribbon-like — the flatness shows wherever the fiber twists. Mitsumata fibers are spindle-shaped: swollen at mid-fiber and tapering toward fine ends. Width will not settle it: all three fall in roughly the same 10–30 micrometre band, so the silhouette and the length carry the identification."
           ],
           "svgRef": "FiberShapeDiagram",
           "imageSlot": null,
@@ -959,7 +959,7 @@
         },
         {
           "id": "s4-q3",
-          "text": "Under the microscope, an unknown fiber sample is spindle-shaped — swollen at mid-fiber, tapering to fine ends — and measures roughly 0.012mm across. Based on Section 4, what is the most defensible next step?",
+          "text": "Under the microscope, an unknown fiber sample is spindle-shaped — swollen at mid-fiber, tapering to fine ends — and is about 3mm long. Based on Section 4, what is the most defensible next step?",
           "options": [
             {
               "id": "s4-q3-a",
@@ -967,7 +967,7 @@
             },
             {
               "id": "s4-q3-b",
-              "text": "Treat the spindle shape and fine width as consistent with mitsumata, and confirm with a C-stain test before final identification."
+              "text": "Treat the spindle shape and short length as consistent with mitsumata, and confirm with a C-stain test before final identification."
             },
             {
               "id": "s4-q3-c",
@@ -979,7 +979,7 @@
             }
           ],
           "correctOptionId": "s4-q3-b",
-          "explanation": "Section 4 emphasizes combining evidence: a spindle-shaped, notably fine fiber is consistent with mitsumata, but a single feature should be confirmed with a second method such as C-stain before concluding identification. Option A misattributes the silhouette to wood pulp, C wrongly treats a natural trait as damage, and D substitutes assumption for evidence."
+          "explanation": "Section 4 emphasizes combining evidence: a spindle-shaped fiber about 3mm long is consistent with mitsumata, but a single feature should be confirmed with a second method such as C-stain before concluding identification. Option A misattributes the silhouette to wood pulp, C wrongly treats a natural trait as damage, and D substitutes assumption for evidence."
         },
         {
           "id": "s4-q4",
