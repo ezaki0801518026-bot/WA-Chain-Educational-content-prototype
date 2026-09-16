@@ -52,6 +52,10 @@ const strings = {
     courseVideoHeading: 'Video lectures',
     courseVideoLede:
       'Each lecture stands on its own. Watch in any order; the player remembers where you stopped.',
+    courseLessonsDraftNote:
+      'Prototype. These text lessons were drafted with generative AI from a summary of Japanese reference literature, for testing this site. They have not yet been fully fact-checked against sources, and parts may be inaccurate. The video lectures are WA-Chain’s fact-checked material; where the two differ, follow the lectures. Do not rely on the text lessons for treatment decisions.',
+    lessonDraftNotice:
+      'Prototype draft — AI-written and not yet fully fact-checked. Where it differs from the video lectures, follow the lectures.',
     courseWatchCta: 'Watch',
     backToCourse: 'Back to The Course',
     videoResumeFrom: 'Resume from {{time}}',
@@ -383,7 +387,7 @@ const strings = {
     chatTruncated: 'This answer reached its length limit and stops early. Ask a narrower question, or send it to the team.',
     chatInterrupted: 'The connection dropped before this answer finished. Ask again, or send the question to the team.',
     chatSources: 'Sources',
-    chatSourceCourse: 'Course',
+    chatSourceCourse: 'Lesson (draft)',
     chatSourceResearch: 'WA-Chain research',
     chatSourceWeb: 'Web',
     chatSearched: 'Pages found by the search',
@@ -685,6 +689,10 @@ const strings = {
     courseLabel: '第{{n}}講',
     courseVideoHeading: '動画講義',
     courseVideoLede: '各講義は単独で完結します。順不同で視聴でき、再生位置は自動で記憶されます。',
+    courseLessonsDraftNote:
+      'プロトタイプ（試作版）です。これらのテキスト教材は、サイトの試験運用のために、日本語の専門文献の要約をもとに生成AIで下書きしたものです。出典との照合（ファクトチェック）はまだ一部しか済んでおらず、不正確な記述を含む可能性があります。WA-Chainがファクトチェックした教材は動画講義です。内容が食い違う場合は動画講義に従ってください。実際の処置の判断には用いないでください。',
+    lessonDraftNotice:
+      'プロトタイプ（試作版）：生成AIによる下書きで、ファクトチェックは未完了です。動画講義と食い違う場合は、動画講義に従ってください。',
     courseWatchCta: '視聴する',
     backToCourse: '講座一覧に戻る',
     videoResumeFrom: '{{time}} から再開',
@@ -1016,7 +1024,7 @@ const strings = {
     chatTruncated: 'この回答は長さの上限に達したため、途中で終わっています。質問を絞るか、チームに送ってください。',
     chatInterrupted: '回答の途中で接続が切れました。もう一度質問するか、チームに送ってください。',
     chatSources: '出典',
-    chatSourceCourse: '教材',
+    chatSourceCourse: '教材（試作）',
     chatSourceResearch: 'WA-Chain調べ',
     chatSourceWeb: 'Web',
     chatSearched: '検索で見つかったページ',

@@ -92,6 +92,10 @@ function LessonPage({ sectionId, onFinish, navigate }) {
               )}
             </div>
             <p className={styles.sectionTitle}>{section.title}</p>
+            {/* The text lessons are AI-drafted from a summary of one reference
+                book and only partly fact-checked (the video lectures are the
+                checked material) — say so on every step, not in a footnote. */}
+            <p className={styles.draftNotice}>{t('lessonDraftNotice')}</p>
           </div>
           <FormatToggle sectionId={sectionId} hasVideo={Boolean(section.video)} navigate={navigate} />
         </div>

@@ -181,3 +181,16 @@
     animation: none;
   }
 }
+
+/* Prototype notice: the text lessons are AI drafts, only partly fact-checked. */
+.draftNotice {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--text);
+  margin: 0.35rem 0 0;
+  padding: 0.25rem 0.5rem;
+  border-left: 3px solid var(--seal);
+  background: rgba(var(--accent-rgb), 0.07);
+  max-width: 46rem;
+}

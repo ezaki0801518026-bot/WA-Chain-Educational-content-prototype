@@ -37,15 +37,15 @@ const SAMPLES = [
               fit: 'You need to pick, and trust, a tissue soon',
               steps: [
                 { title: 'Washi Is Not a Single Type of Paper', link: '#/watch/three-fibers', note: '16 min' },
-                { title: 'Section 4: The Raw Materials of Washi', link: '#/lesson/section-4' },
+                { title: 'Section 4: The Raw Materials of Washi', link: '#/lesson/section-4', note: 'text lesson, draft' },
               ],
             },
             {
               name: 'Why washi treatments are reversible',
               fit: 'You want the principles behind lining and its removal',
               steps: [
-                { title: 'Section 1: Sōkō and Reversibility', link: '#/lesson/section-1' },
-                { title: 'Section 3: Hydrogen Bonding', link: '#/lesson/section-3' },
+                { title: 'Section 1: Sōkō and Reversibility', link: '#/lesson/section-1', note: 'text lesson, draft' },
+                { title: 'Section 3: Hydrogen Bonding', link: '#/lesson/section-3', note: 'text lesson, draft' },
               ],
             },
           ],

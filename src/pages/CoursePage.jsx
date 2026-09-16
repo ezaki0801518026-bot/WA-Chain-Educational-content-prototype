@@ -145,6 +145,7 @@ function CoursePage({ navigate }) {
         <h2 id="track-foundations" className={styles.groupHeading}>
           {t('homeAvailableNow')}
         </h2>
+        <p className={styles.draftNote}>{t('courseLessonsDraftNote')}</p>
         <div className={styles.cardList}>
           {activeSections.map((section) => {
             const index = lessons.sections.findIndex((s) => s.id === section.id)

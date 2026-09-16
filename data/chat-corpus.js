@@ -7,8 +7,9 @@
 //     back into a labelled source with sourceFor().
 //
 // Documents, in this order:
-//   1. The course: one document per published section. Block 0 is the section
-//      overview, block N is step N.
+//   1. The text lessons: one document per published section. Block 0 is the
+//      section overview, block N is step N. These are prototype drafts (AI-written,
+//      only partly fact-checked) and are labelled so, to the model and the reader.
 //   2. WA-Chain research (data/wa-chain-facts.json): one document per topic,
 //      one block per fact. Shown to the reader as "WA-Chain research".
 // A citation names the document and block its text came from, and the API
@@ -45,6 +46,7 @@ export function courseDocuments() {
       content: blocksFor(section).map((text) => ({ type: 'text', text })),
     },
     title: `Section ${number}: ${section.title}`,
+    context: 'Prototype draft text lesson: written with generative AI from a summary of Japanese reference literature, only partly fact-checked.',
     citations: { enabled: true },
   }))
   const facts = research.topics.map((topic) => ({
@@ -67,13 +69,13 @@ export function courseDocuments() {
 // Where things are on the site, for suggesting a route through the course.
 // Not a source of facts: nothing here is cited.
 export function courseMap() {
-  const lines = ['Video lectures (each ends with two keyword questions and an invitation to share your view):']
+  const lines = ['Video lectures — fact-checked by WA-Chain (each ends with two keyword questions and an invitation to share your view):']
   for (const course of courses.courses) {
     lines.push(
       `- #/watch/${course.id} — "${course.title.en}" (${course.durationLabel}). Topics: ${course.topics.en.join(', ')}. ${course.description.en}`
     )
   }
-  lines.push('', 'Text lessons (step by step, each followed by a short quiz):')
+  lines.push('', 'Text lessons — PROTOTYPE DRAFTS, AI-written and only partly fact-checked (step by step, each followed by a short quiz):')
   for (const { section, number } of published) {
     lines.push(`- #/lesson/${section.id} — Section ${number}: ${section.title} (${section.steps.length} steps). ${section.description || ''}`)
   }

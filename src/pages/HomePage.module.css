@@ -660,3 +660,16 @@
     transition: none;
   }
 }
+
+/* Prototype notice under the text-lesson heading on The Course page. */
+.draftNote {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin: var(--space-xs) 0 var(--space-sm);
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--seal);
+  background: rgba(var(--accent-rgb), 0.07);
+  max-width: 48rem;
+}
