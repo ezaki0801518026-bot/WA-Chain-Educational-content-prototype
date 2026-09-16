@@ -1,22 +1,37 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { submitForm } from '../formConfig.js'
 import { track } from '../utils/analytics.js'
+import { setSectionStep } from '../utils/progress.js'
+import { readAnswer } from '../utils/chatStream.js'
+import { sourceFor } from '../../data/chat-corpus.js'
 import styles from './ChatPage.module.css'
 
-// Seeded example exchanges shown before the first question, so an observer
-// immediately sees what the assistant is for. Content stays in English, like
-// the lesson material (course content is never localised — only UI chrome).
+// Example exchanges, shown under the input before the first question so an
+// observer sees what the assistant is for. Content stays in English, like the
+// lesson material (course content is never localised — only UI chrome).
+//
+// Written the way a real answer comes back: every claim is from the course,
+// and the sources are real passages looked up with sourceFor(document, block)
+// — block 0 is a section's overview, block N its step N.
 const SAMPLES = [
   {
-    q: 'Which fiber is best for a very thin repair tissue on a work on paper?',
-    a: 'For the thinnest, most translucent tissue, gampi is a common choice — its fine, dense fibers form a smooth sheet. Where you need more flexibility and long-fiber strength (hinges, tear repairs), kōzo is usually preferred. Section 4 walks through telling the three fibers apart.',
+    q: 'Which fiber suits a thin repair paper where no bulk can be added?',
+    parts: [
+      { text: 'The material points to gampi: its short, smooth, dense fiber is prized for thin, refined repair papers where bulk cannot be added.', refs: [1] },
+      { text: ' It also puts identifying the fiber of the original first, before any repair material is chosen.', refs: [2] },
+    ],
+    sources: [sourceFor(3, 3), sourceFor(3, 9)],
   },
   {
-    q: 'How can I check whether a washi is acidic before using it on an artwork?',
-    a: 'A surface pH reading on a discreet edge — a pH pen, or a cold-water extraction with an electrode — is the usual quick check. Conservation-grade kōzo papers are typically neutral to mildly alkaline. Section 2 covers why pH is what decides a paper lifespan.',
+    q: 'Is gampi paper acidic?',
+    parts: [
+      { text: 'No. Measured values put mitsumata and gampi paper at pH 6.6–8.6, the same neutral-to-mildly-alkaline band as kōzo paper at 6.3–9.5.', refs: [1] },
+      { text: ' Any repair paper must itself be neutral to weakly alkaline, so each sheet is judged by measurement, not by its fiber.', refs: [2] },
+    ],
+    sources: [sourceFor(3, 3), sourceFor(1, 7)],
   },
-]
+].map((sample) => ({ ...sample, sources: sample.sources.map((source, i) => ({ ...source, n: i + 1 })) }))
 
 const MAX_CHARS = 2000
 const ENDPOINT = '/api/chat'
@@ -35,6 +50,55 @@ function lastUserQuestion(turns) {
   return ''
 }
 
+// Footnote markers go before any line break that ends the text, so "…9.5.[1]"
+// stays on its line instead of opening the next paragraph.
+function AnswerText({ parts }) {
+  return parts.map((part, i) => {
+    const body = part.text.replace(/\s+$/, '')
+    const tail = part.text.slice(body.length)
+    return (
+      <span key={i}>
+        {body}
+        {part.refs.length > 0 && <sup className={styles.ref}>[{part.refs.join(', ')}]</sup>}
+        {tail}
+      </span>
+    )
+  })
+}
+
+function SourceList({ sources }) {
+  const { t } = useLanguage()
+  if (!sources?.length) return null
+  // Opens the lesson at the cited step: the lesson reopens wherever the
+  // reader last was, so pointing that at the step is all it takes.
+  const open = (source) => {
+    if (source.stepIndex === null) return
+    try {
+      setSectionStep(source.sectionId, source.stepIndex)
+    } catch {
+      /* storage blocked: the lesson opens at its first step */
+    }
+  }
+  return (
+    <div className={styles.sources}>
+      <p className={styles.sourcesLabel}>{t('chatSources')}</p>
+      <ol className={styles.sourceList}>
+        {sources.map((source) => (
+          <li key={source.n} value={source.n}>
+            <a
+              href={`#/lesson/${source.sectionId}`}
+              onClick={() => open(source)}
+              title={source.quote ? source.quote.slice(0, 280) : undefined}
+            >
+              Section {source.sectionNumber} · {source.stepHeading ?? source.sectionTitle}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}
+
 // "Ask a conservator" — the third product pillar.
 //
 // Two modes, chosen by probing /api/chat on load:
@@ -45,9 +109,11 @@ function lastUserQuestion(turns) {
 // refuse rather than guess, and a refusal needs somewhere to go.
 function ChatPage() {
   const { t } = useLanguage()
-  const [turns, setTurns] = useState([]) // { role, content, code? }
+  // { role, content, parts?, sources?, code?, streaming? } — content is the
+  // plain text, which is what is replayed to the model as history.
+  const [turns, setTurns] = useState([])
   const [question, setQuestion] = useState('')
-  const [phase, setPhase] = useState('idle') // idle | sending | error
+  const [phase, setPhase] = useState('idle') // idle | sending | streaming | error
   const [error, setError] = useState('')
   const [escalating, setEscalating] = useState(false)
   const [email, setEmail] = useState('')
@@ -56,13 +122,18 @@ function ChatPage() {
   // it is served, with no environment variable to remember to set.
   const [assistant, setAssistant] = useState(null)
   const threadEndRef = useRef(null)
+  const turnsRef = useRef(turns)
+  turnsRef.current = turns
 
-  // A question typed on the home page arrives here, ready to send.
+  // A question typed on the home page. Held until the probe says whether
+  // there is an assistant to send it to — then it is asked straight away,
+  // so one press on the home page is one question asked.
+  const carried = useRef(null)
   useEffect(() => {
     try {
       const draft = sessionStorage.getItem(CHAT_PREFILL_KEY)
       if (draft) {
-        setQuestion(draft)
+        carried.current = draft
         sessionStorage.removeItem(CHAT_PREFILL_KEY)
       }
     } catch {
@@ -86,96 +157,87 @@ function ChatPage() {
   }, [])
 
   useEffect(() => {
+    if (turns.length === 0 && phase === 'idle') return
     threadEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
   }, [turns, phase])
 
-  const askAssistant = async (event) => {
+  const ask = useCallback(
+    async (asked) => {
+      setError('')
+      setPhase('sending')
+      setQuestion('')
+
+      // Notices (budget, errors) are display-only — never replay them as context.
+      const history = [
+        ...turnsRef.current.filter((turn) => turn.role !== 'system' && !turn.code),
+        { role: 'user', content: asked },
+      ]
+      setTurns(history)
+      track('chat_ask', {})
+
+      const fail = (code) =>
+        setTurns([...history, { role: 'assistant', content: t(ERROR_KEYS[code] || 'chatErrorGeneric'), code }])
+
+      try {
+        const response = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            messages: history.map(({ role, content }) => ({ role, content })),
+          }),
+        })
+
+        // Anything that is not the event stream is a refusal before the model
+        // was reached (no key, bad body, budget, outage), as {code} JSON.
+        if (!(response.headers.get('content-type') || '').includes('event-stream')) {
+          const data = await response.json().catch(() => ({}))
+          fail(data.code || 'error')
+          return
+        }
+
+        const { answer, truncated, code } = await readAnswer(response, (sofar) => {
+          if (!sofar.text) return
+          // The bubble replaces the "looking through the material" notice as
+          // soon as there is something to read.
+          setPhase('streaming')
+          setTurns([...history, { role: 'assistant', content: sofar.text, parts: sofar.parts, streaming: true }])
+        })
+
+        if (!answer.text) {
+          fail(code || 'error')
+          return
+        }
+        const notice = truncated ? 'chatTruncated' : code ? 'chatInterrupted' : null
+        setTurns([
+          ...history,
+          { role: 'assistant', content: answer.text, parts: answer.parts, sources: answer.sources },
+          ...(notice ? [{ role: 'system', content: t(notice) }] : []),
+        ])
+      } catch {
+        fail('error')
+      } finally {
+        setPhase('idle')
+      }
+    },
+    [t]
+  )
+
+  useEffect(() => {
+    if (assistant === null || !carried.current) return
+    const draft = carried.current
+    carried.current = null
+    if (assistant) ask(draft)
+    else setQuestion(draft) // no assistant here: the team route needs an email first
+  }, [assistant, ask])
+
+  const askAssistant = (event) => {
     event.preventDefault()
     const asked = question.trim()
     if (!asked) {
       setError(t('chatValidationQ'))
       return
     }
-    setError('')
-    setPhase('sending')
-    setQuestion('')
-
-    // Notices (budget, errors) are display-only — never replay them as context.
-    const history = [...turns.filter((turn) => turn.role !== 'system' && !turn.code), { role: 'user', content: asked }]
-    setTurns(history)
-    track('chat_ask', {})
-
-    const fail = (code) =>
-      setTurns([...history, { role: 'assistant', content: t(ERROR_KEYS[code] || 'chatErrorGeneric'), code }])
-
-    try {
-      const response = await fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({
-          messages: history.map(({ role, content }) => ({ role, content })),
-        }),
-      })
-
-      // A guard rejected the request outright (no key, malformed body); those
-      // still answer in plain JSON with a real status.
-      if (!(response.headers.get('content-type') || '').includes('ndjson')) {
-        const data = await response.json().catch(() => ({}))
-        fail(data.code || 'error')
-        return
-      }
-
-      // The answer arrives as it is written. Each line is {t: "..."} for a
-      // piece of text, or {code: "..."} when the model call failed after the
-      // response had already begun.
-      const reader = response.body.getReader()
-      const decoder = new TextDecoder()
-      let buffer = ''
-      let text = ''
-      let code = null
-      let truncated = false
-
-      for (;;) {
-        const { done, value } = await reader.read()
-        if (done) break
-        buffer += decoder.decode(value, { stream: true })
-
-        let newline
-        while ((newline = buffer.indexOf('\n')) !== -1) {
-          const raw = buffer.slice(0, newline).trim()
-          buffer = buffer.slice(newline + 1)
-          if (!raw) continue
-          let event
-          try {
-            event = JSON.parse(raw)
-          } catch {
-            continue // a line split across chunks is impossible here, but never throw on the visitor
-          }
-          if (event.code) code = event.code
-          if (event.done && event.truncated) truncated = true
-          if (typeof event.t !== 'string') continue
-          text += event.t
-          // The bubble replaces the "looking through the material" notice as
-          // soon as there is something to read.
-          setPhase('streaming')
-          setTurns([...history, { role: 'assistant', content: text, streaming: true }])
-        }
-      }
-
-      if (text) {
-        setTurns([
-          ...history,
-          { role: 'assistant', content: text },
-          ...(truncated ? [{ role: 'system', content: t('chatTruncated') }] : []),
-        ])
-      } else {
-        fail(code || 'error')
-      }
-    } catch {
-      fail('error')
-    } finally {
-      setPhase('idle')
-    }
+    ask(asked)
   }
 
   // The fallback path, and the escape hatch when the assistant declines:
@@ -216,9 +278,10 @@ function ChatPage() {
 
   // Both states lock the form; only 'sending' shows the waiting notice,
   // because once text is arriving the bubble itself is the progress.
-  const sending = phase !== 'idle'
+  const sending = phase === 'sending' || phase === 'streaming'
   const hasAssistant = assistant === true
   const showEscalation = !hasAssistant || escalating
+  const onSubmit = showEscalation ? sendToTeam : askAssistant
 
   return (
     <div className={styles.page}>
@@ -227,59 +290,44 @@ function ChatPage() {
         <p className={styles.description}>{hasAssistant ? t('chatIntroAi') : t('chatIntro')}</p>
       </div>
 
-      <div className={styles.thread}>
-        {turns.length === 0 && (
-          <div className={styles.samples}>
-            <p className={styles.sampleLabel}>{t('chatSampleLabel')}</p>
-            {SAMPLES.map((sample, i) => (
-              <div key={`sample-${i}`} className={`${styles.exchange} ${styles.sampleExchange}`}>
-                <div className={`${styles.bubble} ${styles.bubbleYou} ${styles.sampleBubble}`}>
-                  <span className={styles.who}>{t('chatYou')}</span>
-                  {sample.q}
+      {(turns.length > 0 || phase === 'sending') && (
+        <div className={styles.thread}>
+          {turns.map((turn, i) => {
+            if (turn.role === 'system') {
+              return (
+                <div key={`turn-${i}`} className={styles.exchange}>
+                  <div className={`${styles.bubble} ${styles.bubbleSystem}`}>{turn.content}</div>
                 </div>
-                <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.sampleBubble}`}>
-                  <span className={styles.who}>{t('chatAssistant')}</span>
-                  {sample.a}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {turns.map((turn, i) => {
-          if (turn.role === 'system') {
+              )
+            }
+            const mine = turn.role === 'user'
             return (
               <div key={`turn-${i}`} className={styles.exchange}>
-                <div className={`${styles.bubble} ${styles.bubbleSystem}`}>{turn.content}</div>
+                <div
+                  className={`${styles.bubble} ${mine ? styles.bubbleYou : styles.bubbleExpert} ${
+                    turn.code ? styles.bubbleNotice : ''
+                  } ${turn.streaming ? styles.bubbleStreaming : ''}`}
+                >
+                  <span className={styles.who}>{mine ? t('chatYou') : t('chatAssistant')}</span>
+                  {turn.parts ? <AnswerText parts={turn.parts} /> : turn.content}
+                  {turn.sources && <SourceList sources={turn.sources} />}
+                </div>
               </div>
             )
-          }
-          const mine = turn.role === 'user'
-          return (
-            <div key={`turn-${i}`} className={styles.exchange}>
-              <div
-                className={`${styles.bubble} ${mine ? styles.bubbleYou : styles.bubbleExpert} ${
-                  turn.code ? styles.bubbleNotice : ''
-                } ${turn.streaming ? styles.bubbleStreaming : ''}`}
-              >
-                <span className={styles.who}>{mine ? t('chatYou') : t('chatAssistant')}</span>
-                {turn.content}
+          })}
+
+          {phase === 'sending' && (
+            <div className={styles.exchange}>
+              <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.bubblePending}`}>
+                {t('chatThinking')}
               </div>
             </div>
-          )
-        })}
+          )}
+          <div ref={threadEndRef} />
+        </div>
+      )}
 
-        {phase === 'sending' && (
-          <div className={styles.exchange}>
-            <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.bubblePending}`}>
-              {t('chatThinking')}
-            </div>
-          </div>
-        )}
-        <div ref={threadEndRef} />
-      </div>
-
-      <form className={styles.form} onSubmit={showEscalation ? sendToTeam : askAssistant}>
+      <form className={styles.form} onSubmit={onSubmit}>
         <label className={styles.label} htmlFor="chat-question">
           {t('chatQuestionLabel')}
         </label>
@@ -293,6 +341,13 @@ function ChatPage() {
           onChange={(event) => {
             setQuestion(event.target.value)
             if (error) setError('')
+          }}
+          onKeyDown={(event) => {
+            // Enter asks; Shift+Enter is a new line. Never while an input
+            // method is composing — that Enter confirms the kanji, not the question.
+            if (event.key !== 'Enter' || event.shiftKey || event.nativeEvent.isComposing || event.keyCode === 229) return
+            if (showEscalation) return // the team route still needs an email
+            onSubmit(event)
           }}
           disabled={sending}
         />
@@ -336,6 +391,25 @@ function ChatPage() {
 
         <p className={styles.disclaimer}>{hasAssistant ? t('chatDisclaimerAi') : t('chatDisclaimer')}</p>
       </form>
+
+      {turns.length === 0 && phase === 'idle' && (
+        <div className={styles.samples}>
+          <p className={styles.sampleLabel}>{t('chatSampleLabel')}</p>
+          {SAMPLES.map((sample, i) => (
+            <div key={`sample-${i}`} className={`${styles.exchange} ${styles.sampleExchange}`}>
+              <div className={`${styles.bubble} ${styles.bubbleYou} ${styles.sampleBubble}`}>
+                <span className={styles.who}>{t('chatYou')}</span>
+                {sample.q}
+              </div>
+              <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.sampleBubble}`}>
+                <span className={styles.who}>{t('chatAssistant')}</span>
+                <AnswerText parts={sample.parts} />
+                <SourceList sources={sample.sources} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

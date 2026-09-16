@@ -381,6 +381,8 @@ const strings = {
     chatErrorUnavailable: 'The assistant is not available on this site. Send your question to the team and we’ll reply by email.',
     chatErrorGeneric: 'Something went wrong reaching the assistant. Send the question to the team and we’ll reply by email.',
     chatTruncated: 'This answer reached its length limit and stops early. Ask a narrower question, or send it to the team.',
+    chatInterrupted: 'The connection dropped before this answer finished. Ask again, or send the question to the team.',
+    chatSources: 'Sources in the course',
 
     // Updates / changelog page
     updatesTitle: 'Updates',
@@ -1006,6 +1008,8 @@ const strings = {
     chatErrorUnavailable: 'このサイトではアシスタントを利用できません。質問をチームに送っていただければ、メールで回答します。',
     chatErrorGeneric: 'アシスタントに接続できませんでした。質問をチームに送っていただければ、メールで回答します。',
     chatTruncated: 'この回答は長さの上限に達したため、途中で終わっています。質問を絞るか、チームに送ってください。',
+    chatInterrupted: '回答の途中で接続が切れました。もう一度質問するか、チームに送ってください。',
+    chatSources: '教材の出典',
 
     // Updates / changelog ページ
     updatesTitle: '更新情報',

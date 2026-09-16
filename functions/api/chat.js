@@ -9,37 +9,16 @@
 //
 // The persona lives in data/chat-persona.js. Edit that file, not this one.
 
-import Anthropic from '@anthropic-ai/sdk'
-import lessons from '../../data/lessons.json'
 import { PERSONA, CHAT_CONFIG } from '../../data/chat-persona.js'
+import { courseDocuments } from '../../data/chat-corpus.js'
+
+const API = 'https://api.anthropic.com/v1/messages'
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
     headers: { 'content-type': 'application/json; charset=utf-8' },
   })
-
-// The whole published course is about 7,000 tokens, so the assistant can be
-// given all of it rather than retrieving fragments. Everything it is allowed
-// to say lives in this string — nothing else is a permitted source.
-let corpus = null
-function courseMaterial() {
-  if (corpus) return corpus
-  const parts = []
-  lessons.sections.forEach((section, index) => {
-    if (!section.active) return
-    parts.push(`## Section ${index + 1}: ${section.title}`)
-    if (section.description) parts.push(section.description)
-    for (const point of section.summaryPoints || []) parts.push(`- ${point}`)
-    for (const step of section.steps || []) {
-      if (step.heading) parts.push(`### ${step.heading}`)
-      for (const paragraph of step.paragraphs || []) parts.push(paragraph)
-    }
-    parts.push('')
-  })
-  corpus = parts.join('\n')
-  return corpus
-}
 
 // The browser sends the whole conversation, so treat it as untrusted input:
 // keep only well-formed turns, cap the length, and make sure the history
@@ -61,19 +40,31 @@ function sanitiseMessages(input) {
   return out
 }
 
+// The course travels as documents with citations switched on, attached to the
+// first user turn (documents cannot go in the system prompt). Every answer
+// then carries machine-checked pointers to the passages it used, and the page
+// shows those instead of trusting the model to write "(Section 4)" correctly.
+//
+// The documents always sit at the front of the first turn and are marked for
+// caching, so persona + course are one stable, cached prefix for every
+// request, whatever the conversation after them.
+function withCourse(messages) {
+  const documents = courseDocuments()
+  documents[documents.length - 1].cache_control = { type: 'ephemeral' }
+  const [first, ...rest] = messages
+  return [{ role: 'user', content: [...documents, { type: 'text', text: first.content }] }, ...rest]
+}
+
 // Spend limits and rate limits fail differently, and the difference matters:
 // a rate limit is worth retrying, an exhausted budget is not. See
 // Anthropic_Console_初期設定手順_2026-09.md for the full table.
-function classify(error) {
-  const status = error?.status
-  const detail = `${JSON.stringify(error?.error ?? {})} ${error?.message ?? ''}`
-  if (
-    detail.includes('enforced_spend_limit_reached') ||
-    detail.includes('reached your specified')
-  ) {
+function classify(status, detail) {
+  if (detail.includes('enforced_spend_limit_reached') || detail.includes('reached your specified')) {
     return 'budget'
   }
-  if (status === 429 || status === 529) return 'busy'
+  if (status === 429 || status === 529 || detail.includes('overloaded_error') || detail.includes('rate_limit_error')) {
+    return 'busy'
+  }
   if (status === 401 || status === 403) return 'unconfigured'
   return 'error'
 }
@@ -126,89 +117,66 @@ export async function onRequestPost({ request, env }) {
   const messages = sanitiseMessages(body?.messages)
   if (messages.length === 0) return json({ code: 'bad_request' }, 400)
 
-  const client = new Anthropic({
-    apiKey: key,
-    // One retry, not the default two: a budget error never succeeds on retry,
-    // and a visitor should not wait through a long backoff.
-    maxRetries: 1,
-  })
-
-  // Newline-delimited JSON rather than one reply: the answer starts appearing
-  // in about a second instead of after the whole thing is written. Each line is
-  // either {t: "..."} for a piece of text or {code: "..."} for a failure.
-  //
-  // Upstream failures cannot use a status code here — by the time Anthropic
-  // rejects the request this Response has already been handed to the runtime
-  // with a 200 — so they travel as a line in the stream and the browser reads
-  // the code, not the status. The guards above still answer with real statuses.
-  const stream = client.messages.stream({
+  const payload = JSON.stringify({
     model: CHAT_CONFIG.model,
     max_tokens: CHAT_CONFIG.maxTokens,
+    stream: true,
     // Adaptive thinking is what makes "the material does not cover this"
     // reliable — the judgement it protects is exactly the one that matters.
-    thinking: { type: 'adaptive' },
+    // The thinking itself is not shown, and not sent to the browser.
+    thinking: { type: 'adaptive', display: 'omitted' },
     output_config: { effort: CHAT_CONFIG.effort },
-    // One cached block: the persona and the whole course never change between
-    // requests, so every turn after the first reads them at a fraction of the
-    // price and they stop counting toward the rate limit.
-    system: [
-      {
-        type: 'text',
-        text: `${PERSONA}\n\nCOURSE MATERIAL\n${courseMaterial()}`,
-        cache_control: { type: 'ephemeral' },
+    system: PERSONA,
+    messages: withCourse(messages),
+  })
+
+  const call = () =>
+    fetch(API, {
+      method: 'POST',
+      headers: {
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
       },
-    ],
-    messages,
-  })
+      body: payload,
+    })
 
-  const encoder = new TextEncoder()
-  const line = (value) => encoder.encode(`${JSON.stringify(value)}\n`)
+  let upstream
+  try {
+    upstream = await call()
+    // One retry, not more: a budget error never succeeds on retry, and a
+    // visitor should not wait through a long backoff.
+    if (upstream.status === 429 || upstream.status >= 500) {
+      const detail = await upstream.text()
+      if (classify(upstream.status, detail) === 'budget') return json({ code: 'budget' }, 402)
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+      upstream = await call()
+    }
+  } catch (error) {
+    console.error('chat failed', 'network', error?.message)
+    return json({ code: 'error' }, 502)
+  }
 
-  const ndjson = new ReadableStream({
-    async start(controller) {
-      let wrote = false
-      try {
-        for await (const event of stream) {
-          if (event.type === 'content_block_delta' && event.delta?.type === 'text_delta') {
-            wrote = true
-            controller.enqueue(line({ t: event.delta.text }))
-          }
-        }
-        const final = await stream.finalMessage()
-        controller.enqueue(
-          line({
-            done: true,
-            // The ceiling should not be reached, but if it is the reader is
-            // told rather than left with a sentence that stops mid-word.
-            truncated: final.stop_reason === 'max_tokens',
-            usage: {
-              input: final.usage?.input_tokens ?? 0,
-              cacheRead: final.usage?.cache_read_input_tokens ?? 0,
-              cacheWrite: final.usage?.cache_creation_input_tokens ?? 0,
-              output: final.usage?.output_tokens ?? 0,
-            },
-          })
-        )
-        if (!wrote) controller.enqueue(line({ code: 'error' }))
-      } catch (error) {
-        const code = classify(error)
-        // Logged for `wrangler pages deployment tail`; the browser only sees the code.
-        console.error('chat failed', code, error?.status, error?.message)
-        controller.enqueue(line({ code }))
-      } finally {
-        controller.close()
-      }
-    },
-    cancel() {
-      // The visitor navigated away or hit stop. Abandon the generation rather
-      // than paying for tokens nobody will read.
-      stream.abort()
-    },
-  })
+  if (!upstream.ok) {
+    const detail = await upstream.text()
+    const code = classify(upstream.status, detail)
+    // Logged for `wrangler pages deployment tail`; the browser only sees the code.
+    console.error('chat failed', code, upstream.status, detail.slice(0, 300))
+    return json({ code }, 502)
+  }
 
-  return new Response(ndjson, {
+  // Anthropic's event stream is handed to the browser untouched, and the page
+  // reads it (src/utils/chatStream.js). Nothing is parsed here, on purpose:
+  // Workers on the free plan get 10 ms of CPU per request, and reading every
+  // event in JavaScript — which the SDK's stream helper did — used that up a
+  // few seconds into a longer answer. The Worker was stopped mid-reply, and the
+  // visitor saw an answer that simply ended mid-sentence. Passing the body
+  // through costs no CPU however long the answer runs. It also means a visitor
+  // who leaves mid-answer cancels the body, which closes the upstream
+  // connection and stops the generation.
+  return new Response(upstream.body, {
     headers: {
-      'content-type': 'application/x-ndjson; charset=utf-8',
+      'content-type': 'text/event-stream; charset=utf-8',
       'cache-control': 'no-store',
     },
   })

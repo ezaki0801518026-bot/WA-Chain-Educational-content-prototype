@@ -262,3 +262,66 @@
     animation: none;
   }
 }
+
+/* Sources ------------------------------------------------------------ */
+/* Footnote numbers in the text, and the passages they point to. Every
+   entry comes from an API citation, never from the model's own wording,
+   so each one is a place in the course that exists and says that. */
+.ref {
+  font-size: 0.7em;
+  line-height: 0;
+  margin-left: 0.1em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.sources {
+  white-space: normal;
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+.sourcesLabel {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.2rem;
+}
+
+.sourceList {
+  margin: 0;
+  padding-left: 1.4rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.sourceList a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--accent-rgb), 0.5);
+  text-underline-offset: 2px;
+}
+
+.sourceList a:hover,
+.sourceList a:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* The examples now sit under the input, after the disclaimer. */
+.samples {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.15);
+}
+
+.sampleBubble .sources {
+  margin-top: 0.35rem;
+  padding-top: 0.3rem;
+}
+
+.sampleBubble .sourceList {
+  font-size: 0.75rem;
+}
