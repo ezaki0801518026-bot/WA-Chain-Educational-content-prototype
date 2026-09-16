@@ -102,7 +102,7 @@ export function assemble(blocks) {
         if (!refs.includes(n)) refs.push(n)
       }
     }
-    parts.push({ text: block.text, refs })
+    parts.push({ text: block.text, refs: refs.sort((a, b) => a - b) })
   }
 
   return { parts, sources, text: parts.map((part) => part.text).join('') }
