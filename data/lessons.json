@@ -339,10 +339,10 @@
         "pH & longevity"
       ],
       "summaryPoints": [
-        "Plant fiber is composed mainly of three polymers: cellulose (stable structural backbone), hemicellulose (aids bonding in moderation, harmful in excess), and lignin (unstable, the primary cause of yellowing and acidification).",
+        "Plant fiber is composed mainly of three polymers: cellulose (stable structural backbone), hemicellulose (aids bonding in moderation, harmful in excess), and lignin (unstable: it drives yellowing directly, and its breakdown products add acidity).",
         "Wood pulp is rich in lignin; washi's bast fibers, such as kōzo, contain very little, which is the chemical basis for washi's reputation for longevity.",
         "Modern wood-pulp paper often becomes acidic through residual lignin breakdown and acidic sizing agents, driving a self-accelerating cycle of degradation.",
-        "Traditional washi processing — boiling fiber in wood-ash lye — removes lignin and impurities. Well-washed kōzo paper sits close to neutral (gampi tends acidic); the idea that washi is inherently alkaline is a misconception traceable to residual lye.",
+        "Traditional washi processing — boiling fiber in wood-ash lye — removes lignin and impurities, and the small amount of alkali left behind is what puts the finished sheet in the neutral-to-mildly-alkaline band: measured at pH 6.3–9.5 for kōzo paper and 6.6–8.6 for mitsumata and gampi paper.",
         "Any material introduced into a treatment, including repair and lining papers, must be neutral to weakly alkaline; strength and visual match cannot compensate for chemical incompatibility."
       ],
       "steps": [
@@ -410,7 +410,7 @@
           "heading": "Why Washi Resists This Fate",
           "paragraphs": [
             "Traditional washi fiber is prepared by boiling in wood-ash lye, which strips away lignin and other impurities before the sheet is even formed. From the Meiji era onward, caustic soda and soda ash also came into use — but caustic soda is a harsher alkali that attacks the fiber itself, and reference practice does not recommend it for papers meant to last.",
-            "One correction to a common belief: washi is often described as 'alkaline,' but measured alkalinity usually traces back to cooking lye that was never fully washed out — not to the fiber. Well-washed kōzo paper sits close to neutral, and gampi paper in fact tends toward the acidic side. 'Washi' is not automatically safe; each paper must be judged on its own chemistry."
+            "One correction to a common belief. Washi is often described as 'alkaline' as though the fiber itself were; what is measured usually traces back to the lye left from cooking. But the opposite claim — that gampi paper is acidic — does not hold either: independent measurements put kōzo paper at pH 6.3–9.5, and mitsumata and gampi paper at 6.6–8.6, all within the neutral-to-mildly-alkaline band. 'Washi' is still not an automatic guarantee; judge each sheet by measurement, not by the name of its fiber."
           ],
           "svgRef": "AcidityScaleDiagram",
           "imageSlot": null,
@@ -556,7 +556,7 @@
             }
           ],
           "correctOptionId": "s2-q5-c",
-          "explanation": "Because lignin drives acidification and embrittlement as well as yellowing, low lignin content is directly tied to long-term chemical and structural stability, making it a key selection criterion. Options A and B invert the section's argument, and option D wrongly separates lignin's color effects from its structural consequences — the two are connected."
+          "explanation": "Lignin drives yellowing directly, and its breakdown products add acidity — and it is acidity that mainly governs embrittlement. Low lignin content is therefore tied to long-term chemical as well as visual stability, making it a key selection criterion. Options A and B invert the section's argument, and option D stops at the color effect, missing the acidity that follows from it."
         }
       ]
     },
@@ -793,9 +793,9 @@
         "The C-stain test"
       ],
       "summaryPoints": [
-        "Kōzo (avg. 10.5mm), gampi (avg. 4.3mm), and mitsumata (avg. 3.7mm) are the three principal washi fibers, each suited to different roles based on length, texture, and surface qualities.",
+        "Kōzo (avg. about 9.4mm, reported 6–21mm) is by far the longest of the three principal washi fibers; gampi and mitsumata both run about 3mm. Each suits different roles based on length, texture, and surface qualities.",
         "Kōzo's long, tangling fiber makes it the standard choice for honshi and hada-uragami, where maximum strength in a thin sheet is essential.",
-        "Gampi is prized for its smoothness, density, and insect resistance; mitsumata for its soft, refined sheen, especially under gold leaf.",
+        "Gampi is prized for its smoothness and density; mitsumata for its soft, refined sheen, especially under gold leaf.",
         "Fiber identification combines microscope examination of fiber silhouettes (kōzo: rounded tip; gampi: flat, twisted ribbon; mitsumata: spindle shape, swollen at mid-fiber) with staining tests such as C-stain, since no single method is conclusive alone.",
         "Wood pulp's average fiber length (about 1.3mm) is far shorter than any washi fiber, reinforcing why washi achieves strength-to-thickness ratios wood pulp cannot match."
       ],
@@ -814,7 +814,7 @@
           "id": "s4-step-2",
           "heading": "Kōzo: The Workhorse Fiber",
           "paragraphs": [
-            "Kōzo (paper mulberry) has an average fiber length of about 10.5mm — long, thick, and prone to tangling into a strong, interlocking network. Under magnification the fiber runs nearly cylindrical, averaging about 0.023mm across, and is often wrapped in a thin, translucent sheath. This length is why kōzo paper is exceptionally strong even when made very thin — the standard choice for the honshi itself and for hada-uragami (first lining paper), the most structurally important reinforcing layer."
+            "Kōzo (paper mulberry) has an average fiber length of about 9.4mm, with reported values running from 6 to 21mm (Yamashita 2017) — by far the longest of the three, and long enough to tangle into a strong, interlocking network. Under magnification the fiber runs nearly cylindrical and is often wrapped in a thin, translucent sheath. Width is no help in telling the three apart: all of them fall in roughly the same 10–30 micrometre band, and the real difference is length. That length is why kōzo paper is exceptionally strong even when made very thin — the standard choice for the honshi itself and for hada-uragami (first lining paper), the most structurally important reinforcing layer."
           ],
           "svgRef": null,
           "imageSlot": null,
@@ -822,10 +822,10 @@
         },
         {
           "id": "s4-step-3",
-          "heading": "Gampi: Smooth, Dense, and Insect-Resistant",
+          "heading": "Gampi: Smooth, Dense, and Lustrous",
           "paragraphs": [
-            "Gampi fiber averages about 4.3mm — shorter than kōzo, but naturally smooth, glossy, and dense. Paper made from gampi resists insect damage better than other washi and takes ink and pigment with unusual clarity, which is why it is prized for fine calligraphy papers and for thin, refined repair papers where bulk cannot be added.",
-            "One caution from the reference data: finished gampi papers tend to sit on the acidic side of neutral. Gampi's refinement is real, but so is its chemistry — weigh both before placing it in long-term contact with a honshi."
+            "Gampi fiber averages about 3mm — far shorter than kōzo, but naturally smooth, glossy, and dense. It takes ink and pigment with unusual clarity, which is why it is prized for fine calligraphy papers and for thin, refined repair papers where bulk cannot be added. Gampi is also said to attract fewer insects, but that is anecdotal: no mechanism has been established, so it should not be treated as a selection criterion.",
+            "A note on its chemistry, since the opposite is often repeated: gampi paper is not acidic. Measured values put mitsumata and gampi paper at pH 6.6–8.6 — neutral to mildly alkaline, the same band as kōzo paper at 6.3–9.5. Judge any sheet by measurement rather than by the reputation of its fiber."
           ],
           "svgRef": null,
           "imageSlot": null,
@@ -835,7 +835,7 @@
           "id": "s4-step-4",
           "heading": "Mitsumata: Soft and Refined",
           "paragraphs": [
-            "Mitsumata fiber averages about 3.7mm and produces a soft sheet with a delicate, gentle sheen. It came into wide use only from the Edo period onward and is typically chosen for albums and as a substrate for gold leaf, where its fine surface and subtle luster matter more than raw strength."
+            "Mitsumata fiber also averages about 3mm and produces a soft sheet with a delicate, gentle sheen. It came into wide use only from the Edo period onward and is typically chosen for albums and as a substrate for gold leaf, where its fine surface and subtle luster matter more than raw strength."
           ],
           "svgRef": null,
           "imageSlot": null,
@@ -919,7 +919,7 @@
             },
             {
               "id": "s4-q1-b",
-              "text": "Gampi, because of its insect resistance."
+              "text": "Gampi, because of its smooth, dense surface."
             },
             {
               "id": "s4-q1-c",
@@ -931,7 +931,7 @@
             }
           ],
           "correctOptionId": "s4-q1-c",
-          "explanation": "Kōzo's unusually long fiber (avg. 10.5mm) creates far more bond points per sheet, giving it the highest strength-to-thickness ratio of the washi fibers — exactly why it is the standard choice for hada-uragami. Gampi and mitsumata are chosen for other qualities (insect resistance, refined sheen), and wood pulp's short fiber (avg. 1.3mm) makes it the weakest option here."
+          "explanation": "Kōzo's unusually long fiber (avg. about 9.4mm) creates far more bond points per sheet, giving it the highest strength-to-thickness ratio of the washi fibers — exactly why it is the standard choice for hada-uragami. Gampi and mitsumata, both around 3mm, are chosen for other qualities such as surface and sheen, and wood pulp's short fiber (about 1–3mm) makes it the weakest option here."
         },
         {
           "id": "s4-q2",
