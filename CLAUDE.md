@@ -392,7 +392,8 @@ BASE_PATH=/WA-Site/ npm run build
      > から生成AIが書き下ろしたもので、2026-09-16 に動画講義と重なる箇所（Section 2・4 の一部）を直しただけ。
      > 講座ページと全ステップに「プロトタイプ（試作版）」の注記を出している（`courseLessonsDraftNote` / `lessonDraftNotice`）。
      > ファクトチェックを終えたセクションが出たら、注記と人格の扱いを見直すこと。
-     > Section 1 の出典欄の AI 表記「Every source was checked and the text reviewed by hand」は照合記録が無く、要確認。
+     > Section 1 の出典欄の AI 表記・比重注記も「照合・監修は未実施の試作版」「比重は未検証の見積もり」に修正済み（2026-09-16）。
+     > **照合の記録がないのに「確認済み」と書かないこと。**
   3. **Web検索** — Anthropic のサーバーツール `web_search_20250305`（`CHAT_CONFIG.webSearches` 回まで、0で停止）。
      引用された Web ページは「Web」ラベル＋リンク、引用なしで検索だけした場合は「検索で見つかったページ」。
   1・2 は全文を Citations 付き document として最初の user ターンに入れてキャッシュ（約22,500トークン）。
