@@ -149,6 +149,10 @@ export async function onRequestPost({ request, env }) {
     })
 
   let upstream
+  // Reported in a response header, so whether answers can search is checkable
+  // from outside: "on", "off" (disabled in config), or "unavailable" (the
+  // organisation has web search switched off in the Claude Console).
+  let search = CHAT_CONFIG.webSearches > 0 ? 'on' : 'off'
   try {
     upstream = await call()
     // Web search has to be switched on for the organisation in the Claude
@@ -157,6 +161,7 @@ export async function onRequestPost({ request, env }) {
       const detail = await upstream.text()
       if (/web.?search/i.test(detail)) {
         console.error('chat: web search unavailable, answering without it', detail.slice(0, 300))
+        search = 'unavailable'
         upstream = await call(false)
       } else {
         upstream = new Response(detail, { status: 400 })
@@ -196,6 +201,7 @@ export async function onRequestPost({ request, env }) {
     headers: {
       'content-type': 'text/event-stream; charset=utf-8',
       'cache-control': 'no-store',
+      'x-wa-web-search': search,
     },
   })
 }
