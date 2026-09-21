@@ -403,8 +403,13 @@ BASE_PATH=/WA-Site/ npm run build
 - **漠然とした質問 → 学習ルート。** システムプロンプト末尾の `COURSE MAP`（`chat-corpus.js` の `courseMap()`、
   courses.json と lessons.json から自動生成）にある講義・レッスンだけを使って2〜3ルートを図で示す。
 - **図示。** モデルが `<visual>{JSON}</visual>` を書き、`chatStream.js` が切り出し、
-  `src/components/ChatVisual.jsx` が描く（table / bars / ranges / routes の4種、値は検証・件数上限・
+  `src/components/ChatVisual.jsx` が描く（table / bars / ranges / routes / **quiz** の5種、値は検証・件数上限・
   リンクは `#/…` と https のみ）。書きかけの `<visual>` は「図を作成しています…」で隠す。
+  quiz だけは操作できる（選ぶ／「答えを見る」で答えと解説が開く。点数・不正解表示なし）。
+- **人格 v3（2026-09-21, テストのFB）:** 既定は「一段やさしく」（初心者も想定）／定義の質問は複数の意味を
+  **必ずWeb検索して**並べる／「復習教材」には要点ではなく quiz で確認問題／日本語の用語対応表（誤訳対策）。
+  > ⚠ 人格に**具体的な中身の例**（例:「和紙には〜という意味がある」）を書くと、AIが検索せずにそれを出典なしで答える。
+  > 振る舞いの指示に、答えの中身を混ぜないこと（2026-09-21 実測）。
 - **Web検索の可否は外から確認できる。** 応答ヘッダー `x-wa-web-search`: `on` / `off`（設定で0）/
   `unavailable`（Claude Console の組織設定で無効 → 自動で検索なしで回答）。
 - **effort は low のまま。** medium を本番で試したが、根拠のない形容の混入は減らず時間だけ増えた（2026-09-16 実測）。
