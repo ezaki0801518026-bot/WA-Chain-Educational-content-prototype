@@ -393,6 +393,8 @@ const strings = {
     chatSearched: 'Pages found by the search',
     chatSearching: 'Searching the web',
     chatDrawing: 'Drawing a figure…',
+    chatQuizAnswer: 'Answer',
+    chatQuizShow: 'Show the answer',
 
     // Updates / changelog page
     updatesTitle: 'Updates',
@@ -1030,6 +1032,8 @@ const strings = {
     chatSearched: '検索で見つかったページ',
     chatSearching: 'Webを検索しています',
     chatDrawing: '図を作成しています…',
+    chatQuizAnswer: '答え',
+    chatQuizShow: '答えを見る',
 
     // Updates / changelog ページ
     updatesTitle: '更新情報',

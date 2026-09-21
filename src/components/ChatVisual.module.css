@@ -183,3 +183,108 @@
   text-decoration-color: rgba(var(--accent-rgb), 0.5);
   text-underline-offset: 2px;
 }
+
+/* quiz ------------------------------------------------------------------- */
+.quiz {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.quizItem {
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.18);
+}
+
+.quizItem:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.quizQ {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin: 0 0 0.4rem;
+}
+
+.quizN {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.quizOptions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.quizOption {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 4px;
+  padding: 0.35rem 0.55rem;
+  cursor: pointer;
+}
+
+.quizOption:hover:not(:disabled),
+.quizOption:focus-visible {
+  border-color: var(--accent);
+}
+
+.quizOption:disabled {
+  cursor: default;
+}
+
+.quizLetter {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* The lecture's answer is marked; the reader's own different pick is only
+   outlined, never marked wrong. */
+.quizRight {
+  border-color: var(--correct);
+  background: rgba(var(--correct-rgb), 0.12);
+}
+
+.quizRight .quizLetter {
+  color: var(--correct);
+}
+
+.quizPicked {
+  border-color: var(--accent);
+  border-style: dashed;
+}
+
+.quizExplain {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  margin: 0.45rem 0 0;
+}
+
+.quizShow {
+  margin-top: 0.4rem;
+  font: inherit;
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}

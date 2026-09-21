@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './ChatVisual.module.css'
 
 // Draws the small figures the assistant can put in a reply. The model writes
@@ -9,6 +11,12 @@ import styles from './ChatVisual.module.css'
 //   bars    {title, unit, items: [{label, value, note?}]}
 //   ranges  {title, unit, min?, max?, marker?: {value, label}, items: [{label, from, to}]}
 //   routes  {title, routes: [{name, fit, steps: [{title, link?, note?}]}]}
+//   quiz    {title, questions: [{q, options: [..], answer: index, explain}]}
+//
+// A quiz is the one interactive kind: the reader picks an option (or just
+// asks to see the answer) and the answer and its explanation are revealed.
+// No score and no "wrong" — the same quiet tone as the questions after each
+// lecture (CourseReflection).
 //
 // Everything is treated as untrusted: text is rendered as text, numbers are
 // checked, lists are capped, and a link is only followed if it is a page on
@@ -180,12 +188,85 @@ function Routes({ spec }) {
   )
 }
 
+function validQuestions(spec) {
+  return (Array.isArray(spec.questions) ? spec.questions : [])
+    .map((item) => ({
+      q: str(item?.q),
+      options: (Array.isArray(item?.options) ? item.options : []).map(str).filter(Boolean).slice(0, 5),
+      answer: Number.isInteger(item?.answer) ? item.answer : -1,
+      explain: str(item?.explain),
+    }))
+    .filter((item) => item.q && item.options.length >= 2 && item.answer >= 0 && item.answer < item.options.length)
+    .slice(0, 6)
+}
+
+function QuizQuestion({ item, n }) {
+  const { t } = useLanguage()
+  const [picked, setPicked] = useState(null)
+  const [shown, setShown] = useState(false)
+  const open = shown || picked !== null
+  const letter = (i) => String.fromCharCode(65 + i)
+  return (
+    <li className={styles.quizItem}>
+      <p className={styles.quizQ}>
+        <span className={styles.quizN}>Q{n}.</span> {item.q}
+      </p>
+      <ul className={styles.quizOptions}>
+        {item.options.map((option, i) => {
+          const state = open ? (i === item.answer ? styles.quizRight : i === picked ? styles.quizPicked : '') : ''
+          return (
+            <li key={i}>
+              <button
+                type="button"
+                className={`${styles.quizOption} ${state}`}
+                onClick={() => setPicked(i)}
+                disabled={open}
+                aria-pressed={picked === i}
+              >
+                <span className={styles.quizLetter}>{open && i === item.answer ? '✓' : letter(i)}</span>
+                {option}
+              </button>
+            </li>
+          )
+        })}
+      </ul>
+      {open ? (
+        <p className={styles.quizExplain}>
+          <strong>
+            {t('chatQuizAnswer')}: {letter(item.answer)}
+          </strong>
+          {item.explain && ` — ${item.explain}`}
+        </p>
+      ) : (
+        <button type="button" className={styles.quizShow} onClick={() => setShown(true)}>
+          {t('chatQuizShow')}
+        </button>
+      )}
+    </li>
+  )
+}
+
+function Quiz({ spec }) {
+  const questions = validQuestions(spec)
+  return (
+    <ol className={styles.quiz}>
+      {questions.map((item, i) => (
+        <QuizQuestion key={i} item={item} n={i + 1} />
+      ))}
+    </ol>
+  )
+}
+
 const KINDS = { table: Table, bars: Bars, ranges: Ranges, routes: Routes }
 
 function ChatVisual({ spec, refs }) {
+  // The quiz holds state, so it renders as a component; the others are plain
+  // functions of the spec and are called directly so an empty one draws nothing.
+  const isQuiz = spec?.type === 'quiz'
   const Kind = KINDS[spec?.type]
-  if (!Kind) return null
-  const body = Kind({ spec })
+  if (!isQuiz && !Kind) return null
+  if (isQuiz && validQuestions(spec).length === 0) return null
+  const body = isQuiz ? <Quiz spec={spec} /> : Kind({ spec })
   if (!body) return null
   return (
     <figure className={styles.figure}>
