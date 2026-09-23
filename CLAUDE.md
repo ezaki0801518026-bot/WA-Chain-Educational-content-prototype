@@ -91,6 +91,16 @@ http://localhost:4173/#/news/<記事ID>
 ### ⚠ `strings.js` は日英が別ブロック
 **片方だけ直すと、もう片方の言語で古い文が残る。** キー名（例 `aboutMission`）で検索して両方直すこと。
 
+文言を触ったら、次で日英の食い違いを機械的に確認する（`strings.tmp.mjs` は gitignore 済み）:
+
+```bash
+node strings.tmp.mjs
+```
+
+日英のキーの過不足・重複キー・**英語ブロックに日本語が混じっていないか**・
+UI が `t()` で呼ぶキーが両言語にあるか、を見る。同じキーを2回定義しても JS は後勝ちで
+エラーにならないため、**重複の検出はこのテストだけが頼り**（実際に `hubAskTitle` の重複を検出した）。
+
 ---
 
 ## 5. デザイン上の約束（勝手に変えない）
@@ -228,6 +238,33 @@ sleep 6
 
 - ホーム `#/` は**この6つへのハブ**（`src/pages/HubPage.jsx`）。旧トップの `HomePage.jsx` は
   **未使用のまま残してある**（CSSモジュール `HomePage.module.css` は CoursePage が今も使用）。
+
+### ★ホームの構成（2026-09-24 改装）
+
+上から順に、**①1画面ぶんのヒーロー（画像と文言だけ）→ ②AIに質問する／専門家に相談する（横並び）→
+③できること（4タイル・タイトルのみ、Study Tour と Pricing は「準備中」）→ ④あなたへのおすすめ → ⑤お知らせ**。
+
+- **ヒーローは `min-height: 100svh`。** 1画面目には他を置かない（`vh` ではなくの `svh`：
+  スマホのアドレスバーの伸縮で次のセクションが覗く／文言が押し出されるのを防ぐ）。
+- **説明文は「？」ボタンの中へ**（`src/components/HelpTip.jsx`）。
+  **原則: 画面に説明文を並べない。追加説明は `HelpTip` に入れる。**
+- 「専門家に相談する」は `sessionStorage` の `wa-chain-chat-mode='team'` を立てて `#/chat` へ送り、
+  チャット画面がメール送信モードで開く（AIの窓口と人の窓口を並列にするため）。
+
+### ★利用者プロフィール（5つの質問）
+
+| ファイル | 役割 |
+|---|---|
+| `data/profile.js` | 質問と選択肢（**ここだけ直せば設問が変わる**）、`sanitiseProfile()`、AIに渡す文面 `profileLines()` |
+| `src/utils/profile.js` | 保存・読み出し（localStorage `wa-chain-profile`、スキップ記録 `wa-chain-profile-skipped`） |
+| `src/components/ProfileSetup.jsx` | 初回訪問時に一度だけ出るダイアログ（スキップ可・後から変更可） |
+| `src/utils/recommend.js` | 属性→おすすめの並び替え（`VIDEO_TRAITS` / `SECTION_TRAITS` / `PLACE_TRAITS` に「どの回答に向くか」を書く） |
+
+- **アカウントもサーバー保存も無い。** ブラウザにのみ保存し、名前や所属は聞かない。
+- AIへは `POST /api/chat` の `profile` で渡し、Worker が **キャッシュ対象の外**（最初の user ターンの
+  ドキュメント・質問文の後ろ）に "ABOUT THE PERSON ASKING" として足す。
+  **system プロンプトに入れないこと**（プロフィールごとにキャッシュが外れる）。
+- 視聴済みの講義（`wa-chain-watch`）と学習済みセクション（`washi-course-progress`）は後ろに回る。
 - 用語辞典・チャット・コホート・コミュニティ・更新履歴・フィードバックの各ページは
   **URLでは今も開くが、ナビゲーションからは外してある**（Header / Footer / FeaturesMenu）。
   機能を戻すときはこの3ファイルにリンクを足すだけでよい。
