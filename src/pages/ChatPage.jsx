@@ -3,6 +3,7 @@ import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { submitForm } from '../formConfig.js'
 import { track } from '../utils/analytics.js'
 import { setSectionStep } from '../utils/progress.js'
+import { readProfile } from '../utils/profile.js'
 import { readAnswer } from '../utils/chatStream.js'
 import { sourceFor } from '../../data/chat-corpus.js'
 import ChatVisual from '../components/ChatVisual.jsx'
@@ -91,6 +92,9 @@ const SAMPLES = [
 const MAX_CHARS = 2000
 const ENDPOINT = '/api/chat'
 const CHAT_PREFILL_KEY = 'wa-chain-chat-prefill'
+// Set by the home page's "Ask a person" card, so the chat page opens on the
+// email route instead of the assistant.
+const CHAT_MODE_KEY = 'wa-chain-chat-mode'
 
 const ERROR_KEYS = {
   budget: 'chatErrorBudget',
@@ -305,6 +309,10 @@ function ChatPage() {
         carried.current = draft
         sessionStorage.removeItem(CHAT_PREFILL_KEY)
       }
+      if (sessionStorage.getItem(CHAT_MODE_KEY) === 'team') {
+        setEscalating(true)
+        sessionStorage.removeItem(CHAT_MODE_KEY)
+      }
     } catch {
       /* private mode: nothing to carry over */
     }
@@ -353,6 +361,9 @@ function ChatPage() {
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({
             messages: history.map(({ role, content }) => ({ role, content })),
+            // The five answers from the home page, if they were given: they
+            // set how plainly the assistant explains. Never any free text.
+            profile: readProfile(),
           }),
         })
 

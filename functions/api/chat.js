@@ -11,6 +11,7 @@
 
 import { PERSONA, CHAT_CONFIG } from '../../data/chat-persona.js'
 import { courseDocuments, courseMap } from '../../data/chat-corpus.js'
+import { profileLines } from '../../data/profile.js'
 
 const API = 'https://api.anthropic.com/v1/messages'
 
@@ -49,11 +50,22 @@ function sanitiseMessages(input) {
 // The documents always sit at the front of the first turn and are marked for
 // caching, so persona + course are one stable, cached prefix for every
 // request, whatever the conversation after them.
-function withCourse(messages) {
+// The reader's own answers ride in the same turn, after the cached documents
+// and after the question, so a different profile costs nothing in cache.
+function withCourse(messages, profile) {
   const documents = courseDocuments()
   documents[documents.length - 1].cache_control = { type: 'ephemeral' }
+  const lines = profileLines(profile)
   const [first, ...rest] = messages
-  return [{ role: 'user', content: [...documents, { type: 'text', text: first.content }] }, ...rest]
+  const content = [...documents, { type: 'text', text: first.content }]
+  if (lines.length) {
+    const listed = lines.map((line) => `- ${line}`).join('\n')
+    content.push({
+      type: 'text',
+      text: `ABOUT THE PERSON ASKING (their own answers to five questions on this site):\n${listed}`,
+    })
+  }
+  return [{ role: 'user', content }, ...rest]
 }
 
 // Spend limits and rate limits fail differently, and the difference matters:
@@ -134,7 +146,7 @@ export async function onRequestPost({ request, env }) {
         ? { tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: CHAT_CONFIG.webSearches }] }
         : {}),
       system: `${PERSONA}\n\nCOURSE MAP\n${courseMap()}`,
-      messages: withCourse(messages),
+      messages: withCourse(messages, body?.profile),
     })
 
   const call = (withSearch = true) =>

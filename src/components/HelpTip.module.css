@@ -1,0 +1,53 @@
+.wrap {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+
+.button {
+  width: 1.15rem;
+  height: 1.15rem;
+  line-height: 1;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid rgba(var(--accent-rgb), 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+}
+
+.button:hover,
+.button:focus-visible {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.note {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  width: max-content;
+  max-width: min(22rem, 78vw);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: normal;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  border-left: 3px solid var(--seal);
+  border-radius: 3px;
+  padding: 0.5rem 0.7rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  white-space: normal;
+}
+
+.noteRight {
+  left: auto;
+  right: 0;
+}
