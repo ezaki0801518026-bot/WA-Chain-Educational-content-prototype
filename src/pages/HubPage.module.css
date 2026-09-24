@@ -53,8 +53,31 @@
 .heroVeil,
 .heroInner,
 .scrollCue,
-.heroDots {
+.heroDots,
+.heroCaption {
   pointer-events: none;
+}
+
+/* One line about the photograph on screen, small, in the lower right corner. */
+.heroCaption {
+  position: absolute;
+  right: calc(var(--gutter) + env(safe-area-inset-right, 0px));
+  bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
+  margin: 0;
+  max-width: min(24rem, 55vw);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: right;
+  color: rgb(255 255 255 / 0.78);
+  text-wrap: pretty;
+  animation: hero-fade var(--dur-base) ease both;
+}
+
+/* On a phone the caption stays right of the scroll cue in the centre. */
+@media (max-width: 36em) {
+  .heroCaption {
+    max-width: calc(50vw - 2.5rem);
+  }
 }
 
 .heroDots {

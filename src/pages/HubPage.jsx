@@ -14,11 +14,13 @@ import styles from './HubPage.module.css'
 // Several photographs can sit behind the sentence; a sideways swipe (or a
 // trackpad scroll) moves to the next. Add a path here after running
 // `npm run images` for it; the first one is preloaded from index.html.
+// Each photograph carries a one-line caption (strings.js), shown small in
+// the corner for the picture on screen.
 const HERO_IMAGES = [
-  '/images/hero/繊維を水にさらす様子.jpg',
-  '/images/hero/漉き簀の目.jpg',
-  '/images/hero/楮の束.jpg',
-  '/images/hero/楮を水にさらす槽.jpg',
+  { src: '/images/hero/繊維を水にさらす様子.jpg', caption: 'hubHeroCaption1' },
+  { src: '/images/hero/漉き簀の目.jpg', caption: 'hubHeroCaption2' },
+  { src: '/images/hero/楮の束.jpg', caption: 'hubHeroCaption3' },
+  { src: '/images/hero/楮を水にさらす槽.jpg', caption: 'hubHeroCaption4' },
 ]
 
 // The four things the service offers. Titles only — the tiles are doors, not
@@ -120,7 +122,7 @@ function HubPage({ navigate }) {
             setHeroIndex(Math.round(el.scrollLeft / Math.max(1, el.clientWidth)))
           }}
         >
-          {HERO_IMAGES.map((src, i) => (
+          {HERO_IMAGES.map(({ src }, i) => (
             <img
               key={src}
               className={styles.heroImg}
@@ -140,9 +142,12 @@ function HubPage({ navigate }) {
         <svg className={styles.scrollCue} width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M4 7.5 10 13l6-5.5" />
         </svg>
+        <p key={heroIndex} className={styles.heroCaption}>
+          {t(HERO_IMAGES[Math.min(heroIndex, HERO_IMAGES.length - 1)].caption)}
+        </p>
         {HERO_IMAGES.length > 1 && (
           <div className={styles.heroDots} aria-hidden="true">
-            {HERO_IMAGES.map((src, i) => (
+            {HERO_IMAGES.map(({ src }, i) => (
               <span key={src} className={`${styles.heroDot} ${i === heroIndex ? styles.heroDotActive : ''}`} />
             ))}
           </div>

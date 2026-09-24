@@ -16,6 +16,10 @@ const strings = {
     hubLede:
       'Video lectures, a map of where the fibre is grown, study tours in Japan, and a plan that fits your practice — built for paper and painting conservators.',
     hubExploreTitle: 'What you can do here',
+    hubHeroCaption1: 'Washing and loosening bundles of raw fibre in cold water',
+    hubHeroCaption2: 'A metal screen that lets through only fibre refined to the set fineness',
+    hubHeroCaption3: 'Bundles of kōzo bark, the raw material',
+    hubHeroCaption4: 'Fibre soaking in water to soften',
     prototypeTag: 'Prototype',
     prototypeNoticeGeneral:
       'This site is a prototype for testing. What is here is unfinished, and the content and the features will change.',
@@ -707,6 +711,10 @@ const strings = {
     hubLede:
       '動画講義、原料の産地マップ、日本での現地ツアー、そして実務に合う料金プラン。紙・絵画修復に携わる方のための学習サービスです。',
     hubExploreTitle: 'できること',
+    hubHeroCaption1: '原料となる繊維の束を冷たい水で洗い、ほぐす',
+    hubHeroCaption2: '規定の細さになった繊維のみが通ることのできる金属のフィルター',
+    hubHeroCaption3: '原料となる楮の木の皮の束',
+    hubHeroCaption4: '繊維を水につけて柔らかくする様子',
     prototypeTag: 'プロトタイプ',
     prototypeNoticeGeneral:
       'このサイトは検証用のプロトタイプです。内容も機能も未完成で、今後変わります。',
