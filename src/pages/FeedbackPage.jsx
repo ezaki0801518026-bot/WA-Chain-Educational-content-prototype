@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { submitForm } from '../formConfig.js'
 import styles from './FeedbackPage.module.css'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 
 const TYPES = [
   { value: 'general', labelKey: 'feedbackTypeGeneral' },
@@ -46,6 +47,7 @@ function FeedbackPage() {
   if (phase === 'success') {
     return (
       <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeGeneral" />
         <h1 className={styles.title}>{t('feedbackTitle')}</h1>
         <p className={styles.successText}>{t('feedbackThanks')}</p>
       </div>
@@ -54,6 +56,7 @@ function FeedbackPage() {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeGeneral" />
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('feedbackTitle')}</h1>
         <p className={styles.description}>{t('feedbackDescription')}</p>

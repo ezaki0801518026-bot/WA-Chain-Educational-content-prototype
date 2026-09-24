@@ -4,6 +4,7 @@ import lessons from '../data/lessons.json'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import BackToTop from './components/BackToTop.jsx'
+import CheerPopup from './components/CheerPopup.jsx'
 import Breadcrumbs from './components/Breadcrumbs.jsx'
 import ScrollProgress from './components/ScrollProgress.jsx'
 import HubPage from './pages/HubPage.jsx'
@@ -208,6 +209,7 @@ function App() {
       </main>
       <Footer navigate={navigate} />
       <BackToTop />
+      <CheerPopup page={route.page} />
     </div>
   )
 }

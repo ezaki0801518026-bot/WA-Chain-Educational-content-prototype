@@ -49,6 +49,8 @@ npm run preview  # ビルド結果をローカル配信（localhost:4173）
 
 **ページはホーム以外すべて `lazy(() => import(...))` で別チャンク**（初回表示を軽くするため）。新しいページを足すときも同じ書き方にし、`import X from` で直接読み込まない。ハッシュ変更は `startTransition` で反映するので、次のチャンクが届くまで前のページが残る。ホームのヒーロー画像だけ `index.html` のインラインスクリプトが（ホームのハッシュのときだけ）先読みする。
 
+**ダイアログ（メニュー・5つの質問）は `createPortal` で `<body>` 直下に出す。** 開いている間は `#root` に `inert` を付けるので、`#root` の中に描くとダイアログ自身が操作不能になる（2026-09-24 に実際に起きたバグ）。
+
 ```
 http://localhost:4173/#/            ← ホーム（ハブ）= HubPage.jsx
 http://localhost:4173/#/course
@@ -88,6 +90,11 @@ http://localhost:4173/#/news/<記事ID>
 | **動画講義（The Course の本体）** | `data/courses.json` |
 | 更新履歴 | `data/updates.json`（3件） |
 | 写真の実体 | `public/images/hero/` |
+| ロゴ | `public/images/brand/wa-chain-logo-mark.png`（透過PNG。ヘッダーでは CSS の mask として描き、色は `--color-brand`：明では紺、暗では文字色） |
+| ホームのヒーロー写真（横スワイプで切替） | `src/pages/HubPage.jsx` の `HERO_IMAGES`。写真を足したら `npm run images` を実行してからパスを追加。先頭の1枚だけ `index.html` が先読み |
+| 5つの質問（利用者プロフィール） | `src/context/ProfileContext.jsx`（全ページ共通。ホームの「回答を変更する」とメニュー末尾から開く。飛ばした人には次回訪問のホームで控えめに再案内、「あとで」で7日休止） |
+| 応援ポップアップ | `src/components/CheerPopup.jsx`（閲覧系ページで12秒後に右下。Web3Forms に送る。テストでは `api.web3forms.com` を必ずモック） |
+| 和紙マップの英語 | `data/washiPapers.json` の `nameEn` / `descEn` / `regionLabelEn`。英語モードでは SVG の県名ツールチップも英語側だけ |
 | 写真の幅別 WebP（`*.w480/w960/w1600.webp`）と一覧 `src/imageManifest.json` | `npm run images` が生成（sharp）。写真を足したら実行してコミット。`<img>` は `picture(path, sizes)`（`src/utils/asset.js`）で `srcset` を付ける。ビルドは生成しない |
 | チームのSNS | `src/config/social.js` |
 

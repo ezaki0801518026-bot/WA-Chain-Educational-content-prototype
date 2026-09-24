@@ -8,6 +8,7 @@ import { readAnswer } from '../utils/chatStream.js'
 import { sourceFor } from '../../data/chat-corpus.js'
 import ChatVisual from '../components/ChatVisual.jsx'
 import styles from './ChatPage.module.css'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 
 // Example exchanges, shown under the input before the first question so an
 // observer sees what the assistant is for. Content stays in English, like the
@@ -465,6 +466,7 @@ function ChatPage() {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeGeneral" />
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('chatTitle')}</h1>
         <p className={styles.description}>{hasAssistant ? t('chatIntroAi') : t('chatIntro')}</p>

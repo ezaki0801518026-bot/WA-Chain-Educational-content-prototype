@@ -1,5 +1,6 @@
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './SourceList.module.css'
+import { sourceTypeLabel } from '../utils/sourceType.js'
 
 // Full source list for a section, shown on the summary page. Each row
 // carries the source, its type, and which steps it backs — so a reader can
@@ -8,7 +9,7 @@ import styles from './SourceList.module.css'
 // declares one, a bar and the largest share are shown, which is how the
 // project checks that no single source dominates a lesson.
 function SourceList({ sources, aiNotice = true }) {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
 
   if (!sources?.length) return null
 
@@ -41,11 +42,12 @@ function SourceList({ sources, aiNotice = true }) {
             {sources.map((source) => (
               <tr key={source.id}>
                 <td className={styles.num}>{source.id}</td>
-                <td>{source.text}</td>
-                <td className={styles.type}>{source.type}</td>
+                {/* Citations keep their original (Japanese) titles in both languages. */}
+                <td lang="ja">{source.text}</td>
+                <td className={styles.type}>{sourceTypeLabel(source.type, t)}</td>
                 <td className={styles.usedIn}>
                   {source.steps?.length
-                    ? source.steps.map((n) => t('step', { n, total: '' }).replace(/\s*\/\s*$/, '')).join('・')
+                    ? source.steps.map((n) => t('step', { n, total: '' }).replace(/\s*\/\s*$/, '')).join(lang === 'ja' ? '・' : ', ')
                     : '—'}
                 </td>
                 {weighted && <td className={styles.share}>{source.weight}%</td>}

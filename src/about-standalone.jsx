@@ -11,7 +11,7 @@ import { ThemeProvider, useTheme } from './context/ThemeContext.jsx'
 import './tokens.css'
 import './ui.css'
 import styles from './AboutStandalone.module.css'
-import { picture } from './utils/asset.js'
+import { asset } from './utils/asset.js'
 
 // Standalone build of the existing About page (mission / activity record /
 // team tabs), served at /about/. Same component as the in-app page — this
@@ -105,7 +105,7 @@ function AboutShell() {
       <ScrollProgress />
       <header className={styles.bar}>
         <span className={styles.brand}>
-          <img className={styles.brandMark} {...picture('/images/hero/wa-chain-logo-mark.png', '1.75rem')} alt="" />
+          <span className={styles.brandMark} style={{ '--mark': `url(${asset('/images/brand/wa-chain-logo-mark.png')})` }} aria-hidden="true" />
           <span className={styles.brandName}>WA-Chain</span>
         </span>
         <nav className={styles.controls} aria-label="Display options">

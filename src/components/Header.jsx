@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext.jsx'
 import FeaturesMenu from './FeaturesMenu.jsx'
 import SearchModal from './SearchModal.jsx'
 import styles from './Header.module.css'
-import { picture } from '../utils/asset.js'
+import { asset } from '../utils/asset.js'
 
 // Persistent header on every page: the four destinations as plain links on
 // the left, the brand in the middle, search / language / theme / menu on
@@ -46,7 +46,7 @@ function Header({ navigate, currentPage }) {
       </nav>
 
       <button type="button" className={styles.brand} onClick={() => navigate('/')} aria-label={t('appTitle')}>
-        <img className={styles.brandMark} {...picture('/images/hero/wa-chain-logo-mark.png', '1.75rem')} alt="" />
+        <span className={styles.brandMark} style={{ '--mark': `url(${asset('/images/brand/wa-chain-logo-mark.png')})` }} aria-hidden="true" />
         <span className={styles.brandName} aria-hidden="true">
           {t('appTitle')}
         </span>

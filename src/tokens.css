@@ -65,6 +65,8 @@
   --color-text-muted: var(--n-500);
   --color-text-inverse: var(--n-50);
   --color-text-on-accent: #ffffff;
+  /* The logo's own blue; nothing else uses it. */
+  --color-brand: #00167a;
 
   --color-border-subtle: var(--n-200);
   --color-border: var(--n-300);
@@ -187,6 +189,7 @@
 /* Dark: the same system on an ink ground, not a second design. Vividness
    comes down, the dark end spreads out, every pair re-measured. */
 :root[data-theme='dark'] {
+  --color-brand: var(--color-text);
   color-scheme: dark;
 
   --color-bg-page: #121617;

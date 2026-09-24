@@ -3,6 +3,7 @@ import coursesData from '../../data/courses.json'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { track } from '../utils/analytics.js'
 import styles from './CourseVideoPage.module.css'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 import { asset } from '../utils/asset.js'
 import PlaybackControls from '../components/PlaybackControls.jsx'
 import CourseReflection from '../components/CourseReflection.jsx'
@@ -97,6 +98,7 @@ function CourseVideoPage({ courseId, navigate }) {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeGeneral" />
       <button type="button" className={`btn btn-quiet btn-sm ${styles.back}`} onClick={() => navigate('/course')}>
         <BackIcon />
         {t('backToCourse')}

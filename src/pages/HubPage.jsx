@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import news from '../../data/news.json'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import HelpTip from '../components/HelpTip.jsx'
-import ProfileSetup from '../components/ProfileSetup.jsx'
-import { readProfile, wasSkipped } from '../utils/profile.js'
+import { readProfile, wasSkipped, shouldRemind, snoozeReminder } from '../utils/profile.js'
+import { useProfile } from '../context/ProfileContext.jsx'
 import { getProgress } from '../utils/progress.js'
 import { recommend } from '../utils/recommend.js'
 import { picture } from '../utils/asset.js'
@@ -11,7 +11,15 @@ import styles from './HubPage.module.css'
 
 // The first screen is the image and the sentence, nothing else: what this is,
 // before any navigation. Everything the service offers starts one scroll down.
-const HERO_IMAGE = '/images/hero/繊維を水にさらす様子.jpg'
+// Several photographs can sit behind the sentence; a sideways swipe (or a
+// trackpad scroll) moves to the next. Add a path here after running
+// `npm run images` for it; the first one is preloaded from index.html.
+const HERO_IMAGES = [
+  '/images/hero/繊維を水にさらす様子.jpg',
+  '/images/hero/漉き簀の目.jpg',
+  '/images/hero/楮の束.jpg',
+  '/images/hero/楮を水にさらす槽.jpg',
+]
 
 // The four things the service offers. Titles only — the tiles are doors, not
 // descriptions. `soon` marks what is not open yet.
@@ -52,13 +60,19 @@ function HubPage({ navigate }) {
   const { t, lang } = useLanguage()
   const pick = (field) => (field && (field[lang] ?? field.en)) || ''
   const [askDraft, setAskDraft] = useState('')
-  const [profile, setProfile] = useState(() => readProfile())
-  const [setupOpen, setSetupOpen] = useState(false)
+  const { profile, openSetup } = useProfile()
+  const [heroIndex, setHeroIndex] = useState(0)
+  // Closed it last time? A quiet reminder on the next visit, until answered.
+  const [remind, setRemind] = useState(() => shouldRemind())
 
   // Asked once, on the first visit, and never again once answered or closed.
   useEffect(() => {
-    if (!readProfile() && !wasSkipped()) setSetupOpen(true)
-  }, [])
+    if (!readProfile() && !wasSkipped()) openSetup()
+  }, [openSetup])
+
+  useEffect(() => {
+    if (profile) setRemind(false)
+  }, [profile])
 
   const picks = useMemo(() => {
     const progress = getProgress()
@@ -98,14 +112,26 @@ function HubPage({ navigate }) {
       {/* One screen: the image, the name of the thing, and a hint to scroll.
           The only entrance animation on the site lives here. */}
       <section className={styles.hero}>
-        <img
-          className={styles.heroImg}
-          {...picture(HERO_IMAGE, '100vw')}
-          alt=""
+        <div
+          className={styles.heroTrack}
           aria-hidden="true"
-          fetchPriority="high"
-          decoding="async"
-        />
+          onScroll={(event) => {
+            const el = event.currentTarget
+            setHeroIndex(Math.round(el.scrollLeft / Math.max(1, el.clientWidth)))
+          }}
+        >
+          {HERO_IMAGES.map((src, i) => (
+            <img
+              key={src}
+              className={styles.heroImg}
+              {...picture(src, '100vw')}
+              alt=""
+              fetchPriority={i === 0 ? 'high' : undefined}
+              loading={i === 0 ? undefined : 'lazy'}
+              decoding="async"
+            />
+          ))}
+        </div>
         <div className={styles.heroVeil} />
         <div className={`container ${styles.heroInner}`}>
           <h1 className={styles.heroTitle}>{t('hubTitle')}</h1>
@@ -114,6 +140,13 @@ function HubPage({ navigate }) {
         <svg className={styles.scrollCue} width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M4 7.5 10 13l6-5.5" />
         </svg>
+        {HERO_IMAGES.length > 1 && (
+          <div className={styles.heroDots} aria-hidden="true">
+            {HERO_IMAGES.map((src, i) => (
+              <span key={src} className={`${styles.heroDot} ${i === heroIndex ? styles.heroDotActive : ''}`} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Two ways to ask, side by side: the assistant, and a person. */}
@@ -189,10 +222,31 @@ function HubPage({ navigate }) {
               {profile ? t('hubForYouHelp') : t('hubForYouHelpEmpty')}
             </HelpTip>
           </h2>
-          <button type="button" className="link" onClick={() => setSetupOpen(true)}>
+          <button type="button" className="link" onClick={openSetup}>
             {profile ? t('hubForYouEdit') : t('hubForYouSet')}
           </button>
         </div>
+
+        {remind && (
+          <div className={`card ${styles.remind}`} role="status">
+            <p className={styles.remindText}>{t('profileRemindText')}</p>
+            <div className={styles.remindActions}>
+              <button type="button" className="btn btn-primary btn-sm" onClick={openSetup}>
+                {t('profileRemindYes')}
+              </button>
+              <button
+                type="button"
+                className="btn btn-quiet btn-sm"
+                onClick={() => {
+                  snoozeReminder()
+                  setRemind(false)
+                }}
+              >
+                {t('profileRemindNo')}
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className={styles.recRow}>
           {picks.videos.map((entry) => (
@@ -275,16 +329,6 @@ function HubPage({ navigate }) {
         </div>
       </section>
 
-      {setupOpen && (
-        <ProfileSetup
-          initial={profile}
-          onDone={(saved) => {
-            setProfile(saved)
-            setSetupOpen(false)
-          }}
-          onClose={() => setSetupOpen(false)}
-        />
-      )}
     </div>
   )
 }

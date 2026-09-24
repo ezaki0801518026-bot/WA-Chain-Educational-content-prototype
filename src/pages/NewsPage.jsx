@@ -3,6 +3,7 @@ import news from '../../data/news.json'
 import Reveal from '../components/Reveal.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './NewsPage.module.css'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 import { picture } from '../utils/asset.js'
 import { apiUrl } from '../utils/api.js'
 
@@ -35,6 +36,7 @@ function NewsPage({ navigate }) {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeGeneral" />
       <header className={styles.header}>
         <h1 className={styles.title}>{t('newsTitle')}</h1>
         <p className={styles.lede}>{t('newsLede')}</p>

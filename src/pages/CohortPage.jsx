@@ -1,6 +1,7 @@
 import WaitlistForm from '../components/WaitlistForm.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './CohortPage.module.css'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 
 const POINTS = ['1', '2', '3', '4']
 
@@ -12,6 +13,7 @@ function CohortPage() {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeGeneral" />
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('cohortTitle')}</h1>
         <p className={styles.lede}>{t('cohortLede')}</p>

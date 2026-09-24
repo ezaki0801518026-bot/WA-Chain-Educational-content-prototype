@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { QUESTIONS } from '../../data/profile.js'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
-import { writeProfile, markSkipped } from '../utils/profile.js'
+import { writeProfile, markSkipped, markSkippedThisSession } from '../utils/profile.js'
 import { track } from '../utils/analytics.js'
 import HelpTip from './HelpTip.jsx'
 import styles from './ProfileSetup.module.css'
@@ -16,7 +17,9 @@ function ProfileSetup({ initial = null, onDone, onClose }) {
   const panelRef = useRef(null)
   const label = (field) => field[lang] ?? field.en
 
-  // Focus lands inside; the page behind is inert until the dialog closes.
+  // Focus lands inside; the page behind (#root) is inert until the dialog
+  // closes. The dialog is rendered outside #root (a portal into <body>),
+  // otherwise inert would silence the dialog too.
   useEffect(() => {
     panelRef.current?.focus()
     const root = document.getElementById('root')
@@ -39,11 +42,12 @@ function ProfileSetup({ initial = null, onDone, onClose }) {
   }
   const skip = () => {
     markSkipped()
+    markSkippedThisSession()
     track('profile_skipped', {})
     onClose()
   }
 
-  return (
+  return createPortal(
     <div className="dialog-backdrop" role="dialog" aria-modal="true" aria-labelledby="profile-title">
       <div className={`dialog-panel ${styles.panel}`} ref={panelRef} tabIndex={-1}>
         <div className={styles.head}>
@@ -96,7 +100,8 @@ function ProfileSetup({ initial = null, onDone, onClose }) {
           <p className={styles.note}>{t('profileStored')}</p>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }
 

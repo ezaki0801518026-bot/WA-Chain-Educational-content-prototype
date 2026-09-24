@@ -53,7 +53,12 @@ function GlossaryText({ text }) {
         <span className={styles.tip} role="tooltip">
           <span className={styles.tipTerm}>
             {entry.term}
-            {entry.native && <span className={styles.tipNative}> {entry.native}</span>}
+            {entry.native && (
+              <span className={styles.tipNative} lang="ja">
+                {' '}
+                {entry.native}
+              </span>
+            )}
           </span>
           <span className={styles.tipDef}>{entry.definition}</span>
           <button

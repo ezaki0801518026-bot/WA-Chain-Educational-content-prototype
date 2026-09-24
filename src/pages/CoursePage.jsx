@@ -9,6 +9,7 @@ import HeroBanner from '../components/HeroBanner.jsx'
 import { getSectionIcon } from '../icons/index.js'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './CoursePage.module.css'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 import { asset, picture } from '../utils/asset.js'
 
 const TRACK_ORDER = ['foundations', 'diagnostics', 'practice']
@@ -86,6 +87,7 @@ function CoursePage({ navigate }) {
     <>
       <HeroBanner image={heroImages.course} title={t('navCourse')} subtitle={t('appSubtitle')} size="large" />
       <div className={`container ${styles.page}`}>
+        <PrototypeNotice messageKey="prototypeNoticeGeneral" />
         <p className={`prose ${styles.description}`}>{t('appDescription')}</p>
 
         {/* Video lectures come first: they are the part of the course that is

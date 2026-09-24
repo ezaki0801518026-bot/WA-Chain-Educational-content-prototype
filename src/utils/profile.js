@@ -42,3 +42,37 @@ export function markSkipped() {
     /* nothing to remember it with; the setup may appear again */
   }
 }
+
+// A gentle reminder for visitors who closed the setup: shown on the home
+// page from their next visit (a new browser session) onwards, until they
+// answer, or put it away for a week with "Not now".
+const SKIP_SESSION_KEY = 'wa-chain-profile-skip-session'
+const REMIND_OFF_KEY = 'wa-chain-profile-remind-off'
+const REMIND_SNOOZE_MS = 7 * 24 * 60 * 60 * 1000
+
+export function markSkippedThisSession() {
+  try {
+    sessionStorage.setItem(SKIP_SESSION_KEY, '1')
+  } catch {
+    /* no session storage: the reminder may show a little early */
+  }
+}
+
+export function shouldRemind() {
+  try {
+    if (readProfile() || !wasSkipped()) return false
+    if (sessionStorage.getItem(SKIP_SESSION_KEY) === '1') return false
+    const off = Number(localStorage.getItem(REMIND_OFF_KEY) || 0)
+    return Date.now() - off > REMIND_SNOOZE_MS
+  } catch {
+    return false
+  }
+}
+
+export function snoozeReminder() {
+  try {
+    localStorage.setItem(REMIND_OFF_KEY, String(Date.now()))
+  } catch {
+    /* nothing to remember it with */
+  }
+}

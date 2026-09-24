@@ -5,12 +5,15 @@ import './tokens.css'
 import './ui.css'
 import { LanguageProvider } from './i18n/LanguageContext.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
+import { ProfileProvider } from './context/ProfileContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
       <LanguageProvider>
-        <App />
+        <ProfileProvider>
+          <App />
+        </ProfileProvider>
       </LanguageProvider>
     </ThemeProvider>
   </React.StrictMode>,

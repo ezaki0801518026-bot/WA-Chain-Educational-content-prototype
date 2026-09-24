@@ -4,10 +4,13 @@ import japanSvgRaw from '../assets/japan-prefectures.svg?raw'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import Reveal from '../components/Reveal.jsx'
 import styles from './WashiMapPage.module.css'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 
 // Base map: geolonia/japanese-prefectures (MIT). Strip the XML prolog so the
 // markup can be injected inside HTML.
 const JAPAN_SVG = japanSvgRaw.replace(/<\?xml[^>]*\?>/, '')
+// The prefecture tooltips in the SVG read "沖縄 / Okinawa"; English mode keeps the English half.
+const JAPAN_SVG_EN = JAPAN_SVG.replace(/<title>([^<]*?) \/ ([^<]*)<\/title>/g, '<title>$2</title>')
 
 const CATEGORY_CLASS = {
   designated: 'catDesignated',
@@ -150,7 +153,8 @@ function WashiMapPage() {
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    // Re-run when the language changes: the SVG is swapped for the other tooltip set.
+  }, [lang])
 
   // Highlight the active prefecture(s) + marker(s) whenever the selection
   // changes. activePaper (from the list) can light several regions at once.
@@ -177,6 +181,7 @@ function WashiMapPage() {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeGeneral" />
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('washiMapTitle')}</h1>
         <p className={styles.description}>{t('washiMapIntro')}</p>
@@ -195,7 +200,7 @@ function WashiMapPage() {
             className={styles.mapHost}
             ref={hostRef}
             /* eslint-disable-next-line react/no-danger */
-            dangerouslySetInnerHTML={{ __html: JAPAN_SVG }}
+            dangerouslySetInnerHTML={{ __html: lang === 'ja' ? JAPAN_SVG : JAPAN_SVG_EN }}
           />
         </figure>
 
@@ -215,8 +220,10 @@ function WashiMapPage() {
                 return (
                   <div key={paperId} className={styles.panelPaper}>
                     <div className={styles.panelPaperHead}>
-                      <h2 className={styles.panelPaperName}>{p.name}</h2>
-                      <span className={styles.panelReading}>{p.reading}</span>
+                      <h2 className={styles.panelPaperName}>{lang === 'ja' ? p.name : p.nameEn}</h2>
+                      <span className={styles.panelReading} lang={lang === 'ja' ? undefined : 'ja'}>
+                        {lang === 'ja' ? p.reading : p.name}
+                      </span>
                     </div>
                     <span className={`${styles.badge} ${styles[CATEGORY_CLASS[p.category]]}`}>
                       {lang === 'ja'
@@ -224,8 +231,8 @@ function WashiMapPage() {
                         : categories.find((c) => c.id === p.category)?.nameEn}
                     </span>
                     {renderDesignations(p)}
-                    <p className={styles.panelRegionLine}>{p.regionLabel}</p>
-                    <p className={styles.panelDesc}>{p.desc}</p>
+                    <p className={styles.panelRegionLine}>{lang === 'ja' ? p.regionLabel : p.regionLabelEn}</p>
+                    <p className={styles.panelDesc}>{lang === 'ja' ? p.desc : p.descEn}</p>
                   </div>
                 )
               })}
@@ -254,12 +261,14 @@ function WashiMapPage() {
                   onClick={() => selectPaper(paperId)}
                 >
                   <div className={styles.paperCardHead}>
-                    <span className={styles.paperName}>{p.name}</span>
-                    <span className={styles.paperReading}>{p.reading}</span>
+                    <span className={styles.paperName}>{lang === 'ja' ? p.name : p.nameEn}</span>
+                    <span className={styles.paperReading} lang={lang === 'ja' ? undefined : 'ja'}>
+                      {lang === 'ja' ? p.reading : p.name}
+                    </span>
                   </div>
                   {renderDesignations(p)}
                   {pinned && <span className={styles.paperPin}>{t('washiMapOnMap')}</span>}
-                  <p className={styles.paperDesc}>{p.desc}</p>
+                  <p className={styles.paperDesc}>{lang === 'ja' ? p.desc : p.descEn}</p>
                 </button>
               )
             })}

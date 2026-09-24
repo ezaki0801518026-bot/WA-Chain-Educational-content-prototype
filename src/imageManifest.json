@@ -1,4 +1,12 @@
 {
+  "/images/brand/wa-chain-logo-mark.png": {
+    "w": 552,
+    "h": 552,
+    "widths": [
+      480,
+      552
+    ]
+  },
   "/images/hero/NTNU gunnnerus library (3).jpg": {
     "w": 4032,
     "h": 3024,
@@ -67,13 +75,6 @@
       480,
       960,
       1600
-    ]
-  },
-  "/images/hero/wa-chain-logo-mark.png": {
-    "w": 260,
-    "h": 260,
-    "widths": [
-      260
     ]
   },
   "/images/hero/こうぞの皮をはぐへぐりという工程に使う包丁.jpg": {
@@ -256,11 +257,29 @@
       957
     ]
   },
+  "/images/hero/楮の束.jpg": {
+    "w": 1920,
+    "h": 1440,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "/images/hero/楮の畑を上から見た写真.jpg": {
     "w": 464,
     "h": 825,
     "widths": [
       464
+    ]
+  },
+  "/images/hero/楮を水にさらす槽.jpg": {
+    "w": 1920,
+    "h": 1440,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "/images/hero/楮を水につけているきれいな写真.JPG": {
@@ -285,6 +304,15 @@
     "widths": [
       480,
       957
+    ]
+  },
+  "/images/hero/漉き簀の目.jpg": {
+    "w": 1920,
+    "h": 1440,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "/images/hero/紙の博物館.jpg": {

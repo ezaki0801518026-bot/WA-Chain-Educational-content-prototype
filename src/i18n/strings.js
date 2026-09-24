@@ -17,6 +17,8 @@ const strings = {
       'Video lectures, a map of where the fibre is grown, study tours in Japan, and a plan that fits your practice — built for paper and painting conservators.',
     hubExploreTitle: 'What you can do here',
     prototypeTag: 'Prototype',
+    prototypeNoticeGeneral:
+      'This site is a prototype for testing. What is here is unfinished, and the content and the features will change.',
     prototypeNoticeTour:
       'This page is a preview of an idea, not a tour on sale. The regions, the programme and the dates are not fixed, and what we eventually run may look different. Joining the list only tells us you are interested.',
     prototypeNoticePricing:
@@ -39,6 +41,9 @@ const strings = {
       'A general order for now. Answer five short questions and this list, and the assistant’s answers, follow what you work on. Your answers stay in this browser.',
     hubForYouEdit: 'Change your answers',
     hubForYouSet: 'Answer five questions',
+    profileRemindText: 'Five quick questions would let this page put what fits your practice first.',
+    profileRemindYes: 'Answer now',
+    profileRemindNo: 'Not now',
     recLessonKind: 'Text lesson',
     recGeneral: 'A good place to start',
     recWatched: 'Already watched',
@@ -147,6 +152,9 @@ const strings = {
     sectionSourcesIntro: 'Everything in this section traces back to the works below.',
     sourceColSource: 'Source',
     sourceColType: 'Type',
+    sourceTypeAuthority: 'Authoritative reference',
+    sourceTypePublic: 'Public institution',
+    sourceTypeExpert: 'Specialist',
     sourceColUsedIn: 'Used in',
     sourceColShare: 'Share',
     sourceWeightNote:
@@ -215,6 +223,14 @@ const strings = {
     surveyTrackFoundations: 'Foundations',
     surveyTrackDiagnostics: 'Diagnostics',
     surveyTrackPractice: 'Practice & Theory',
+    cheerHeadline: 'Cheer the team on',
+    cheerBody: 'One tap tells the people building this to keep going. A comment is welcome too.',
+    cheerCommentLabel: 'A comment (optional)',
+    cheerSend: 'Send a cheer',
+    cheerSending: 'Sending…',
+    cheerThanks: 'Thank you. It reached the team.',
+    cheerError: 'It could not be sent. Please try again.',
+    cheerDismiss: 'Close',
 
     // Waitlist form (shared by Pricing + Community pages)
     waitlistEmailLabel: 'Email address',
@@ -330,6 +346,8 @@ const strings = {
     menuSectionRoadmap: 'On the roadmap',
     menuOpen: 'Menu',
     menuTitle: 'Menu',
+    menuProfileEdit: 'Change your five answers',
+    menuProfileSet: 'Answer five questions',
     navChat: 'Ask a conservator',
     navCohort: 'Guided cohort',
     navWashiMap: 'Washi map',
@@ -689,6 +707,8 @@ const strings = {
       '動画講義、原料の産地マップ、日本での現地ツアー、そして実務に合う料金プラン。紙・絵画修復に携わる方のための学習サービスです。',
     hubExploreTitle: 'できること',
     prototypeTag: 'プロトタイプ',
+    prototypeNoticeGeneral:
+      'このサイトは検証用のプロトタイプです。内容も機能も未完成で、今後変わります。',
     prototypeNoticeTour:
       'このページは構想段階の画面例で、販売中のツアーではありません。訪問先・内容・日程は未確定で、実際に実施する際には異なる可能性があります。登録は「関心がある」という意思表示としてお預かりします。',
     prototypeNoticePricing:
@@ -711,6 +731,9 @@ const strings = {
       '今は一般的な順番です。5つの質問に答えると、この並びとAIの回答が、お仕事の内容に合わせて変わります。回答はこのブラウザにのみ保存されます。',
     hubForYouEdit: '回答を変更する',
     hubForYouSet: '5つの質問に答える',
+    profileRemindText: '5つの質問に答えると、このページがあなたの実務に合う順になります。',
+    profileRemindYes: 'いま答える',
+    profileRemindNo: 'あとで',
     recLessonKind: 'テキスト教材',
     recGeneral: 'はじめの一歩に',
     recWatched: '視聴済み',
@@ -818,6 +841,9 @@ const strings = {
     sectionSourcesIntro: 'このセクションの記述は、すべて下記に基づいています。',
     sourceColSource: '出典',
     sourceColType: '種別',
+    sourceTypeAuthority: '権威書',
+    sourceTypePublic: '公的機関',
+    sourceTypeExpert: '専門家',
     sourceColUsedIn: '本文での対応箇所',
     sourceColShare: '比重',
     sourceWeightNote:
@@ -886,6 +912,14 @@ const strings = {
     surveyTrackFoundations: '基礎編',
     surveyTrackDiagnostics: '診断編',
     surveyTrackPractice: '実技・理論編',
+    cheerHeadline: 'チームを応援する',
+    cheerBody: 'ワンタップで「がんばれ」が制作チームに届きます。ひとことも歓迎です。',
+    cheerCommentLabel: 'ひとこと（任意）',
+    cheerSend: '応援を送る',
+    cheerSending: '送信中…',
+    cheerThanks: 'ありがとうございます。チームに届きました。',
+    cheerError: '送信できませんでした。もう一度お試しください。',
+    cheerDismiss: '閉じる',
 
     // Waitlist form（Pricing・Communityページ共通）
     waitlistEmailLabel: 'メールアドレス',
@@ -1001,6 +1035,8 @@ const strings = {
     menuSectionRoadmap: '今後の構想',
     menuOpen: 'メニュー',
     menuTitle: 'メニュー',
+    menuProfileEdit: '5つの質問の回答を変更する',
+    menuProfileSet: '5つの質問に答える',
     navChat: '専門家に相談',
     navCohort: 'ガイド付きコホート',
     navWashiMap: '和紙マップ',

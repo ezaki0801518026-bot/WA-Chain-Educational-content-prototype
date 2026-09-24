@@ -28,7 +28,7 @@ function SourceStrip({ citations, sources }) {
       </summary>
       <ol className={styles.list}>
         {cited.map((source) => (
-          <li key={source.id} className={styles.item} value={source.id}>
+          <li key={source.id} className={styles.item} value={source.id} lang="ja">
             {source.text}
           </li>
         ))}

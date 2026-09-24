@@ -1,6 +1,7 @@
 import updates from '../../data/updates.json'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './UpdatesPage.module.css'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 
 const TAG_KEY = {
   design: 'updatesTagDesign',
@@ -20,6 +21,7 @@ function UpdatesPage() {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeGeneral" />
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('updatesTitle')}</h1>
         <p className={styles.description}>{t('updatesDescription')}</p>

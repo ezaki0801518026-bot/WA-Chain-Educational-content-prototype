@@ -86,10 +86,15 @@
 }
 
 .brandMark {
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
   display: block;
+  flex-shrink: 0;
+  /* The mark is a transparent PNG used as a mask, so it is drawn in the
+     brand blue on the light theme and in the text colour on the dark one. */
+  background: var(--color-brand);
+  mask: var(--mark) center / contain no-repeat;
+  -webkit-mask: var(--mark) center / contain no-repeat;
 }
 
 .brandName {

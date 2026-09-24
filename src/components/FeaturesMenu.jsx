@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './FeaturesMenu.module.css'
+import { useProfile } from '../context/ProfileContext.jsx'
 
 // The prototype's whole surface, in one list: the four core features
 // first, then the two supporting pages. Pages built earlier (glossary,
@@ -17,11 +19,13 @@ const EXPLORE = [
 ]
 
 // The site's overflow menu: every destination in the prototype, opened as a
-// modal dialog from the header's menu button. Shown on every page (unlike
-// the course-page-only mega-nav). The page behind is made inert while it
-// is open, so focus and the screen reader stay inside.
+// modal dialog from the header's menu button, shown on every page. The
+// page behind (#root) is made inert while it is open, so focus and the
+// screen reader stay inside; the dialog itself is rendered into <body>
+// through a portal, because an inert #root would otherwise swallow it too.
 function FeaturesMenu({ navigate }) {
   const { t } = useLanguage()
+  const { profile, openSetup } = useProfile()
   const [open, setOpen] = useState(false)
   const triggerRef = useRef(null)
   const panelRef = useRef(null)
@@ -67,7 +71,8 @@ function FeaturesMenu({ navigate }) {
         </svg>
       </button>
 
-      {open && (
+      {open &&
+        createPortal(
         <div className={`dialog-backdrop ${styles.backdrop}`} onClick={close}>
           <div
             className={`dialog-panel ${styles.panel}`}
@@ -105,9 +110,22 @@ function FeaturesMenu({ navigate }) {
                 </li>
               ))}
             </ul>
+
+            {/* The five answers live here too, so they can be changed from any page. */}
+            <button
+              type="button"
+              className={`${styles.exploreLink} ${styles.profileLink}`}
+              onClick={() => {
+                close()
+                openSetup()
+              }}
+            >
+              {profile ? t('menuProfileEdit') : t('menuProfileSet')}
+            </button>
           </div>
-        </div>
-      )}
+        </div>,
+          document.body,
+        )}
     </>
   )
 }

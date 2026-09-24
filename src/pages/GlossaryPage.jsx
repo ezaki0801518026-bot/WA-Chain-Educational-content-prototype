@@ -3,6 +3,7 @@ import glossary from '../../data/glossary.json'
 import lessons from '../../data/lessons.json'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './GlossaryPage.module.css'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 
 // Real reference content (not a "coming soon" stub) — concise definitions
 // for terms already introduced across the active lessons, each linking
@@ -33,6 +34,7 @@ function GlossaryPage({ navigate }) {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeGeneral" />
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('glossaryTitle')}</h1>
         <p className={styles.description}>{t('glossaryDescription')}</p>
@@ -61,7 +63,12 @@ function GlossaryPage({ navigate }) {
             <div key={entry.id} className={styles.entry}>
               <dt className={styles.term}>
                 {entry.term}
-                {entry.native && <span className={styles.native}> {entry.native}</span>}
+                {entry.native && (
+                  <span className={styles.native} lang="ja">
+                    {' '}
+                    {entry.native}
+                  </span>
+                )}
               </dt>
               <dd className={styles.definition}>
                 {entry.definition}
