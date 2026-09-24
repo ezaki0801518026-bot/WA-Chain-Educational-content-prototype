@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "node scripts/media-sizes.mjs && vite build",
     "preview": "vite preview",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "images": "node scripts/images.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
     "puppeteer-core": "^25.3.0",
+    "sharp": "^0.35.4",
     "vite": "^5.4.11"
   }
 }

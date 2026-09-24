@@ -86,6 +86,7 @@ http://localhost:4173/#/news/<記事ID>
 | **動画講義（The Course の本体）** | `data/courses.json` |
 | 更新履歴 | `data/updates.json`（3件） |
 | 写真の実体 | `public/images/hero/` |
+| 写真の幅別 WebP（`*.w480/w960/w1600.webp`）と一覧 `src/imageManifest.json` | `npm run images` が生成（sharp）。写真を足したら実行してコミット。`<img>` は `picture(path, sizes)`（`src/utils/asset.js`）で `srcset` を付ける。ビルドは生成しない |
 | チームのSNS | `src/config/social.js` |
 
 ### ⚠ `strings.js` は日英が別ブロック

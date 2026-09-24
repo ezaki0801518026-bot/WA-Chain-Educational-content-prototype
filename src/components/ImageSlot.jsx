@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './ImageSlot.module.css'
-import { asset } from '../utils/asset.js'
+import { picture } from '../utils/asset.js'
 
 // Renders an explicit placeholder box until a real `src` is supplied on
 // the imageSlot object — the data shape allows a photo to be inserted
@@ -21,7 +21,7 @@ function ImageSlot({ imageSlot }) {
         <div className={styles.imageWrapper}>
           <img
             className={`${styles.image} ${loaded ? styles.imageLoaded : ''}`}
-            src={asset(imageSlot.src)}
+            {...picture(imageSlot.src, '(min-width: 72em) 44rem, 100vw')}
             alt={imageSlot.label}
             loading="lazy"
             onLoad={() => setLoaded(true)}

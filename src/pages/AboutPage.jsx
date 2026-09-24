@@ -6,7 +6,7 @@ import Reveal from '../components/Reveal.jsx'
 import ContactEmail from '../components/ContactEmail.jsx'
 import SocialIcon, { socialLabel } from '../components/SocialIcon.jsx'
 import styles from './AboutPage.module.css'
-import { asset } from '../utils/asset.js'
+import { picture } from '../utils/asset.js'
 
 const img = (name) => encodeURI(`/images/hero/${name}`)
 
@@ -255,7 +255,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
             <p className={styles.heroLede}>{t('aboutLede')}</p>
           </div>
           <figure className={styles.heroFigure}>
-            <img className={styles.heroImg} src={asset(HERO_IMG.src)} alt={HERO_IMG.alt} />
+            <img className={styles.heroImg} {...picture(HERO_IMG.src, '(min-width: 56em) 50vw, 100vw')} alt={HERO_IMG.alt} />
           </figure>
         </div>
       </header>
@@ -292,7 +292,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
                 <p className={styles.sectionBody}>{t('aboutIntroBody')}</p>
               </div>
               <figure className={styles.splitFigure}>
-                <img className={styles.splitImg} src={asset(INTRO_IMG.src)} alt={INTRO_IMG.alt} loading="lazy" />
+                <img className={styles.splitImg} {...picture(INTRO_IMG.src, '(min-width: 45em) 45vw, 100vw')} alt={INTRO_IMG.alt} loading="lazy" />
               </figure>
             </div>
           </Reveal>
@@ -305,7 +305,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
                 <p className={styles.sectionBody}>{t('aboutCrisisBody')}</p>
               </div>
               <figure className={styles.splitFigure}>
-                <img className={styles.splitImg} src={asset(CRISIS_IMG.src)} alt={CRISIS_IMG.alt} loading="lazy" />
+                <img className={styles.splitImg} {...picture(CRISIS_IMG.src, '(min-width: 45em) 45vw, 100vw')} alt={CRISIS_IMG.alt} loading="lazy" />
               </figure>
             </div>
             <div className={styles.statRow}>
@@ -337,7 +337,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
               <figure className={styles.splitFigure}>
                 <img
                   className={`${styles.splitImg} ${styles.splitImgTall}`}
-                  src={asset(WASHI_HIST_IMG.src)}
+                  {...picture(WASHI_HIST_IMG.src, '(min-width: 45em) 45vw, 100vw')}
                   alt={WASHI_HIST_IMG.alt}
                   loading="lazy"
                 />
@@ -353,7 +353,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
                 <p className={styles.sectionBody}>{t('aboutInsightBody')}</p>
               </div>
               <figure className={styles.splitFigure}>
-                <img className={styles.splitImg} src={asset(INSIGHT_IMG.src)} alt={INSIGHT_IMG.alt} loading="lazy" />
+                <img className={styles.splitImg} {...picture(INSIGHT_IMG.src, '(min-width: 45em) 45vw, 100vw')} alt={INSIGHT_IMG.alt} loading="lazy" />
               </figure>
             </div>
             <div className={styles.propGrid}>
@@ -385,7 +385,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
                 <p className={styles.sectionBody}>{t('aboutLuisaBody')}</p>
               </div>
               <figure className={styles.splitFigure}>
-                <img className={styles.splitImg} src={asset(LUISA_IMG.src)} alt={LUISA_IMG.alt} loading="lazy" />
+                <img className={styles.splitImg} {...picture(LUISA_IMG.src, '(min-width: 45em) 45vw, 100vw')} alt={LUISA_IMG.alt} loading="lazy" />
               </figure>
             </div>
             <blockquote className={styles.quote}>
@@ -400,7 +400,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
             <h2 className={styles.sectionTitle}>{t('aboutSolutionTitle')}</h2>
             <p className={styles.sectionBody}>{t('aboutSolutionBody')}</p>
             <figure className={styles.wideFigure}>
-              <img className={styles.wideImg} src={asset(MATERIAL_IMG.src)} alt={MATERIAL_IMG.alt} loading="lazy" />
+              <img className={styles.wideImg} {...picture(MATERIAL_IMG.src, '100vw')} alt={MATERIAL_IMG.alt} loading="lazy" />
             </figure>
           </Reveal>
 
@@ -455,7 +455,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
                           <img
                             key={photo.src}
                             className={`${styles.timelinePhoto} ${photo.portrait ? styles.timelinePhotoPortrait : ''}`}
-                            src={asset(photo.src)}
+                            {...picture(photo.src, '(min-width: 36em) 33vw, 100vw')}
                             alt={photo.alt}
                             loading="lazy"
                             style={photo.focusY ? { objectPosition: `center ${photo.focusY}` } : undefined}
@@ -488,7 +488,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
             <div className={styles.galleryGrid}>
               {GALLERY.map((photo) => (
                 <figure key={photo.src} className={styles.galleryFigure}>
-                  <img className={styles.galleryImg} src={asset(photo.src)} alt={photo.alt} loading="lazy" />
+                  <img className={styles.galleryImg} {...picture(photo.src, '(min-width: 56em) 33vw, (min-width: 40em) 50vw, 100vw')} alt={photo.alt} loading="lazy" />
                   <figcaption className={styles.galleryCaption}>{t(photo.capKey)}</figcaption>
                 </figure>
               ))}
@@ -505,7 +505,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
           </Reveal>
 
           <Reveal as="figure" className={styles.teamFigure}>
-            <img className={styles.teamPhoto} src={asset(TEAM_IMG.src)} alt={TEAM_IMG.alt} loading="lazy" />
+            <img className={styles.teamPhoto} {...picture(TEAM_IMG.src, '100vw')} alt={TEAM_IMG.alt} loading="lazy" />
           </Reveal>
 
           <Reveal as="section" className={styles.section}>
@@ -514,7 +514,7 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
             <div className={styles.teamGrid}>
               {MEMBERS.map((m) => (
                 <div key={m.name} className={`${styles.memberCard} ${styles[`track_${m.track}`]}`}>
-                  <img className={styles.avatarPhoto} src={asset(m.photo)} alt={m.name} loading="lazy" />
+                  <img className={styles.avatarPhoto} {...picture(m.photo, '7rem')} alt={m.name} loading="lazy" />
                   <div className={styles.memberInfo}>
                     <p className={styles.memberName}>{m.name}</p>
                     <p className={styles.memberReading}>{m.reading}</p>

@@ -9,7 +9,7 @@ import HeroBanner from '../components/HeroBanner.jsx'
 import { getSectionIcon } from '../icons/index.js'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './CoursePage.module.css'
-import { asset } from '../utils/asset.js'
+import { asset, picture } from '../utils/asset.js'
 
 const TRACK_ORDER = ['foundations', 'diagnostics', 'practice']
 const TRACK_LABEL_KEY = {
@@ -102,7 +102,7 @@ function CoursePage({ navigate }) {
                 onClick={() => navigate(`/watch/${course.id}`)}
               >
                 <span className={styles.videoThumb}>
-                  <img src={asset(course.poster)} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                  <img {...picture(course.poster, '(min-width: 64em) 18rem, 100vw')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
                   <PlayGlyph />
                   <span className={`tnum ${styles.videoDuration}`}>{course.durationLabel}</span>
                 </span>

@@ -2,7 +2,7 @@ import news from '../../data/news.json'
 import Reveal from '../components/Reveal.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './NewsArticlePage.module.css'
-import { asset } from '../utils/asset.js'
+import { picture } from '../utils/asset.js'
 
 // One news article at /news/<id>: category + date, headline, hero image,
 // body paragraphs, then captioned photos — the standard corporate
@@ -45,7 +45,7 @@ function NewsArticlePage({ id, navigate, backTo = '/news', backLabelKey = 'newsB
       </header>
 
       <figure className={styles.heroFigure}>
-        <img className={styles.heroImg} src={asset(post.image)} alt={post.imageAlt} />
+        <img className={styles.heroImg} {...picture(post.image, '(min-width: 48em) 48rem, 100vw')} alt={post.imageAlt} />
       </figure>
 
       <div className={styles.body}>
@@ -82,7 +82,7 @@ function NewsArticlePage({ id, navigate, backTo = '/news', backLabelKey = 'newsB
             <Reveal as="figure" key={photo.src} className={styles.photoFigure}>
               <img
                 className={styles.photo}
-                src={asset(photo.src)}
+                {...picture(photo.src, '(min-width: 48em) 24rem, (min-width: 36em) 50vw, 100vw')}
                 alt={photo.alt}
                 loading="lazy"
               />

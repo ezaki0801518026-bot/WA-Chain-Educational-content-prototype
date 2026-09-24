@@ -6,7 +6,7 @@ import ProfileSetup from '../components/ProfileSetup.jsx'
 import { readProfile, wasSkipped } from '../utils/profile.js'
 import { getProgress } from '../utils/progress.js'
 import { recommend } from '../utils/recommend.js'
-import { asset } from '../utils/asset.js'
+import { picture } from '../utils/asset.js'
 import styles from './HubPage.module.css'
 
 // The first screen is the image and the sentence, nothing else: what this is,
@@ -100,7 +100,7 @@ function HubPage({ navigate }) {
       <section className={styles.hero}>
         <img
           className={styles.heroImg}
-          src={asset(HERO_IMAGE)}
+          {...picture(HERO_IMAGE, '100vw')}
           alt=""
           aria-hidden="true"
           fetchPriority="high"
@@ -169,7 +169,7 @@ function HubPage({ navigate }) {
               onClick={() => navigate(item.route)}
             >
               <span className={styles.tileImgWrap}>
-                <img className={styles.tileImg} src={asset(item.image)} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                <img className={styles.tileImg} {...picture(item.image, '(min-width: 64em) 25vw, (min-width: 30em) 50vw, 100vw')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
               </span>
               <span className={styles.tileBody}>
                 <span className={styles.tileTitle}>{t(`hub_${item.id}_title`)}</span>
@@ -203,7 +203,7 @@ function HubPage({ navigate }) {
               onClick={() => navigate(entry.route)}
             >
               <span className={styles.recThumb}>
-                <img src={asset(entry.item.poster)} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                <img {...picture(entry.item.poster, '(min-width: 64em) 25vw, (min-width: 30em) 50vw, 100vw')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
                 <PlayGlyph />
                 <span className={`tnum ${styles.durBadge}`}>{entry.item.durationLabel}</span>
               </span>
@@ -264,7 +264,7 @@ function HubPage({ navigate }) {
               onClick={() => navigate(`/news/${post.id}`)}
             >
               <span className={styles.newsThumb}>
-                <img src={asset(post.image)} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                <img {...picture(post.image, '(min-width: 30em) 11rem, 7rem')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
               </span>
               <span className={styles.newsBody}>
                 <span className={styles.newsDate}>{pick(post.dateLabel)}</span>

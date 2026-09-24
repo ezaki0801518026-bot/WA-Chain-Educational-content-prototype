@@ -3,7 +3,7 @@ import news from '../../data/news.json'
 import Reveal from '../components/Reveal.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './NewsPage.module.css'
-import { asset } from '../utils/asset.js'
+import { picture } from '../utils/asset.js'
 import { apiUrl } from '../utils/api.js'
 
 // News index — a thumbnail grid in the style of a company news page
@@ -68,7 +68,7 @@ function NewsPage({ navigate }) {
               <span className={styles.thumbWrap}>
                 <img
                   className={styles.thumb}
-                  src={asset(post.image)}
+                  {...picture(post.image, '(min-width: 56em) 33vw, (min-width: 36em) 50vw, 100vw')}
                   alt={post.imageAlt}
                   loading="lazy"
                 />

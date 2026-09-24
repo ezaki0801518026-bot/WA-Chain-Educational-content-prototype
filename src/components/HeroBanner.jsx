@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styles from './HeroBanner.module.css'
-import { asset } from '../utils/asset.js'
+import { picture } from '../utils/asset.js'
 
 // Full-bleed (`size="large"`, course home) or contained (`size="small"`,
 // section "door" on SummaryPage) photo banner with a duotone treatment
@@ -16,7 +16,7 @@ function HeroBanner({ image, eyebrow, title, subtitle, size = 'large' }) {
     <div className={`${styles.hero} ${size === 'small' ? styles.small : styles.large}`}>
       <img
         className={`${styles.image} ${loaded ? styles.imageLoaded : ''}`}
-        src={asset(image.src)}
+        {...picture(image.src, '100vw')}
         alt={image.alt}
         onLoad={() => setLoaded(true)}
         ref={(el) => {
