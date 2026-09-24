@@ -1,41 +1,41 @@
 .wrap {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-3);
   flex-wrap: wrap;
-  margin: 0 0 var(--space-md);
 }
 
+/* Two-state segmented control, the same shape as the language toggle. */
 .toggle {
   display: inline-flex;
-  border: 1px solid rgba(var(--accent-rgb), 0.4);
-  border-radius: 999px;
-  overflow: hidden;
+  padding: 2px;
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-pill);
 }
 
 .option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 2.25rem;
+  padding: 0 var(--space-3);
   font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: var(--text);
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-text-secondary);
   background: transparent;
   border: none;
-  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: background 150ms ease-out, color 150ms ease-out;
-}
-
-.option + .option {
-  border-left: 1px solid rgba(var(--accent-rgb), 0.4);
+  transition:
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease;
 }
 
 .optionActive {
-  color: var(--bg);
-  background: var(--track-foundations);
-}
-
-.option:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: -2px;
+  color: var(--color-text);
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadow-border);
 }
 
 /* Marks the option as not yet available without disabling it. */
@@ -44,14 +44,10 @@
 }
 
 .pendingMark {
-  font-size: 0.625rem;
-  letter-spacing: 0.02em;
-  margin-left: 0.35rem;
-  opacity: 0.85;
+  font-size: var(--text-caption);
 }
 
 .hint {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--accent);
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
 }

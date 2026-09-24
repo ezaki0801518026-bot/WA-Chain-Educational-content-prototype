@@ -44,12 +44,12 @@ function WaitlistForm({ context, buttonLabel }) {
   return (
     <form className={styles.form} onSubmit={submit}>
       <div className={styles.roleField}>
-        <label className={styles.roleLabel} htmlFor={`waitlist-role-${context}`}>
+        <label className="field-label" htmlFor={`waitlist-role-${context}`}>
           {t('waitlistRoleLabel')}
         </label>
         <select
           id={`waitlist-role-${context}`}
-          className={styles.select}
+          className={`field ${styles.select}`}
           value={role}
           onChange={(event) => setRole(event.target.value)}
           disabled={phase === 'sending'}
@@ -62,23 +62,27 @@ function WaitlistForm({ context, buttonLabel }) {
           ))}
         </select>
       </div>
-      <label className={styles.srOnlyLabel} htmlFor={`waitlist-email-${context}`}>
+      <label className="sr-only" htmlFor={`waitlist-email-${context}`}>
         {t('waitlistEmailLabel')}
       </label>
       <input
         id={`waitlist-email-${context}`}
         type="email"
         required
-        className={styles.input}
+        className={`field ${styles.input}`}
         placeholder={t('waitlistEmailPlaceholder')}
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         disabled={phase === 'sending'}
       />
-      <button type="submit" className={styles.button} disabled={phase === 'sending'}>
+      <button type="submit" className="btn btn-secondary" disabled={phase === 'sending'}>
         {phase === 'sending' ? t('waitlistSending') : buttonLabel || t('waitlistJoin')}
       </button>
-      {phase === 'error' && <p className={styles.resultTextError}>{t('waitlistError')}</p>}
+      {phase === 'error' && (
+        <p className={`field-error ${styles.resultTextError}`} role="alert">
+          {t('waitlistError')}
+        </p>
+      )}
     </form>
   )
 }

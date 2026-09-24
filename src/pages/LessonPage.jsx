@@ -28,7 +28,6 @@ function LessonPage({ sectionId, onFinish, navigate }) {
     return 0
   })
   const [direction, setDirection] = useState('forward')
-  const [pulseCheck, setPulseCheck] = useState(false)
 
   const total = section ? section.steps.length : 0
 
@@ -45,10 +44,6 @@ function LessonPage({ sectionId, onFinish, navigate }) {
 
   const goToStep = (nextIndex, dir) => {
     setDirection(dir)
-    if (dir === 'forward') {
-      setPulseCheck(true)
-      window.setTimeout(() => setPulseCheck(false), 700)
-    }
     setStepIndex(nextIndex)
   }
 
@@ -58,8 +53,7 @@ function LessonPage({ sectionId, onFinish, navigate }) {
   }
 
   const goFinish = () => {
-    setPulseCheck(true)
-    window.setTimeout(() => onFinish(sectionId), 320)
+    onFinish(sectionId)
   }
 
   // Hooks must run unconditionally on every render, so the arrow-key
@@ -71,7 +65,7 @@ function LessonPage({ sectionId, onFinish, navigate }) {
   })
 
   if (!section) {
-    return <p className={styles.notFound}>{t('sectionNotFound')}</p>
+    return <p className={`container-narrow ${styles.notFound}`}>{t('sectionNotFound')}</p>
   }
 
   return (
@@ -85,17 +79,15 @@ function LessonPage({ sectionId, onFinish, navigate }) {
           <div className={styles.lessonMeta}>
             <div className={styles.topBar}>
               <ProgressIndicator text={t('step', { n: stepIndex + 1, total })} />
-              {pulseCheck && (
-                <span className={styles.checkPulse} aria-hidden="true">
-                  ✓
-                </span>
-              )}
             </div>
             <p className={styles.sectionTitle}>{section.title}</p>
             {/* The text lessons are AI-drafted from a summary of one reference
                 book and only partly fact-checked (the video lectures are the
                 checked material) — say so on every step, not in a footnote. */}
-            <p className={styles.draftNotice}>{t('lessonDraftNotice')}</p>
+            <p className={`notice ${styles.draftNotice}`} role="note">
+              <span className="notice-tag">{t('prototypeTag')}</span>
+              <span>{t('lessonDraftNotice')}</span>
+            </p>
           </div>
           <FormatToggle sectionId={sectionId} hasVideo={Boolean(section.video)} navigate={navigate} />
         </div>
@@ -110,18 +102,18 @@ function LessonPage({ sectionId, onFinish, navigate }) {
         <nav className={styles.nav} aria-label="Lesson step navigation">
           <button
             type="button"
-            className={styles.navButton}
+            className="btn btn-secondary"
             onClick={() => goToStep(stepIndex - 1, 'backward')}
             disabled={stepIndex === 0}
           >
             {t('previous')}
           </button>
           {isLast ? (
-            <button type="button" className={styles.navButton} onClick={goFinish}>
+            <button type="button" className="btn btn-primary" onClick={goFinish}>
               {t('finishGoToQuiz')}
             </button>
           ) : (
-            <button type="button" className={styles.navButton} onClick={() => goToStep(stepIndex + 1, 'forward')}>
+            <button type="button" className="btn btn-primary" onClick={() => goToStep(stepIndex + 1, 'forward')}>
               {t('next')}
             </button>
           )}

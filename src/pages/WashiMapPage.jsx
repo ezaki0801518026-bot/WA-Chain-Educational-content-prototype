@@ -20,11 +20,11 @@ const CATEGORY_CLASS = {
 // Category → the theme colour variable used to fill an active prefecture and
 // its marker (kept as var() references so dark mode adapts automatically).
 const CAT_VAR = {
-  designated: 'var(--seal)',
+  designated: 'var(--color-accent-solid)',
   raw: 'var(--track-foundations)',
   regional: 'var(--track-diagnostics)',
   decorative: 'var(--track-practice)',
-  imported: 'var(--accent)',
+  imported: 'var(--color-text-secondary)',
 }
 
 const SVGNS = 'http://www.w3.org/2000/svg'
@@ -249,7 +249,8 @@ function WashiMapPage() {
                 <button
                   key={paperId}
                   type="button"
-                  className={`${styles.paperCard} ${selected ? styles.paperCardActive : ''}`}
+                  className={`card-link ${styles.paperCard} ${selected ? styles.paperCardActive : ''}`}
+                  aria-pressed={selected}
                   onClick={() => selectPaper(paperId)}
                 >
                   <div className={styles.paperCardHead}>

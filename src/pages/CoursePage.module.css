@@ -1,0 +1,312 @@
+.page {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-8);
+}
+
+.description {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.block {
+  margin-top: var(--space-16);
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-title);
+  line-height: var(--lh-title);
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
+  scroll-margin-top: calc(var(--header-height) + var(--space-4));
+}
+
+.lede {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  max-width: var(--measure);
+  margin: 0 0 var(--space-6);
+  text-wrap: pretty;
+}
+
+.draftNote {
+  margin: 0 0 var(--space-6);
+}
+
+/* Video lectures ------------------------------------------------------- */
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.videoCard {
+  display: grid;
+  grid-template-columns: minmax(0, 18rem) 1fr;
+  overflow: hidden;
+}
+
+.videoThumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  line-height: 0;
+  background: var(--color-bg-subtle);
+}
+
+.videoThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playGlyph {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.videoDuration {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  background: rgb(13 17 18 / 0.72);
+  color: #fff;
+  font-size: var(--text-caption);
+  line-height: 1.5;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-1);
+}
+
+.videoBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+}
+
+.videoNumber {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+}
+
+.videoTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-heading);
+  line-height: var(--lh-heading);
+  font-weight: 600;
+}
+
+.videoSubtitle {
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+  color: var(--color-text-secondary);
+}
+
+/* Resume ----------------------------------------------------------------- */
+.resumeCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  width: 100%;
+  text-align: left;
+  margin: var(--space-10) 0 0;
+  padding: var(--space-5) var(--space-6);
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-accent-subtle);
+  border: none;
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.resumeCard:active {
+  transform: scale(0.99);
+}
+
+.resumeText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.resumeLabel {
+  font-size: var(--text-caption);
+  color: var(--color-accent-text);
+}
+
+.resumeSection {
+  font-family: var(--font-heading);
+  font-size: var(--text-subheading);
+  line-height: var(--lh-subheading);
+  font-weight: 600;
+}
+
+.resumeMeta {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+}
+
+.resumeCta {
+  flex-shrink: 0;
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-accent-text);
+  white-space: nowrap;
+}
+
+/* Text lessons ------------------------------------------------------------ */
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--space-4);
+}
+
+/* Planned sections ------------------------------------------------------ */
+.comingHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.comingHeader .heading {
+  margin-bottom: 0;
+}
+
+.comingGroups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-6);
+}
+
+.trackHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 600;
+  margin: 0 0 var(--space-3);
+  scroll-margin-top: calc(var(--header-height) + var(--space-4));
+}
+
+.trackMark {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: var(--track-foundations);
+}
+
+.track_diagnostics {
+  background: var(--track-diagnostics);
+}
+
+.track_practice {
+  background: var(--track-practice);
+}
+
+.comingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.comingItem {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--color-separator);
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+}
+
+.comingIndex {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  min-width: 5.5rem;
+}
+
+.comingTitle {
+  color: var(--color-text);
+}
+
+/* Reset ----------------------------------------------------------------- */
+.resetArea {
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-separator);
+}
+
+.resetConfirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+}
+
+.resetConfirmText {
+  font-size: var(--text-small);
+  margin: 0;
+}
+
+.resetConfirmActions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.resetDanger {
+  color: var(--color-err-text);
+  border-color: var(--color-err-solid);
+  background: var(--color-bg-surface);
+}
+
+.resetDone {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  margin: var(--space-2) 0 0;
+}
+
+@media (max-width: 64em) {
+  .videoCard {
+    grid-template-columns: 1fr;
+  }
+
+  .comingGroups {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 48em) {
+  .page {
+    padding-top: var(--space-8);
+  }
+
+  .block {
+    margin-top: var(--space-12);
+  }
+
+  .videoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resumeCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+}

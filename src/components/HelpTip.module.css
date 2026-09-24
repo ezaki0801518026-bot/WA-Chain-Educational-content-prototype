@@ -1,53 +1,104 @@
 .wrap {
   position: relative;
   display: inline-block;
-  margin-left: 0.35rem;
+  margin-left: 0.3em;
   vertical-align: middle;
+  /* The heading's font must not leak into the note. */
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
+/* 24px visible, 44px to the finger (the pseudo-element grows the target). */
 .button {
-  width: 1.15rem;
-  height: 1.15rem;
-  line-height: 1;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--accent);
-  background: transparent;
-  border: 1px solid rgba(var(--accent-rgb), 0.5);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-subtle);
+  border: none;
   border-radius: 50%;
   cursor: pointer;
   padding: 0;
+  transition:
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
 }
 
-.button:hover,
-.button:focus-visible {
-  color: var(--text);
-  border-color: var(--accent);
+.button::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
 }
 
+.button:active {
+  transform: scale(0.94);
+}
+
+.buttonOpen {
+  color: var(--color-text-on-accent);
+  background: var(--color-accent-solid);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:not(.buttonOpen):hover {
+    color: var(--color-text);
+    background: var(--color-bg-hover);
+  }
+}
+
+/* Grows out of its button (origin top-left), 200ms, no movement of the
+   page around it. */
 .note {
   position: absolute;
   z-index: 20;
-  top: calc(100% + 0.4rem);
+  top: calc(100% + 0.5rem);
   left: 0;
   width: max-content;
-  max-width: min(22rem, 78vw);
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: normal;
-  line-height: 1.6;
+  max-width: min(22rem, calc(100vw - 2 * var(--gutter)));
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
   text-align: left;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid rgba(var(--accent-rgb), 0.35);
-  border-left: 3px solid var(--seal);
-  border-radius: 3px;
-  padding: 0.5rem 0.7rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  color: var(--color-text);
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-2);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-raised);
   white-space: normal;
+  transform-origin: top left;
+  animation: note-in var(--dur-base) var(--ease-out) both;
 }
 
 .noteRight {
   left: auto;
   right: 0;
+  transform-origin: top right;
+}
+
+@keyframes note-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .note {
+    animation-name: note-fade;
+  }
+
+  .button:active {
+    transform: none;
+  }
+}
+
+@keyframes note-fade {
+  from {
+    opacity: 0;
+  }
 }

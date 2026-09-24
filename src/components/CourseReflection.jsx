@@ -75,7 +75,7 @@ function CourseReflection({ course, videoRef, open, onOpen, autoScroll }) {
         </div>
         <button
           type="button"
-          className={styles.entryButton}
+          className="btn btn-secondary"
           onClick={() => {
             track('reflection_open', { section: course.id, detail: 'manual' })
             onOpen()
@@ -202,8 +202,8 @@ function CourseReflection({ course, videoRef, open, onOpen, autoScroll }) {
                   <p className={styles.feedbackLead}>{matched ? t('reflectMatched') : t('reflectHowPut')}</p>
                   <p className={styles.explanation}>{pick(q.explanation)}</p>
                   {Number.isFinite(q.rewatchAt) && (
-                    <button type="button" className={styles.rewatch} onClick={() => rewatch(q.rewatchAt)}>
-                      ▶ {t('reflectRewatch', { time: clock(q.rewatchAt) })}
+                    <button type="button" className={`btn btn-secondary btn-sm ${styles.rewatch}`} onClick={() => rewatch(q.rewatchAt)}>
+                      {t('reflectRewatch', { time: clock(q.rewatchAt) })}
                     </button>
                   )}
                 </div>
@@ -212,7 +212,7 @@ function CourseReflection({ course, videoRef, open, onOpen, autoScroll }) {
               <div className={styles.nav}>
                 <button
                   type="button"
-                  className={styles.primary}
+                  className="btn btn-primary"
                   disabled={!answered}
                   onClick={() => setStep(isLast ? 'opinion' : step + 1)}
                 >
@@ -235,7 +235,7 @@ function CourseReflection({ course, videoRef, open, onOpen, autoScroll }) {
           </label>
           <textarea
             id="reflection-opinion"
-            className={styles.textarea}
+            className="field"
             rows={6}
             maxLength={4000}
             value={opinion}
@@ -253,7 +253,7 @@ function CourseReflection({ course, videoRef, open, onOpen, autoScroll }) {
               </label>
               <input
                 id="reflection-name"
-                className={styles.input}
+                className="field"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 disabled={phase === 'sending'}
@@ -267,7 +267,7 @@ function CourseReflection({ course, videoRef, open, onOpen, autoScroll }) {
               <input
                 id="reflection-email"
                 type="email"
-                className={styles.input}
+                className="field"
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value)
@@ -281,16 +281,16 @@ function CourseReflection({ course, videoRef, open, onOpen, autoScroll }) {
           <p className={styles.note}>{t('reflectEmailNote')}</p>
 
           {error && (
-            <p className={styles.error} role="alert">
+            <p className="field-error" role="alert">
               {error}
             </p>
           )}
 
           <div className={styles.nav}>
-            <button type="button" className={styles.secondary} onClick={() => setStep(quiz.length - 1)} disabled={phase === 'sending'}>
+            <button type="button" className="btn btn-secondary" onClick={() => setStep(quiz.length - 1)} disabled={phase === 'sending'}>
               {t('reflectBack')}
             </button>
-            <button type="submit" className={styles.primary} disabled={phase === 'sending'}>
+            <button type="submit" className="btn btn-primary" disabled={phase === 'sending'}>
               {phase === 'sending' ? t('reflectSending') : t('reflectSend')}
             </button>
           </div>

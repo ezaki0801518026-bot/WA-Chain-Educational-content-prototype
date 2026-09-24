@@ -32,6 +32,14 @@ function formatTime(total) {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }
 
+function BackIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M15 5l-7 7 7 7" />
+    </svg>
+  )
+}
+
 // Plays one video course. Resumes from wherever the viewer stopped — a
 // fourteen-minute lecture is rarely watched in one sitting — and remembers
 // the position roughly once a second while playing.
@@ -60,7 +68,7 @@ function CourseVideoPage({ courseId, navigate }) {
   }, [course])
 
   if (!course) {
-    return <p className={styles.notFound}>{t('sectionNotFound')}</p>
+    return <p className={`container-narrow ${styles.notFound}`}>{t('sectionNotFound')}</p>
   }
 
   const onTimeUpdate = (e) => {
@@ -89,13 +97,15 @@ function CourseVideoPage({ courseId, navigate }) {
 
   return (
     <div className={styles.page}>
-      <button type="button" className={styles.back} onClick={() => navigate('/course')}>
-        ← {t('backToCourse')}
+      <button type="button" className={`btn btn-quiet btn-sm ${styles.back}`} onClick={() => navigate('/course')}>
+        <BackIcon />
+        {t('backToCourse')}
       </button>
 
       <div className={styles.head}>
-        <p className={styles.eyebrow}>
-          {t('courseLabel', { n: course.number })} · {course.durationLabel}
+        <p className={styles.meta}>
+          <span>{t('courseLabel', { n: course.number })}</span>
+          <span className="tnum">{course.durationLabel}</span>
         </p>
         <h1 className={styles.title}>{pick(course.title)}</h1>
         <p className={styles.subtitle}>{pick(course.subtitle)}</p>
@@ -118,7 +128,7 @@ function CourseVideoPage({ courseId, navigate }) {
       <PlaybackControls videoRef={videoRef} />
 
       {resumeFrom > 0 && !resumed && (
-        <button type="button" className={styles.resume} onClick={jumpToResume}>
+        <button type="button" className={`btn btn-secondary ${styles.resume}`} onClick={jumpToResume}>
           {t('videoResumeFrom', { time: formatTime(resumeFrom) })}
         </button>
       )}
@@ -147,7 +157,7 @@ function CourseVideoPage({ courseId, navigate }) {
       </div>
 
       <nav className={styles.nav}>
-        <button type="button" className={styles.navButton} onClick={() => navigate('/course')}>
+        <button type="button" className="btn btn-secondary" onClick={() => navigate('/course')}>
           {t('backToCourse')}
         </button>
       </nav>

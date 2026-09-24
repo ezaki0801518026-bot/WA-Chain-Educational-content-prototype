@@ -1,33 +1,30 @@
 .trigger {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  height: 1.75rem;
-  min-width: 1.75rem;
-  /* Keeps the outline at 1.75rem while the tappable box reaches 44px. */
-  position: relative;
-  color: var(--text);
+  gap: var(--space-2);
+  min-height: 2.25rem;
+  min-width: 2.25rem;
+  padding: 0 var(--space-2);
+  color: var(--color-text-secondary);
   background: transparent;
-  border: 1px solid var(--accent);
-  padding: 0 0.35rem;
+  border: none;
+  border-radius: var(--radius-1);
   cursor: pointer;
-  transition: background-color 150ms ease-out, color 150ms ease-out;
+  transition:
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
 }
 
-.trigger:hover,
-.trigger:focus-visible {
-  background: var(--accent);
-  color: var(--bg);
+.trigger:active {
+  transform: scale(0.97);
 }
 
-/* On touch screens the button stays 28px tall but the area that responds
-   to a finger reaches 44px, via an invisible overlay. */
-@media (max-width: 768px) {
-  .trigger::after {
-    content: '';
-    position: absolute;
-    inset: -8px;
+@media (hover: hover) and (pointer: fine) {
+  .trigger:hover {
+    color: var(--color-text);
+    background: var(--color-bg-subtle);
   }
 }
 
@@ -35,19 +32,23 @@
    invisible shortcut. Hidden on touch-first (narrow) viewports. */
 .kbdHint {
   font-family: var(--font-body);
-  font-size: 0.625rem;
-  letter-spacing: 0.03em;
-  color: inherit;
-  opacity: 0.75;
-  border: 1px solid currentColor;
-  border-radius: 3px;
-  padding: 0.05rem 0.3rem;
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-1);
+  padding: 0.1rem 0.35rem;
+  line-height: 1.2;
   white-space: nowrap;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48em) {
   .kbdHint {
     display: none;
+  }
+
+  .trigger {
+    min-height: 2.75rem;
+    min-width: 2.75rem;
   }
 }
 
@@ -55,108 +56,109 @@
   position: fixed;
   inset: 0;
   z-index: 60;
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--color-bg-scrim);
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 8vh var(--space-md) var(--space-md);
+  padding: 8vh var(--space-4) var(--space-4);
+  animation: search-backdrop-in var(--dur-base) ease both;
 }
 
 .panel {
   width: 100%;
   max-width: 36rem;
-  max-height: 76vh;
+  max-height: 76svh;
   display: flex;
   flex-direction: column;
-  background: var(--bg);
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-overlay);
   overflow: hidden;
-  animation: searchIn 180ms ease-out;
+  transform-origin: top center;
+  animation: search-panel-in var(--dur-base) var(--ease-out) both;
 }
 
-@keyframes searchIn {
+@keyframes search-backdrop-in {
   from {
     opacity: 0;
-    transform: translateY(-8px);
   }
-  to {
-    opacity: 1;
-    transform: none;
+}
+
+@keyframes search-panel-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
   }
 }
 
 .searchBar {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-md);
-  border-bottom: 1px solid rgba(var(--accent-rgb), 0.3);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-separator);
 }
 
 .searchIcon {
   flex-shrink: 0;
-  color: var(--accent);
+  color: var(--color-text-secondary);
 }
 
 .input {
   flex: 1;
+  min-width: 0;
   font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--text);
+  font-size: var(--text-body);
+  color: var(--color-text);
   background: transparent;
   border: none;
-  padding: 0.3rem 0;
+  padding: 0.5rem 0;
 }
 
 .input:focus {
   outline: none;
 }
 
-.closeButton {
-  flex-shrink: 0;
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  background: transparent;
-  border: 1px solid rgba(var(--accent-rgb), 0.4);
-  border-radius: 3px;
-  padding: 0.2rem 0.4rem;
-  cursor: pointer;
+.input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-.closeButton:hover,
-.closeButton:focus-visible {
-  color: var(--text);
-  border-color: var(--accent);
+.closeButton {
+  flex-shrink: 0;
+  min-height: 2rem;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-1);
+  padding: 0 var(--space-2);
+  cursor: pointer;
 }
 
 .results {
   overflow-y: auto;
-  padding: var(--space-sm);
+  overscroll-behavior: contain;
+  padding: var(--space-2);
 }
 
 .message {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: var(--accent);
-  margin: var(--space-md);
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+  color: var(--color-text-secondary);
+  margin: var(--space-4);
 }
 
 .group {
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-2);
 }
 
 .groupLabel {
-  font-family: var(--font-body);
-  font-size: 0.625rem;
+  font-size: var(--text-caption);
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: var(--space-sm) var(--space-sm) 0.35rem;
+  color: var(--color-text-secondary);
+  margin: var(--space-3) var(--space-3) var(--space-1);
 }
 
 .list {
@@ -168,33 +170,34 @@
 .result {
   display: flex;
   align-items: baseline;
-  gap: 0.6rem;
+  gap: var(--space-3);
   width: 100%;
+  min-height: 2.75rem;
   text-align: left;
   font-family: var(--font-body);
   background: transparent;
   border: none;
-  border-radius: 4px;
-  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-1);
+  padding: var(--space-2) var(--space-3);
   cursor: pointer;
 }
 
 .resultActive {
-  background: rgba(var(--accent-rgb), 0.12);
+  background: var(--color-bg-subtle);
 }
 
 .resultTitle {
-  font-size: 0.9375rem;
-  color: var(--text);
+  font-size: var(--text-body);
+  color: var(--color-text);
 }
 
 .resultSubtitle {
-  font-size: 0.75rem;
-  color: var(--accent);
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .panel {
-    animation: none;
+    animation-name: search-backdrop-in;
   }
 }

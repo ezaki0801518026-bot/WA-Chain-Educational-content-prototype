@@ -3,75 +3,264 @@
    import of a *.module.css is tree-shaken out of a production build (it is
    treated as an exports-only module), which silently strips these tokens
    from any entry that does not otherwise use the module's class names.
-   Import this from each entry's bootstrap file. */
+   Import this from each entry's bootstrap file, followed by ui.css.
+
+   Two tiers (see WA-Edu 03_設計計画):
+     1. primitives  — ramps named by hue and step. Never used by a page.
+     2. semantics   — named by role. This is what components reference.
+   The old single-tier names (--bg, --text, --accent, --seal …) remain as
+   aliases so pages not yet renovated keep rendering. */
 
 :root {
-  /* Colour tokens (light theme, default) */
-  --bg: #f5f0e8;
-  --text: #1a1a1a;
-  --accent: #4a4a3a;
-  --accent-rgb: 74, 74, 58;
-  --correct: #4f6a52;
-  --correct-rgb: 79, 106, 82;
-  --incorrect: #b5533c;
-  --incorrect-rgb: 181, 83, 60;
+  color-scheme: light;
 
-  /* Font stacks */
-  --font-heading: "Lora", Georgia, "Noto Serif", serif;
-  --font-body: system-ui, sans-serif;
+  /* ── 1. Primitives ─────────────────────────────────────────────── */
+  /* Neutral ramp with a trace of the accent hue: the greys sit with the
+     water-and-fibre photographs instead of fighting them. */
+  --n-0: #ffffff;
+  --n-50: #f8f9f8;
+  --n-100: #eff2f1;
+  --n-200: #e1e6e5;
+  --n-300: #c8d0cf;
+  --n-400: #889493;
+  --n-500: #5e6b6a;
+  --n-600: #566265;
+  --n-700: #3d474a;
+  --n-800: #262e31;
+  --n-900: #161c1e;
+  --n-950: #0d1112;
 
-  /* Spacing scale */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4rem;
+  /* Accent: the deep water of a sukibune (vat), not a brand blue. */
+  --a-100: #dfeaee;
+  --a-200: #bcd3db;
+  --a-300: #8fb6c4;
+  --a-400: #5b91a5;
+  --a-500: #2f6478;
+  --a-600: #255262;
+  --a-700: #1c404d;
+  --a-800: #143039;
 
-  /* Layout */
-  --header-height: 3.25rem;
+  /* Status: one hue per meaning. `note` (persimmon tannin) means "not
+     final" — prototype pages, draft lessons. Never used for anything else. */
+  --ok-100: #e0eee2;
+  --ok-500: #4a7a54;
+  --ok-700: #325a3a;
+  --err-100: #f5e1dd;
+  --err-500: #b04a3b;
+  --err-700: #82352a;
+  --note-100: #f6ebdd;
+  --note-500: #9a5a22;
+  --note-700: #6e3f16;
 
-  /* Per-track accent colours — muted, earthy tones that sit on the paper
-     background. Used for lesson-card covers, track pills, and mega-menu
-     accents so each curriculum track has a consistent visual identity. */
+  /* ── 2. Semantics ──────────────────────────────────────────────── */
+  --color-bg-page: var(--n-50);
+  --color-bg-surface: var(--n-0);
+  --color-bg-subtle: var(--n-100);
+  --color-bg-hover: var(--n-200);
+  --color-bg-inverse: var(--n-900);
+  --color-bg-scrim: rgb(13 17 18 / 0.55);
+
+  --color-text: var(--n-900);
+  --color-text-secondary: var(--n-600);
+  --color-text-muted: var(--n-500);
+  --color-text-inverse: var(--n-50);
+  --color-text-on-accent: #ffffff;
+
+  --color-border-subtle: var(--n-200);
+  --color-border: var(--n-300);
+  --color-border-strong: var(--n-400);
+  --color-separator: var(--n-200);
+  --color-focus: var(--a-500);
+
+  --color-accent-subtle: var(--a-100);
+  --color-accent-border: var(--a-300);
+  --color-accent-solid: var(--a-500);
+  --color-accent-solid-hover: var(--a-600);
+  --color-accent-text: var(--a-700);
+
+  --color-ok-subtle: var(--ok-100);
+  --color-ok-solid: var(--ok-500);
+  --color-ok-text: var(--ok-700);
+  --color-err-subtle: var(--err-100);
+  --color-err-solid: var(--err-500);
+  --color-err-text: var(--err-700);
+  --color-note-subtle: var(--note-100);
+  --color-note-solid: var(--note-500);
+  --color-note-text: var(--note-700);
+
+  /* Per-track accents — the three curriculum tracks keep a colour each so
+     a lesson card, pill and menu entry read as the same track. */
   --track-foundations: #2f4a52;
   --track-diagnostics: #4c5a3c;
   --track-practice: #7a4a38;
 
-  /* Vermillion seal (落款) accent — used sparingly as a stamp-like mark. */
-  --seal: #a63f2e;
+  /* ── Type ──────────────────────────────────────────────────────── */
+  /* Latin faces are webfonts; Japanese falls back to the system faces
+     (no Japanese webfont, by decision). Serif carries headings only. */
+  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, "Hiragino Mincho ProN",
+    "Yu Mincho", "Noto Serif JP", serif;
+  --font-sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", "Hiragino Sans",
+    "Yu Gothic UI", "Noto Sans JP", sans-serif;
+  --font-heading: var(--font-serif);
+  --font-body: var(--font-sans);
+
+  /* Role scale: size, line-height and weight are one decision per role. */
+  --text-display: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  --lh-display: 1.08;
+  --text-title: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+  --lh-title: 1.15;
+  --text-heading: 1.25rem;
+  --lh-heading: 1.3;
+  --text-subheading: 1.0625rem;
+  --lh-subheading: 1.4;
+  --text-body: 1rem;
+  --lh-body: 1.6;
+  --text-small: 0.875rem;
+  --lh-small: 1.5;
+  --text-caption: 0.8125rem;
+  --lh-caption: 1.45;
+  --tracking-display: -0.015em;
+
+  /* ── Spacing (8pt) ─────────────────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* Legacy spacing names, mapped onto the scale. */
+  --space-xs: var(--space-2);
+  --space-sm: var(--space-4);
+  --space-md: var(--space-6);
+  --space-lg: var(--space-10);
+  --space-xl: var(--space-16);
+
+  /* ── Layout ────────────────────────────────────────────────────── */
+  --content-max: 72rem;
+  --measure: 65ch;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --header-height: 3.5rem;
+
+  /* ── Shape ─────────────────────────────────────────────────────── */
+  --radius-1: 4px;
+  --radius-2: 8px;
+  --radius-3: 12px;
+  --radius-pill: 999px;
+
+  /* ── Elevation: a 1px ring plus two soft layers (07 surfaces.md) ─── */
+  --shadow-border: 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06),
+    0 2px 4px 0 rgb(0 0 0 / 0.04);
+  --shadow-border-hover: 0 0 0 1px rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08),
+    0 2px 4px 0 rgb(0 0 0 / 0.06);
+  --shadow-raised: 0 0 0 1px rgb(0 0 0 / 0.06), 0 4px 8px -2px rgb(0 0 0 / 0.08),
+    0 12px 24px -8px rgb(0 0 0 / 0.1);
+  --shadow-overlay: 0 0 0 1px rgb(0 0 0 / 0.06), 0 12px 32px -8px rgb(0 0 0 / 0.22),
+    0 24px 48px -16px rgb(0 0 0 / 0.18);
+  --image-outline: 1px solid rgb(0 0 0 / 0.1);
+
+  /* ── Motion ────────────────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 300ms;
+
+  /* ── Legacy aliases (pages not yet renovated) ──────────────────── */
+  --bg: var(--color-bg-page);
+  --text: var(--color-text);
+  --accent: var(--color-text-secondary);
+  --accent-rgb: 86, 98, 101;
+  --correct: var(--color-ok-solid);
+  --correct-rgb: 74, 122, 84;
+  --incorrect: var(--color-err-solid);
+  --incorrect-rgb: 176, 74, 59;
+  --seal: var(--color-note-solid);
 }
 
+/* Dark: the same system on an ink ground, not a second design. Vividness
+   comes down, the dark end spreads out, every pair re-measured. */
 :root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg-page: #121617;
+  --color-bg-surface: #191f21;
+  --color-bg-subtle: #1f2628;
+  --color-bg-hover: #273032;
+  --color-bg-inverse: #eef1f0;
+  --color-bg-scrim: rgb(0 0 0 / 0.6);
+
+  --color-text: #e8ecea;
+  --color-text-secondary: #a4aeae;
+  --color-text-muted: #8a9595;
+  --color-text-inverse: #161c1e;
+  --color-text-on-accent: #ffffff;
+
+  --color-border-subtle: #263032;
+  --color-border: #34403f;
+  --color-border-strong: #5b6b6e;
+  --color-separator: #263032;
+  --color-focus: #8fbccb;
+
+  --color-accent-subtle: #1a2f38;
+  --color-accent-border: #35606f;
+  --color-accent-solid: #3a7a90;
+  --color-accent-solid-hover: #4a8ba1;
+  --color-accent-text: #8fbccb;
+
+  --color-ok-subtle: #1c2e20;
+  --color-ok-solid: #6a9e74;
+  --color-ok-text: #a9d2b0;
+  --color-err-subtle: #33201c;
+  --color-err-solid: #d0705e;
+  --color-err-text: #e9a596;
+  --color-note-subtle: #33261a;
+  --color-note-solid: #c8823f;
+  --color-note-text: #e6b481;
+
   --track-foundations: #3d6069;
   --track-diagnostics: #61724d;
   --track-practice: #9a5f49;
-  --seal: #c05a41;
+
+  --shadow-border: 0 0 0 1px rgb(255 255 255 / 0.08);
+  --shadow-border-hover: 0 0 0 1px rgb(255 255 255 / 0.13);
+  --shadow-raised: 0 0 0 1px rgb(255 255 255 / 0.1), 0 8px 24px -8px rgb(0 0 0 / 0.5);
+  --shadow-overlay: 0 0 0 1px rgb(255 255 255 / 0.1), 0 16px 40px -8px rgb(0 0 0 / 0.6);
+  --image-outline: 1px solid rgb(255 255 255 / 0.1);
+
+  --accent-rgb: 164, 174, 174;
+  --correct-rgb: 106, 158, 116;
+  --incorrect-rgb: 208, 112, 94;
 }
 
-/* Dark theme — same calm, academic tone inverted (warm dark ink background,
-   paper-toned text), not a separate design language. Toggled via a
-   data-theme attribute on <html>, set by ThemeContext. */
-:root[data-theme='dark'] {
-  --bg: #211f1a;
-  --text: #ece5d6;
-  --accent: #b3ab8e;
-  --accent-rgb: 179, 171, 142;
-  --correct: #8fae8f;
-  --correct-rgb: 143, 174, 143;
-  --incorrect: #d97e5f;
-  --incorrect-rgb: 217, 126, 95;
+/* Japanese text needs taller lines; the html lang attribute follows the UI
+   language (LanguageContext). */
+:root[lang='ja'] {
+  --lh-body: 1.8;
+  --lh-small: 1.7;
+  --lh-caption: 1.6;
+  --lh-heading: 1.4;
+  --lh-title: 1.3;
+  --lh-display: 1.2;
+  --tracking-display: 0;
 }
 
-/* Single responsive breakpoint (tablet and narrower — see PLAN.md Open
-   Questions). Tightening the two largest spacing tokens here cascades to
-   every page's side padding and vertical rhythm without per-page rules. */
-@media (max-width: 768px) {
+/* Tighter rhythm on narrow screens; the two largest legacy steps cascade
+   to every page's side padding and section spacing. */
+@media (max-width: 48em) {
   :root {
     --space-lg: 1.75rem;
     --space-xl: 2.75rem;
   }
 }
 
+/* ── Element defaults ──────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -86,36 +275,85 @@ body {
 }
 
 html {
-  /* Thin, brand-toned scrollbars (inherits to nested scroll areas). */
-  scrollbar-color: rgba(var(--accent-rgb), 0.5) transparent;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-color: var(--color-border-strong) transparent;
 }
 
 ::selection {
-  background: rgba(var(--accent-rgb), 0.3);
+  background: var(--a-200);
+  color: var(--n-900);
 }
 
-/* Form-control unification: every input inherits the site's type stack,
-   uses the brand accent for native widgets (radios, checkboxes), and gets
-   one consistent focus ring — regardless of which page styled it. */
+:root[data-theme='dark'] ::selection {
+  background: var(--a-700);
+  color: var(--n-50);
+}
+
+body {
+  background-color: var(--color-bg-page);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+}
+
+/* Controls never zoom the page on iOS (16px floor) and answer the first
+   tap without the double-tap delay. Labels are content; controls are not. */
 input,
 textarea,
-select {
+select,
+button {
   font-family: inherit;
-  accent-color: var(--accent);
+  font-size: max(1rem, 1em);
+  accent-color: var(--color-accent-solid);
+}
+
+button,
+a,
+[role='button'] {
+  touch-action: manipulation;
+}
+
+button {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* One visible focus indicator everywhere, drawn by the browser's keyboard
+   heuristics, verified against page, surface and accent backgrounds. */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
 
-body {
-  background-color: var(--bg);
-  /* Faint paper-fibre grain (~5% alpha noise, well under the 10% cap) so
-     the flat background reads as paper rather than a solid UI colour. */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  transition: background-color 150ms ease-out;
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+p {
+  overflow-wrap: anywhere;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+a {
+  color: var(--color-accent-text);
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.15em;
 }

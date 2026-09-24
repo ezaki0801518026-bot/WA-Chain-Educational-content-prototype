@@ -105,17 +105,28 @@ UI が `t()` で呼ぶキーが両言語にあるか、を見る。同じキー�
 
 ## 5. デザイン上の約束（勝手に変えない）
 
-- **トークンは `src/tokens.css`**（後述のとおり README の記述は誤り）。色・書体・余白はここの CSS 変数を使い、
-  ページ側で直接指定しない。
-  - ライト: `--bg #f5f0e8` / `--text #1a1a1a` / `--accent #4a4a3a`
-  - ダーク: `--bg #211f1a` / `--text #ece5d6` / `--accent #b3ab8e`
+- **トークンは `src/tokens.css`、共通部品は `src/ui.css`**（2026-09-24 全面改装）。どちらもプレーン CSS で、
+  各エントリ（`main.jsx` / `about-standalone.jsx`）が読み込む。ページはセマンティック変数と共通クラスだけを使う。
+  - 2層: プリミティブ（`--n-50…950` 中立、`--a-100…800` アクセント＝漉き舟の水色）→ セマンティック
+    （`--color-bg-page/-surface/-subtle/-hover`、`--color-text/-secondary/-muted`、`--color-border*`、
+    `--color-accent-subtle/-border/-solid/-solid-hover/-text`、`--color-ok-*/-err-*/-note-*`）。
+  - `note`（柿渋色 #9a5a22）は「試作・下書き＝未確定」の意味**だけ**に使う（PrototypeNotice、教材の断り書き）。
   - トラック別: `--track-foundations #2f4a52` / `--track-diagnostics #4c5a3c` / `--track-practice #7a4a38`
-  - `--seal #a63f2e`（落款＝朱の印。**控えめに使う**）
-  - 書体: `--font-heading` Lora / `--font-body` system-ui
+  - 書体: 見出し `--font-heading`（Source Serif 4、日本語はヒラギノ明朝/游明朝）／本文 `--font-body`
+    （Source Sans 3、日本語はシステム書体）。日本語 Web フォントは読み込まない。
+  - 役割別の型スケール `--text-display/-title/-heading/-subheading/-body/-small/-caption`（本文16px、下限13px）。
+  - 共通クラス: `.btn`(+`-primary/-secondary/-quiet/-sm/-icon`)、`.link`、`.field`(+`-label/-hint/-error`)、
+    `.chip`、`.card`、`.card-link`、`.notice`+`.notice-tag`、`.dialog-backdrop`+`.dialog-panel`、`.container`、`.sr-only`。
+  - 旧名 `--bg --text --accent --accent-rgb --seal` はエイリアスとして残っているが、**新しいコードでは使わない**。
+  - 設計の根拠と一覧: `Downloads/WA-Edu　/DESIGN.md`、`03_設計計画_2026-09-24.md`。
 - **ゲーミフィケーション禁止**。ポイント・バッジ・称賛メッセージ・効果音・連続記録・紙吹雪は入れない。
   進捗は「Section 3 of 4 completed」のような**事実の表示のみ**。控えめな機能的アニメ（チェックのフェード等）は可。
-- **レスポンシブは768pxの1ブレークポイントのみ**。`--space-lg` / `--space-xl` を絞ることで全体に効かせる設計。
-  ページ個別のメディアクエリを増やさない。
+- **ブレークポイントは内容起点**（2026-09-24〜）。共通で使うのは 72em（教材の3カラム）・64em・56em・48em・36em/30em。
+  `--space-lg` / `--space-xl` の 48em 縮小は残っている。ブレークポイントは px ではなく em で書く。
+- **AI生成っぽい既定を入れない**（参考: `WA-Edu　/00_参考資料_目次と要点`）: オールキャップスの眉ラベル、`01/02/03` の飾り番号、
+  「→」付きリンク、カード左端の色帯、各セクションのスクロール出現、カードのホバー浮遊、無限アニメ。
+  モーションは transform/opacity のみ・UIは300ms未満・hover は `(hover:hover) and (pointer:fine)` の中。
+  `.wrangler` 不要の検出: `"…/06_pbakaus-impeccable/skill/scripts/impeccable" detect --json src`（エンジンは ~/.impeccable/bin）。
 - ダークテーマは `<html data-theme>` で切替（ThemeContext）。**両テーマで確認すること。**
 
 ---
@@ -236,8 +247,8 @@ sleep 6
 | サブ | News（お知らせ） | `#/news` |
 | サブ | WA-Chain 紹介 | `#/about` `/about/` |
 
-- ホーム `#/` は**この6つへのハブ**（`src/pages/HubPage.jsx`）。旧トップの `HomePage.jsx` は
-  **未使用のまま残してある**（CSSモジュール `HomePage.module.css` は CoursePage が今も使用）。
+- ホーム `#/` は**この6つへのハブ**（`src/pages/HubPage.jsx`）。旧トップの `HomePage.jsx` と `MegaNav` / `SectionDivider` /
+  `IntroSplash` / `DuotoneFilter` / `HomeShowcase` / `AudienceGateway` は 2026-09-24 の改装で削除した。
 
 ### ★ホームの構成（2026-09-24 改装）
 
@@ -246,6 +257,8 @@ sleep 6
 
 - **ヒーローは `min-height: 100svh`。** 1画面目には他を置かない（`vh` ではなくの `svh`：
   スマホのアドレスバーの伸縮で次のセクションが覗く／文言が押し出されるのを防ぐ）。
+  ヘッダーは半透明で、ヒーローは `margin-top: -var(--header-height)` でその下に潜る。眉ラベル（`hubEyebrow`）は表示しない。
+  **サイトで唯一の登場アニメ**はこのヒーロー（写真 1.04→1、文言フェード）。他ページの Reveal は無効化済み（コンポーネントは残る）。
 - **説明文は「？」ボタンの中へ**（`src/components/HelpTip.jsx`）。
   **原則: 画面に説明文を並べない。追加説明は `HelpTip` に入れる。**
 - 「専門家に相談する」は `sessionStorage` の `wa-chain-chat-mode='team'` を立てて `#/chat` へ送り、
@@ -268,6 +281,9 @@ sleep 6
 - 用語辞典・チャット・コホート・コミュニティ・更新履歴・フィードバックの各ページは
   **URLでは今も開くが、ナビゲーションからは外してある**（Header / Footer / FeaturesMenu）。
   機能を戻すときはこの3ファイルにリンクを足すだけでよい。
+
+- 検証用スクリプト（gitignore）: `shots.tmp.mjs`（ルート×幅×テーマの全画面スクショ、`MSYS_NO_PATHCONV=1` を付けて実行）、
+  `overflow.tmp.mjs`（390px での横はみ出し検査）。
 
 ### 動画講義
 

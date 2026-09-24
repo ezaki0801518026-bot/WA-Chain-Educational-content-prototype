@@ -67,7 +67,7 @@ function SectionFeedback({ sectionId, sectionTitle }) {
   }
 
   return (
-    <form className={styles.card} onSubmit={submit}>
+    <form className={`card ${styles.card}`} onSubmit={submit}>
       <p className={styles.title}>{t('sfTitle')}</p>
 
       <label className={styles.label} htmlFor={`sf-learned-${sectionId}`}>
@@ -75,7 +75,7 @@ function SectionFeedback({ sectionId, sectionTitle }) {
       </label>
       <textarea
         id={`sf-learned-${sectionId}`}
-        className={styles.textarea}
+        className="field"
         rows={2}
         placeholder={t('sfNewPlaceholder')}
         value={learned}
@@ -106,12 +106,20 @@ function SectionFeedback({ sectionId, sectionTitle }) {
         <span>{t('sfScaleHigh')}</span>
       </div>
 
-      {invalid && <p className={styles.validation}>{t('sfValidation')}</p>}
+      {invalid && (
+        <p className="field-error" role="alert">
+          {t('sfValidation')}
+        </p>
+      )}
 
-      <button type="submit" className={styles.submit} disabled={phase === 'sending'}>
+      <button type="submit" className={`btn btn-primary ${styles.submit}`} disabled={phase === 'sending'}>
         {phase === 'sending' ? t('sfSending') : t('sfSubmit')}
       </button>
-      {phase === 'error' && <p className={styles.error}>{t('feedbackError')}</p>}
+      {phase === 'error' && (
+        <p className="field-error" role="alert">
+          {t('feedbackError')}
+        </p>
+      )}
     </form>
   )
 }

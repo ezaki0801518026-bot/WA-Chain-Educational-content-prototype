@@ -53,7 +53,7 @@ function QuizPage({ sectionId, onFinish }) {
   })
 
   if (!section) {
-    return <p className={styles.notFound}>{t('sectionNotFound')}</p>
+    return <p className={`container-narrow ${styles.notFound}`}>{t('sectionNotFound')}</p>
   }
 
 
@@ -99,7 +99,7 @@ function QuizPage({ sectionId, onFinish }) {
             </ul>
           </div>
           <div className={styles.reviewFooter}>
-            <button type="button" className={styles.navButton} onClick={() => onFinish(sectionId)}>
+            <button type="button" className="btn btn-primary" onClick={() => onFinish(sectionId)}>
               {t('continueToSummary')}
             </button>
           </div>
@@ -166,7 +166,7 @@ function QuizPage({ sectionId, onFinish }) {
           )}
         </div>
         <nav className={styles.nav} aria-label="Quiz question navigation">
-          <button type="button" className={styles.navButton} onClick={goNext} disabled={!isAnswered}>
+          <button type="button" className="btn btn-primary" onClick={goNext} disabled={!isAnswered}>
             {isLast ? t('seeResults') : t('nextQuestion')}
           </button>
         </nav>

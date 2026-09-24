@@ -1,6 +1,6 @@
 // Section 1 diagram: the three-tier conservation priority hierarchy.
 // Bar length signals precedence, not magnitude. Palette restricted to
-// background #f5f0e8, line/text #2b2b2b, accent #b5533c.
+// background var(--color-bg-subtle), line/text var(--color-text), accent var(--color-accent-solid).
 const TIERS = [
   { rank: '1', label: 'Honshi preservation', width: 320, y: 30 },
   { rank: '2', label: 'Structural stability', width: 230, y: 110 },
@@ -19,7 +19,7 @@ function PriorityDiagram() {
         Conservation priority hierarchy: honshi preservation ranks above structural stability, which ranks above
         visual harmony
       </title>
-      <rect width="420" height="250" fill="#f5f0e8" />
+      <rect width="420" height="250" fill="var(--color-bg-subtle)" />
 
       {TIERS.map((tier) => (
         <g key={tier.rank}>
@@ -29,10 +29,10 @@ function PriorityDiagram() {
             width={tier.width}
             height="36"
             fill="none"
-            stroke={tier.rank === '1' ? '#b5533c' : '#2b2b2b'}
+            stroke={tier.rank === '1' ? 'var(--color-accent-solid)' : 'var(--color-text)'}
             strokeWidth={tier.rank === '1' ? 2.5 : 1.5}
           />
-          <text x="34" y={tier.y + 24} textAnchor="middle" fontFamily="Georgia, serif" fontSize="16" fill="#2b2b2b">
+          <text x="34" y={tier.y + 24} textAnchor="middle" fontFamily="Georgia, serif" fontSize="16" fill="var(--color-text)">
             {tier.rank}
           </text>
           <text
@@ -40,7 +40,7 @@ function PriorityDiagram() {
             y={tier.y + 23}
             fontFamily="system-ui, sans-serif"
             fontSize="13"
-            fill="#2b2b2b"
+            fill="var(--color-text)"
           >
             {tier.label}
           </text>

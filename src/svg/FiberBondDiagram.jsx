@@ -1,7 +1,7 @@
 // Section 3 diagram: schematic comparison of short vs long fibers —
 // longer fibers cross and overlap more often, creating more bond points
-// and a stronger sheet. Palette restricted to background #f5f0e8,
-// line/text #2b2b2b, accent #b5533c.
+// and a stronger sheet. Palette restricted to background var(--color-bg-subtle),
+// line/text var(--color-text), accent var(--color-accent-solid).
 function FiberBondDiagram() {
   const shortFibers = [
     [40, 60, 120, 90],
@@ -27,21 +27,21 @@ function FiberBondDiagram() {
         Schematic comparison: short fibers create few bond points, long fibers cross often and create many bond
         points, producing a stronger sheet
       </title>
-      <rect width="420" height="170" fill="#f5f0e8" />
+      <rect width="420" height="170" fill="var(--color-bg-subtle)" />
 
-      <rect x="20" y="20" width="160" height="120" fill="none" stroke="#2b2b2b" strokeWidth="1" />
+      <rect x="20" y="20" width="160" height="120" fill="none" stroke="var(--color-text)" strokeWidth="1" />
       {shortFibers.map(([x1, y1, x2, y2], i) => (
-        <line key={`s-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#2b2b2b" strokeWidth="2" />
+        <line key={`s-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--color-text)" strokeWidth="2" />
       ))}
-      <text x="100" y="150" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="#2b2b2b">
+      <text x="100" y="150" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="var(--color-text)">
         short fibers — few bond points
       </text>
 
-      <rect x="220" y="20" width="180" height="120" fill="none" stroke="#b5533c" strokeWidth="1.5" />
+      <rect x="220" y="20" width="180" height="120" fill="none" stroke="var(--color-accent-solid)" strokeWidth="1.5" />
       {longFibers.map(([x1, y1, x2, y2], i) => (
-        <line key={`l-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#b5533c" strokeWidth="2" />
+        <line key={`l-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--color-accent-solid)" strokeWidth="2" />
       ))}
-      <text x="310" y="150" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="#2b2b2b">
+      <text x="310" y="150" textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="var(--color-text)">
         long fibers — many bond points
       </text>
     </svg>

@@ -25,7 +25,7 @@ function PricingPage({ navigate }) {
       key: 'Free',
       features: ['pricingFreeFeature1', 'pricingFreeFeature2', 'pricingFreeFeature3'],
       cta: (
-        <button type="button" className={`${styles.tierCta} ${styles.tierCtaSolid}`} onClick={() => navigate('/')}>
+        <button type="button" className="btn btn-primary" onClick={() => navigate('/')}>
           {t('pricingFreeCta')}
         </button>
       ),
@@ -77,13 +77,10 @@ function PricingPage({ navigate }) {
         ))}
       </div>
 
-      <button type="button" className={styles.cohortCallout} onClick={() => navigate('/cohort')}>
+      <button type="button" className={`card-link ${styles.cohortCallout}`} onClick={() => navigate('/cohort')}>
         <span className={styles.cohortCalloutText}>
           <span className={styles.cohortCalloutTitle}>{t('cohortTitle')}</span>
           <span className={styles.cohortCalloutDesc}>{t('cohortLede')}</span>
-        </span>
-        <span className={styles.cohortCalloutArrow} aria-hidden="true">
-          →
         </span>
       </button>
 

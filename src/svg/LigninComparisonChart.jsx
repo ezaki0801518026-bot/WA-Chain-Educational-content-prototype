@@ -2,7 +2,7 @@
 // fiber (kōzo) and wood pulp. Values are widely-cited approximate ranges,
 // not precise measurements of any single sample. Bar widths are scaled
 // proportionally to the midpoint of each range. Palette restricted to
-// background #f5f0e8, line/text #2b2b2b, accent #b5533c.
+// background var(--color-bg-subtle), line/text var(--color-text), accent var(--color-accent-solid).
 const BARS = [
   { label: 'Kōzo bast fiber', range: '~5–8% lignin', midpoint: 6.5, y: 40, accent: false },
   { label: 'Wood pulp', range: '~20–30% lignin', midpoint: 25, y: 110, accent: true },
@@ -23,7 +23,7 @@ function LigninComparisonChart() {
       <title id="lignin-diagram-title">
         Approximate lignin content comparison: kōzo bast fiber is far lower in lignin than wood pulp
       </title>
-      <rect width="420" height="170" fill="#f5f0e8" />
+      <rect width="420" height="170" fill="var(--color-bg-subtle)" />
 
       {BARS.map((bar) => {
         const width = (bar.midpoint / MAX_MIDPOINT) * CHART_WIDTH
@@ -35,7 +35,7 @@ function LigninComparisonChart() {
               width={width}
               height="30"
               fill="none"
-              stroke={bar.accent ? '#b5533c' : '#2b2b2b'}
+              stroke={bar.accent ? 'var(--color-accent-solid)' : 'var(--color-text)'}
               strokeWidth={bar.accent ? 2 : 1.5}
             />
             <text
@@ -44,7 +44,7 @@ function LigninComparisonChart() {
               textAnchor="end"
               fontFamily="system-ui, sans-serif"
               fontSize="12"
-              fill="#2b2b2b"
+              fill="var(--color-text)"
             >
               {bar.label}
             </text>
@@ -53,7 +53,7 @@ function LigninComparisonChart() {
               y={bar.y + 20}
               fontFamily="system-ui, sans-serif"
               fontSize="12"
-              fill="#2b2b2b"
+              fill="var(--color-text)"
             >
               {bar.range}
             </text>

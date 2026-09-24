@@ -476,7 +476,9 @@ function ChatPage() {
             if (turn.role === 'system') {
               return (
                 <div key={`turn-${i}`} className={styles.exchange}>
-                  <div className={`${styles.bubble} ${styles.bubbleSystem}`}>{turn.content}</div>
+                  <div className={`${styles.bubble} ${styles.bubbleSystem}`} role="status">
+                    {turn.content}
+                  </div>
                 </div>
               )
             }
@@ -497,7 +499,7 @@ function ChatPage() {
 
           {phase === 'sending' && (
             <div className={styles.exchange}>
-              <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.bubblePending}`}>
+              <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.bubblePending}`} role="status">
                 {t('chatThinking')}
               </div>
             </div>
@@ -506,13 +508,33 @@ function ChatPage() {
         </div>
       )}
 
+
+
+      {turns.length === 0 && phase === 'idle' && (
+        <div className={styles.samples}>
+          <p className={styles.sampleLabel}>{t('chatSampleLabel')}</p>
+          {SAMPLES.map((example, i) => (
+            <div key={`sample-${i}`} className={`${styles.exchange} ${styles.sampleExchange}`}>
+              <div className={`${styles.bubble} ${styles.bubbleYou} ${styles.sampleBubble}`}>
+                <span className={styles.who}>{t('chatYou')}</span>
+                {example.q}
+              </div>
+              <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.sampleBubble} ${styles.bubbleAnswer}`}>
+                <span className={styles.who}>{t('chatAssistant')}</span>
+                <AnswerBody answer={example.answer} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
       <form className={styles.form} onSubmit={onSubmit}>
-        <label className={styles.label} htmlFor="chat-question">
+        <label className="field-label" htmlFor="chat-question">
           {t('chatQuestionLabel')}
         </label>
         <textarea
           id="chat-question"
-          className={styles.textarea}
+          className={`field ${styles.textarea}`}
           rows={3}
           maxLength={MAX_CHARS}
           placeholder={t('chatQuestionPlaceholder')}
@@ -533,13 +555,13 @@ function ChatPage() {
 
         {showEscalation && (
           <>
-            <label className={styles.label} htmlFor="chat-email">
+            <label className="field-label" htmlFor="chat-email">
               {t('chatEmailLabel')}
             </label>
             <input
               id="chat-email"
               type="email"
-              className={styles.input}
+              className="field"
               value={email}
               onChange={(event) => {
                 setEmail(event.target.value)
@@ -550,16 +572,20 @@ function ChatPage() {
           </>
         )}
 
-        {error && <p className={styles.error}>{error}</p>}
+        {error && (
+          <p className="field-error" role="alert">
+            {error}
+          </p>
+        )}
 
         <div className={styles.actions}>
-          <button type="submit" className={styles.submit} disabled={sending}>
+          <button type="submit" className="btn btn-primary" disabled={sending}>
             {sending ? t('chatSending') : showEscalation ? t('chatSend') : t('chatAsk')}
           </button>
           {hasAssistant && (
             <button
               type="button"
-              className={styles.secondary}
+              className="btn btn-secondary"
               onClick={() => setEscalating((value) => !value)}
               disabled={sending}
             >
@@ -570,24 +596,6 @@ function ChatPage() {
 
         <p className={styles.disclaimer}>{hasAssistant ? t('chatDisclaimerAi') : t('chatDisclaimer')}</p>
       </form>
-
-      {turns.length === 0 && phase === 'idle' && (
-        <div className={styles.samples}>
-          <p className={styles.sampleLabel}>{t('chatSampleLabel')}</p>
-          {SAMPLES.map((example, i) => (
-            <div key={`sample-${i}`} className={`${styles.exchange} ${styles.sampleExchange}`}>
-              <div className={`${styles.bubble} ${styles.bubbleYou} ${styles.sampleBubble}`}>
-                <span className={styles.who}>{t('chatYou')}</span>
-                {example.q}
-              </div>
-              <div className={`${styles.bubble} ${styles.bubbleExpert} ${styles.sampleBubble} ${styles.bubbleAnswer}`}>
-                <span className={styles.who}>{t('chatAssistant')}</span>
-                <AnswerBody answer={example.answer} />
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   )
 }

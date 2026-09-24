@@ -40,7 +40,7 @@ function FormatToggle({ sectionId, hasVideo, navigate }) {
           aria-pressed={pref === 'read'}
           onClick={() => choose('read')}
         >
-          📖 {t('formatRead')}
+          {t('formatRead')}
         </button>
         {/* Still clickable without a video — the click is the signal we
             want — but it says so first, rather than looking broken. */}
@@ -53,7 +53,7 @@ function FormatToggle({ sectionId, hasVideo, navigate }) {
           title={hasVideo ? undefined : t('formatVideoSoon')}
           onClick={() => choose('watch')}
         >
-          ▶ {t('formatWatch')}
+          {t('formatWatch')}
           {!hasVideo && <span className={styles.pendingMark}>{t('formatWatchPending')}</span>}
         </button>
       </div>

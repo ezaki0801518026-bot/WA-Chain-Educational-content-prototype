@@ -10,7 +10,7 @@ function ReadingProgress({ value }) {
     <div className={styles.track} aria-hidden="true">
       <div
         className={`${styles.fill} ${fraction === 0 ? styles.empty : ''}`}
-        style={{ width: `${fraction * 100}%` }}
+        style={{ transform: `scaleX(${fraction})` }}
       />
     </div>
   )

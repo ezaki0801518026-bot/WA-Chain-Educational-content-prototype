@@ -5,14 +5,10 @@ import coursesData from '../../data/courses.json'
 import { getProgress, resetProgress } from '../utils/progress.js'
 import SectionCard from '../components/SectionCard.jsx'
 import SurveyPopup from '../components/SurveyPopup.jsx'
-import MegaNav from '../components/MegaNav.jsx'
 import HeroBanner from '../components/HeroBanner.jsx'
-import SectionDivider from '../components/SectionDivider.jsx'
 import { getSectionIcon } from '../icons/index.js'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
-// The curriculum moved here from the home page wholesale; it shares the
-// same stylesheet rather than duplicating ~200 lines of card styles.
-import styles from './HomePage.module.css'
+import styles from './CoursePage.module.css'
 import { asset } from '../utils/asset.js'
 
 const TRACK_ORDER = ['foundations', 'diagnostics', 'practice']
@@ -41,9 +37,18 @@ export function findResume(sections, progress) {
   return best
 }
 
-// The course page: resume prompt (if any), the sections that are actually
-// available, then a compact, collapsible list of the planned ("Coming
-// soon") sections grouped by track.
+function PlayGlyph() {
+  return (
+    <svg className={styles.playGlyph} width="52" height="52" viewBox="0 0 44 44" aria-hidden="true">
+      <circle cx="22" cy="22" r="21" fill="rgb(13 17 18 / 0.55)" />
+      <path d="M17.5 14.5v15l12-7.5z" fill="#fff" />
+    </svg>
+  )
+}
+
+// The course page: the video lectures (finished, fact-checked) first, then
+// the resume prompt if there is one, the draft text lessons that are open,
+// and a collapsible list of the planned sections grouped by track.
 function CoursePage({ navigate }) {
   const { t, lang } = useLanguage()
   const pickLang = (field) => (field && (field[lang] ?? field.en)) || ''
@@ -79,43 +84,37 @@ function CoursePage({ navigate }) {
 
   return (
     <>
-      <MegaNav navigate={navigate} />
-      <HeroBanner image={heroImages.course} eyebrow={t('appSubtitle')} title={t('navCourse')} size="small" />
-      <div className={styles.home}>
-        <div className={styles.intro}>
-          <p className={styles.description}>{t('appDescription')}</p>
-        </div>
-
-        <SectionDivider />
+      <HeroBanner image={heroImages.course} title={t('navCourse')} subtitle={t('appSubtitle')} size="large" />
+      <div className={`container ${styles.page}`}>
+        <p className={`prose ${styles.description}`}>{t('appDescription')}</p>
 
         {/* Video lectures come first: they are the part of the course that is
             actually finished, and the thing a visitor came here to watch. */}
-        <h2 className={styles.groupHeading}>{t('courseVideoHeading')}</h2>
-        <p className={styles.videoLede}>{t('courseVideoLede')}</p>
-        <div className={styles.videoGrid}>
-          {coursesData.courses.map((course) => (
-            <button
-              key={course.id}
-              type="button"
-              className={styles.videoCard}
-              onClick={() => navigate(`/watch/${course.id}`)}
-            >
-              <span className={styles.videoThumb}>
-                <img src={asset(course.poster)} alt="" aria-hidden="true" loading="lazy" />
-                <span className={styles.videoPlay} aria-hidden="true">▶</span>
-                <span className={styles.videoDuration}>{course.durationLabel}</span>
-              </span>
-              <span className={styles.videoBody}>
-                <span className={styles.videoNumber}>{t('courseLabel', { n: course.number })}</span>
-                <span className={styles.videoTitle}>{pickLang(course.title)}</span>
-                <span className={styles.videoSubtitle}>{pickLang(course.subtitle)}</span>
-                <span className={styles.videoCta}>{t('courseWatchCta')} →</span>
-              </span>
-            </button>
-          ))}
-        </div>
-
-        <SectionDivider />
+        <section className={styles.block}>
+          <h2 className={styles.heading}>{t('courseVideoHeading')}</h2>
+          <p className={styles.lede}>{t('courseVideoLede')}</p>
+          <div className={styles.videoGrid}>
+            {coursesData.courses.map((course) => (
+              <button
+                key={course.id}
+                type="button"
+                className={`card-link ${styles.videoCard}`}
+                onClick={() => navigate(`/watch/${course.id}`)}
+              >
+                <span className={styles.videoThumb}>
+                  <img src={asset(course.poster)} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                  <PlayGlyph />
+                  <span className={`tnum ${styles.videoDuration}`}>{course.durationLabel}</span>
+                </span>
+                <span className={styles.videoBody}>
+                  <span className={styles.videoNumber}>{t('courseLabel', { n: course.number })}</span>
+                  <span className={styles.videoTitle}>{pickLang(course.title)}</span>
+                  <span className={styles.videoSubtitle}>{pickLang(course.subtitle)}</span>
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
 
         {resume && (
           <button
@@ -125,7 +124,7 @@ function CoursePage({ navigate }) {
               navigate(resume.section.video ? `/video/${resume.section.id}` : `/lesson/${resume.section.id}`)
             }
           >
-            <div className={styles.resumeText}>
+            <span className={styles.resumeText}>
               <span className={styles.resumeLabel}>{t('resumeLabel')}</span>
               <span className={styles.resumeSection}>
                 {t('sectionLabel', { n: resumeIndex + 1 })} — {resume.section.title}
@@ -137,47 +136,52 @@ function CoursePage({ navigate }) {
                   min: Math.max(1, Math.round((resume.section.steps.length - resume.step) * 1.5)),
                 })}
               </span>
-            </div>
-            <span className={styles.resumeCta}>{t('resumeCta')} →</span>
+            </span>
+            <span className={styles.resumeCta}>{t('resumeCta')}</span>
           </button>
         )}
 
-        <h2 id="track-foundations" className={styles.groupHeading}>
-          {t('homeAvailableNow')}
-        </h2>
-        <p className={styles.draftNote}>{t('courseLessonsDraftNote')}</p>
-        <div className={styles.cardList}>
-          {activeSections.map((section) => {
-            const index = lessons.sections.findIndex((s) => s.id === section.id)
-            return (
-              <SectionCard
-                key={section.id}
-                index={index + 1}
-                title={section.title}
-                description={section.description}
-                active
-                completed={Boolean(progress[section.id]?.completed)}
-                quizResult={progress[section.id]?.quiz}
-                onSelect={() => navigate(section.video ? `/video/${section.id}` : `/lesson/${section.id}`)}
-                Icon={getSectionIcon(section)}
-                track={section.track}
-                topics={section.topics}
-                stepCount={section.steps?.length}
-                quizCount={section.quiz?.length}
-                hasVideo={Boolean(section.video)}
-                estMin={estMinutes(section.steps?.length)}
-              />
-            )
-          })}
-        </div>
+        <section className={styles.block}>
+          <h2 id="track-foundations" className={styles.heading}>
+            {t('homeAvailableNow')}
+          </h2>
+          <p className={`notice ${styles.draftNote}`} role="note">
+            <span className="notice-tag">{t('prototypeTag')}</span>
+            <span>{t('courseLessonsDraftNote')}</span>
+          </p>
+          <div className={styles.cardList}>
+            {activeSections.map((section) => {
+              const index = lessons.sections.findIndex((s) => s.id === section.id)
+              return (
+                <SectionCard
+                  key={section.id}
+                  index={index + 1}
+                  title={section.title}
+                  description={section.description}
+                  active
+                  completed={Boolean(progress[section.id]?.completed)}
+                  quizResult={progress[section.id]?.quiz}
+                  onSelect={() => navigate(section.video ? `/video/${section.id}` : `/lesson/${section.id}`)}
+                  Icon={getSectionIcon(section)}
+                  track={section.track}
+                  topics={section.topics}
+                  stepCount={section.steps?.length}
+                  quizCount={section.quiz?.length}
+                  hasVideo={Boolean(section.video)}
+                  estMin={estMinutes(section.steps?.length)}
+                />
+              )
+            })}
+          </div>
+        </section>
 
         {comingCount > 0 && (
-          <div className={styles.comingSection}>
+          <section className={styles.block}>
             <div className={styles.comingHeader}>
-              <h2 className={styles.groupHeading}>{t('homeComingSoonHeading')}</h2>
+              <h2 className={styles.heading}>{t('homeComingSoonHeading')}</h2>
               <button
                 type="button"
-                className={styles.comingToggle}
+                className="link"
                 onClick={() => setShowComingSoon((v) => !v)}
                 aria-expanded={showComingSoon}
               >
@@ -185,54 +189,60 @@ function CoursePage({ navigate }) {
               </button>
             </div>
 
-            {showComingSoon &&
-              TRACK_ORDER.map((track) => {
-                const items = comingByTrack[track]
-                if (!items || items.length === 0) return null
-                return (
-                  <div key={track} className={styles.comingGroup}>
-                    <h3 id={`track-${track}`} className={`${styles.trackHeading} ${styles[`track_${track}`]}`}>
-                      {t(TRACK_LABEL_KEY[track])}
-                    </h3>
-                    <ul className={styles.comingList}>
-                      {items.map(({ section, index }) => (
-                        <li key={section.id} className={styles.comingItem}>
-                          <span className={styles.comingIndex}>{t('sectionLabel', { n: index + 1 })}</span>
-                          <span className={styles.comingTitle}>{section.title}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )
-              })}
-          </div>
+            {showComingSoon && (
+              <div className={styles.comingGroups}>
+                {TRACK_ORDER.map((track) => {
+                  const items = comingByTrack[track]
+                  if (!items || items.length === 0) return null
+                  return (
+                    <div key={track} className={styles.comingGroup}>
+                      <h3 id={`track-${track}`} className={styles.trackHeading}>
+                        <span className={`${styles.trackMark} ${styles[`track_${track}`]}`} aria-hidden="true" />
+                        {t(TRACK_LABEL_KEY[track])}
+                      </h3>
+                      <ol className={styles.comingList}>
+                        {items.map(({ section, index }) => (
+                          <li key={section.id} className={styles.comingItem}>
+                            <span className={`tnum ${styles.comingIndex}`}>{t('sectionLabel', { n: index + 1 })}</span>
+                            <span className={styles.comingTitle}>{section.title}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </section>
         )}
 
         {(hasProgress || justReset) && (
           <div className={styles.resetArea}>
             {hasProgress &&
               (confirmingReset ? (
-                <div className={styles.resetConfirm}>
-                  <p className={styles.resetConfirmText}>{t('resetProgressConfirm')}</p>
+                <div className={styles.resetConfirm} role="alertdialog" aria-labelledby="reset-confirm-text">
+                  <p id="reset-confirm-text" className={styles.resetConfirmText}>
+                    {t('resetProgressConfirm')}
+                  </p>
                   <div className={styles.resetConfirmActions}>
-                    <button type="button" className={styles.resetConfirmButton} onClick={handleReset}>
+                    <button type="button" className={`btn btn-sm ${styles.resetDanger}`} onClick={handleReset}>
                       {t('resetProgressConfirmButton')}
                     </button>
-                    <button
-                      type="button"
-                      className={styles.resetCancelButton}
-                      onClick={() => setConfirmingReset(false)}
-                    >
+                    <button type="button" className="btn btn-secondary btn-sm" onClick={() => setConfirmingReset(false)}>
                       {t('resetProgressCancelButton')}
                     </button>
                   </div>
                 </div>
               ) : (
-                <button type="button" className={styles.resetLink} onClick={() => setConfirmingReset(true)}>
+                <button type="button" className="link" onClick={() => setConfirmingReset(true)}>
                   {t('resetProgress')}
                 </button>
               ))}
-            {justReset && <p className={styles.resetDone}>{t('resetProgressDone')}</p>}
+            {justReset && (
+              <p className={styles.resetDone} role="status">
+                {t('resetProgressDone')}
+              </p>
+            )}
           </div>
         )}
 

@@ -1,11 +1,14 @@
-/* Design tokens and element resets live in src/tokens.css, imported by each
-   entry's bootstrap file — they must not sit in a CSS module (see the note
-   at the top of that file). This module holds only the app-shell classes. */
+/* Design tokens and element resets live in src/tokens.css, shared classes in
+   src/ui.css — both imported by each entry's bootstrap file, never from a
+   CSS module (see the note at the top of tokens.css). This module holds
+   only the app-shell classes. */
 
 .app {
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--text);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-page);
+  color: var(--color-text);
   font-family: var(--font-body);
 }
 
@@ -13,79 +16,50 @@
    lesson screen) can subtract its height. Matches .crumbs in
    Breadcrumbs.module.css. */
 .withCrumbs {
-  --crumb-height: 2rem;
+  --crumb-height: 2.25rem;
 }
 
 .main {
-  min-height: calc(100vh - var(--header-height));
+  flex: 1 0 auto;
+  min-height: calc(100svh - var(--header-height));
 }
 
 .main:focus {
   outline: none;
 }
 
+/* Route changes are the most frequent thing a visitor does here, so the
+   swap is instant: no enter animation (05 animate, frequency gate). */
 .pageEnter {
-  animation: pageEnter 420ms ease-out both;
-}
-
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pageEnter {
-    animation: none;
-  }
+  display: contents;
 }
 
 .skipLink {
   position: absolute;
   top: -3rem;
-  left: var(--space-sm);
+  left: var(--gutter);
   z-index: 100;
   padding: 0.5rem 1rem;
-  background: var(--accent);
-  color: var(--bg);
-  font-family: var(--font-body);
-  font-size: 0.875rem;
+  color: var(--color-text-on-accent);
+  background: var(--color-accent-solid);
+  border-radius: 0 0 var(--radius-1) var(--radius-1);
+  font-size: var(--text-small);
   text-decoration: none;
-  transition: top 150ms ease-out;
+  transition: top var(--dur-fast) var(--ease-out);
 }
 
 .skipLink:focus {
-  top: var(--space-sm);
+  top: 0;
 }
 
 .notFound {
-  padding: var(--space-xl) var(--space-lg);
+  padding: var(--space-16) var(--gutter);
   text-align: center;
 }
 
 .notFoundText {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
-  margin: 0 0 var(--space-md);
-}
-
-.notFoundButton {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: var(--bg);
-  background: var(--accent);
-  border: 1px solid var(--accent);
-  padding: 0.5rem 1.25rem;
-  cursor: pointer;
-  transition: opacity 150ms ease-out;
-}
-
-.notFoundButton:hover,
-.notFoundButton:focus-visible {
-  opacity: 0.8;
+  font-size: var(--text-heading);
+  line-height: var(--lh-heading);
+  margin: 0 0 var(--space-6);
 }

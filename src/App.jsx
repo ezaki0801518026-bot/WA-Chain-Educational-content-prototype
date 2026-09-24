@@ -5,8 +5,6 @@ import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import BackToTop from './components/BackToTop.jsx'
 import Breadcrumbs from './components/Breadcrumbs.jsx'
-import DuotoneFilter from './components/DuotoneFilter.jsx'
-import IntroSplash from './components/IntroSplash.jsx'
 import ScrollProgress from './components/ScrollProgress.jsx'
 import HubPage from './pages/HubPage.jsx'
 import CoursePage from './pages/CoursePage.jsx'
@@ -163,7 +161,7 @@ function App() {
     content = (
       <div className={styles.notFound}>
         <p className={styles.notFoundText}>{t('pageNotFound')}</p>
-        <button type="button" className={styles.notFoundButton} onClick={() => navigate('/')}>
+        <button type="button" className="btn btn-secondary" onClick={() => navigate('/')}>
           {t('notFoundHome')}
         </button>
       </div>
@@ -190,9 +188,7 @@ function App() {
 
   return (
     <div className={`${styles.app} ${crumbs ? styles.withCrumbs : ''}`}>
-      <IntroSplash />
       <ScrollProgress />
-      <DuotoneFilter />
       <a href="#main-content" className={styles.skipLink}>
         {t('skipToContent')}
       </a>

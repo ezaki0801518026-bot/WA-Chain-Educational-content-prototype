@@ -36,18 +36,18 @@ function GlossaryPage({ navigate }) {
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('glossaryTitle')}</h1>
         <p className={styles.description}>{t('glossaryDescription')}</p>
-        <button type="button" className={styles.mapLink} onClick={() => navigate('/washi-map')}>
+        <button type="button" className="btn btn-secondary" onClick={() => navigate('/washi-map')}>
           {t('washiMapFromGlossary')}
         </button>
       </div>
 
-      <label className={styles.srOnlyLabel} htmlFor="glossary-search">
+      <label className="sr-only" htmlFor="glossary-search">
         {t('glossarySearchLabel')}
       </label>
       <input
         id="glossary-search"
         type="search"
-        className={styles.search}
+        className={`field ${styles.search}`}
         placeholder={t('glossarySearchPlaceholder')}
         value={query}
         onChange={(event) => setQuery(event.target.value)}
@@ -68,7 +68,7 @@ function GlossaryPage({ navigate }) {
                 {entry.relatedSectionId && sectionTitleById[entry.relatedSectionId] && (
                   <button
                     type="button"
-                    className={styles.relatedLink}
+                    className={`link ${styles.relatedLink}`}
                     onClick={() => navigate(`/lesson/${entry.relatedSectionId}`)}
                   >
                     {t('glossarySeeIn', { section: sectionTitleById[entry.relatedSectionId] })}

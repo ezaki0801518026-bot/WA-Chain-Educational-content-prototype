@@ -36,7 +36,6 @@ function NewsPage({ navigate }) {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <p className={styles.eyebrow}>{t('newsEyebrow')}</p>
         <h1 className={styles.title}>{t('newsTitle')}</h1>
         <p className={styles.lede}>{t('newsLede')}</p>
       </header>
@@ -53,7 +52,7 @@ function NewsPage({ navigate }) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className={styles.newsletterTitle}>{post.title} ↗</span>
+                  <span className={styles.newsletterTitle}>{post.title}</span>
                   {post.date && <span className={styles.newsletterDate}>{post.date}</span>}
                 </a>
               </li>
@@ -65,7 +64,7 @@ function NewsPage({ navigate }) {
       <div className={styles.grid}>
         {news.posts.map((post) => (
           <Reveal as="article" key={post.id} className={styles.card}>
-            <button type="button" className={styles.cardButton} onClick={() => navigate(`/news/${post.id}`)}>
+            <button type="button" className={`card-link ${styles.cardButton}`} onClick={() => navigate(`/news/${post.id}`)}>
               <span className={styles.thumbWrap}>
                 <img
                   className={styles.thumb}

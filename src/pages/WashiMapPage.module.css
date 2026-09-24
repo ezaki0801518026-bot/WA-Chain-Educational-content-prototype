@@ -1,57 +1,56 @@
 .page {
-  max-width: 72rem;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg);
+  padding: var(--space-10) var(--gutter) var(--space-8);
 }
 
 .intro {
   max-width: 44rem;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-8);
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 1.3;
-  margin: 0 0 var(--space-sm);
+  font-size: var(--text-title);
+  line-height: var(--lh-title);
+  font-weight: 600;
+  margin: 0 0 var(--space-3);
 }
 
 .description {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--accent);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
   margin: 0;
+  text-wrap: pretty;
 }
 
 /* National designation chips (■●▲◆★, from the designation chart) */
 .desigLegend {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: var(--space-sm);
+  gap: var(--space-2);
+  margin-top: var(--space-4);
 }
 
 .desigRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
-  margin: 0.35rem 0;
+  gap: var(--space-1);
+  margin: var(--space-2) 0;
 }
 
 .desigChip {
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  letter-spacing: 0.02em;
+  font-size: var(--text-caption);
+  line-height: 1.4;
   border: 1px solid currentColor;
-  border-radius: 2px;
-  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-1);
+  padding: 0 var(--space-2);
   white-space: nowrap;
 }
 
 .desig_dento {
-  color: var(--incorrect);
+  color: var(--color-err-text);
 }
 .desig_juyo {
   color: var(--track-foundations);
@@ -60,7 +59,7 @@
   color: var(--track-diagnostics);
 }
 .desig_hozon {
-  color: var(--seal);
+  color: var(--color-note-text);
 }
 .desig_unesco {
   color: var(--track-practice);
@@ -68,7 +67,7 @@
 
 /* Category colours (shared by pins, badges, headings) */
 .catDesignated {
-  --cat-color: var(--seal);
+  --cat-color: var(--color-accent-solid);
 }
 .catRaw {
   --cat-color: var(--track-foundations);
@@ -80,18 +79,18 @@
   --cat-color: var(--track-practice);
 }
 .catImported {
-  --cat-color: var(--accent);
+  --cat-color: var(--color-text-secondary);
 }
 
 /* Map + panel layout ------------------------------------------------ */
 .mapLayout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
+  gap: var(--space-6);
   align-items: start;
 }
 
-@media (min-width: 820px) {
+@media (min-width: 52em) {
   .mapLayout {
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   }
@@ -99,10 +98,10 @@
 
 .figure {
   margin: 0;
-  background: rgba(var(--accent-rgb), 0.04);
-  border: 1px solid rgba(var(--accent-rgb), 0.18);
-  border-radius: 8px;
-  padding: var(--space-md);
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-border);
+  padding: var(--space-6);
 }
 
 /* Injected prefecture map ------------------------------------------- */
@@ -118,14 +117,14 @@
   overflow: visible;
 }
 
-/* Base: every prefecture reads as quiet paper-toned land. Inner paths
-   inherit fill from their group in the source SVG, so recolouring the
-   paths directly overrides the file's grey. */
-.mapHost :global(.prefecture) path {
-  fill: rgba(var(--accent-rgb), 0.1);
-  stroke: rgba(var(--accent-rgb), 0.35);
+/* Base: every prefecture reads as quiet land. Inner paths inherit fill
+   from their group in the source SVG, so recolouring the paths directly
+   overrides the file's grey. */
+.mapHost :global(.prefecture) :is(path, polygon, polyline, rect) {
+  fill: var(--color-bg-hover);
+  stroke: var(--color-bg-surface);
   stroke-width: 0.8;
-  transition: fill 180ms ease-out;
+  transition: fill var(--dur-base) ease;
 }
 
 /* Prefectures that make a washi in the dictionary — a touch stronger and
@@ -134,252 +133,238 @@
   cursor: pointer;
 }
 
-.mapHost :global(.prefecture.wp-target) path {
-  fill: rgba(var(--accent-rgb), 0.2);
+.mapHost :global(.prefecture.wp-target) :is(path, polygon, polyline, rect) {
+  fill: var(--color-border);
 }
 
 .mapHost :global(.prefecture.wp-target):focus {
   outline: none;
 }
 
+.mapHost :global(.prefecture.wp-target):focus-visible :is(path, polygon, polyline, rect) {
+  stroke: var(--color-focus);
+  stroke-width: 2;
+}
+
 /* Selected prefecture(s): filled in the paper's category colour. */
-.mapHost :global(.prefecture.wp-active) path {
-  fill: var(--cat, var(--accent));
-  stroke: var(--bg);
+.mapHost :global(.prefecture.wp-active) :is(path, polygon, polyline, rect) {
+  fill: var(--cat, var(--color-accent-solid));
+  stroke: var(--color-bg-surface);
   stroke-width: 1;
 }
 
-/* Marker dots sit at each region's centre and pulse gently to invite a
-   click; the active region's marker holds a steady, larger ring. */
+/* Marker dots sit at each region's centre; the active region's marker
+   grows into a ring. Nothing pulses on its own. */
 .mapHost :global(.wp-marker) {
-  fill: var(--cat, var(--accent));
-  stroke: var(--bg);
+  fill: var(--cat, var(--color-accent-solid));
+  stroke: var(--color-bg-surface);
   stroke-width: 1.5;
   transform-box: fill-box;
   transform-origin: center;
-  animation: markerIdle 2400ms ease-in-out infinite;
+  transition: transform var(--dur-base) var(--ease-out);
 }
 
 .mapHost :global(.wp-marker.wp-marker-active) {
-  animation: none;
-  transform: scale(1.5);
-}
-
-@keyframes markerIdle {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.9;
-  }
-  50% {
-    transform: scale(1.25);
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mapHost :global(.wp-marker) {
-    animation: none;
-  }
+  transform: scale(1.6);
 }
 
 /* Info panel -------------------------------------------------------- */
 .panel {
   min-height: 12rem;
-  padding: var(--space-md) var(--space-lg);
-  background: var(--bg);
-  border: 1px solid rgba(var(--accent-rgb), 0.25);
-  border-radius: 8px;
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-border);
 }
 
 .hint {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: var(--accent);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
 .panelRegion {
   font-family: var(--font-heading);
-  font-size: 1.0625rem;
-  color: var(--text);
-  margin: 0 0 var(--space-md);
+  font-size: var(--text-subheading);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--space-5);
 }
 
 .panelRegionLabel {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.625rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.15rem;
+  font-size: var(--text-caption);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
 }
 
 .panelPaper {
-  animation: fadeIn 260ms ease-out;
+  animation: panel-in var(--dur-base) ease both;
 }
 
 .panelPaper + .panelPaper {
-  margin-top: var(--space-md);
-  padding-top: var(--space-md);
-  border-top: 1px solid rgba(var(--accent-rgb), 0.2);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-separator);
 }
 
-@keyframes fadeIn {
+@keyframes panel-in {
   from {
     opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
 
 .panelPaperHead {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 
 .panelPaperName {
   font-family: var(--font-heading);
-  font-size: 1.375rem;
-  font-weight: 500;
+  font-size: var(--text-heading);
+  line-height: var(--lh-heading);
+  font-weight: 600;
   margin: 0;
 }
 
 .panelReading {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: var(--accent);
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
 }
 
 .badge {
   display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  letter-spacing: 0.03em;
-  color: #f5f0e8;
-  background: var(--cat-color, var(--accent));
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-  margin: 0.5rem 0;
+  font-size: var(--text-caption);
+  line-height: 1.5;
+  color: var(--color-text-on-accent);
+  background: var(--cat-color, var(--color-accent-solid));
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-pill);
+  margin: var(--space-2) 0;
 }
 
 .panelRegionLine {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: var(--accent);
-  margin: 0 0 var(--space-sm);
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-3);
 }
 
 .panelDesc {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--color-text);
   margin: 0;
+  text-wrap: pretty;
 }
 
 /* Full list --------------------------------------------------------- */
 .listHeading {
   font-family: var(--font-heading);
-  font-size: 1.375rem;
-  font-weight: 500;
-  margin: var(--space-xl) 0 var(--space-md);
+  font-size: var(--text-title);
+  line-height: var(--lh-title);
+  font-weight: 600;
+  margin: var(--space-16) 0 var(--space-6);
 }
 
 .catSection {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-10);
 }
 
 .catHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-family: var(--font-body);
-  font-size: 0.8125rem;
+  font-size: var(--text-small);
   font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--cat-color, var(--accent));
-  margin: 0 0 var(--space-sm);
-  padding-left: 0.6rem;
-  border-left: 3px solid var(--cat-color, var(--accent));
+  color: var(--color-text);
+  margin: 0 0 var(--space-4);
+}
+
+.catHeading::before {
+  content: '';
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: var(--cat-color, var(--color-accent-solid));
 }
 
 .paperGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: var(--space-md);
+  gap: var(--space-4);
 }
 
 .paperCard {
-  text-align: left;
-  background: rgba(var(--accent-rgb), 0.03);
-  border: 1px solid rgba(var(--accent-rgb), 0.25);
-  border-radius: 6px;
-  padding: var(--space-md);
-  cursor: pointer;
-  transition: border-color 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out;
-}
-
-.paperCard:hover,
-.paperCard:focus-visible {
-  border-color: var(--accent);
-  box-shadow: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
+  padding: var(--space-5);
 }
 
 .paperCardActive {
-  border-color: var(--track-foundations);
-  box-shadow: 0 0.4rem 1.1rem rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 0 0 2px var(--color-accent-solid),
+    var(--shadow-border);
 }
 
 .paperCardHead {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: var(--space-2);
   flex-wrap: wrap;
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
 }
 
 .paperName {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: var(--text);
+  font-size: var(--text-subheading);
+  line-height: var(--lh-subheading);
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .paperReading {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--accent);
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
 }
 
 .paperPin {
   display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  color: var(--track-diagnostics);
-  margin-bottom: 0.4rem;
+  font-size: var(--text-caption);
+  color: var(--color-accent-text);
+  margin-bottom: var(--space-2);
 }
 
 .paperDesc {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: var(--accent);
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
+@media (max-width: 48em) {
+  .page {
+    padding-top: var(--space-8);
+  }
+
+  .figure {
+    padding: var(--space-3);
+  }
+
+  .listHeading {
+    margin-top: var(--space-12);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pin {
-    animation: none;
-    opacity: 1;
+  .mapHost :global(.wp-marker),
+  .mapHost :global(.prefecture) :is(path, polygon, polyline, rect) {
+    transition: none;
   }
-  .pulse {
-    animation: none;
-  }
+
   .panelPaper {
     animation: none;
   }
