@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client'
 import AboutPage from './pages/AboutPage.jsx'
 import NewsArticlePage from './pages/NewsArticlePage.jsx'
 import news from '../data/news.json'
-import IntroSplash from './components/IntroSplash.jsx'
 import ScrollProgress from './components/ScrollProgress.jsx'
 import SocialIcon, { socialLabel } from './components/SocialIcon.jsx'
 import { TEAM_SOCIAL } from './config/social.js'
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext.jsx'
 import { ThemeProvider, useTheme } from './context/ThemeContext.jsx'
 import './tokens.css'
+import './ui.css'
 import styles from './AboutStandalone.module.css'
 import { asset } from './utils/asset.js'
 
@@ -102,7 +102,6 @@ function AboutShell() {
 
   return (
     <div className={styles.shell}>
-      <IntroSplash />
       <ScrollProgress />
       <header className={styles.bar}>
         <span className={styles.brand}>

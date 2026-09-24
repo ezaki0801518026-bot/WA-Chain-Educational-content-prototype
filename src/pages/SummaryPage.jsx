@@ -4,7 +4,6 @@ import heroImages from '../../data/heroImages.json'
 import { getProgress, setSectionComplete } from '../utils/progress.js'
 import ProgressIndicator from '../components/ProgressIndicator.jsx'
 import HeroBanner from '../components/HeroBanner.jsx'
-import SectionDivider from '../components/SectionDivider.jsx'
 import SectionFeedback from '../components/SectionFeedback.jsx'
 import CertificateButton from '../components/CertificateButton.jsx'
 import SourceList from '../components/SourceList.jsx'
@@ -43,7 +42,7 @@ function SummaryPage({ sectionId, navigate }) {
   })
 
   if (!section) {
-    return <p className={styles.notFound}>{t('sectionNotFound')}</p>
+    return <p className={`container-narrow ${styles.notFound}`}>{t('sectionNotFound')}</p>
   }
 
   const quizResult = getProgress()[sectionId]?.quiz
@@ -76,13 +75,12 @@ function SummaryPage({ sectionId, navigate }) {
 
         <SectionFeedback sectionId={sectionId} sectionTitle={section.title} />
 
-        <SectionDivider />
 
         <nav className={styles.nav}>
           {nextSection ? (
             <button
               type="button"
-              className={styles.nextCard}
+              className={`card-link ${styles.nextCard}`}
               onClick={() =>
                 navigate(nextSection.video ? `/video/${nextSection.id}` : `/lesson/${nextSection.id}`)
               }
@@ -93,10 +91,10 @@ function SummaryPage({ sectionId, navigate }) {
                 {nextSection.title}
               </span>
               <span className={styles.nextDesc}>{nextSection.description}</span>
-              <span className={styles.nextCta}>{t('continueToNextSection')} →</span>
+              <span className={styles.nextCta}>{t('continueToNextSection')}</span>
             </button>
           ) : (
-            <button type="button" className={styles.navButton} onClick={() => navigate('/')}>
+            <button type="button" className="btn btn-primary" onClick={() => navigate('/')}>
               {t('returnToCourseHome')}
             </button>
           )}

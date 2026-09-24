@@ -1,7 +1,7 @@
 // Section 2 diagram: a pH scale showing where typical modern acidic
 // wood-pulp paper and traditional washi fall, relative to neutral (7).
 // Approximate representative ranges. Palette restricted to background
-// #f5f0e8, line/text #2b2b2b, accent #b5533c.
+// var(--color-bg-subtle), line/text var(--color-text), accent var(--color-accent-solid).
 function AcidityScaleDiagram() {
   const scaleX0 = 40
   const scaleX1 = 380
@@ -19,30 +19,30 @@ function AcidityScaleDiagram() {
         pH scale comparing acidic modern wood-pulp paper (roughly pH 4.5–5.5) with neutral to weakly alkaline
         traditional washi (roughly pH 7–8.5)
       </title>
-      <rect width="420" height="170" fill="#f5f0e8" />
+      <rect width="420" height="170" fill="var(--color-bg-subtle)" />
 
-      <line x1={scaleX0} y1={scaleY} x2={scaleX1} y2={scaleY} stroke="#2b2b2b" strokeWidth="1.5" />
+      <line x1={scaleX0} y1={scaleY} x2={scaleX1} y2={scaleY} stroke="var(--color-text)" strokeWidth="1.5" />
       {[0, 7, 14].map((ph) => (
         <g key={ph}>
-          <line x1={toX(ph)} y1={scaleY - 6} x2={toX(ph)} y2={scaleY + 6} stroke="#2b2b2b" strokeWidth="1.5" />
-          <text x={toX(ph)} y={scaleY + 24} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="#2b2b2b">
+          <line x1={toX(ph)} y1={scaleY - 6} x2={toX(ph)} y2={scaleY + 6} stroke="var(--color-text)" strokeWidth="1.5" />
+          <text x={toX(ph)} y={scaleY + 24} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="var(--color-text)">
             {ph}
           </text>
         </g>
       ))}
-      <text x={toX(7)} y={scaleY - 14} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fill="#2b2b2b">
+      <text x={toX(7)} y={scaleY - 14} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="10" fill="var(--color-text)">
         neutral
       </text>
 
       {/* Acidic wood-pulp paper range */}
-      <rect x={toX(4.5)} y={scaleY - 34} width={toX(5.5) - toX(4.5)} height="14" fill="none" stroke="#b5533c" strokeWidth="2" />
-      <text x={toX(5)} y={scaleY - 42} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="#b5533c">
+      <rect x={toX(4.5)} y={scaleY - 34} width={toX(5.5) - toX(4.5)} height="14" fill="none" stroke="var(--color-accent-solid)" strokeWidth="2" />
+      <text x={toX(5)} y={scaleY - 42} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="var(--color-accent-solid)">
         modern wood-pulp paper
       </text>
 
       {/* Washi range */}
-      <rect x={toX(7)} y={scaleY + 42} width={toX(8.5) - toX(7)} height="14" fill="none" stroke="#2b2b2b" strokeWidth="1.5" />
-      <text x={toX(7.75)} y={scaleY + 70} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="#2b2b2b">
+      <rect x={toX(7)} y={scaleY + 42} width={toX(8.5) - toX(7)} height="14" fill="none" stroke="var(--color-text)" strokeWidth="1.5" />
+      <text x={toX(7.75)} y={scaleY + 70} textAnchor="middle" fontFamily="system-ui, sans-serif" fontSize="11" fill="var(--color-text)">
         traditional washi
       </text>
     </svg>

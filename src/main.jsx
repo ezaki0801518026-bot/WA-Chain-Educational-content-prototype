@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './tokens.css'
+import './ui.css'
 import { LanguageProvider } from './i18n/LanguageContext.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
 

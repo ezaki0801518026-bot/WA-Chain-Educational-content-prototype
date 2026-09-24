@@ -1,240 +1,111 @@
+/* The conversation is the page: a narrow column, the thread on top, and
+   the composer pinned to the bottom of the window so the next question is
+   always one glance away. */
 .page {
-  max-width: 42rem;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - var(--header-height));
+  max-width: 46rem;
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg);
+  padding: var(--space-10) var(--gutter) 0;
 }
 
 .intro {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-8);
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 1.3;
-  margin: 0 0 var(--space-sm);
+  font-size: var(--text-title);
+  line-height: var(--lh-title);
+  font-weight: 600;
+  margin: 0 0 var(--space-3);
 }
 
 .description {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--accent);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
   margin: 0;
+  max-width: var(--measure);
+  text-wrap: pretty;
 }
 
 .thread {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-
-.sampleLabel {
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 0;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
 }
 
 .exchange {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .bubble {
   /* Replies arrive as plain text with real line breaks in them. Without this
      a list of three fibres collapses into one unreadable paragraph. */
   white-space: pre-wrap;
-  max-width: 85%;
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  padding: 0.7rem 0.9rem;
-  border-radius: 12px;
+  max-width: 88%;
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-3);
 }
 
 .who {
   display: block;
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  opacity: 0.7;
-  margin-bottom: 0.25rem;
+  font-size: var(--text-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
 }
 
+/* The reader's own words sit on the right in the accent tint; the
+   assistant's on the left as a white sheet with a ring. */
 .bubbleYou {
   align-self: flex-end;
-  background: var(--track-foundations);
-  color: #f5f0e8;
-  border-bottom-right-radius: 3px;
+  background: var(--color-accent-subtle);
+  color: var(--color-text);
+  border-bottom-right-radius: var(--radius-1);
+}
+
+.bubbleYou .who {
+  color: var(--color-accent-text);
 }
 
 .bubbleExpert {
   align-self: flex-start;
-  background: rgba(var(--accent-rgb), 0.09);
-  color: var(--text);
-  border: 1px solid rgba(var(--accent-rgb), 0.2);
-  border-bottom-left-radius: 3px;
+  background: var(--color-bg-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-border);
+  border-bottom-left-radius: var(--radius-1);
 }
 
 .bubbleSystem {
   align-self: flex-start;
-  background: rgba(var(--correct-rgb), 0.12);
-  color: var(--text);
-  border: 1px solid rgba(var(--correct-rgb), 0.35);
-  font-size: 0.875rem;
+  background: var(--color-ok-subtle);
+  color: var(--color-ok-text);
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid rgba(var(--accent-rgb), 0.25);
-  padding-top: var(--space-lg);
-}
-
-.label {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--text);
-  margin-bottom: var(--space-xs);
-}
-
-.textarea,
-.input {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--accent);
-  border-radius: 3px;
-  padding: 0.6rem 0.7rem;
-  margin-bottom: var(--space-md);
-  width: 100%;
-  resize: vertical;
-}
-
-.textarea:focus,
-.input:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
-}
-
-.error {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: var(--incorrect);
-  margin: -0.5rem 0 var(--space-md);
-}
-
-.submit {
-  align-self: flex-start;
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: var(--bg);
-  background: var(--track-foundations);
-  border: 1px solid var(--track-foundations);
-  padding: 0.55rem 1.5rem;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: opacity 150ms ease-out;
-}
-
-.submit:hover:not(:disabled),
-.submit:focus-visible {
-  opacity: 0.86;
-}
-
-.submit:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
-
-.disclaimer {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  line-height: 1.5;
-  color: var(--accent);
-  margin: var(--space-sm) 0 0;
-}
-
-/* Assistant mode ----------------------------------------------------- */
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  align-items: center;
-}
-
-.secondary {
-  font: inherit;
-  font-size: 0.85rem;
-  padding: 0.5rem 0.9rem;
-  background: transparent;
-  color: var(--text);
-  border: 1px solid rgba(var(--accent-rgb), 0.4);
-  cursor: pointer;
-}
-
-.secondary:hover,
-.secondary:focus-visible {
-  border-color: var(--accent);
-}
-
-.secondary:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-
-/* A refusal or an outage is not a normal answer — mark it so the eye
-   separates "the assistant replied" from "the assistant could not". */
+/* A refusal or an outage is not a normal answer — it sits on the
+   "not final" tint so the eye separates "replied" from "could not". */
 .bubbleNotice {
-  border-left: 3px solid var(--seal);
+  background: var(--color-note-subtle);
+  box-shadow: none;
 }
 
 .bubblePending {
-  opacity: 0.7;
-  font-style: italic;
+  color: var(--color-text-secondary);
 }
 
-/* Worked examples, not conversation ---------------------------------- */
-/* These exist to show what the assistant does before anyone has asked
-   anything, so they are set smaller and tighter than a real exchange:
-   readable at a glance without pushing the input box off the screen. */
-.samples {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.samples {
-  gap: 0.625rem;
-}
-
-.sampleExchange {
-  gap: 0.3rem;
-}
-
-.sampleBubble {
+/* Answers can carry a chart or table, which needs more of the width. */
+.bubbleAnswer {
   max-width: 96%;
-  font-size: 0.8125rem;
-  line-height: 1.45;
-  padding: 0.4rem 0.6rem;
-}
-
-/* The speaker label runs into the first line instead of taking one of its
-   own. Four bubbles, four lines saved — most of the space these examples
-   were costing was the labels, not the text. */
-.sampleBubble .who {
-  display: inline;
-  font-size: 0.5625rem;
-  margin: 0 0.4rem 0 0;
 }
 
 /* A caret while the answer is still being written, so a pause mid-sentence
@@ -257,10 +128,74 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .bubbleStreaming::after {
-    animation: none;
+/* Composer ------------------------------------------------------------ */
+.form {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding: var(--space-4) 0 calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in oklab, var(--color-bg-page) 88%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 -1px 0 var(--color-border-subtle);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .form {
+    background: var(--color-bg-page);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
+}
+
+.textarea {
+  min-height: 5.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.disclaimer {
+  font-size: var(--text-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-secondary);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Worked examples, not conversation ---------------------------------- */
+/* Shown once, before anything has been asked: what the assistant does,
+   set a little smaller than a real exchange. */
+.samples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.sampleLabel {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.sampleExchange {
+  gap: var(--space-2);
+}
+
+.sampleBubble {
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+  padding: var(--space-3) var(--space-4);
 }
 
 /* Sources ------------------------------------------------------------ */
@@ -271,72 +206,52 @@
   font-size: 0.7em;
   line-height: 0;
   margin-left: 0.1em;
-  color: var(--accent);
+  color: var(--color-accent-text);
   white-space: nowrap;
 }
 
 .sources {
   white-space: normal;
-  margin-top: 0.6rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid rgba(var(--accent-rgb), 0.2);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-separator);
 }
 
 .sourcesLabel {
-  font-size: 0.625rem;
+  font-size: var(--text-caption);
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 0 0 0.2rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-1);
 }
 
 .sourceList {
   margin: 0;
   padding-left: 1.4rem;
-  font-size: 0.8125rem;
-  line-height: 1.5;
+  font-size: var(--text-caption);
+  line-height: var(--lh-caption);
+  display: grid;
+  gap: var(--space-1);
 }
 
 .sourceList a {
-  color: var(--text);
+  color: var(--color-text);
   text-decoration: underline;
-  text-decoration-color: rgba(var(--accent-rgb), 0.5);
-  text-underline-offset: 2px;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 0.15em;
+  overflow-wrap: anywhere;
 }
 
-.sourceList a:hover,
-.sourceList a:focus-visible {
-  text-decoration-color: currentColor;
-}
-
-/* The examples now sit under the input, after the disclaimer. */
-.samples {
-  margin-top: var(--space-xl);
-  padding-top: var(--space-lg);
-  border-top: 1px solid rgba(var(--accent-rgb), 0.15);
-}
-
-.sampleBubble .sources {
-  margin-top: 0.35rem;
-  padding-top: 0.3rem;
-}
-
-.sampleBubble .sourceList {
-  font-size: 0.75rem;
-}
-
-/* Research, web and figures (2026-09-16) ---------------------------------- */
-/* Answers can carry a chart or table, which needs more of the width. */
-.bubbleAnswer {
-  max-width: 94%;
+@media (hover: hover) and (pointer: fine) {
+  .sourceList a:hover {
+    text-decoration-color: currentColor;
+  }
 }
 
 .inlineLink {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: rgba(var(--accent-rgb), 0.5);
-  text-underline-offset: 2px;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 0.15em;
   overflow-wrap: anywhere;
 }
 
@@ -344,25 +259,24 @@
 .status {
   display: block;
   white-space: normal;
-  margin: 0.4rem 0;
-  font-size: 0.8125rem;
-  font-style: italic;
-  color: var(--accent);
+  margin: var(--space-2) 0;
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
 }
 
-/* Which kind of source a numbered entry is. Colour follows the trust order:
-   the course in the house colour, WA-Chain research in its own, the open web
-   plain — it has not been checked by anyone at WA-Chain. */
+/* Which kind of source a numbered entry is. The course in the accent,
+   WA-Chain research in its own colour, the open web plain — it has not
+   been checked by anyone at WA-Chain. */
 .kind {
   display: inline-block;
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 0 0.3rem;
-  margin-right: 0.35rem;
-  border-radius: 2px;
-  color: var(--bg);
-  background: var(--track-foundations);
+  line-height: 1.4;
+  padding: 0 0.35rem;
+  margin-right: var(--space-2);
+  border-radius: var(--radius-1);
+  color: var(--color-text-on-accent);
+  background: var(--color-accent-solid);
   vertical-align: 0.1em;
 }
 
@@ -371,20 +285,37 @@
 }
 
 .kindWeb {
-  color: var(--text);
+  color: var(--color-text-secondary);
   background: transparent;
-  border: 1px solid rgba(var(--accent-rgb), 0.5);
+  box-shadow: inset 0 0 0 1px var(--color-border);
 }
 
 .references {
-  color: var(--accent);
+  color: var(--color-text-secondary);
 }
 
 .references a {
-  color: var(--accent);
+  color: var(--color-text-secondary);
 }
 
 .host {
   font-size: 0.6875rem;
-  color: var(--accent);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 48em) {
+  .page {
+    padding-top: var(--space-6);
+  }
+
+  .bubble,
+  .bubbleAnswer {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubbleStreaming::after {
+    animation: none;
+  }
 }

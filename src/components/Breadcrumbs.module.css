@@ -1,11 +1,12 @@
 .crumbs {
   /* Fixed height so layouts can rely on --crumb-height (App.module.css). */
-  height: var(--crumb-height, 2rem);
+  height: var(--crumb-height, 2.25rem);
   display: flex;
   align-items: center;
-  padding: 0 var(--space-lg);
-  max-width: 60rem;
+  padding: 0 var(--gutter);
+  max-width: var(--content-max);
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .list {
@@ -14,46 +15,61 @@
   padding: 0;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+  flex-wrap: nowrap;
+  gap: var(--space-2);
+  min-width: 0;
 }
 
 .item {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: var(--space-2);
   min-width: 0;
+  flex-shrink: 1;
+}
+
+.item:last-child {
+  flex-shrink: 0;
 }
 
 .link {
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--accent);
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.15em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 18rem;
+  max-width: min(18rem, 45vw);
+  transition:
+    color var(--dur-fast) ease,
+    text-decoration-color var(--dur-fast) ease;
 }
 
-.link:hover,
-.link:focus-visible {
-  color: var(--text);
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    color: var(--color-text);
+    text-decoration-color: currentColor;
+  }
 }
 
 .current {
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--text);
+  font-size: var(--text-caption);
+  color: var(--color-text);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(18rem, 45vw);
 }
 
 .separator {
-  font-size: 0.75rem;
-  color: var(--accent);
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
 }

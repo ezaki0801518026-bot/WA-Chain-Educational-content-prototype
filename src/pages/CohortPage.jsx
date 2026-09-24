@@ -13,7 +13,6 @@ function CohortPage() {
   return (
     <div className={styles.page}>
       <div className={styles.intro}>
-        <p className={styles.eyebrow}>{t('cohortEyebrow')}</p>
         <h1 className={styles.title}>{t('cohortTitle')}</h1>
         <p className={styles.lede}>{t('cohortLede')}</p>
       </div>

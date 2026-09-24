@@ -20,8 +20,7 @@ function wrapLines(ctx, text, maxWidth) {
 }
 
 // Draws a completion card (1200×630, OG-image proportions) on a canvas:
-// paper ground, ink text, a vermillion seal — consistent with the site's
-// ink-and-paper identity. Shared via the Web Share API where available,
+// paper ground, ink text, a water-blue seal — the site's own colours. Shared via the Web Share API where available,
 // otherwise downloaded as a PNG.
 function drawCard({ heading, sectionTitle, courseName, dateLabel, scoreLabel }) {
   const canvas = document.createElement('canvas')
@@ -30,9 +29,9 @@ function drawCard({ heading, sectionTitle, courseName, dateLabel, scoreLabel }) 
   const ctx = canvas.getContext('2d')
 
   // Paper ground + double ink border
-  ctx.fillStyle = '#f5f0e8'
+  ctx.fillStyle = '#f8f9f8'
   ctx.fillRect(0, 0, 1200, 630)
-  ctx.strokeStyle = '#2b2b2b'
+  ctx.strokeStyle = '#161c1e'
   ctx.lineWidth = 3
   ctx.strokeRect(28, 28, 1144, 574)
   ctx.lineWidth = 1
@@ -41,42 +40,42 @@ function drawCard({ heading, sectionTitle, courseName, dateLabel, scoreLabel }) 
   ctx.textAlign = 'center'
 
   // Heading
-  ctx.fillStyle = '#4a4a3a'
-  ctx.font = '600 26px Lora, Georgia, serif'
-  ctx.fillText(heading.toUpperCase(), 600, 140)
+  ctx.fillStyle = '#566265'
+  ctx.font = '600 26px "Source Serif 4", Georgia, serif'
+  ctx.fillText(heading, 600, 140)
 
   // Rule under heading
-  ctx.strokeStyle = '#4a4a3a'
+  ctx.strokeStyle = '#566265'
   ctx.beginPath()
   ctx.moveTo(500, 165)
   ctx.lineTo(700, 165)
   ctx.stroke()
 
   // Section title (wrapped)
-  ctx.fillStyle = '#1a1a1a'
-  ctx.font = '500 44px Lora, Georgia, serif'
+  ctx.fillStyle = '#161c1e'
+  ctx.font = '600 44px "Source Serif 4", Georgia, serif'
   const lines = wrapLines(ctx, sectionTitle, 980)
   const startY = lines.length > 1 ? 280 : 310
   lines.forEach((line, i) => ctx.fillText(line, 600, startY + i * 58))
 
   // Score (optional) + date
-  ctx.fillStyle = '#4a4a3a'
-  ctx.font = '24px Lora, Georgia, serif'
+  ctx.fillStyle = '#566265'
+  ctx.font = '24px "Source Sans 3", system-ui, sans-serif'
   if (scoreLabel) ctx.fillText(scoreLabel, 600, 440)
   ctx.fillText(dateLabel, 600, scoreLabel ? 480 : 450)
 
   // Course name
-  ctx.font = '600 22px Lora, Georgia, serif'
+  ctx.font = '600 22px "Source Serif 4", Georgia, serif'
   ctx.fillText(courseName, 600, 545)
 
   // Vermillion seal, slightly tilted like a hand-pressed stamp
   ctx.save()
   ctx.translate(1080, 520)
   ctx.rotate(0.06)
-  ctx.fillStyle = '#a63f2e'
+  ctx.fillStyle = '#2f6478'
   ctx.fillRect(-32, -32, 64, 64)
-  ctx.fillStyle = '#f5f0e8'
-  ctx.font = '600 30px Lora, Georgia, serif'
+  ctx.fillStyle = '#ffffff'
+  ctx.font = '600 30px "Source Serif 4", Georgia, serif'
   ctx.fillText('和', 0, 11)
   ctx.restore()
 
@@ -122,7 +121,7 @@ function CertificateButton({ sectionTitle, quizResult }) {
   }
 
   return (
-    <button type="button" className={styles.button} onClick={handleClick}>
+    <button type="button" className={`btn btn-secondary btn-sm ${styles.button}`} onClick={handleClick}>
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M8 2v8" />
         <path d="M4.5 6.5 8 10l3.5-3.5" />

@@ -1,104 +1,87 @@
+/* Shared by the Study Tour and Cohort concept pages. */
 .page {
   max-width: 48rem;
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg);
+  padding: var(--space-10) var(--gutter) var(--space-16);
 }
 
 .intro {
-  max-width: 42rem;
-  margin-bottom: var(--space-lg);
-}
-
-.eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--track-practice);
-  margin: 0 0 var(--space-sm);
+  max-width: 44rem;
+  margin-bottom: var(--space-10);
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 1.3;
-  margin: 0 0 var(--space-sm);
+  font-size: var(--text-title);
+  line-height: var(--lh-title);
+  font-weight: 600;
+  margin: 0 0 var(--space-3);
 }
 
 .lede {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text);
   margin: 0;
+  text-wrap: pretty;
 }
 
 .mapLink {
   display: inline-block;
-  margin-top: var(--space-md);
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: var(--track-practice);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.mapLink:hover,
-.mapLink:focus-visible {
-  color: var(--text);
+  margin-top: var(--space-4);
+  font-size: var(--text-body);
 }
 
 .subheading {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin: 0 0 var(--space-md);
+  font-size: var(--text-heading);
+  line-height: var(--lh-heading);
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
 }
 
 .pointGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-
-@media (min-width: 620px) {
-  .pointGrid {
-    grid-template-columns: 1fr 1fr;
-  }
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
 }
 
 .pointCard {
-  border: 1px solid rgba(var(--accent-rgb), 0.3);
-  border-left: 3px solid var(--track-practice);
-  border-radius: 4px;
-  padding: var(--space-md);
-  background: rgba(var(--accent-rgb), 0.03);
+  padding: var(--space-5);
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-border);
 }
 
 .pointTitle {
   font-family: var(--font-heading);
-  font-size: 1.0625rem;
-  font-weight: 500;
-  margin: 0 0 var(--space-xs);
+  font-size: var(--text-subheading);
+  line-height: var(--lh-subheading);
+  font-weight: 600;
+  margin: 0 0 var(--space-2);
 }
 
 .pointDesc {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--accent);
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
 .status {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: var(--accent);
-  margin: 0 0 var(--space-md);
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-4);
+}
+
+@media (max-width: 36em) {
+  .page {
+    padding-top: var(--space-8);
+  }
+
+  .pointGrid {
+    grid-template-columns: 1fr;
+  }
 }

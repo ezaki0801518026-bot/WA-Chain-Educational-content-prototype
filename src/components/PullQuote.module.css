@@ -1,15 +1,15 @@
 .quote {
-  margin: var(--space-md) 0;
-  padding: 0.2rem 0 0.2rem var(--space-md);
-  border-left: 2px solid var(--accent);
+  margin: var(--space-6) 0;
+  padding: 0;
   max-width: 32rem;
 }
 
 .text {
   font-family: var(--font-heading);
-  font-style: italic;
-  font-size: 1.3125rem;
-  line-height: 1.5;
-  color: var(--accent);
+  font-size: var(--text-heading);
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--color-accent-text);
   margin: 0;
+  text-wrap: balance;
 }

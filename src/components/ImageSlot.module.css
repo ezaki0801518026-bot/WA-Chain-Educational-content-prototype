@@ -1,20 +1,20 @@
 .placeholder {
-  border: 1px dashed var(--accent);
-  padding: var(--space-lg) var(--space-md);
-  margin: var(--space-md) 0;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-2);
+  padding: var(--space-8) var(--space-6);
+  margin: var(--space-6) 0;
   background: transparent;
 }
 
 .placeholderText {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--accent);
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
   text-align: center;
   margin: 0;
 }
 
 .figure {
-  margin: var(--space-md) 0;
+  margin: var(--space-6) 0;
 }
 
 .imageWrapper {
@@ -26,36 +26,38 @@
   display: block;
   max-width: 100%;
   height: auto;
+  border-radius: var(--radius-2);
+  outline: var(--image-outline);
+  outline-offset: -1px;
   opacity: 0;
-  transition: opacity 400ms ease-out;
+  transition: opacity var(--dur-slow) ease;
 }
 
 .imageLoaded {
   opacity: 1;
 }
 
+.placeholderBadge {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--color-note-text);
+  background: var(--color-note-subtle);
+  border-radius: var(--radius-1);
+  padding: 0 var(--space-2);
+}
+
+.caption {
+  font-size: var(--text-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-2);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .image {
     transition: none;
   }
-}
-
-.placeholderBadge {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--bg);
-  background: var(--accent);
-  padding: 0.15rem 0.4rem;
-}
-
-.caption {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: var(--accent);
-  margin-top: var(--space-xs);
 }

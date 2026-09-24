@@ -29,7 +29,7 @@ function AudioButton({ audioSrc }) {
         onPause={() => setPlaying(false)}
         onEnded={() => setPlaying(false)}
       />
-      <button type="button" className={styles.button} onClick={toggle}>
+      <button type="button" className="btn btn-secondary btn-sm" onClick={toggle}>
         {playing ? t('pauseAudio') : t('playAudio')}
       </button>
     </div>

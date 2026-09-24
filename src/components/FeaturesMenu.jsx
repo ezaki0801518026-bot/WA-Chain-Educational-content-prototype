@@ -18,7 +18,8 @@ const EXPLORE = [
 
 // The site's overflow menu: every destination in the prototype, opened as a
 // modal dialog from the header's menu button. Shown on every page (unlike
-// the course-page-only mega-nav).
+// the course-page-only mega-nav). The page behind is made inert while it
+// is open, so focus and the screen reader stay inside.
 function FeaturesMenu({ navigate }) {
   const { t } = useLanguage()
   const [open, setOpen] = useState(false)
@@ -31,9 +32,10 @@ function FeaturesMenu({ navigate }) {
   }
 
   useEffect(() => {
-    if (!open) return
+    if (!open) return undefined
     panelRef.current?.focus()
-
+    const root = document.getElementById('root')
+    root?.setAttribute('inert', '')
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         event.preventDefault()
@@ -41,7 +43,10 @@ function FeaturesMenu({ navigate }) {
       }
     }
     window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      root?.removeAttribute('inert')
+    }
   }, [open])
 
   return (
@@ -49,23 +54,23 @@ function FeaturesMenu({ navigate }) {
       <button
         type="button"
         ref={triggerRef}
-        className={styles.trigger}
+        className={`btn btn-quiet btn-icon btn-sm ${styles.trigger}`}
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-label={t('menuOpen')}
       >
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-          <line x1="2" y1="5" x2="16" y2="5" />
-          <line x1="2" y1="9" x2="16" y2="9" />
-          <line x1="2" y1="13" x2="16" y2="13" />
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="17" y2="6" />
+          <line x1="3" y1="10" x2="17" y2="10" />
+          <line x1="3" y1="14" x2="17" y2="14" />
         </svg>
       </button>
 
       {open && (
-        <div className={styles.backdrop} onClick={close}>
+        <div className={`dialog-backdrop ${styles.backdrop}`} onClick={close}>
           <div
-            className={styles.panel}
+            className={`dialog-panel ${styles.panel}`}
             role="dialog"
             aria-modal="true"
             aria-labelledby="features-menu-title"
@@ -77,12 +82,13 @@ function FeaturesMenu({ navigate }) {
               <h2 id="features-menu-title" className={styles.panelTitle}>
                 {t('menuTitle')}
               </h2>
-              <button type="button" className={styles.closeButton} onClick={close} aria-label={t('featuresMenuClose')}>
-                ✕
+              <button type="button" className="btn btn-quiet btn-icon btn-sm" onClick={close} aria-label={t('featuresMenuClose')}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6 6 18" />
+                </svg>
               </button>
             </div>
 
-            <p className={styles.sectionLabel}>{t('menuSectionExplore')}</p>
             <ul className={styles.exploreList}>
               {EXPLORE.map(({ labelKey, route }) => (
                 <li key={labelKey}>
@@ -94,15 +100,11 @@ function FeaturesMenu({ navigate }) {
                       navigate(route)
                     }}
                   >
-                    <span>{t(labelKey)}</span>
-                    <span aria-hidden="true" className={styles.exploreArrow}>
-                      →
-                    </span>
+                    {t(labelKey)}
                   </button>
                 </li>
               ))}
             </ul>
-
           </div>
         </div>
       )}

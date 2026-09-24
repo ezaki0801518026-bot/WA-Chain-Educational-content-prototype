@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import news from '../../data/news.json'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
-import Reveal from '../components/Reveal.jsx'
 import HelpTip from '../components/HelpTip.jsx'
 import ProfileSetup from '../components/ProfileSetup.jsx'
 import { readProfile, wasSkipped } from '../utils/profile.js'
@@ -38,6 +37,15 @@ function readWatched() {
   } catch {
     return []
   }
+}
+
+function PlayGlyph() {
+  return (
+    <svg className={styles.playGlyph} width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+      <circle cx="22" cy="22" r="21" fill="rgb(13 17 18 / 0.55)" />
+      <path d="M17.5 14.5v15l12-7.5z" fill="#fff" />
+    </svg>
+  )
 }
 
 function HubPage({ navigate }) {
@@ -87,70 +95,81 @@ function HubPage({ navigate }) {
 
   return (
     <div className={styles.page}>
-      {/* One screen: the image, the name of the thing, and a hint to scroll. */}
+      {/* One screen: the image, the name of the thing, and a hint to scroll.
+          The only entrance animation on the site lives here. */}
       <section className={styles.hero}>
-        <img className={styles.heroImg} src={asset(HERO_IMAGE)} alt="" aria-hidden="true" />
+        <img
+          className={styles.heroImg}
+          src={asset(HERO_IMAGE)}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+        />
         <div className={styles.heroVeil} />
-        <div className={styles.heroInner}>
-          <p className={styles.heroEyebrow}>{t('hubEyebrow')}</p>
+        <div className={`container ${styles.heroInner}`}>
           <h1 className={styles.heroTitle}>{t('hubTitle')}</h1>
           <p className={styles.heroLede}>{t('hubLede')}</p>
         </div>
-        <span className={styles.scrollCue} aria-hidden="true" />
+        <svg className={styles.scrollCue} width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M4 7.5 10 13l6-5.5" />
+        </svg>
       </section>
 
       {/* Two ways to ask, side by side: the assistant, and a person. */}
-      <Reveal as="section" className={styles.band}>
+      <section className={`container ${styles.band}`}>
         <div className={styles.askGrid}>
-          <form className={styles.askCard} onSubmit={openChat}>
+          <form className={`card ${styles.askCard}`} onSubmit={openChat}>
             <h2 className={styles.askTitle}>
               {t('hubAskTitle')}
               <HelpTip label={t('hubAskHelpLabel')}>{t('hubAskHelp')}</HelpTip>
             </h2>
             <div className={styles.askRow}>
-              <label className={styles.srOnly} htmlFor="hub-ask">
+              <label className="sr-only" htmlFor="hub-ask">
                 {t('hubAskLabel')}
               </label>
               <input
                 id="hub-ask"
                 type="text"
-                className={styles.askInput}
+                className={`field ${styles.askInput}`}
                 maxLength={2000}
                 placeholder={t('hubAskPlaceholder')}
                 value={askDraft}
                 onChange={(event) => setAskDraft(event.target.value)}
+                autoComplete="off"
+                enterKeyHint="send"
               />
-              <button type="submit" className={styles.askButton}>
+              <button type="submit" className="btn btn-primary">
                 {t('hubAskCta')}
               </button>
             </div>
           </form>
 
-          <div className={styles.askCard}>
+          <div className={`card ${styles.askCard}`}>
             <h2 className={styles.askTitle}>
               {t('hubExpertTitle')}
               <HelpTip label={t('hubExpertHelpLabel')}>{t('hubExpertHelp')}</HelpTip>
             </h2>
-            <button type="button" className={styles.expertButton} onClick={openExpert}>
+            <button type="button" className={`btn btn-secondary ${styles.expertButton}`} onClick={openExpert}>
               {t('hubExpertCta')}
             </button>
           </div>
         </div>
-      </Reveal>
+      </section>
 
       {/* What you can do here — titles only. */}
-      <Reveal as="section" className={styles.band}>
+      <section className={`container ${styles.band}`}>
         <h2 className={styles.bandTitle}>{t('hubExploreTitle')}</h2>
         <div className={styles.grid}>
           {CORE.map((item) => (
             <button
               key={item.id}
               type="button"
-              className={styles.tile}
+              className={`card-link ${styles.tile}`}
               onClick={() => navigate(item.route)}
             >
               <span className={styles.tileImgWrap}>
-                <img className={styles.tileImg} src={asset(item.image)} alt="" aria-hidden="true" loading="lazy" />
+                <img className={styles.tileImg} src={asset(item.image)} alt="" aria-hidden="true" loading="lazy" decoding="async" />
               </span>
               <span className={styles.tileBody}>
                 <span className={styles.tileTitle}>{t(`hub_${item.id}_title`)}</span>
@@ -159,18 +178,18 @@ function HubPage({ navigate }) {
             </button>
           ))}
         </div>
-      </Reveal>
+      </section>
 
       {/* For you — ordered by the reader's own answers. */}
-      <Reveal as="section" className={styles.band}>
-        <div className={styles.forYouHead}>
+      <section className={`container ${styles.band}`}>
+        <div className={styles.bandHead}>
           <h2 className={styles.bandTitle}>
             {t('hubForYouTitle')}
             <HelpTip label={t('hubForYouHelpLabel')}>
               {profile ? t('hubForYouHelp') : t('hubForYouHelpEmpty')}
             </HelpTip>
           </h2>
-          <button type="button" className={styles.settingsLink} onClick={() => setSetupOpen(true)}>
+          <button type="button" className="link" onClick={() => setSetupOpen(true)}>
             {profile ? t('hubForYouEdit') : t('hubForYouSet')}
           </button>
         </div>
@@ -180,17 +199,19 @@ function HubPage({ navigate }) {
             <button
               key={entry.id}
               type="button"
-              className={styles.recCard}
+              className={`card-link ${styles.recCard}`}
               onClick={() => navigate(entry.route)}
             >
               <span className={styles.recThumb}>
-                <img src={asset(entry.item.poster)} alt="" aria-hidden="true" loading="lazy" />
-                <span className={styles.playBadge} aria-hidden="true">▶</span>
-                <span className={styles.durBadge}>{entry.item.durationLabel}</span>
+                <img src={asset(entry.item.poster)} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                <PlayGlyph />
+                <span className={`tnum ${styles.durBadge}`}>{entry.item.durationLabel}</span>
               </span>
-              <span className={styles.recTitle}>{pick(entry.item.title)}</span>
-              <span className={styles.recWhy}>
-                {entry.done ? t('recWatched') : reasonText(entry.reason) || t('recGeneral')}
+              <span className={styles.recBody}>
+                <span className={styles.recTitle}>{pick(entry.item.title)}</span>
+                <span className={styles.recWhy}>
+                  {entry.done ? t('recWatched') : reasonText(entry.reason) || t('recGeneral')}
+                </span>
               </span>
             </button>
           ))}
@@ -199,15 +220,17 @@ function HubPage({ navigate }) {
             <button
               key={entry.id}
               type="button"
-              className={`${styles.recCard} ${styles.recText}`}
+              className={`card-link ${styles.recCard} ${styles.recText}`}
               onClick={() => navigate(entry.route)}
             >
-              <span className={styles.recKind}>{t('recLessonKind')}</span>
-              <span className={styles.recTitle}>
-                {t('sectionLabel', { n: entry.number })} — {entry.item.title}
-              </span>
-              <span className={styles.recWhy}>
-                {entry.done ? t('recDone') : reasonText(entry.reason) || t('recGeneral')}
+              <span className={styles.recBody}>
+                <span className={styles.recKind}>{t('recLessonKind')}</span>
+                <span className={styles.recTitle}>
+                  {t('sectionLabel', { n: entry.number })} — {entry.item.title}
+                </span>
+                <span className={styles.recWhy}>
+                  {entry.done ? t('recDone') : reasonText(entry.reason) || t('recGeneral')}
+                </span>
               </span>
             </button>
           ))}
@@ -216,25 +239,20 @@ function HubPage({ navigate }) {
         {picks.places.length > 0 && (
           <div className={styles.placeRow}>
             {picks.places.map((place) => (
-              <button
-                key={place.id}
-                type="button"
-                className={styles.placeChip}
-                onClick={() => navigate(place.route)}
-              >
+              <button key={place.id} type="button" className="chip" onClick={() => navigate(place.route)}>
                 {t(`recPlace_${place.id}`)}
               </button>
             ))}
           </div>
         )}
-      </Reveal>
+      </section>
 
       {/* Secondary: what the team has been doing. */}
-      <Reveal as="section" className={styles.bandQuiet}>
+      <section className={`container ${styles.band}`}>
         <div className={styles.bandHead}>
           <h2 className={styles.bandTitle}>{t('hubNewsTitle')}</h2>
-          <button type="button" className={styles.moreLink} onClick={() => navigate('/news')}>
-            {t('hubNewsMore')} →
+          <button type="button" className="link" onClick={() => navigate('/news')}>
+            {t('hubNewsMore')}
           </button>
         </div>
         <div className={styles.newsRow}>
@@ -242,18 +260,20 @@ function HubPage({ navigate }) {
             <button
               key={post.id}
               type="button"
-              className={styles.newsCard}
+              className={`card-link ${styles.newsCard}`}
               onClick={() => navigate(`/news/${post.id}`)}
             >
               <span className={styles.newsThumb}>
-                <img src={asset(post.image)} alt="" aria-hidden="true" loading="lazy" />
+                <img src={asset(post.image)} alt="" aria-hidden="true" loading="lazy" decoding="async" />
               </span>
-              <span className={styles.newsDate}>{pick(post.dateLabel)}</span>
-              <span className={styles.newsTitle}>{pick(post.title)}</span>
+              <span className={styles.newsBody}>
+                <span className={styles.newsDate}>{pick(post.dateLabel)}</span>
+                <span className={styles.newsTitle}>{pick(post.title)}</span>
+              </span>
             </button>
           ))}
         </div>
-      </Reveal>
+      </section>
 
       {setupOpen && (
         <ProfileSetup

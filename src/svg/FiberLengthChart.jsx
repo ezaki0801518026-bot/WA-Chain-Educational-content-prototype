@@ -1,6 +1,6 @@
 // Section 4 diagram: horizontal bar chart comparing average fiber length
 // across the three washi raw materials and wood pulp. Palette restricted
-// to background #f5f0e8, line/text #2b2b2b, accent #b5533c.
+// to background var(--color-bg-subtle), line/text var(--color-text), accent var(--color-accent-solid).
 const FIBERS = [
   { name: 'Kōzo', mm: 10.5, y: 26, accent: true },
   { name: 'Gampi', mm: 4.3, y: 84, accent: false },
@@ -23,7 +23,7 @@ function FiberLengthChart() {
       <title id="fiber-length-title">
         Average fiber length comparison: kōzo 10.5mm, gampi 4.3mm, mitsumata 3.7mm, wood pulp 1.3mm
       </title>
-      <rect width="420" height="240" fill="#f5f0e8" />
+      <rect width="420" height="240" fill="var(--color-bg-subtle)" />
 
       {FIBERS.map((fiber) => {
         const width = (fiber.mm / MAX_MM) * CHART_WIDTH
@@ -35,10 +35,10 @@ function FiberLengthChart() {
               width={width}
               height="28"
               fill="none"
-              stroke={fiber.accent ? '#b5533c' : '#2b2b2b'}
+              stroke={fiber.accent ? 'var(--color-accent-solid)' : 'var(--color-text)'}
               strokeWidth={fiber.accent ? 2.5 : 1.5}
             />
-            <text x={CHART_X0 - 10} y={fiber.y + 19} textAnchor="end" fontFamily="system-ui, sans-serif" fontSize="12" fill="#2b2b2b">
+            <text x={CHART_X0 - 10} y={fiber.y + 19} textAnchor="end" fontFamily="system-ui, sans-serif" fontSize="12" fill="var(--color-text)">
               {fiber.name}
             </text>
             <text
@@ -46,7 +46,7 @@ function FiberLengthChart() {
               y={fiber.y + 19}
               fontFamily="system-ui, sans-serif"
               fontSize="12"
-              fill="#2b2b2b"
+              fill="var(--color-text)"
             >
               {fiber.mm} mm
             </text>

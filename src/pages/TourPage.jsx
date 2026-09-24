@@ -16,10 +16,9 @@ function TourPage({ navigate }) {
     <div className={styles.page}>
       <PrototypeNotice messageKey="prototypeNoticeTour" />
       <div className={styles.intro}>
-        <p className={styles.eyebrow}>{t('tourEyebrow')}</p>
         <h1 className={styles.title}>{t('tourTitle')}</h1>
         <p className={styles.lede}>{t('tourLede')}</p>
-        <button type="button" className={styles.mapLink} onClick={() => navigate('/washi-map')}>
+        <button type="button" className={`link ${styles.mapLink}`} onClick={() => navigate('/washi-map')}>
           {t('tourMapLink')}
         </button>
       </div>

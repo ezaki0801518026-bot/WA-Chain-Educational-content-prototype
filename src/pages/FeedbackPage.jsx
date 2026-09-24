@@ -71,7 +71,7 @@ function FeedbackPage() {
                   value={value}
                   checked={type === value}
                   onChange={() => setType(value)}
-                  className={styles.srOnly}
+                  className="sr-only"
                 />
                 {t(labelKey)}
               </label>
@@ -79,12 +79,12 @@ function FeedbackPage() {
           </div>
         </fieldset>
 
-        <label className={styles.label} htmlFor="feedback-message">
+        <label className="field-label" htmlFor="feedback-message">
           {t('feedbackMessageLabel')}
         </label>
         <textarea
           id="feedback-message"
-          className={styles.textarea}
+          className={`field ${styles.textarea}`}
           rows={6}
           placeholder={t('feedbackMessagePlaceholder')}
           value={message}
@@ -95,24 +95,32 @@ function FeedbackPage() {
           disabled={phase === 'sending'}
           aria-invalid={invalid}
         />
-        {invalid && <p className={styles.validation}>{t('feedbackValidation')}</p>}
+        {invalid && (
+          <p className="field-error" role="alert">
+            {t('feedbackValidation')}
+          </p>
+        )}
 
-        <label className={styles.label} htmlFor="feedback-email">
+        <label className="field-label" htmlFor="feedback-email">
           {t('feedbackEmailLabel')}
         </label>
         <input
           id="feedback-email"
           type="email"
-          className={styles.input}
+          className={`field ${styles.input}`}
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           disabled={phase === 'sending'}
         />
 
-        <button type="submit" className={styles.submit} disabled={phase === 'sending'}>
+        <button type="submit" className={`btn btn-primary ${styles.submit}`} disabled={phase === 'sending'}>
           {phase === 'sending' ? t('feedbackSending') : t('feedbackSubmit')}
         </button>
-        {phase === 'error' && <p className={styles.errorText}>{t('feedbackError')}</p>}
+        {phase === 'error' && (
+          <p className="field-error" role="alert">
+            {t('feedbackError')}
+          </p>
+        )}
       </form>
     </div>
   )

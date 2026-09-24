@@ -6,10 +6,17 @@ import SearchModal from './SearchModal.jsx'
 import styles from './Header.module.css'
 import { asset } from '../utils/asset.js'
 
-// Persistent header shown on every page: brand/home link, UI language
-// toggle (English/Japanese chrome only — lesson content is never
-// translated), and a light/dark theme toggle. `currentPage` marks the
-// active nav link; a soft shadow appears once the page scrolls under it.
+// Persistent header on every page: the four destinations as plain links on
+// the left, the brand in the middle, search / language / theme / menu on
+// the right. Nothing in the bar is a filled button — the page below owns
+// its one primary action. On narrow screens the links move into the menu.
+const NAV = [
+  { page: 'course', key: 'navCourse', route: '/course' },
+  { page: 'washi-map', key: 'navWashiMap', route: '/washi-map' },
+  { page: 'tour', key: 'navTour', route: '/tour' },
+  { page: 'pricing', key: 'navPricing', route: '/pricing' },
+]
+
 function Header({ navigate, currentPage }) {
   const { lang, setLang, t } = useLanguage()
   const { theme, toggleTheme } = useTheme()
@@ -22,52 +29,37 @@ function Header({ navigate, currentPage }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const navLinkClass = (page) =>
-    `${styles.navLink} ${currentPage === page ? styles.navLinkActive : ''}`
-
   return (
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
-      <div className={styles.leftGroup}>
-        <SearchModal navigate={navigate} />
-        {/* The three core destinations besides Pricing, which keeps its own
-            CTA on the right. Everything else lives in the overflow menu. */}
-        <button
-          type="button"
-          className={navLinkClass('course')}
-          aria-current={currentPage === 'course' ? 'page' : undefined}
-          onClick={() => navigate('/course')}
-        >
-          {t('navCourse')}
-        </button>
-        <button
-          type="button"
-          className={navLinkClass('washi-map')}
-          aria-current={currentPage === 'washi-map' ? 'page' : undefined}
-          onClick={() => navigate('/washi-map')}
-        >
-          {t('navWashiMap')}
-        </button>
-        <button
-          type="button"
-          className={navLinkClass('tour')}
-          aria-current={currentPage === 'tour' ? 'page' : undefined}
-          onClick={() => navigate('/tour')}
-        >
-          {t('navTour')}
-        </button>
-      </div>
+      <nav className={styles.nav} aria-label="Main">
+        {NAV.map((item) => (
+          <button
+            key={item.page}
+            type="button"
+            className={`${styles.navLink} ${currentPage === item.page ? styles.navLinkActive : ''}`}
+            aria-current={currentPage === item.page ? 'page' : undefined}
+            onClick={() => navigate(item.route)}
+          >
+            {t(item.key)}
+          </button>
+        ))}
+      </nav>
 
-      <button type="button" className={styles.brand} onClick={() => navigate('/')}>
+      <button type="button" className={styles.brand} onClick={() => navigate('/')} aria-label={t('appTitle')}>
         <img className={styles.brandMark} src={asset('/images/hero/wa-chain-logo-mark.png')} alt="" />
-        <span className={styles.brandName}>{t('appTitle')}</span>
+        <span className={styles.brandName} aria-hidden="true">
+          {t('appTitle')}
+        </span>
       </button>
 
-      <nav className={styles.controls} aria-label="Site">
+      <div className={styles.controls}>
+        <SearchModal navigate={navigate} />
         <span className={styles.langToggle} role="group" aria-label="Language">
           <button
             type="button"
             className={styles.langButton}
             aria-pressed={lang === 'en'}
+            lang="en"
             onClick={() => setLang('en')}
           >
             EN
@@ -76,6 +68,7 @@ function Header({ navigate, currentPage }) {
             type="button"
             className={styles.langButton}
             aria-pressed={lang === 'ja'}
+            lang="ja"
             onClick={() => setLang('ja')}
           >
             日本語
@@ -83,25 +76,23 @@ function Header({ navigate, currentPage }) {
         </span>
         <button
           type="button"
-          className={styles.themeButton}
+          className={`btn btn-quiet btn-icon btn-sm ${styles.iconButton}`}
           onClick={toggleTheme}
           aria-label={theme === 'dark' ? t('themeToggleToLight') : t('themeToggleToDark')}
         >
-          {theme === 'dark' ? '☀' : '☾'}
-          <span className={styles.themeLabel}>
-            {theme === 'dark' ? ` ${t('themeToggleToLight')}` : ` ${t('themeToggleToDark')}`}
-          </span>
-        </button>
-        <button
-          type="button"
-          className={styles.pricingCta}
-          aria-current={currentPage === 'pricing' ? 'page' : undefined}
-          onClick={() => navigate('/pricing')}
-        >
-          {t('navPricing')}
+          {theme === 'dark' ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" />
+            </svg>
+          )}
         </button>
         <FeaturesMenu navigate={navigate} />
-      </nav>
+      </div>
     </header>
   )
 }

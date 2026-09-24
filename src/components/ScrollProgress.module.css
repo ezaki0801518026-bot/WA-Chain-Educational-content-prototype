@@ -11,24 +11,11 @@
 }
 
 /* scaleX from a left origin: the browser can keep this on the compositor,
-   so the bar tracks the scroll without touching layout. */
+   so the bar tracks the scroll without touching layout. A scroll readout
+   must not lag the scroll, so there is no transition either. */
 .fill {
   height: 100%;
   transform-origin: left center;
-  background: linear-gradient(
-    90deg,
-    var(--track-foundations) 0%,
-    var(--track-diagnostics) 48%,
-    var(--seal) 100%
-  );
-  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.45);
+  background: var(--color-accent-solid);
   will-change: transform;
-}
-
-/* The bar is a scroll readout, so it must not lag behind the scroll — no
-   transition on the transform. Nothing here animates on its own. */
-@media (prefers-reduced-motion: reduce) {
-  .fill {
-    box-shadow: none;
-  }
 }

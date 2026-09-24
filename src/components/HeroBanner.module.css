@@ -1,18 +1,23 @@
+/* A photograph across the page with the title on it. The photo is shown
+   as it is — no duotone, no filter — with a wash from the bottom so the
+   words stay readable over its lightest part. */
 .hero {
   position: relative;
   overflow: hidden;
-  background: #2b2b2b;
+  background: var(--n-800);
+  color: var(--n-50);
 }
 
 .large {
   width: 100%;
-  height: min(70vh, 34rem);
+  height: min(52vh, 28rem);
 }
 
 .small {
   width: 100%;
   height: 12rem;
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--space-8);
+  border-radius: var(--radius-2);
 }
 
 .image {
@@ -20,32 +25,19 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: url(#duotone);
   display: block;
   opacity: 0;
-  transition: opacity 500ms ease-out;
+  transition: opacity var(--dur-slow) ease;
 }
 
 .imageLoaded {
   opacity: 1;
 }
 
-/* Photos keep their light-theme exposure in dark mode unless dimmed, which
-   makes them glare against the ink background. */
-:global(:root[data-theme='dark']) .image {
-  filter: url(#duotone) brightness(0.8);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .image {
-    transition: none;
-  }
-}
-
 .scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(43, 43, 43, 0.05) 0%, rgba(43, 43, 43, 0.55) 100%);
+  background: linear-gradient(180deg, rgb(13 17 18 / 0.1) 0%, rgb(13 17 18 / 0.05) 40%, rgb(13 17 18 / 0.72) 100%);
 }
 
 .content {
@@ -53,49 +45,56 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: var(--space-lg);
-  color: #f5f0e8;
-}
-
-.large .content {
-  max-width: 46rem;
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-8) var(--gutter);
 }
 
 .small .content {
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-4) var(--space-5);
 }
 
 .eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #d8d2c2;
-  margin: 0 0 var(--space-xs);
+  font-size: var(--text-small);
+  color: var(--n-200);
+  margin: 0 0 var(--space-1);
 }
 
 .title {
   font-family: var(--font-heading);
-  font-weight: normal;
-  font-size: 2.25rem;
-  line-height: 1.25;
-  margin: 0 0 var(--space-xs);
-  color: #f5f0e8;
+  font-weight: 600;
+  font-size: var(--text-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+  margin: 0;
+  color: var(--n-50);
+}
+
+.small .title {
+  font-size: var(--text-title);
+  line-height: var(--lh-title);
 }
 
 .subtitle {
-  font-family: var(--font-heading);
-  font-size: 1.0625rem;
-  margin: 0;
-  color: #d8d2c2;
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  margin: var(--space-2) 0 0;
+  color: var(--n-200);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48em) {
   .large {
-    height: min(56vh, 24rem);
+    height: min(44vh, 22rem);
   }
 
-  .title {
-    font-size: 1.625rem;
+  .content {
+    padding-bottom: var(--space-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
   }
 }

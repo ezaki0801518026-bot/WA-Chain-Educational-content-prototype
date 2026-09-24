@@ -16,13 +16,19 @@ function ProfileSetup({ initial = null, onDone, onClose }) {
   const panelRef = useRef(null)
   const label = (field) => field[lang] ?? field.en
 
+  // Focus lands inside; the page behind is inert until the dialog closes.
   useEffect(() => {
     panelRef.current?.focus()
+    const root = document.getElementById('root')
+    root?.setAttribute('inert', '')
     const onKey = (event) => {
       if (event.key === 'Escape') onClose()
     }
     document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      root?.removeAttribute('inert')
+    }
   }, [onClose])
 
   const answered = QUESTIONS.filter((question) => answers[question.id]).length
@@ -38,15 +44,17 @@ function ProfileSetup({ initial = null, onDone, onClose }) {
   }
 
   return (
-    <div className={styles.backdrop} role="dialog" aria-modal="true" aria-labelledby="profile-title">
-      <div className={styles.panel} ref={panelRef} tabIndex={-1}>
+    <div className="dialog-backdrop" role="dialog" aria-modal="true" aria-labelledby="profile-title">
+      <div className={`dialog-panel ${styles.panel}`} ref={panelRef} tabIndex={-1}>
         <div className={styles.head}>
           <h2 id="profile-title" className={styles.title}>
             {t('profileTitle')}
             <HelpTip label={t('profileWhyLabel')}>{t('profileWhy')}</HelpTip>
           </h2>
-          <button type="button" className={styles.close} onClick={skip} aria-label={t('profileSkip')}>
-            ×
+          <button type="button" className="btn btn-quiet btn-icon btn-sm" onClick={skip} aria-label={t('profileSkip')}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
           </button>
         </div>
 
@@ -59,7 +67,7 @@ function ProfileSetup({ initial = null, onDone, onClose }) {
                   <button
                     key={option.id}
                     type="button"
-                    className={`${styles.option} ${answers[question.id] === option.id ? styles.optionOn : ''}`}
+                    className="chip"
                     aria-pressed={answers[question.id] === option.id}
                     onClick={() =>
                       setAnswers((current) => ({
@@ -79,10 +87,10 @@ function ProfileSetup({ initial = null, onDone, onClose }) {
         </div>
 
         <div className={styles.actions}>
-          <button type="button" className={styles.save} onClick={save} disabled={answered === 0}>
+          <button type="button" className="btn btn-primary" onClick={save} disabled={answered === 0}>
             {t('profileSave')}
           </button>
-          <button type="button" className={styles.later} onClick={skip}>
+          <button type="button" className="btn btn-quiet" onClick={skip}>
             {t('profileSkip')}
           </button>
           <p className={styles.note}>{t('profileStored')}</p>

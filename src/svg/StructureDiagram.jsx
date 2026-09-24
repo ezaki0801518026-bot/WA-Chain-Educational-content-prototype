@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './StructureDiagram.module.css'
 
-const LINE_COLOR = '#2b2b2b'
-const ACCENT_COLOR = '#b5533c'
+const LINE_COLOR = 'var(--color-text)'
+const ACCENT_COLOR = 'var(--color-accent-solid)'
 
 const LAYERS = [
   { key: 'sotei', x: 20, y: 20, width: 380, height: 220, labelX: 30, labelY: 38, label: 'sōtei — outer fabric mount' },
@@ -15,7 +15,7 @@ const LAYERS = [
 // by the sōtei mounting layers that protect it. Clicking a layer highlights
 // it and shows its description (from `interactions`, sourced from
 // lessons.json) below the diagram. Palette restricted to background
-// #f5f0e8, line/text #2b2b2b, accent #b5533c.
+// var(--color-bg-subtle), line/text var(--color-text), accent var(--color-accent-solid).
 function StructureDiagram({ interactions = [] }) {
   const { t } = useLanguage()
   const [selectedKey, setSelectedKey] = useState(null)
@@ -42,7 +42,7 @@ function StructureDiagram({ interactions = [] }) {
           Cross-section diagram: the honshi primary support at the centre, surrounded by sōtei mounting layers.
           Select a layer for details.
         </title>
-        <rect width="420" height="260" fill="#f5f0e8" />
+        <rect width="420" height="260" fill="var(--color-bg-subtle)" />
 
         {LAYERS.map((layer) => {
           const isSelected = selectedKey === layer.key

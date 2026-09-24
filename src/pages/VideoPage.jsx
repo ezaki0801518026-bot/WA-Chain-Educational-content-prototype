@@ -23,7 +23,7 @@ function VideoPage({ sectionId, onContinue }) {
   })
 
   if (!hasVideo) {
-    return <p className={styles.notFound}>{t('sectionNotFound')}</p>
+    return <p className={`container-narrow ${styles.notFound}`}>{t('sectionNotFound')}</p>
   }
 
   return (
@@ -45,7 +45,7 @@ function VideoPage({ sectionId, onContinue }) {
         {/* Arrows already mean "next page" here (useArrowKeyNav), so skip on J/L only. */}
         <PlaybackControls videoRef={videoRef} arrowKeys={false} />
         <nav className={styles.nav}>
-          <button type="button" className={styles.navButton} onClick={() => onContinue(sectionId)}>
+          <button type="button" className="btn btn-primary" onClick={() => onContinue(sectionId)}>
             {t('continueToLecture')}
           </button>
         </nav>

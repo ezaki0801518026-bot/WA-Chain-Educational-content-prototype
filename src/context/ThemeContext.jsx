@@ -19,6 +19,10 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem(STORAGE_KEY, theme)
+    // The status bar / browser chrome follows the page ground, not the OS.
+    document
+      .querySelectorAll('meta[name="theme-color"]')
+      .forEach((meta) => meta.setAttribute('content', theme === 'dark' ? '#121617' : '#f8f9f8'))
   }, [theme])
 
   const value = useMemo(

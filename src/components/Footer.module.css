@@ -1,16 +1,24 @@
+/* A quiet ink close to every page. The ground is the darkest neutral in
+   both themes, so the footer reads the same way whichever theme is on. */
 .footer {
-  margin-top: var(--space-xl);
-  background: #2b2b2b;
-  color: #e8e3d8;
-  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  margin-top: var(--space-16);
+  background: var(--n-900);
+  color: var(--n-200);
+  padding: var(--space-12) var(--gutter) var(--space-6);
+  padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+}
+
+:global(:root[data-theme='dark']) .footer {
+  background: var(--color-bg-subtle);
+  box-shadow: inset 0 1px 0 var(--color-border-subtle);
 }
 
 .inner {
-  max-width: 80rem;
+  max-width: var(--content-max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 20rem) repeat(3, minmax(0, 11rem));
-  gap: var(--space-lg);
+  grid-template-columns: minmax(0, 22rem) repeat(3, minmax(0, 11rem));
+  gap: var(--space-10);
 }
 
 .brandColumn {
@@ -19,61 +27,56 @@
 
 .brand {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
-  margin: 0 0 var(--space-xs);
-  color: #f5f0e8;
+  font-size: var(--text-heading);
+  line-height: var(--lh-heading);
+  margin: 0 0 var(--space-2);
+  color: var(--n-50);
 }
 
 .tagline {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: #b8b2a3;
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+  color: var(--n-400);
   margin: 0;
   max-width: 26rem;
+  text-wrap: pretty;
 }
 
 /* WA-Chain's own accounts. Icon-only, so the accessible name is on the
    link's aria-label. */
 .socialRow {
   display: flex;
-  gap: 0.5rem;
-  margin: var(--space-sm) 0 0;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
 }
 
 .socialLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
-  color: #e8e3d8;
-  border: 1px solid #45443d;
+  color: var(--n-200);
+  background: rgb(255 255 255 / 0.06);
   text-decoration: none;
-  transition: color 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out;
+  transition:
+    color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease;
 }
 
-.socialLink:hover,
-.socialLink:focus-visible {
-  color: #2b2b2b;
-  background: #e8e3d8;
-  border-color: #e8e3d8;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .socialLink {
-    transition: none;
+@media (hover: hover) and (pointer: fine) {
+  .socialLink:hover {
+    color: var(--n-900);
+    background: var(--n-100);
   }
 }
 
 .columnHeading {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #8f8a7c;
-  margin: 0 0 var(--space-sm);
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--n-50);
+  margin: 0 0 var(--space-3);
 }
 
 .linkList {
@@ -82,48 +85,68 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: var(--space-1);
 }
 
 .footerLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
   font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: #e8e3d8;
+  font-size: var(--text-small);
+  color: var(--n-300);
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   text-align: left;
-  transition: color 150ms ease-out;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.15em;
+  transition:
+    color var(--dur-fast) ease,
+    text-decoration-color var(--dur-fast) ease;
 }
 
-.footerLink:hover,
+@media (hover: hover) and (pointer: fine) {
+  .footerLink:hover {
+    color: var(--n-50);
+    text-decoration-color: currentColor;
+  }
+}
+
 .footerLink:focus-visible {
-  color: #f5f0e8;
-  text-decoration: underline;
+  outline-color: var(--n-50);
 }
 
 .footerLinkDisabled {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: #8f8a7c;
+  font-size: var(--text-small);
+  color: var(--n-500);
 }
 
 .copyright {
-  max-width: 80rem;
-  margin: var(--space-lg) auto 0;
-  padding-top: var(--space-sm);
+  max-width: var(--content-max);
+  margin: var(--space-10) auto 0;
+  padding-top: var(--space-4);
   /* Clears the floating back-to-top button pinned to the bottom-right. */
   padding-right: 3.5rem;
-  border-top: 1px solid #45443d;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: #8f8a7c;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  font-size: var(--text-caption);
+  color: var(--n-400);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48em) {
+  .footer {
+    margin-top: var(--space-12);
+    padding-top: var(--space-10);
+  }
+
   .inner {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8) var(--space-6);
+  }
+
+  .brandColumn {
+    grid-column: 1 / -1;
   }
 }

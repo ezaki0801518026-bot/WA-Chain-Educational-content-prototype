@@ -1,17 +1,22 @@
 .page {
-  padding-bottom: var(--space-xl);
+  padding-bottom: var(--space-8);
 }
 
 /* ── Hero ───────────────────────────────────────────── */
 /* A full screen, on purpose: the image and one sentence, with everything the
    service offers below the fold. svh (not vh) so a phone's collapsing address
-   bar cannot leave the next section peeking in or push the text out of view. */
+   bar cannot leave the next section peeking in or push the text out of view.
+   The header is translucent and sits on top, so the hero starts at the very
+   top edge and the image shows through the bar. */
 .hero {
   position: relative;
   min-height: 100svh;
+  margin-top: calc(-1 * var(--header-height));
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  background: var(--n-800);
+  color: var(--n-50);
 }
 
 .heroImg {
@@ -20,326 +25,121 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 35%;
-  filter: grayscale(0.2);
+  object-position: center 40%;
+  animation: hero-image 1400ms var(--ease-out) both;
 }
 
+/* Text stays legible over any part of the photograph: a dark wash from
+   the bottom, measured against the lightest region of the image. */
 .heroVeil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20, 18, 14, 0.42) 0%, rgba(20, 18, 14, 0.2) 40%, rgba(20, 18, 14, 0.82) 100%);
+  background: linear-gradient(
+    180deg,
+    rgb(13 17 18 / 0.25) 0%,
+    rgb(13 17 18 / 0.05) 35%,
+    rgb(13 17 18 / 0.7) 100%
+  );
 }
 
 .heroInner {
   position: relative;
-  width: 100%;
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg) var(--space-lg);
-  color: #f3ede1;
-}
-
-.heroEyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin: 0 0 0.7rem;
-  color: #ddd2bd;
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+  animation: hero-text 900ms var(--ease-out) 250ms both;
 }
 
 .heroTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 5.2vw, 3.4rem);
-  line-height: 1.14;
+  font-size: var(--text-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
   font-weight: 600;
-  margin: 0 0 0.7rem;
-  max-width: 22ch;
-  text-wrap: balance;
+  margin: 0 0 var(--space-4);
+  max-width: 20ch;
 }
 
 .heroLede {
-  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
-  line-height: 1.7;
+  font-size: clamp(1rem, 0.95rem + 0.4vw, 1.125rem);
+  line-height: var(--lh-body);
   margin: 0;
   max-width: 44ch;
-  color: #e6ddcc;
+  color: var(--n-100);
+  text-wrap: pretty;
+}
+
+/* The only hint that there is more, since the screen holds nothing else
+   to click. It does not move: a thing that bounces forever is a thing the
+   eye can never leave. */
+.scrollCue {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  color: rgb(255 255 255 / 0.8);
+  animation: hero-text 900ms var(--ease-out) 900ms both;
+}
+
+@keyframes hero-image {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes hero-text {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImg,
+  .heroInner,
+  .scrollCue {
+    animation-name: hero-fade;
+    animation-duration: 500ms;
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
 }
 
 /* ── Bands ──────────────────────────────────────────── */
-.band,
-.bandQuiet {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg) 0;
-}
-
-.bandQuiet {
-  padding-top: var(--space-lg);
+.band {
+  padding-top: var(--space-16);
 }
 
 .bandHead {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--space-sm);
+  gap: var(--space-4);
   flex-wrap: wrap;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-6);
 }
 
 .bandTitle {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: var(--text-title);
+  line-height: var(--lh-title);
   font-weight: 600;
-  margin: 0;
+  margin: 0 0 var(--space-6);
 }
 
-.moreLink {
-  font: inherit;
-  font-size: 0.85rem;
-  background: none;
-  border: none;
-  padding: 0;
-  color: rgba(var(--accent-rgb), 0.95);
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.moreLink:hover,
-.moreLink:focus-visible {
-  color: var(--text);
-}
-
-/* ── Four core tiles ────────────────────────────────── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--space-md);
-}
-
-.tile {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  background: rgba(var(--accent-rgb), 0.04);
-  border: 1px solid rgba(var(--accent-rgb), 0.22);
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
-  color: var(--text);
-  transition: border-color 160ms ease-out, transform 160ms ease-out;
-}
-
-.tile:hover,
-.tile:focus-visible {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-  outline: none;
-}
-
-.tileImgWrap {
-  display: block;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.tileImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 400ms ease-out;
-}
-
-.tile:hover .tileImg {
-  transform: scale(1.04);
-}
-
-.tileBody {
-  display: block;
-  padding: var(--space-sm) var(--space-sm) var(--space-md);
-}
-
-.tileTitle {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.tile:hover .arrow {
-  transform: translateX(3px);
-}
-
-/* ── Watch now ──────────────────────────────────────── */
-.playBadge {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 1.6rem;
-  color: #fff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-}
-
-.durBadge {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  background: rgba(0, 0, 0, 0.72);
-  color: #fff;
-  font-size: 0.72rem;
-  padding: 0.1rem 0.4rem;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.5;
-}
-
-/* ── Ask box ────────────────────────────────────────── */
-.askTitle {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0 0 0.4rem;
-}
-
-.askRow {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-/* The heading already says what the box is for; the label is for screen
-   readers, which do not get to read the heading as the field's name. */
-.askInput {
-  flex: 1 1 20rem;
-  min-width: 0;
-  font: inherit;
-  font-size: 0.95rem;
-  padding: 0.65rem 0.8rem;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid rgba(var(--accent-rgb), 0.4);
-}
-
-.askInput:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: -1px;
-}
-
-.askButton {
-  font: inherit;
-  font-size: 0.92rem;
-  font-weight: 600;
-  padding: 0.65rem 1.4rem;
-  background: var(--accent);
-  color: var(--bg);
-  border: 1px solid var(--accent);
-  cursor: pointer;
-}
-
-.askButton:hover,
-.askButton:focus-visible {
-  opacity: 0.9;
-}
-
-/* ── News ───────────────────────────────────────────── */
-.newsRow {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-  gap: var(--space-md);
-}
-
-.newsCard {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
-  color: var(--text);
-}
-
-.newsThumb {
-  display: block;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  line-height: 0;
-  border: 1px solid rgba(var(--accent-rgb), 0.18);
-}
-
-.newsThumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 400ms ease-out;
-}
-
-.newsCard:hover .newsThumb img {
-  transform: scale(1.03);
-}
-
-.newsDate {
-  display: block;
-  font-size: 0.75rem;
-  color: rgba(var(--accent-rgb), 0.85);
-  margin: 0.5rem 0 0.15rem;
-}
-
-.newsTitle {
-  display: block;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  font-weight: 600;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    min-height: 54vh;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tile,
-  .tileImg,
-  .arrow,
-  .watchThumb img,
-  .newsThumb img {
-    transition: none;
-  }
-}
-
-/* Down-arrow at the foot of the first screen: the only hint that there is
-   more, since the screen holds nothing else to click. */
-.scrollCue {
-  position: absolute;
-  left: 50%;
-  bottom: 1.6rem;
-  width: 0.9rem;
-  height: 0.9rem;
-  border-right: 1.5px solid rgba(243, 237, 225, 0.85);
-  border-bottom: 1.5px solid rgba(243, 237, 225, 0.85);
-  transform: translateX(-50%) rotate(45deg);
-  animation: cue 2.4s ease-in-out infinite;
-}
-
-@keyframes cue {
-  0%, 100% { transform: translateX(-50%) rotate(45deg) translate(0, 0); opacity: 0.85; }
-  50% { transform: translateX(-50%) rotate(45deg) translate(0.22rem, 0.22rem); opacity: 0.45; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .scrollCue { animation: none; }
+.bandHead .bandTitle {
+  margin-bottom: 0;
 }
 
 /* ── Ask: the assistant and a person, side by side ──── */
 .askGrid {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
-  gap: var(--space-sm);
+  gap: var(--space-4);
   align-items: stretch;
 }
 
@@ -347,110 +147,98 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--space-sm);
-  background: rgba(var(--accent-rgb), 0.07);
-  border: 1px solid rgba(var(--accent-rgb), 0.22);
-  border-radius: 4px;
-  padding: var(--space-md);
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.askTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-heading);
+  line-height: var(--lh-heading);
+  font-weight: 600;
+  margin: 0;
+}
+
+.askRow {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* The heading already says what the box is for; the label is for screen
+   readers, which do not get to read the heading as the field's name. */
+.askInput {
+  flex: 1 1 16rem;
+  min-width: 0;
 }
 
 .expertButton {
   align-self: flex-start;
-  font: inherit;
-  font-size: 0.9375rem;
-  color: var(--text);
-  background: transparent;
-  border: 1px solid var(--accent);
-  border-radius: 2px;
-  padding: 0.65rem 1.4rem;
-  cursor: pointer;
 }
 
-.expertButton:hover,
-.expertButton:focus-visible {
-  color: var(--bg);
-  background: var(--accent);
+/* ── Four doors ─────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
 }
 
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+.tile {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
-/* ── Feature tiles: titles only ─────────────────────── */
-.soon {
-  display: inline-block;
-  font-size: 0.6875rem;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  border: 1px solid rgba(var(--accent-rgb), 0.45);
-  border-radius: 2px;
-  padding: 0.05rem 0.4rem;
-  margin-top: 0.3rem;
+.tileImgWrap {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  line-height: 0;
+  background: var(--color-bg-subtle);
 }
 
-/* ── For you ────────────────────────────────────────── */
-.forYouHead {
+.tileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tileBody {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--space-sm);
+  gap: var(--space-2);
   flex-wrap: wrap;
-  margin-bottom: var(--space-md);
+  padding: var(--space-4) var(--space-5) var(--space-5);
 }
 
-.settingsLink {
-  font: inherit;
-  font-size: 0.8125rem;
-  color: var(--accent);
-  background: transparent;
-  border: none;
-  padding: 0;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
+.tileTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-heading);
+  line-height: var(--lh-heading);
+  font-weight: 600;
 }
 
-.settingsLink:hover,
-.settingsLink:focus-visible {
-  color: var(--text);
+.soon {
+  font-size: var(--text-caption);
+  color: var(--color-note-text);
 }
 
+/* ── For you ────────────────────────────────────────── */
 .recRow {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: var(--space-sm);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
 }
 
 .recCard {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  text-align: left;
-  background: transparent;
-  border: 1px solid rgba(var(--accent-rgb), 0.2);
-  border-radius: 4px;
-  padding: 0.6rem;
-  cursor: pointer;
-  transition: border-color 150ms ease-out;
+  overflow: hidden;
 }
 
-.recCard:hover,
-.recCard:focus-visible {
-  border-color: var(--accent);
-}
-
-.recText {
-  justify-content: flex-start;
-  gap: 0.3rem;
-  padding: 0.9rem;
+.recText .recBody {
+  padding-top: var(--space-5);
 }
 
 .recThumb {
@@ -458,8 +246,8 @@
   display: block;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 3px;
-  background: rgba(var(--accent-rgb), 0.12);
+  line-height: 0;
+  background: var(--color-bg-subtle);
 }
 
 .recThumb img {
@@ -468,51 +256,149 @@
   object-fit: cover;
 }
 
+.playGlyph {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.durBadge {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  background: rgb(13 17 18 / 0.72);
+  color: #fff;
+  font-size: var(--text-caption);
+  line-height: 1.5;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-1);
+}
+
+.recBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+}
+
 .recKind {
-  font-size: 0.6875rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
 }
 
 .recTitle {
   font-family: var(--font-heading);
-  font-size: 0.9375rem;
-  line-height: 1.4;
-  color: var(--text);
+  font-size: var(--text-subheading);
+  line-height: var(--lh-subheading);
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .recWhy {
-  font-size: 0.75rem;
-  line-height: 1.5;
-  color: var(--accent);
+  font-size: var(--text-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-secondary);
 }
 
 .placeRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: var(--space-sm);
+  gap: var(--space-2);
+  margin-top: var(--space-4);
 }
 
-.placeChip {
-  font: inherit;
-  font-size: 0.8125rem;
-  color: var(--text);
-  background: transparent;
-  border: 1px solid rgba(var(--accent-rgb), 0.35);
-  border-radius: 999px;
-  padding: 0.3rem 0.85rem;
-  cursor: pointer;
+/* ── News ───────────────────────────────────────────── */
+.newsRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
 }
 
-.placeChip:hover,
-.placeChip:focus-visible {
-  border-color: var(--accent);
+.newsCard {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  overflow: hidden;
 }
 
-@media (max-width: 768px) {
+.newsThumb {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  line-height: 0;
+  background: var(--color-bg-subtle);
+}
+
+.newsThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.newsBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+}
+
+.newsDate {
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+}
+
+.newsTitle {
+  font-size: var(--text-body);
+  line-height: var(--lh-small);
+  font-weight: 500;
+}
+
+/* ── Widths ─────────────────────────────────────────── */
+@media (max-width: 64em) {
+  .grid,
+  .recRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48em) {
+  .band {
+    padding-top: var(--space-12);
+  }
+
   .askGrid {
     grid-template-columns: 1fr;
+  }
+
+  .askCard {
+    padding: var(--space-5);
+  }
+
+  .newsRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 30em) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  .tileBody {
+    padding: var(--space-3) var(--space-3) var(--space-4);
+  }
+
+  .tileTitle {
+    font-size: var(--text-subheading);
+  }
+
+  .recRow {
+    grid-template-columns: 1fr;
+  }
+
+  .newsCard {
+    grid-template-columns: 7rem 1fr;
   }
 }

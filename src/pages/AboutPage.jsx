@@ -362,7 +362,6 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
                   key={n}
                   className={`${styles.propCard} ${styles[`track_${['foundations', 'diagnostics', 'practice'][i]}`]}`}
                 >
-                  <span className={styles.propNumber}>0{n}</span>
                   <h3 className={styles.propTitle}>{t(`aboutProp${n}Title`)}</h3>
                   <p className={styles.propDesc}>{t(`aboutProp${n}Desc`)}</p>
                 </div>
@@ -448,7 +447,6 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
                     {TL_NEWS[n] && (
                       <a className={styles.timelineLink} href={newsHref(TL_NEWS[n])}>
                         {t('aboutTlReadReport')}
-                        <span aria-hidden="true"> →</span>
                       </a>
                     )}
                     {TL_IMAGES[n] && (
@@ -560,8 +558,8 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
           straight into the next one. */}
       <nav className={styles.pager} aria-label={t('aboutPagerLabel')}>
         {prevTab ? (
-          <button type="button" className={styles.pagerLink} onClick={() => goToTab(prevTab)}>
-            <span className={styles.pagerDir}>← {t('aboutPagerPrev')}</span>
+          <button type="button" className={`card-link ${styles.pagerLink}`} onClick={() => goToTab(prevTab)}>
+            <span className={styles.pagerDir}>{t('aboutPagerPrev')}</span>
             <span className={styles.pagerName}>{t(tabLabelKey(prevTab))}</span>
           </button>
         ) : (
@@ -570,10 +568,10 @@ function AboutPage({ initialTab = 'mission', onTabChange }) {
         {nextTab && (
           <button
             type="button"
-            className={`${styles.pagerLink} ${styles.pagerNext}`}
+            className={`card-link ${styles.pagerLink} ${styles.pagerNext}`}
             onClick={() => goToTab(nextTab)}
           >
-            <span className={styles.pagerDir}>{t('aboutPagerNext')} →</span>
+            <span className={styles.pagerDir}>{t('aboutPagerNext')}</span>
             <span className={styles.pagerName}>{t(tabLabelKey(nextTab))}</span>
           </button>
         )}
