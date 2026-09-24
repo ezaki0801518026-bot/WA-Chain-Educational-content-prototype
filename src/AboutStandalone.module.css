@@ -69,32 +69,8 @@
   gap: var(--space-1);
 }
 
-.langToggle {
-  display: inline-flex;
-  padding: 2px;
-  background: var(--color-bg-subtle);
-  border-radius: var(--radius-pill);
-}
 
-.langButton {
-  min-height: 2rem;
-  padding: 0 0.7rem;
-  font-family: var(--font-body);
-  font-size: var(--text-caption);
-  font-weight: 500;
-  line-height: 1;
-  color: var(--color-text-secondary);
-  background: transparent;
-  border: none;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-}
 
-.langButton[aria-pressed='true'] {
-  color: var(--color-text);
-  background: var(--color-bg-surface);
-  box-shadow: var(--shadow-border);
-}
 
 .themeButton {
   display: inline-flex;
@@ -111,7 +87,6 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .langButton:hover,
   .themeButton:hover {
     color: var(--color-text);
   }
@@ -151,8 +126,3 @@
   }
 }
 
-@media (max-width: 36em) {
-  .langButton {
-    min-height: 2.5rem;
-  }
-}

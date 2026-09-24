@@ -11,6 +11,7 @@ import { ThemeProvider, useTheme } from './context/ThemeContext.jsx'
 import './tokens.css'
 import './ui.css'
 import styles from './AboutStandalone.module.css'
+import LangToggle from './components/LangToggle.jsx'
 import { asset } from './utils/asset.js'
 
 // Standalone build of the existing About page (mission / activity record /
@@ -29,7 +30,7 @@ function parseHash(hash) {
 }
 
 function AboutShell() {
-  const { lang, setLang, t } = useLanguage()
+  const { lang, t } = useLanguage()
   const { theme, toggleTheme } = useTheme()
   const [route, setRoute] = useState(() => parseHash(window.location.hash))
   const [aboutTab, setAboutTab] = useState('mission')
@@ -109,24 +110,7 @@ function AboutShell() {
           <span className={styles.brandName}>WA-Chain</span>
         </span>
         <nav className={styles.controls} aria-label="Display options">
-          <span className={styles.langToggle} role="group" aria-label="Language">
-            <button
-              type="button"
-              className={styles.langButton}
-              aria-pressed={lang === 'en'}
-              onClick={() => setLang('en')}
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              className={styles.langButton}
-              aria-pressed={lang === 'ja'}
-              onClick={() => setLang('ja')}
-            >
-              日本語
-            </button>
-          </span>
+          <LangToggle />
           <button
             type="button"
             className={styles.themeButton}

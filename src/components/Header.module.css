@@ -117,38 +117,8 @@
   color: var(--color-text-secondary);
 }
 
-/* Two-state segmented control; the pressed half is the current UI
-   language. */
-.langToggle {
-  display: inline-flex;
-  padding: 2px;
-  background: var(--color-bg-subtle);
-  border-radius: var(--radius-pill);
-  margin: 0 var(--space-1);
-}
 
-.langButton {
-  min-height: 2rem;
-  padding: 0 0.7rem;
-  font-family: var(--font-body);
-  font-size: var(--text-caption);
-  font-weight: 500;
-  line-height: 1;
-  color: var(--color-text-secondary);
-  background: transparent;
-  border: none;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  transition:
-    background-color var(--dur-fast) ease,
-    color var(--dur-fast) ease;
-}
 
-.langButton[aria-pressed='true'] {
-  color: var(--color-text);
-  background: var(--color-bg-surface);
-  box-shadow: var(--shadow-border);
-}
 
 @media (max-width: 48em) {
   .header {
@@ -166,15 +136,6 @@
 
   .brandName {
     font-size: 1rem;
-  }
-
-  .langToggle {
-    margin: 0;
-  }
-
-  /* Finger-sized halves; the visual stays a small pill. */
-  .langButton {
-    min-height: 2.5rem;
   }
 }
 

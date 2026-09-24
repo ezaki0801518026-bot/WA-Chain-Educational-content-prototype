@@ -4,6 +4,7 @@ import { useTheme } from '../context/ThemeContext.jsx'
 import FeaturesMenu from './FeaturesMenu.jsx'
 import SearchModal from './SearchModal.jsx'
 import styles from './Header.module.css'
+import LangToggle from './LangToggle.jsx'
 import { asset } from '../utils/asset.js'
 
 // Persistent header on every page: the four destinations as plain links on
@@ -18,7 +19,7 @@ const NAV = [
 ]
 
 function Header({ navigate, currentPage }) {
-  const { lang, setLang, t } = useLanguage()
+  const { t } = useLanguage()
   const { theme, toggleTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
 
@@ -54,26 +55,7 @@ function Header({ navigate, currentPage }) {
 
       <div className={styles.controls}>
         <SearchModal navigate={navigate} />
-        <span className={styles.langToggle} role="group" aria-label="Language">
-          <button
-            type="button"
-            className={styles.langButton}
-            aria-pressed={lang === 'en'}
-            lang="en"
-            onClick={() => setLang('en')}
-          >
-            EN
-          </button>
-          <button
-            type="button"
-            className={styles.langButton}
-            aria-pressed={lang === 'ja'}
-            lang="ja"
-            onClick={() => setLang('ja')}
-          >
-            日本語
-          </button>
-        </span>
+        <LangToggle />
         <button
           type="button"
           className={`btn btn-quiet btn-icon btn-sm ${styles.iconButton}`}
