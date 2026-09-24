@@ -1,0 +1,26 @@
+.notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  max-width: 48rem;
+  margin: 0 0 var(--space-md);
+  padding: 0.55rem 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: rgba(var(--accent-rgb), 0.07);
+  border-left: 3px solid var(--seal);
+}
+
+.tag {
+  flex-shrink: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--bg);
+  background: var(--seal);
+  border-radius: 2px;
+  padding: 0.1rem 0.45rem;
+}

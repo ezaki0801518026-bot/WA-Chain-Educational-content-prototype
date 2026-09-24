@@ -1,4 +1,5 @@
 import WaitlistForm from '../components/WaitlistForm.jsx'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './PricingPage.module.css'
 
@@ -49,6 +50,7 @@ function PricingPage({ navigate }) {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticePricing" />
       <div className={styles.intro}>
         <h1 className={styles.title}>{t('pricingTitle')}</h1>
         <p className={styles.description}>{t('pricingDescription')}</p>

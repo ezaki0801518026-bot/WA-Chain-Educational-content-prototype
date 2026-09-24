@@ -1,4 +1,5 @@
 import WaitlistForm from '../components/WaitlistForm.jsx'
+import PrototypeNotice from '../components/PrototypeNotice.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './CohortPage.module.css'
 
@@ -13,6 +14,7 @@ function TourPage({ navigate }) {
 
   return (
     <div className={styles.page}>
+      <PrototypeNotice messageKey="prototypeNoticeTour" />
       <div className={styles.intro}>
         <p className={styles.eyebrow}>{t('tourEyebrow')}</p>
         <h1 className={styles.title}>{t('tourTitle')}</h1>

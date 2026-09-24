@@ -16,6 +16,11 @@ const strings = {
     hubLede:
       'Video lectures, a map of where the fibre is grown, study tours in Japan, and a plan that fits your practice — built for paper and painting conservators.',
     hubExploreTitle: 'What you can do here',
+    prototypeTag: 'Prototype',
+    prototypeNoticeTour:
+      'This page is a preview of an idea, not a tour on sale. The regions, the programme and the dates are not fixed, and what we eventually run may look different. Joining the list only tells us you are interested.',
+    prototypeNoticePricing:
+      'This page is a preview of an idea, not prices you can buy at. The plans and the figures are provisional and will change before anything goes on sale. Only the free tier exists today.',
     hubComingSoon: 'In preparation',
     hubAskTitle: 'Ask the assistant',
     hubAskHelpLabel: 'What the assistant is',
@@ -683,6 +688,11 @@ const strings = {
     hubLede:
       '動画講義、原料の産地マップ、日本での現地ツアー、そして実務に合う料金プラン。紙・絵画修復に携わる方のための学習サービスです。',
     hubExploreTitle: 'できること',
+    prototypeTag: 'プロトタイプ',
+    prototypeNoticeTour:
+      'このページは構想段階の画面例で、販売中のツアーではありません。訪問先・内容・日程は未確定で、実際に実施する際には異なる可能性があります。登録は「関心がある」という意思表示としてお預かりします。',
+    prototypeNoticePricing:
+      'このページは構想段階の画面例で、購入できる料金ではありません。プランの内容も金額も仮のもので、提供開始までに変わります。現在あるのは無料プランだけです。',
     hubComingSoon: '準備中',
     hubAskTitle: 'AIに質問する',
     hubAskHelpLabel: 'AIについて',
