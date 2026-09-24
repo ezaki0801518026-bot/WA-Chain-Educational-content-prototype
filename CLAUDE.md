@@ -47,6 +47,8 @@ npm run preview  # ビルド結果をローカル配信（localhost:4173）
 
 `src/App.jsx` の自前実装。**React Router ではない。**
 
+**ページはホーム以外すべて `lazy(() => import(...))` で別チャンク**（初回表示を軽くするため）。新しいページを足すときも同じ書き方にし、`import X from` で直接読み込まない。ハッシュ変更は `startTransition` で反映するので、次のチャンクが届くまで前のページが残る。ホームのヒーロー画像だけ `index.html` のインラインスクリプトが（ホームのハッシュのときだけ）先読みする。
+
 ```
 http://localhost:4173/#/            ← ホーム（ハブ）= HubPage.jsx
 http://localhost:4173/#/course

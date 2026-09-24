@@ -19,15 +19,22 @@
       content="WA-Chain: the online school of washi and conservation. A structured introduction to the science of Japanese paper and mounting conservation (sōkō), for professional conservators."
     />
     <meta name="twitter:card" content="summary" />
-    <!-- The home hero is the largest thing on the first screen; announce it here so
-         it starts downloading before the app script has run (paths mirror HubPage.jsx). -->
-    <link
-      rel="preload"
-      as="image"
-      imagesrcset="/images/hero/%E7%B9%8A%E7%B6%AD%E3%82%92%E6%B0%B4%E3%81%AB%E3%81%95%E3%82%89%E3%81%99%E6%A7%98%E5%AD%90.w480.webp 480w, /images/hero/%E7%B9%8A%E7%B6%AD%E3%82%92%E6%B0%B4%E3%81%AB%E3%81%95%E3%82%89%E3%81%99%E6%A7%98%E5%AD%90.w960.webp 960w, /images/hero/%E7%B9%8A%E7%B6%AD%E3%82%92%E6%B0%B4%E3%81%AB%E3%81%95%E3%82%89%E3%81%99%E6%A7%98%E5%AD%90.w1600.webp 1600w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
+    <!-- The home hero is the largest thing on the first screen. On the home
+         route only, announce it here so it starts downloading before the app
+         script has run (the paths mirror HERO_IMAGE in HubPage.jsx). Other
+         routes share this HTML, so a static preload would waste the download. -->
+    <script>
+      var h = location.hash
+      if (h === '' || h === '#' || h === '#/') {
+        var l = document.createElement('link')
+        l.rel = 'preload'
+        l.as = 'image'
+        l.imageSrcset = '/images/hero/%E7%B9%8A%E7%B6%AD%E3%82%92%E6%B0%B4%E3%81%AB%E3%81%95%E3%82%89%E3%81%99%E6%A7%98%E5%AD%90.w480.webp 480w, /images/hero/%E7%B9%8A%E7%B6%AD%E3%82%92%E6%B0%B4%E3%81%AB%E3%81%95%E3%82%89%E3%81%99%E6%A7%98%E5%AD%90.w960.webp 960w, /images/hero/%E7%B9%8A%E7%B6%AD%E3%82%92%E6%B0%B4%E3%81%AB%E3%81%95%E3%82%89%E3%81%99%E6%A7%98%E5%AD%90.w1600.webp 1600w'
+        l.imageSizes = '100vw'
+        l.fetchPriority = 'high'
+        document.head.appendChild(l)
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- The font CSS is fetched ahead but applied only once it arrives, so

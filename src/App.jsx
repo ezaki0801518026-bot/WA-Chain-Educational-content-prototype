@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, startTransition, useEffect, useState } from 'react'
 import styles from './App.module.css'
 import lessons from '../data/lessons.json'
 import Header from './components/Header.jsx'
@@ -7,26 +7,29 @@ import BackToTop from './components/BackToTop.jsx'
 import Breadcrumbs from './components/Breadcrumbs.jsx'
 import ScrollProgress from './components/ScrollProgress.jsx'
 import HubPage from './pages/HubPage.jsx'
-import CoursePage from './pages/CoursePage.jsx'
-import CourseVideoPage from './pages/CourseVideoPage.jsx'
-import VideoPage from './pages/VideoPage.jsx'
-import LessonPage from './pages/LessonPage.jsx'
-import QuizPage from './pages/QuizPage.jsx'
-import SummaryPage from './pages/SummaryPage.jsx'
-import PricingPage from './pages/PricingPage.jsx'
-import GlossaryPage from './pages/GlossaryPage.jsx'
-import CommunityPage from './pages/CommunityPage.jsx'
-import AboutPage from './pages/AboutPage.jsx'
-import UpdatesPage from './pages/UpdatesPage.jsx'
-import NewsPage from './pages/NewsPage.jsx'
-import NewsArticlePage from './pages/NewsArticlePage.jsx'
+
+// Every page but the home is its own chunk, fetched the first time it is
+// opened, so the first visit downloads only what the home needs.
+const CoursePage = lazy(() => import('./pages/CoursePage.jsx'))
+const CourseVideoPage = lazy(() => import('./pages/CourseVideoPage.jsx'))
+const VideoPage = lazy(() => import('./pages/VideoPage.jsx'))
+const LessonPage = lazy(() => import('./pages/LessonPage.jsx'))
+const QuizPage = lazy(() => import('./pages/QuizPage.jsx'))
+const SummaryPage = lazy(() => import('./pages/SummaryPage.jsx'))
+const PricingPage = lazy(() => import('./pages/PricingPage.jsx'))
+const GlossaryPage = lazy(() => import('./pages/GlossaryPage.jsx'))
+const CommunityPage = lazy(() => import('./pages/CommunityPage.jsx'))
+const AboutPage = lazy(() => import('./pages/AboutPage.jsx'))
+const UpdatesPage = lazy(() => import('./pages/UpdatesPage.jsx'))
+const NewsPage = lazy(() => import('./pages/NewsPage.jsx'))
+const NewsArticlePage = lazy(() => import('./pages/NewsArticlePage.jsx'))
+const FeedbackPage = lazy(() => import('./pages/FeedbackPage.jsx'))
+const ChatPage = lazy(() => import('./pages/ChatPage.jsx'))
+const CohortPage = lazy(() => import('./pages/CohortPage.jsx'))
+const WashiMapPage = lazy(() => import('./pages/WashiMapPage.jsx'))
+const TourPage = lazy(() => import('./pages/TourPage.jsx'))
 import news from '../data/news.json'
 import courses from '../data/courses.json'
-import FeedbackPage from './pages/FeedbackPage.jsx'
-import ChatPage from './pages/ChatPage.jsx'
-import CohortPage from './pages/CohortPage.jsx'
-import WashiMapPage from './pages/WashiMapPage.jsx'
-import TourPage from './pages/TourPage.jsx'
 import { useLanguage } from './i18n/LanguageContext.jsx'
 import { track } from './utils/analytics.js'
 
@@ -70,7 +73,9 @@ function App() {
   const { t, lang } = useLanguage()
 
   useEffect(() => {
-    const onHashChange = () => setRoute(parseHash(window.location.hash))
+    // A transition keeps the current page on screen while the next one's
+    // chunk arrives, instead of flashing an empty main.
+    const onHashChange = () => startTransition(() => setRoute(parseHash(window.location.hash)))
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
@@ -198,7 +203,7 @@ function App() {
         {/* Keyed by route so each navigation remounts and replays a gentle
             enter animation, making page changes feel less abrupt. */}
         <div key={`${route.page}/${route.sectionId || ''}`} className={styles.pageEnter}>
-          {content}
+          <Suspense fallback={null}>{content}</Suspense>
         </div>
       </main>
       <Footer navigate={navigate} />
