@@ -68,6 +68,7 @@ const strings = {
     profileWhy:
       'Your answers set how plainly the assistant explains and what this page puts first. They are kept in this browser only — no account, and nothing is sent to us. Skip any question, or all of them.',
     profileSave: 'Save',
+    profileSaveHint: 'Choose at least one answer to save.',
     profileSkip: 'Not now',
     profileStored: 'Kept in this browser. Change or clear it any time.',
     hub_course_title: 'The Course',
@@ -758,6 +759,7 @@ const strings = {
     profileWhy:
       'ご回答は、AIの説明のやさしさと、このページに何を先に出すかに使います。保存先はこのブラウザだけで、アカウントは不要、WA-Chainに送信されることもありません。答えたくない質問は飛ばせます。',
     profileSave: '保存する',
+    profileSaveHint: '1つ以上選ぶと保存できます。',
     profileSkip: 'あとで',
     profileStored: 'この端末にのみ保存されます。いつでも変更・削除できます。',
     hub_course_title: 'The Course',

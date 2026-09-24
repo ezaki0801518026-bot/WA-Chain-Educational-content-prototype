@@ -97,7 +97,7 @@ function ProfileSetup({ initial = null, onDone, onClose }) {
           <button type="button" className="btn btn-quiet" onClick={skip}>
             {t('profileSkip')}
           </button>
-          <p className={styles.note}>{t('profileStored')}</p>
+          <p className={styles.note}>{answered === 0 ? t('profileSaveHint') : t('profileStored')}</p>
         </div>
       </div>
     </div>,

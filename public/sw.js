@@ -7,7 +7,10 @@
 // every cache that is not the current one.
 //
 // v3: v2 cached whole lecture videos, which is what this bump clears out.
-const CACHE = 'washi-course-v3'
+// v4: the page itself (a navigation) is now network-first, so a deploy is
+//     seen on the very next load instead of one load later. Before v4 a
+//     visitor kept the previous build, bugs included, for one extra visit.
+const CACHE = 'washi-course-v4'
 
 // Requests this worker must never touch, and why:
 //
@@ -78,8 +81,20 @@ async function respond(request) {
         const shell = (await cache.match(`${scope}index.html`).catch(() => null)) || (await cache.match(scope).catch(() => null))
         if (shell) return shell
       }
-      return cached || Response.error()
+      if (cached) return cached
+      throw new Error('offline')
     })
+
+  // The HTML shell is tiny and names the hashed assets of the current build,
+  // so it is always fetched fresh when the network is there; the cached copy
+  // is only for offline. Everything else stays stale-while-revalidate.
+  if (request.mode === 'navigate') {
+    try {
+      return await network
+    } catch {
+      return cached || Response.error()
+    }
+  }
 
   return cached || network
 }
