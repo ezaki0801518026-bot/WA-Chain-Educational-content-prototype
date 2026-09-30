@@ -5,6 +5,7 @@ import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { writeProfile, markSkipped, markSkippedThisSession } from '../utils/profile.js'
 import { track } from '../utils/analytics.js'
 import HelpTip from './HelpTip.jsx'
+import LangToggle from './LangToggle.jsx'
 import styles from './ProfileSetup.module.css'
 
 // Five questions, once. The answers stay in this browser and decide two
@@ -55,11 +56,16 @@ function ProfileSetup({ initial = null, onDone, onClose }) {
             {t('profileTitle')}
             <HelpTip label={t('profileWhyLabel')}>{t('profileWhy')}</HelpTip>
           </h2>
-          <button type="button" className="btn btn-quiet btn-icon btn-sm" onClick={skip} aria-label={t('profileSkip')}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <path d="M6 6l12 12M18 6 6 18" />
-            </svg>
-          </button>
+          {/* The language can be changed here too: this is the first thing a
+              visitor sees, before they have found the switch in the header. */}
+          <div className={styles.headControls}>
+            <LangToggle />
+            <button type="button" className="btn btn-quiet btn-icon btn-sm" onClick={skip} aria-label={t('profileSkip')}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div className={styles.questions}>

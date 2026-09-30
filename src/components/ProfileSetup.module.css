@@ -9,6 +9,13 @@
   gap: var(--space-4);
 }
 
+.headControls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
 .title {
   font-family: var(--font-heading);
   font-size: var(--text-heading);

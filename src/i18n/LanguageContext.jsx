@@ -14,9 +14,10 @@ export function LanguageProvider({ children }) {
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
       if (stored === 'ja' || stored === 'en') return stored
-      // First visit: follow the browser language, so a Japanese supporter
-      // and an overseas conservator each land in their own language.
-      return (navigator.language || '').toLowerCase().startsWith('ja') ? 'ja' : 'en'
+      // First visit: English, whatever the browser says. The audience is
+      // conservators abroad; the switch in the header (and in the first
+      // dialog) is one tap away for Japanese readers.
+      return 'en'
     } catch {
       return 'en'
     }
