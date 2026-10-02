@@ -12,9 +12,9 @@ const strings = {
 
     // Home hub
     hubEyebrow: 'Online school · Washi & conservation',
-    hubTitle: 'Learn the paper before you use it.',
+    hubTitle: 'Know your paper.\nChoose with confidence.',
     hubLede:
-      'Video lectures, a map of where the fibre is grown, study tours in Japan, and a plan that fits your practice — built for paper and painting conservators.',
+      'Why do two Japanese papers that look alike behave so differently?\nSee what gives each washi its character, and hold real samples in your hands.',
     hubExploreTitle: 'What you can do here',
     hubHeroCaption1: 'Washing and loosening bundles of raw fibre in cold water',
     hubHeroCaption2: 'A metal screen that lets through only fibre refined to the set fineness',
@@ -707,9 +707,9 @@ const strings = {
 
     // ホーム（ハブ）
     hubEyebrow: 'オンラインスクール · 和紙と文化財修復',
-    hubTitle: '使う前に、その紙を知る。',
+    hubTitle: '和紙を知り、\n確信を持って選ぶ。',
     hubLede:
-      '動画講義、原料の産地マップ、日本での現地ツアー、そして実務に合う料金プラン。紙・絵画修復に携わる方のための学習サービスです。',
+      '同じ「和紙」でも、なぜこれほどまでに風合いが異なるのでしょうか。\nそれぞれの和紙の個性を生み出す要素を紐解き、実際のサンプルを確かめて、確かな違いを体験してください。',
     hubExploreTitle: 'できること',
     hubHeroCaption1: '原料となる繊維の束を冷たい水で洗い、ほぐす',
     hubHeroCaption2: '規定の細さになった繊維のみが通ることのできる金属のフィルター',

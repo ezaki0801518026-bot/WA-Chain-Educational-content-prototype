@@ -117,7 +117,8 @@
 .heroInner {
   position: relative;
   padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
+  /* Room below the words for the dots, the scroll cue and the caption. */
+  padding-bottom: var(--space-20);
   animation: hero-text 900ms var(--ease-out) 250ms both;
 }
 
@@ -128,16 +129,25 @@
   letter-spacing: var(--tracking-display);
   font-weight: 600;
   margin: 0 0 var(--space-4);
-  max-width: 20ch;
+  max-width: 24ch;
+  /* Two sentences, one per line (the break is in strings.js). */
+  white-space: pre-line;
 }
 
 .heroLede {
   font-size: clamp(1rem, 0.95rem + 0.4vw, 1.125rem);
   line-height: var(--lh-body);
   margin: 0;
-  max-width: 44ch;
+  max-width: 46ch;
+  /* The question and the answer are written as two lines in strings.js. */
+  white-space: pre-line;
   color: var(--n-100);
   text-wrap: pretty;
+}
+
+/* Japanese characters are about two ch wide: give the lede the same visual measure. */
+:global(:root[lang='ja']) .heroLede {
+  max-width: 33em;
 }
 
 /* The only hint that there is more, since the screen holds nothing else
