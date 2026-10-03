@@ -27,7 +27,7 @@ function SearchModal({ navigate }) {
   const inputRef = useRef(null)
   const triggerRef = useRef(null)
 
-  const index = useMemo(() => buildSearchIndex(t), [lang]) // eslint-disable-line react-hooks/exhaustive-deps
+  const index = useMemo(() => buildSearchIndex(t, lang), [lang]) // eslint-disable-line react-hooks/exhaustive-deps
   const results = useMemo(() => searchIndex(index, query), [index, query])
 
   // Group results by type, keeping the ranked order within each group, and

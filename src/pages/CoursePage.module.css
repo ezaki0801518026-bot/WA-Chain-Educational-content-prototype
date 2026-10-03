@@ -184,64 +184,69 @@
   margin-bottom: 0;
 }
 
-.comingGroups {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-8);
-  margin-top: var(--space-6);
-}
-
-.trackHeading {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-body);
-  font-size: var(--text-small);
-  font-weight: 600;
-  margin: 0 0 var(--space-3);
-  scroll-margin-top: calc(var(--header-height) + var(--space-4));
-}
-
-.trackMark {
-  width: 0.625rem;
-  height: 0.625rem;
-  border-radius: 50%;
-  background: var(--track-foundations);
-}
-
-.track_diagnostics {
-  background: var(--track-diagnostics);
-}
-
-.track_practice {
-  background: var(--track-practice);
-}
-
 .comingList {
   list-style: none;
-  margin: 0;
+  margin: var(--space-5) 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
 }
 
+/* Number, title, then the quadrant and how far along it is. */
 .comingItem {
-  display: flex;
-  gap: var(--space-3);
-  padding: var(--space-2) 0;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-4);
+  padding: var(--space-3) 0;
   border-top: 1px solid var(--color-separator);
   font-size: var(--text-small);
   line-height: var(--lh-small);
 }
 
 .comingIndex {
-  flex-shrink: 0;
   color: var(--color-text-secondary);
-  min-width: 5.5rem;
 }
 
 .comingTitle {
   color: var(--color-text);
+  text-wrap: pretty;
+}
+
+.comingMeta {
+  display: flex;
+  gap: var(--space-4);
+  font-size: var(--text-caption);
+  color: var(--color-text-secondary);
+}
+
+.comingQuadrant {
+  min-width: 8.5rem;
+}
+
+.comingState {
+  min-width: 12.5rem;
+}
+
+.comingStateDraft {
+  color: var(--color-text);
+}
+
+@media (max-width: 56em) {
+  .comingItem {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+  }
+
+  .comingMeta {
+    grid-column: 2;
+    flex-wrap: wrap;
+    gap: 0 var(--space-3);
+  }
+
+  .comingQuadrant,
+  .comingState {
+    min-width: 0;
+  }
 }
 
 /* Reset ----------------------------------------------------------------- */
@@ -285,10 +290,6 @@
     grid-template-columns: 1fr;
   }
 
-  .comingGroups {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
 }
 
 @media (max-width: 48em) {

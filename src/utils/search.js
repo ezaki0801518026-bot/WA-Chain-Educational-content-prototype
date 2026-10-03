@@ -1,6 +1,7 @@
 import lessons from '../../data/lessons.json'
 import glossary from '../../data/glossary.json'
 import washi from '../../data/washiPapers.json'
+import upcoming from '../../data/upcoming.json'
 
 // Static, always-available destinations. `kw` adds a few extra search terms
 // (in both languages) so a page turns up under words that aren't in its title.
@@ -36,10 +37,12 @@ function norm(value) {
 // in the current UI language. Section/glossary text stays in its source
 // language (English) and washi text in Japanese — substring search matches
 // either, whatever the query language.
-export function buildSearchIndex(t) {
+export function buildSearchIndex(t, lang = 'en') {
   const items = []
 
   lessons.sections.forEach((section, index) => {
+    // Planned sections of the earlier outline are no longer listed anywhere.
+    if (!section.active) return
     const parts = [
       section.title,
       section.description,
@@ -56,6 +59,19 @@ export function buildSearchIndex(t) {
       titleNorm: norm(section.title),
       text: norm(parts.filter(Boolean).join(' ')),
       route: section.active ? (section.video ? `/video/${section.id}` : `/lesson/${section.id}`) : '/',
+    })
+  })
+
+  // The video plan (course page, "Coming soon"): found under either language.
+  upcoming.videos.forEach((video) => {
+    const title = video.title[lang] ?? video.title.en
+    items.push({
+      type: 'section',
+      title,
+      subtitle: t('comingSoon'),
+      titleNorm: norm(title),
+      text: norm(`${video.title.en} ${video.title.ja}`),
+      route: '/course',
     })
   })
 

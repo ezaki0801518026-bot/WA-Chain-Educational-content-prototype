@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import lessons from '../../data/lessons.json'
 import heroImages from '../../data/heroImages.json'
 import coursesData from '../../data/courses.json'
+import upcoming from '../../data/upcoming.json'
 import { getProgress, resetProgress } from '../utils/progress.js'
 import SectionCard from '../components/SectionCard.jsx'
 import SurveyPopup from '../components/SurveyPopup.jsx'
@@ -10,14 +11,14 @@ import { getSectionIcon } from '../icons/index.js'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './CoursePage.module.css'
 import PrototypeNotice from '../components/PrototypeNotice.jsx'
+import HelpTip from '../components/HelpTip.jsx'
 import { asset, picture } from '../utils/asset.js'
 
-const TRACK_ORDER = ['foundations', 'diagnostics', 'practice']
-const TRACK_LABEL_KEY = {
-  foundations: 'trackFoundations',
-  diagnostics: 'trackDiagnostics',
-  practice: 'trackPractice',
-}
+// The video plan (data/upcoming.json): every video sits in one quadrant,
+// level x kind, and carries how far along it is.
+const LEVEL_KEY = { basic: 'upcomingLevelBasic', applied: 'upcomingLevelApplied' }
+const KIND_KEY = { systematic: 'upcomingKindSystematic', practical: 'upcomingKindPractical' }
+const STATE_KEY = { draft: 'upcomingStateDraft', planned: 'upcomingStatePlanned' }
 
 // Rough reading time: ~1.5 min per lesson step, floored so nothing reads as
 // trivially short. Used for the card meta line and the resume estimate.
@@ -49,7 +50,7 @@ function PlayGlyph() {
 
 // The course page: the video lectures (finished, fact-checked) first, then
 // the resume prompt if there is one, the draft text lessons that are open,
-// and a collapsible list of the planned sections grouped by track.
+// and a collapsible list of the planned videos.
 function CoursePage({ navigate }) {
   const { t, lang } = useLanguage()
   const pickLang = (field) => (field && (field[lang] ?? field.en)) || ''
@@ -61,17 +62,7 @@ function CoursePage({ navigate }) {
   const hasProgress = Object.keys(progress).length > 0
 
   const activeSections = lessons.sections.filter((s) => s.active)
-  const comingByTrack = useMemo(() => {
-    const groups = {}
-    lessons.sections.forEach((section, index) => {
-      if (section.active) return
-      const track = section.track || 'foundations'
-      if (!groups[track]) groups[track] = []
-      groups[track].push({ section, index })
-    })
-    return groups
-  }, [])
-  const comingCount = lessons.sections.length - activeSections.length
+  const comingCount = upcoming.videos.length
 
   const resume = useMemo(() => findResume(lessons.sections, progress), [progress])
   const resumeIndex = resume ? lessons.sections.findIndex((s) => s.id === resume.section.id) : -1
@@ -93,7 +84,7 @@ function CoursePage({ navigate }) {
         {/* Video lectures come first: they are the part of the course that is
             actually finished, and the thing a visitor came here to watch. */}
         <section className={styles.block}>
-          <h2 className={styles.heading}>{t('courseVideoHeading')}</h2>
+          <h2 id="track-videos" className={styles.heading}>{t('courseVideoHeading')}</h2>
           <p className={styles.lede}>{t('courseVideoLede')}</p>
           <div className={styles.videoGrid}>
             {coursesData.courses.map((course) => (
@@ -180,7 +171,10 @@ function CoursePage({ navigate }) {
         {comingCount > 0 && (
           <section className={styles.block}>
             <div className={styles.comingHeader}>
-              <h2 className={styles.heading}>{t('homeComingSoonHeading')}</h2>
+              <h2 id="track-upcoming" className={styles.heading}>
+                {t('homeComingSoonHeading')}
+                <HelpTip label={t('upcomingHelpLabel')}>{t('upcomingHelp')}</HelpTip>
+              </h2>
               <button
                 type="button"
                 className="link"
@@ -192,28 +186,22 @@ function CoursePage({ navigate }) {
             </div>
 
             {showComingSoon && (
-              <div className={styles.comingGroups}>
-                {TRACK_ORDER.map((track) => {
-                  const items = comingByTrack[track]
-                  if (!items || items.length === 0) return null
-                  return (
-                    <div key={track} className={styles.comingGroup}>
-                      <h3 id={`track-${track}`} className={styles.trackHeading}>
-                        <span className={`${styles.trackMark} ${styles[`track_${track}`]}`} aria-hidden="true" />
-                        {t(TRACK_LABEL_KEY[track])}
-                      </h3>
-                      <ol className={styles.comingList}>
-                        {items.map(({ section, index }) => (
-                          <li key={section.id} className={styles.comingItem}>
-                            <span className={`tnum ${styles.comingIndex}`}>{t('sectionLabel', { n: index + 1 })}</span>
-                            <span className={styles.comingTitle}>{section.title}</span>
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-                  )
-                })}
-              </div>
+              <ol className={styles.comingList}>
+                {upcoming.videos.map((video) => (
+                  <li key={video.no} className={styles.comingItem}>
+                    <span className={`tnum ${styles.comingIndex}`}>{String(video.no).padStart(2, '0')}</span>
+                    <span className={styles.comingTitle}>{pickLang(video.title)}</span>
+                    <span className={styles.comingMeta}>
+                      <span className={styles.comingQuadrant}>
+                        {t(LEVEL_KEY[video.level])} × {t(KIND_KEY[video.kind])}
+                      </span>
+                      <span className={`${styles.comingState} ${video.state === 'draft' ? styles.comingStateDraft : ''}`}>
+                        {video.stateLabel ? pickLang(video.stateLabel) : t(STATE_KEY[video.state])}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
             )}
           </section>
         )}

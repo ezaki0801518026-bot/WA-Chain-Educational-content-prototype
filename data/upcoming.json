@@ -1,0 +1,21 @@
+{
+  "_comment": "The video plan shown under 'Coming soon' on the course page (and offered in the survey there). Each video sits in exactly one quadrant: level (basic | applied) x kind (systematic | practical). state: draft = a first English version exists, planned = not started. stateLabel overrides the state wording for one row. Source: the team's plan, 2026-10-03.",
+  "videos": [
+    { "no": 1, "title": { "en": "From Plant to Sheet: raw materials and making", "ja": "From Plant to Sheet（原料と製法）" }, "level": "basic", "kind": "systematic", "state": "draft" },
+    { "no": 2, "title": { "en": "Telling the Three Fibres Apart (hands-on)", "ja": "三種を見分ける（Hands-on）" }, "level": "basic", "kind": "practical", "state": "draft" },
+    { "no": 3, "title": { "en": "Washi in the Studio: paper names and their roles", "ja": "Washi in the Studio（紙の名前と役割）" }, "level": "basic", "kind": "practical", "state": "draft" },
+    { "no": 4, "title": { "en": "Where Kōzo Grows: the growing regions", "ja": "Where Kōzo Grows（楮の産地）" }, "level": "basic", "kind": "systematic", "state": "draft" },
+    { "no": 5, "title": { "en": "Three Conservation Cases", "ja": "修復の3事例" }, "level": "applied", "kind": "practical", "state": "draft" },
+    { "no": 6, "title": { "en": "Finding an Equivalent Repair Paper", "ja": "同等の補修紙を見つける" }, "level": "applied", "kind": "practical", "state": "draft" },
+    { "no": 7, "title": { "en": "Six Common Beliefs and the Evidence", "ja": "6つの俗説と根拠" }, "level": "applied", "kind": "systematic", "state": "draft" },
+    { "no": 8, "title": { "en": "Putting Light on Paper: transmitted, reflected and raking light", "ja": "紙に光を当てる（透過光・反射光・斜光）" }, "level": "basic", "kind": "practical", "state": "planned" },
+    { "no": 9, "title": { "en": "The Three Fibres under the Microscope", "ja": "三繊維の違いを顕微鏡で見る" }, "level": "basic", "kind": "systematic", "state": "planned" },
+    { "no": 10, "title": { "en": "Paper Profile: one paper, described in full (series)", "ja": "Paper Profile（一つの紙を説明しきる・シリーズ）" }, "level": "basic", "kind": "systematic", "state": "planned", "stateLabel": { "en": "Not started (first paper not chosen)", "ja": "未着手（最初の紙は未定）" } },
+    { "no": 11, "title": { "en": "Which Washi Suits Which Use", "ja": "用途によって適する和紙" }, "level": "applied", "kind": "practical", "state": "planned" },
+    { "no": 12, "title": { "en": "Papers You Can and Cannot Use in Conservation (kite paper and others)", "ja": "修復に使える紙・使えない紙（凧紙など）" }, "level": "applied", "kind": "practical", "state": "planned" },
+    { "no": 13, "title": { "en": "Handmade vs Machine-made", "ja": "手漉き vs 機械漉き" }, "level": "basic", "kind": "systematic", "state": "planned" },
+    { "no": 14, "title": { "en": "Storing Repair Papers", "ja": "修復用紙の保管" }, "level": "basic", "kind": "practical", "state": "planned" },
+    { "no": 15, "title": { "en": "Ordering Washi Directly from Japan", "ja": "日本から直接和紙を注文する方法" }, "level": "basic", "kind": "practical", "state": "planned" },
+    { "no": 16, "title": { "en": "Washi Beyond the Three Fibres", "ja": "三原料以外の和紙とは？" }, "level": "basic", "kind": "systematic", "state": "planned" }
+  ]
+}

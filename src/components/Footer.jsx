@@ -3,10 +3,11 @@ import SocialIcon, { socialLabel } from './SocialIcon.jsx'
 import { TEAM_SOCIAL } from '../config/social.js'
 import styles from './Footer.module.css'
 
+// The three blocks of the course page (ids `track-<id>` on their headings).
 const TRACKS = [
-  { id: 'foundations', labelKey: 'megaMenuFoundations' },
-  { id: 'diagnostics', labelKey: 'megaMenuDiagnostics' },
-  { id: 'practice', labelKey: 'megaMenuPractice' },
+  { id: 'videos', labelKey: 'courseVideoHeading' },
+  { id: 'foundations', labelKey: 'footerTextLessons' },
+  { id: 'upcoming', labelKey: 'homeComingSoonHeading' },
 ]
 
 // Scrolls to the first section card belonging to a track, rather than

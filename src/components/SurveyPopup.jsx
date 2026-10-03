@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import lessons from '../../data/lessons.json'
+import { useEffect, useRef, useState } from 'react'
+import upcoming from '../../data/upcoming.json'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { submitForm } from '../formConfig.js'
 import styles from './SurveyPopup.module.css'
@@ -7,36 +7,22 @@ import styles from './SurveyPopup.module.css'
 const STORAGE_KEY = 'washi-course-survey-status' // 'dismissed' | 'submitted'
 const SHOW_DELAY_MS = 4000
 
-const TRACK_LABEL_KEYS = {
-  foundations: 'surveyTrackFoundations',
-  diagnostics: 'surveyTrackDiagnostics',
-  practice: 'surveyTrackPractice',
-}
 
-// Small, dismissible corner prompt asking which not-yet-built section a
+// Small, dismissible corner prompt asking which planned video a
 // visitor wants most. Home page only — Lesson/Quiz/Video pages already
 // have a fixed action button in this same corner, and interrupting an
 // in-progress lesson with a survey would be exactly the kind of nagging
 // this app's design deliberately avoids. Once dismissed or submitted, it
 // never appears again in this browser (localStorage-backed, no re-prompting).
 function SurveyPopup() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const [visible, setVisible] = useState(false)
   const [phase, setPhase] = useState('teaser') // 'teaser' | 'form' | 'sending' | 'success' | 'error'
   const [selectedSection, setSelectedSection] = useState('')
   const [comment, setComment] = useState('')
   const panelRef = useRef(null)
 
-  const groupedOptions = useMemo(() => {
-    const inactive = lessons.sections.filter((s) => !s.active)
-    const groups = {}
-    for (const section of inactive) {
-      const track = section.track || 'foundations'
-      if (!groups[track]) groups[track] = []
-      groups[track].push(section)
-    }
-    return groups
-  }, [])
+  const numbered = (video) => `${String(video.no).padStart(2, '0')} ${video.title[lang] ?? video.title.en}`
 
   useEffect(() => {
     let alreadyResolved = false
@@ -107,14 +93,10 @@ function SurveyPopup() {
             disabled={phase === 'sending'}
           >
             <option value="">{t('surveySelectPlaceholder')}</option>
-            {Object.entries(groupedOptions).map(([track, sections]) => (
-              <optgroup key={track} label={t(TRACK_LABEL_KEYS[track] ?? 'surveyTrackFoundations')}>
-                {sections.map((section) => (
-                  <option key={section.id} value={section.title}>
-                    {section.title}
-                  </option>
-                ))}
-              </optgroup>
+            {upcoming.videos.map((video) => (
+              <option key={video.no} value={`${String(video.no).padStart(2, '0')} ${video.title.en}`}>
+                {numbered(video)}
+              </option>
             ))}
           </select>
 
