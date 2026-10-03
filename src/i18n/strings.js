@@ -77,6 +77,7 @@ const strings = {
     profileStored: 'Kept in this browser. Change or clear it any time.',
     hub_course_title: 'The Course',
     hub_map_title: 'Washi Map',
+    hub_dictionary_title: 'Washi Dictionary',
     hub_tour_title: 'Study Tour',
     hub_pricing_title: 'Pricing',
     hubNewsTitle: 'News',
@@ -356,6 +357,15 @@ const strings = {
     navChat: 'Ask a conservator',
     navCohort: 'Guided cohort',
     navWashiMap: 'Washi map',
+    navDictionary: 'Dictionary',
+    dictionaryTitle: 'Washi dictionary',
+    dictionaryLede: 'The words of washi and its conservation, looked up one at a time.',
+    dictionaryHelpLabel: 'About this dictionary',
+    dictionaryHelp:
+      'A dictionary of washi-related words compiled by WA-Chain. It is being connected to this site, and the entries will appear on this page.',
+    dictionarySoonBody:
+      'The dictionary is being connected to this site. Until then, the course glossary covers the terms used in the lessons.',
+    dictionaryToGlossary: 'Open the course glossary',
     navTour: 'Washi tour',
     previewAvailable: 'Preview available →',
 
@@ -772,6 +782,7 @@ const strings = {
     profileStored: 'この端末にのみ保存されます。いつでも変更・削除できます。',
     hub_course_title: 'The Course',
     hub_map_title: 'Washi Map',
+    hub_dictionary_title: 'Washi Dictionary',
     hub_tour_title: 'Study Tour',
     hub_pricing_title: 'Pricing',
     hubNewsTitle: 'お知らせ',
@@ -1050,6 +1061,15 @@ const strings = {
     navChat: '専門家に相談',
     navCohort: 'ガイド付きコホート',
     navWashiMap: '和紙マップ',
+    navDictionary: '単語辞書',
+    dictionaryTitle: '和紙の単語辞書',
+    dictionaryLede: '和紙と保存修復で使われることばを、ひとつずつ引けます。',
+    dictionaryHelpLabel: 'この辞書について',
+    dictionaryHelp:
+      'WA-Chainがまとめた和紙関連のことばの辞書です。現在このサイトへの接続を進めており、項目はこのページに表示されます。',
+    dictionarySoonBody:
+      'この辞書はサイトへの接続を準備中です。それまでは、講座に出てくる用語を「用語辞典」で引けます。',
+    dictionaryToGlossary: '用語辞典を開く',
     navTour: '和紙ツアー',
     previewAvailable: 'プレビューを見る →',
 

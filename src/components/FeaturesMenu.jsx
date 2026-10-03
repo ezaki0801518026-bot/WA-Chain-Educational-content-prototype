@@ -11,6 +11,7 @@ import { useProfile } from '../context/ProfileContext.jsx'
 const EXPLORE = [
   { labelKey: 'navCourse', route: '/course' },
   { labelKey: 'navWashiMap', route: '/washi-map' },
+  { labelKey: 'navDictionary', route: '/dictionary' },
   { labelKey: 'navTour', route: '/tour' },
   { labelKey: 'navPricing', route: '/pricing' },
   { labelKey: 'navChat', route: '/chat' },

@@ -120,7 +120,9 @@
 
 
 
-@media (max-width: 48em) {
+/* Five links no longer fit beside a centred brand below about 1150px, so
+   the links move into the menu there; the brand goes to the left edge. */
+@media (max-width: 72em) {
   .header {
     grid-template-columns: auto 1fr;
   }

@@ -97,6 +97,7 @@ http://localhost:4173/#/news/<記事ID>
 | 5つの質問（利用者プロフィール） | `src/context/ProfileContext.jsx`（全ページ共通。ホームの「回答を変更する」とメニュー末尾から開く。飛ばした人には次回訪問のホームで控えめに再案内、「あとで」で7日休止） |
 | 応援ポップアップ | `src/components/CheerPopup.jsx`（閲覧系ページで12秒後に右下。Web3Forms に送る。テストでは `api.web3forms.com` を必ずモック） |
 | 和紙マップの英語 | `data/washiPapers.json` の `nameEn` / `descEn` / `regionLabelEn`。英語モードでは SVG の県名ツールチップも英語側だけ |
+| 和紙の単語辞書（ガワ） | `src/pages/DictionaryPage.jsx` ＋ `src/config/dictionary.js`。辞書本体は別の HTML。`public/dictionary/index.html` に置いて `ready: true` にすると iframe で表示（言語とテーマを `?lang=&theme=` で渡す）。未接続の間は「準備中」と用語辞典への案内 |
 | 写真の幅別 WebP（`*.w480/w960/w1600.webp`）と一覧 `src/imageManifest.json` | `npm run images` が生成（sharp）。写真を足したら実行してコミット。`<img>` は `picture(path, sizes)`（`src/utils/asset.js`）で `srcset` を付ける。ビルドは生成しない |
 | チームのSNS | `src/config/social.js` |
 

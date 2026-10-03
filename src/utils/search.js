@@ -8,6 +8,7 @@ const PAGES = [
   { key: 'navCourse', route: '/course', kw: 'course lessons curriculum sections learn 講座 レッスン カリキュラム' },
   { key: 'navAbout', route: '/about', kw: 'wa-chain team mission story about 運営 チーム' },
   { key: 'navWashiMap', route: '/washi-map', kw: 'map japan region origin prefecture 産地 地図 都道府県' },
+  { key: 'navDictionary', route: '/dictionary', kw: 'dictionary words vocabulary terms 単語 辞書 ことば 用語' },
   { key: 'navTour', route: '/tour', kw: 'tour visit region papermaking ツアー 産地 体験' },
   { key: 'navCohort', route: '/cohort', kw: 'cohort certificate deadline structured コホート 修了証' },
   { key: 'navChat', route: '/chat', kw: 'chat ask expert question 相談 質問 チャット' },

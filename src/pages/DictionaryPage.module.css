@@ -1,0 +1,76 @@
+.page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-10) var(--gutter) var(--space-8);
+}
+
+.intro {
+  max-width: 44rem;
+  margin-bottom: var(--space-8);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--text-title);
+  line-height: var(--lh-title);
+  font-weight: 600;
+  margin: 0 0 var(--space-3);
+}
+
+.description {
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* The dictionary document fills what is left of the window below the
+   introduction, and scrolls inside its own frame. */
+.frame {
+  overflow: hidden;
+  height: max(28rem, calc(100svh - var(--header-height) - 14rem));
+}
+
+.document {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--color-bg-surface);
+}
+
+/* Before the document is connected: one quiet panel, not an empty frame. */
+.pending {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 44rem;
+  padding: var(--space-6);
+}
+
+.pendingTag {
+  margin: 0;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--color-note-text);
+}
+
+.pendingText {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+
+@media (max-width: 36em) {
+  .page {
+    padding-top: var(--space-8);
+  }
+
+  .frame {
+    height: max(26rem, calc(100svh - var(--header-height) - 11rem));
+  }
+}
