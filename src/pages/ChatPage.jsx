@@ -16,7 +16,7 @@ import PrototypeNotice from '../components/PrototypeNotice.jsx'
 // Written the way a real answer comes back: every claim is from the course or
 // WA-Chain's research, and each source is a real passage looked up with
 // sourceFor(document, block) — see data/chat-corpus.js for the numbering
-// (documents 0–4 are Sections 1–5, then one per research topic).
+// (one document per research topic).
 const sample = (q, segments, sources) => ({
   q,
   answer: { segments, sources: sources.map((source, i) => ({ ...source, n: i + 1 })), searched: [], searching: '' },
@@ -52,7 +52,7 @@ const SAMPLES = [
         },
       },
     ],
-    [sourceFor(3, 3), sourceFor(6, 1)]
+    [sourceFor(1, 0), sourceFor(1, 1)]
   ),
 ]
 
@@ -121,10 +121,9 @@ function AnswerText({ parts }) {
   })
 }
 
-// Three kinds of source, each labelled so the reader knows what stands behind
-// a claim: WA-Chain's draft material (named, not linked: it is not on the site),
-// WA-Chain's own checked research, or a page from the open web that WA-Chain has
-// not checked.
+// Two kinds of source, each labelled so the reader knows what stands behind a
+// claim: WA-Chain's own checked research, or a page from the open web that
+// WA-Chain has not checked.
 function SourceList({ sources }) {
   const { t } = useLanguage()
   if (!sources?.length) return null
@@ -135,12 +134,6 @@ function SourceList({ sources }) {
       <ol className={styles.sourceList}>
         {sources.map((source) => (
           <li key={source.n} value={source.n}>
-            {source.kind === 'course' && (
-              <>
-                <span className={styles.kind}>{t('chatSourceCourse')}</span>
-                <span title={quote(source)}>{source.stepHeading ?? source.sectionTitle}</span>
-              </>
-            )}
             {source.kind === 'research' && (
               <>
                 <span className={`${styles.kind} ${styles.kindResearch}`}>{t('chatSourceResearch')}</span>

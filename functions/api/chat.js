@@ -41,14 +41,14 @@ function sanitiseMessages(input) {
   return out
 }
 
-// The course and WA-Chain's research travel as documents with citations
+// WA-Chain's research travels as documents with citations
 // switched on, attached to the first user turn (documents cannot go in the
 // system prompt). Every answer
 // then carries machine-checked pointers to the passages it used, and the page
-// shows those instead of trusting the model to write "(Section 4)" correctly.
+// shows those instead of trusting the model to write a reference correctly.
 //
 // The documents always sit at the front of the first turn and are marked for
-// caching, so persona + course are one stable, cached prefix for every
+// caching, so persona + research are one stable, cached prefix for every
 // request, whatever the conversation after them.
 // The reader's own answers ride in the same turn, after the cached documents
 // and after the question, so a different profile costs nothing in cache.
