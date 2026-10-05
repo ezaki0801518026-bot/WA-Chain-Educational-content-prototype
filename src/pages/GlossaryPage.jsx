@@ -1,24 +1,16 @@
 import { useMemo, useState } from 'react'
 import glossary from '../../data/glossary.json'
-import lessons from '../../data/lessons.json'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import styles from './GlossaryPage.module.css'
 import PrototypeNotice from '../components/PrototypeNotice.jsx'
 
 // Real reference content (not a "coming soon" stub) — concise definitions
-// for terms already introduced across the active lessons, each linking
-// back to the section that covers it. Search is a plain client-side
+// for terms used across WA-Chain's material. Search is a plain client-side
 // substring match; no backend needed for content that fits comfortably
 // in one JSON file.
 function GlossaryPage({ navigate }) {
   const { t } = useLanguage()
   const [query, setQuery] = useState('')
-
-  const sectionTitleById = useMemo(() => {
-    const map = {}
-    for (const section of lessons.sections) map[section.id] = section.title
-    return map
-  }, [])
 
   const terms = useMemo(() => {
     const sorted = [...glossary.terms].sort((a, b) => a.term.localeCompare(b.term))
@@ -72,15 +64,6 @@ function GlossaryPage({ navigate }) {
               </dt>
               <dd className={styles.definition}>
                 {entry.definition}
-                {entry.relatedSectionId && sectionTitleById[entry.relatedSectionId] && (
-                  <button
-                    type="button"
-                    className={`link ${styles.relatedLink}`}
-                    onClick={() => navigate(`/lesson/${entry.relatedSectionId}`)}
-                  >
-                    {t('glossarySeeIn', { section: sectionTitleById[entry.relatedSectionId] })}
-                  </button>
-                )}
               </dd>
             </div>
           ))}

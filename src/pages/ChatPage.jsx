@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { submitForm } from '../formConfig.js'
 import { track } from '../utils/analytics.js'
-import { setSectionStep } from '../utils/progress.js'
 import { readProfile } from '../utils/profile.js'
 import { readAnswer } from '../utils/chatStream.js'
 import { sourceFor } from '../../data/chat-corpus.js'
@@ -24,39 +23,6 @@ const sample = (q, segments, sources) => ({
 })
 
 const SAMPLES = [
-  sample(
-    'I mostly work with Western paper. Where should I start with washi?',
-    [
-      { type: 'text', parts: [{ text: 'That depends on what you need first. Two ways in:', refs: [] }] },
-      {
-        type: 'visual',
-        refs: [],
-        spec: {
-          type: 'routes',
-          routes: [
-            {
-              name: 'Choosing a repair paper',
-              fit: 'You need to pick, and trust, a tissue soon',
-              steps: [
-                { title: 'Washi Is Not a Single Type of Paper', link: '#/watch/three-fibers', note: '16 min' },
-                { title: 'Section 4: The Raw Materials of Washi', link: '#/lesson/section-4', note: 'text lesson, draft' },
-              ],
-            },
-            {
-              name: 'Why washi treatments are reversible',
-              fit: 'You want the principles behind lining and its removal',
-              steps: [
-                { title: 'Section 1: Sōkō and Reversibility', link: '#/lesson/section-1', note: 'text lesson, draft' },
-                { title: 'Section 3: Hydrogen Bonding', link: '#/lesson/section-3', note: 'text lesson, draft' },
-              ],
-            },
-          ],
-        },
-      },
-      { type: 'text', parts: [{ text: 'Which is closer to your work right now?', refs: [] }] },
-    ],
-    []
-  ),
   sample(
     'Is gampi paper acidic?',
     [
@@ -120,9 +86,9 @@ function hostOf(url) {
   }
 }
 
-// Addresses the assistant writes — a web page, or a page on this site — are
-// made clickable. Anything else stays text.
-const LINK = /(https?:\/\/[^\s<>()（）「」、。]+|#\/(?:watch|lesson|course|glossary|washi-map|tour)(?:\/[\w-]+)?)/g
+// Web addresses the assistant writes are made clickable. Paths on this site
+// are not: the assistant no longer sends readers to pages here.
+const LINK = /(https?:\/\/[^\s<>()（）「」、。]+)/g
 
 function Linked({ text }) {
   return text.split(LINK).map((piece, i) => {
@@ -156,21 +122,12 @@ function AnswerText({ parts }) {
 }
 
 // Three kinds of source, each labelled so the reader knows what stands behind
-// a claim: the course itself, WA-Chain's own checked research, or a page from
-// the open web that WA-Chain has not checked.
+// a claim: WA-Chain's draft material (named, not linked: it is not on the site),
+// WA-Chain's own checked research, or a page from the open web that WA-Chain has
+// not checked.
 function SourceList({ sources }) {
   const { t } = useLanguage()
   if (!sources?.length) return null
-  // Opens the lesson at the cited step: the lesson reopens wherever the
-  // reader last was, so pointing that at the step is all it takes.
-  const open = (source) => {
-    if (source.stepIndex === null) return
-    try {
-      setSectionStep(source.sectionId, source.stepIndex)
-    } catch {
-      /* storage blocked: the lesson opens at its first step */
-    }
-  }
   const quote = (source) => (source.quote ? source.quote.slice(0, 280) : undefined)
   return (
     <div className={styles.sources}>
@@ -181,9 +138,7 @@ function SourceList({ sources }) {
             {source.kind === 'course' && (
               <>
                 <span className={styles.kind}>{t('chatSourceCourse')}</span>
-                <a href={`#/lesson/${source.sectionId}`} onClick={() => open(source)} title={quote(source)}>
-                  Section {source.sectionNumber} · {source.stepHeading ?? source.sectionTitle}
-                </a>
+                <span title={quote(source)}>{source.stepHeading ?? source.sectionTitle}</span>
               </>
             )}
             {source.kind === 'research' && (

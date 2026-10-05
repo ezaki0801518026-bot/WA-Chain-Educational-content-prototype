@@ -2,14 +2,16 @@
 // the way back from a citation to something a reader can open.
 //
 // Imported by both sides, so the numbering cannot drift between them:
-//   - functions/api/chat.js sends courseDocuments() and courseMap() to Claude.
+//   - functions/api/chat.js sends courseDocuments() to Claude.
 //   - src/utils/chatStream.js turns a citation's (document, block) position
 //     back into a labelled source with sourceFor().
 //
 // Documents, in this order:
-//   1. The text lessons: one document per published section. Block 0 is the
-//      section overview, block N is step N. These are prototype drafts (AI-written,
-//      only partly fact-checked) and are labelled so, to the model and the reader.
+//   1. The draft text lessons: one document per published section. Block 0 is
+//      the section overview, block N is step N. Prototype drafts (AI-written, only
+//      partly fact-checked), labelled so to the model and the reader. They are not
+//      offered on the site any more (2026-10-05), so a citation names the passage
+//      but links nowhere. They stay only until the new material replaces them.
 //   2. WA-Chain research (data/wa-chain-facts.json): one document per topic,
 //      one block per fact. Shown to the reader as "WA-Chain research".
 // A citation names the document and block its text came from, and the API
@@ -17,7 +19,6 @@
 // always a real passage — the model cannot make one up.
 
 import lessons from './lessons.json'
-import courses from './courses.json'
 import research from './wa-chain-facts.json'
 
 // Sections numbered as the course numbers them (their place in lessons.json),
@@ -46,7 +47,7 @@ export function courseDocuments() {
       content: blocksFor(section).map((text) => ({ type: 'text', text })),
     },
     title: `Section ${number}: ${section.title}`,
-    context: 'Prototype draft text lesson: written with generative AI from a summary of Japanese reference literature, only partly fact-checked.',
+    context: 'Prototype draft teaching material: written with generative AI from a summary of Japanese reference literature, only partly fact-checked. Not available to readers on the site.',
     citations: { enabled: true },
   }))
   const facts = research.topics.map((topic) => ({
@@ -64,32 +65,6 @@ export function courseDocuments() {
     citations: { enabled: true },
   }))
   return [...course, ...facts]
-}
-
-// Where things are on the site, for suggesting a route through the course.
-// Not a source of facts: nothing here is cited.
-export function courseMap() {
-  const lines = ['Video lectures — fact-checked by WA-Chain (each ends with two keyword questions and an invitation to share your view):']
-  for (const course of courses.courses) {
-    lines.push(
-      `- #/watch/${course.id} — "${course.title.en}" (${course.durationLabel}). Topics: ${course.topics.en.join(', ')}. ${course.description.en}`
-    )
-  }
-  lines.push('', 'Text lessons — PROTOTYPE DRAFTS, AI-written and only partly fact-checked (step by step, each followed by a short quiz):')
-  for (const { section, number } of published) {
-    lines.push(`- #/lesson/${section.id} — Section ${number}: ${section.title} (${section.steps.length} steps). ${section.description || ''}`)
-  }
-  const upcoming = lessons.sections.filter((section) => !section.active).map((section) => section.title)
-  lines.push(
-    '',
-    'Other pages:',
-    '- #/glossary — glossary of Japanese conservation terms',
-    '- #/washi-map — map of washi-producing regions',
-    '- #/tour — study tour to papermaking regions in Japan',
-    '',
-    `Not yet published (do not link; you may say they are planned): ${upcoming.join('; ')}.`
-  )
-  return lines.join('\n')
 }
 
 // documentIndex and blockIndex as the API returns them in a

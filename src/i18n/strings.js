@@ -31,7 +31,7 @@ const strings = {
     hubAskTitle: 'Ask the assistant',
     hubAskHelpLabel: 'What the assistant is',
     hubAskHelp:
-      'An AI assistant. It answers from WA-Chain’s fact-checked research and course material, searches the web when those do not cover the question, and lists every source under its answer. It will not prescribe a treatment for your object.',
+      'An AI assistant. It answers from WA-Chain’s fact-checked research and draft material, searches the web when those do not cover the question, and lists every source under its answer. It will not prescribe a treatment for your object.',
     hubExpertTitle: 'Ask a person',
     hubExpertHelpLabel: 'What happens when you ask a person',
     hubExpertHelp:
@@ -310,7 +310,7 @@ const strings = {
     // Glossary page
     glossaryTitle: 'Washi terminology dictionary',
     glossaryDescription:
-      'Reference definitions for terms introduced across the course, each linked back to the section that covers it in depth.',
+      'Reference definitions for terms used across WA-Chain’s material.',
     glossarySearchLabel: 'Search the glossary',
     glossarySearchPlaceholder: 'Search terms…',
     glossaryNoResults: 'No terms match your search.',
@@ -432,10 +432,10 @@ const strings = {
     chatValidationQ: 'Type your question first.',
     chatValidationEmail: 'Add an email so we can reply.',
     chatIntroAi:
-      'Ask about washi and its use in conservation. The assistant answers from the WA-Chain course and WA-Chain’s own checked research, searches the web when those do not cover it, and lists every source under the answer. For an open question it suggests routes through the course. You can always send the question to the team instead.',
+      'Ask about washi and its use in conservation. The assistant answers from WA-Chain’s own checked research and its draft material, searches the web when those do not cover it, and lists every source under the answer. You can always send the question to the team instead.',
     chatAssistant: 'Assistant',
     chatAsk: 'Ask',
-    chatThinking: 'Looking through the course material…',
+    chatThinking: 'Looking through WA-Chain’s material…',
     chatEscalate: 'Ask a person instead',
     chatBackToAssistant: 'Back to the assistant',
     chatDisclaimerAi:
@@ -448,7 +448,7 @@ const strings = {
     chatTruncated: 'This answer reached its length limit and stops early. Ask a narrower question, or send it to the team.',
     chatInterrupted: 'The connection dropped before this answer finished. Ask again, or send the question to the team.',
     chatSources: 'Sources',
-    chatSourceCourse: 'Lesson (draft)',
+    chatSourceCourse: 'Draft material',
     chatSourceResearch: 'WA-Chain research',
     chatSourceWeb: 'Web',
     chatSearched: 'Pages found by the search',
@@ -746,7 +746,7 @@ const strings = {
     hubAskTitle: 'AIに質問する',
     hubAskHelpLabel: 'AIについて',
     hubAskHelp:
-      'AIが回答します。WA-Chainがファクトチェックした調査結果と教材をもとに答え、足りないときはWebも検索して、出典をすべて回答の下に示します。お手元の作品に対する処置の指示は行いません。',
+      'AIが回答します。WA-Chainがファクトチェックした調査結果と試作中の教材をもとに答え、足りないときはWebも検索して、出典をすべて回答の下に示します。お手元の作品に対する処置の指示は行いません。',
     hubExpertTitle: '専門家に相談する',
     hubExpertHelpLabel: '専門家への相談について',
     hubExpertHelp:
@@ -1024,7 +1024,7 @@ const strings = {
     // Glossary page
     glossaryTitle: '和紙用語辞典',
     glossaryDescription:
-      'コース内で登場する専門用語のリファレンスです。各項目から、詳しく解説しているセクションへ移動できます。',
+      'WA-Chainの教材で使う専門用語のリファレンスです。',
     glossarySearchLabel: '用語を検索',
     glossarySearchPlaceholder: '用語を検索…',
     glossaryNoResults: '該当する用語が見つかりませんでした。',
@@ -1146,7 +1146,7 @@ const strings = {
     chatValidationQ: '質問を入力してください。',
     chatValidationEmail: '回答用のメールアドレスをご記入ください。',
     chatIntroAi:
-      '和紙と修復についての質問にお答えします。WA-Chainの教材と、WA-Chainが裏取りした調査結果をもとに回答し、足りないときはWebも検索して、出典をすべて回答の下に示します。漠然とした質問には、講座の学び方の道筋をご提案します。質問をそのままチームに送ることもできます。',
+      '和紙と修復についての質問にお答えします。WA-Chainが裏取りした調査結果と試作中の教材をもとに回答し、足りないときはWebも検索して、出典をすべて回答の下に示します。質問をそのままチームに送ることもできます。',
     chatAssistant: 'アシスタント',
     chatAsk: '質問する',
     chatThinking: '教材を確認しています…',
@@ -1162,7 +1162,7 @@ const strings = {
     chatTruncated: 'この回答は長さの上限に達したため、途中で終わっています。質問を絞るか、チームに送ってください。',
     chatInterrupted: '回答の途中で接続が切れました。もう一度質問するか、チームに送ってください。',
     chatSources: '出典',
-    chatSourceCourse: '教材（試作）',
+    chatSourceCourse: '試作教材',
     chatSourceResearch: 'WA-Chain調べ',
     chatSourceWeb: 'Web',
     chatSearched: '検索で見つかったページ',

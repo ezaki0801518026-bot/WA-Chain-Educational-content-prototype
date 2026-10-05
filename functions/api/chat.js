@@ -10,7 +10,7 @@
 // The persona lives in data/chat-persona.js. Edit that file, not this one.
 
 import { PERSONA, CHAT_CONFIG } from '../../data/chat-persona.js'
-import { courseDocuments, courseMap } from '../../data/chat-corpus.js'
+import { courseDocuments } from '../../data/chat-corpus.js'
 import { profileLines } from '../../data/profile.js'
 
 const API = 'https://api.anthropic.com/v1/messages'
@@ -145,7 +145,7 @@ export async function onRequestPost({ request, env }) {
       ...(withSearch && CHAT_CONFIG.webSearches > 0
         ? { tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: CHAT_CONFIG.webSearches }] }
         : {}),
-      system: `${PERSONA}\n\nCOURSE MAP\n${courseMap()}`,
+      system: PERSONA,
       messages: withCourse(messages, body?.profile),
     })
 

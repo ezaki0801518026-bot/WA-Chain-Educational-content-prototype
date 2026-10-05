@@ -19,15 +19,14 @@ import styles from './ChatVisual.module.css'
 // lecture (CourseReflection).
 //
 // Everything is treated as untrusted: text is rendered as text, numbers are
-// checked, lists are capped, and a link is only followed if it is a page on
-// this site (#/…) or an https address. Anything malformed renders nothing.
+// checked, lists are capped, and a link is only followed if it is an https
+// address. Paths on this site are not linked. Anything malformed renders nothing.
 
 const str = (value) => (typeof value === 'string' || typeof value === 'number' ? String(value) : '')
 const num = (value) => (typeof value === 'number' && Number.isFinite(value) ? value : null)
 
 function safeLink(link) {
   if (typeof link !== 'string') return null
-  if (/^#\/[a-z0-9\-/]*$/i.test(link)) return { href: link, external: false }
   if (/^https:\/\/[^\s"'<>]+$/i.test(link)) return { href: link, external: true }
   return null
 }
