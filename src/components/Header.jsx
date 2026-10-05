@@ -16,7 +16,6 @@ const NAV = [
   { page: 'washi-map', key: 'navWashiMap', route: '/washi-map' },
   { page: 'dictionary', key: 'navDictionary', route: '/dictionary' },
   { page: 'tour', key: 'navTour', route: '/tour' },
-  { page: 'pricing', key: 'navPricing', route: '/pricing' },
 ]
 
 function Header({ navigate, currentPage }) {

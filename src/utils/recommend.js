@@ -1,5 +1,4 @@
 import courses from '../../data/courses.json'
-import lessons from '../../data/lessons.json'
 
 // What to put in front of this reader, from their own answers.
 //
@@ -12,14 +11,6 @@ import lessons from '../../data/lessons.json'
 const VIDEO_TRAITS = {
   'kozo-provenance': { interest: ['sourcing'], level: ['some', 'using'], field: [] },
   'three-fibers': { interest: ['choosing', 'science'], level: ['new', 'some', 'using'], field: ['paper', 'painting', 'books'] },
-}
-
-const SECTION_TRAITS = {
-  'section-1': { interest: ['cases'], field: ['painting'], level: ['new'] },
-  'section-2': { interest: ['science'], level: ['some', 'using'] },
-  'section-3': { interest: ['science', 'cases'], level: ['using'] },
-  'section-4': { interest: ['choosing'], level: ['new', 'some', 'using'] },
-  'section-5': { interest: ['making'], level: ['some', 'using'] },
 }
 
 const PLACE_TRAITS = {
@@ -50,22 +41,6 @@ export function recommend(profile, { watched = [], completed = [] } = {}) {
     return { kind: 'video', id: course.id, route: `/watch/${course.id}`, item: course, points: points - (watched.includes(course.id) ? 10 : 0), reason, done: watched.includes(course.id) }
   })
 
-  const sections = lessons.sections
-    .filter((section) => section.active)
-    .map((section, index) => {
-      const { points, reason } = score(SECTION_TRAITS[section.id] || {}, profile)
-      return {
-        kind: 'lesson',
-        id: section.id,
-        route: `/lesson/${section.id}`,
-        item: section,
-        number: lessons.sections.findIndex((s) => s.id === section.id) + 1,
-        points: points - index * 0.1 - (completed.includes(section.id) ? 10 : 0),
-        reason,
-        done: completed.includes(section.id),
-      }
-    })
-
   const places = Object.entries(PLACE_TRAITS).map(([id, traits]) => {
     const { points, reason } = score(traits, profile)
     return { kind: 'place', id, route: `/${id}`, points, reason }
@@ -74,7 +49,6 @@ export function recommend(profile, { watched = [], completed = [] } = {}) {
   const byPoints = (a, b) => b.points - a.points
   return {
     videos: videos.sort(byPoints),
-    lessons: sections.sort(byPoints),
     places: places.sort(byPoints).filter((place) => place.points > 0),
   }
 }

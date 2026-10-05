@@ -17,7 +17,6 @@ const VideoPage = lazy(() => import('./pages/VideoPage.jsx'))
 const LessonPage = lazy(() => import('./pages/LessonPage.jsx'))
 const QuizPage = lazy(() => import('./pages/QuizPage.jsx'))
 const SummaryPage = lazy(() => import('./pages/SummaryPage.jsx'))
-const PricingPage = lazy(() => import('./pages/PricingPage.jsx'))
 const GlossaryPage = lazy(() => import('./pages/GlossaryPage.jsx'))
 const CommunityPage = lazy(() => import('./pages/CommunityPage.jsx'))
 const AboutPage = lazy(() => import('./pages/AboutPage.jsx'))
@@ -48,7 +47,6 @@ function navigate(path) {
 // Static pages -> header/menu label key, reused for the document title.
 const PAGE_TITLE_KEYS = {
   course: 'navCourse',
-  pricing: 'navPricing',
   glossary: 'navGlossary',
   community: 'navCommunity',
   about: 'navAbout',
@@ -141,8 +139,7 @@ function App() {
     )
   } else if (route.page === 'summary' && route.sectionId) {
     content = <SummaryPage sectionId={route.sectionId} navigate={navigate} />
-  } else if (route.page === 'pricing') {
-    content = <PricingPage navigate={navigate} />
+
   } else if (route.page === 'glossary') {
     content = <GlossaryPage navigate={navigate} />
   } else if (route.page === 'community') {

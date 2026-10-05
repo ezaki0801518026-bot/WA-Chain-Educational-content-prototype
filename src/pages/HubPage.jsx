@@ -27,10 +27,9 @@ const HERO_IMAGES = [
 // descriptions. `soon` marks what is not open yet.
 const CORE = [
   { id: 'course', route: '/course', image: '/images/hero/ノルウェーで学ぶ様子.jpg' },
-  { id: 'map', route: '/washi-map', image: '/images/hero/島根安部記念館の和紙.jpg' },
+  { id: 'map', route: '/washi-map', image: '/images/hero/島根安部記念館の和紙.jpg', soon: true },
   { id: 'dictionary', route: '/dictionary', image: '/images/hero/紙の博物館.jpg', soon: true },
   { id: 'tour', route: '/tour', image: '/images/hero/和紙漉き体験.jpg', soon: true },
-  { id: 'pricing', route: '/pricing', image: '/images/hero/和紙の見本帳.jpg', soon: true },
 ]
 
 // Carries a question typed on the home page through to the chat page. A hash
@@ -208,7 +207,7 @@ function HubPage({ navigate }) {
               onClick={() => navigate(item.route)}
             >
               <span className={styles.tileImgWrap}>
-                <img className={styles.tileImg} {...picture(item.image, '(min-width: 64em) 20vw, (min-width: 30em) 34vw, 50vw')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                <img className={styles.tileImg} {...picture(item.image, '(min-width: 64em) 25vw, 50vw')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
               </span>
               <span className={styles.tileBody}>
                 <span className={styles.tileTitle}>{t(`hub_${item.id}_title`)}</span>
@@ -276,24 +275,6 @@ function HubPage({ navigate }) {
             </button>
           ))}
 
-          {picks.lessons.slice(0, 2).map((entry) => (
-            <button
-              key={entry.id}
-              type="button"
-              className={`card-link ${styles.recCard} ${styles.recText}`}
-              onClick={() => navigate(entry.route)}
-            >
-              <span className={styles.recBody}>
-                <span className={styles.recKind}>{t('recLessonKind')}</span>
-                <span className={styles.recTitle}>
-                  {t('sectionLabel', { n: entry.number })} — {entry.item.title}
-                </span>
-                <span className={styles.recWhy}>
-                  {entry.done ? t('recDone') : reasonText(entry.reason) || t('recGeneral')}
-                </span>
-              </span>
-            </button>
-          ))}
         </div>
 
         {picks.places.length > 0 && (

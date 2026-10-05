@@ -6,7 +6,6 @@ import styles from './Footer.module.css'
 // The three blocks of the course page (ids `track-<id>` on their headings).
 const TRACKS = [
   { id: 'videos', labelKey: 'courseVideoHeading' },
-  { id: 'foundations', labelKey: 'footerTextLessons' },
   { id: 'upcoming', labelKey: 'homeComingSoonHeading' },
 ]
 
@@ -79,7 +78,6 @@ function Footer({ navigate }) {
               { key: 'navCourse', route: '/course' },
               { key: 'navWashiMap', route: '/washi-map' },
               { key: 'navTour', route: '/tour' },
-              { key: 'navPricing', route: '/pricing' },
             ].map(({ key, route }) => (
               <li key={key}>
                 <button type="button" className={styles.footerLink} onClick={() => navigate(route)}>

@@ -13,7 +13,6 @@ const PAGES = [
   { key: 'navTour', route: '/tour', kw: 'tour visit region papermaking ツアー 産地 体験' },
   { key: 'navCohort', route: '/cohort', kw: 'cohort certificate deadline structured コホート 修了証' },
   { key: 'navChat', route: '/chat', kw: 'chat ask expert question 相談 質問 チャット' },
-  { key: 'navPricing', route: '/pricing', kw: 'price plan subscription kit course 料金 プラン' },
   { key: 'navGlossary', route: '/glossary', kw: 'glossary dictionary terms 用語 辞典' },
   { key: 'navCommunity', route: '/community', kw: 'community conservators コミュニティ' },
   { key: 'navNews', route: '/news', kw: 'news activity reports announcements blog 活動報告 お知らせ ニュース' },
@@ -41,8 +40,8 @@ export function buildSearchIndex(t, lang = 'en') {
   const items = []
 
   lessons.sections.forEach((section, index) => {
-    // Planned sections of the earlier outline are no longer listed anywhere.
-    if (!section.active) return
+    // The text lessons are not offered for now (course page, picks, search).
+    return
     const parts = [
       section.title,
       section.description,
