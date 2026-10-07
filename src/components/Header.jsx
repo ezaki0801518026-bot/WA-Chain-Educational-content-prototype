@@ -15,6 +15,7 @@ const NAV = [
   { page: 'course', key: 'navCourse', route: '/course' },
   { page: 'washi-map', key: 'navWashiMap', route: '/washi-map' },
   { page: 'dictionary', key: 'navDictionary', route: '/dictionary' },
+  { page: 'reading-list', key: 'navReadingList', route: '/reading-list' },
   { page: 'tour', key: 'navTour', route: '/tour' },
 ]
 

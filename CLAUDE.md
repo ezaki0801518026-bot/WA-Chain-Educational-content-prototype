@@ -98,6 +98,7 @@ http://localhost:4173/#/news/<記事ID>
 | 応援ポップアップ | `src/components/CheerPopup.jsx`（閲覧系ページで12秒後に右下。Web3Forms に送る。テストでは `api.web3forms.com` を必ずモック） |
 | 和紙マップの英語 | `data/washiPapers.json` の `nameEn` / `descEn` / `regionLabelEn`。英語モードでは SVG の県名ツールチップも英語側だけ |
 | 和紙の単語辞書（ガワ） | `src/pages/DictionaryPage.jsx` ＋ `src/config/dictionary.js`。辞書本体は別の HTML。`public/dictionary/index.html` に置いて `ready: true` にすると iframe で表示（言語とテーマを `?lang=&theme=` で渡す）。未接続の間は「準備中」と用語辞典への案内 |
+| 文献リスト（ガワ） | `src/pages/ReadingListPage.jsx`、中身は `data/readingList.json`（sections → items。各 item に kind＝book/paper/report/website/video、language＝en/ja-en/ja のタグ）。空の間は「準備中」。言語タグで絞り込み、リンクは https のみ別タブ |
 | 講座ページ「Coming soon」の動画計画 | `data/upcoming.json`（No.・日英タイトル・象限＝level×kind・状態）。講座ページの一覧、アンケートの選択肢、サイト内検索が同じデータを読む。旧カリキュラム案（lessons.json の未公開セクション）はもう表示しない |
 | 当面出さないもの（2026-10-05 ユーザー指示） | テキスト教材（講座ページの「Available now」、ホームのおすすめ、サイト内検索、フッターから外した。ページとデータは残置）／料金プラン（ナビ・メニュー・タイル・フッター・検索・ルートから削除）。和紙マップ・単語辞書・Study Tour はホームのタイルで「準備中」 |
 | 写真の幅別 WebP（`*.w480/w960/w1600.webp`）と一覧 `src/imageManifest.json` | `npm run images` が生成（sharp）。写真を足したら実行してコミット。`<img>` は `picture(path, sizes)`（`src/utils/asset.js`）で `srcset` を付ける。ビルドは生成しない |

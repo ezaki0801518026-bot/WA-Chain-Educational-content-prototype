@@ -1,0 +1,4 @@
+{
+  "_comment": "The reading list (#/reading-list): books, papers and websites, grouped into sections. Empty until the team's list is added; the page then shows 'in preparation'. Shape of one section: { id, title: {en, ja}, intro?: {en, ja}, items: [...] }. Shape of one item: { title (as published), titleEn? (an English title when the original is not English), authors? (string), year? (number), kind: book | paper | report | website | video, language: en | ja-en | ja, url? (https), note?: {en, ja} (one line: what it is good for) }. language: en = in English only, ja-en = in Japanese and English, ja = in Japanese only.",
+  "sections": []
+}

@@ -28,6 +28,7 @@ const ChatPage = lazy(() => import('./pages/ChatPage.jsx'))
 const CohortPage = lazy(() => import('./pages/CohortPage.jsx'))
 const WashiMapPage = lazy(() => import('./pages/WashiMapPage.jsx'))
 const DictionaryPage = lazy(() => import('./pages/DictionaryPage.jsx'))
+const ReadingListPage = lazy(() => import('./pages/ReadingListPage.jsx'))
 const TourPage = lazy(() => import('./pages/TourPage.jsx'))
 import news from '../data/news.json'
 import courses from '../data/courses.json'
@@ -57,6 +58,7 @@ const PAGE_TITLE_KEYS = {
   cohort: 'navCohort',
   'washi-map': 'navWashiMap',
   dictionary: 'navDictionary',
+  'reading-list': 'navReadingList',
   tour: 'navTour',
 }
 
@@ -162,6 +164,8 @@ function App() {
     content = <WashiMapPage navigate={navigate} />
   } else if (route.page === 'dictionary') {
     content = <DictionaryPage navigate={navigate} />
+  } else if (route.page === 'reading-list') {
+    content = <ReadingListPage />
   } else if (route.page === 'tour') {
     content = <TourPage navigate={navigate} />
   } else {

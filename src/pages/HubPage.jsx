@@ -29,6 +29,7 @@ const CORE = [
   { id: 'course', route: '/course', image: '/images/hero/ノルウェーで学ぶ様子.jpg' },
   { id: 'map', route: '/washi-map', image: '/images/hero/島根安部記念館の和紙.jpg', soon: true },
   { id: 'dictionary', route: '/dictionary', image: '/images/hero/紙の博物館.jpg', soon: true },
+  { id: 'reading', route: '/reading-list', image: '/images/hero/和紙の見本帳.jpg', soon: true },
   { id: 'tour', route: '/tour', image: '/images/hero/和紙漉き体験.jpg', soon: true },
 ]
 
@@ -207,7 +208,7 @@ function HubPage({ navigate }) {
               onClick={() => navigate(item.route)}
             >
               <span className={styles.tileImgWrap}>
-                <img className={styles.tileImg} {...picture(item.image, '(min-width: 64em) 25vw, 50vw')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                <img className={styles.tileImg} {...picture(item.image, '(min-width: 64em) 20vw, 50vw')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
               </span>
               <span className={styles.tileBody}>
                 <span className={styles.tileTitle}>{t(`hub_${item.id}_title`)}</span>
