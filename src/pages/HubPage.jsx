@@ -4,7 +4,6 @@ import { useLanguage } from '../i18n/LanguageContext.jsx'
 import HelpTip from '../components/HelpTip.jsx'
 import { readProfile, wasSkipped, shouldRemind, snoozeReminder } from '../utils/profile.js'
 import { useProfile } from '../context/ProfileContext.jsx'
-import { getProgress } from '../utils/progress.js'
 import { recommend } from '../utils/recommend.js'
 import { picture } from '../utils/asset.js'
 import styles from './HubPage.module.css'
@@ -78,9 +77,7 @@ function HubPage({ navigate }) {
   }, [profile])
 
   const picks = useMemo(() => {
-    const progress = getProgress()
-    const completed = Object.keys(progress).filter((id) => progress[id]?.completed)
-    return recommend(profile, { watched: readWatched(), completed })
+    return recommend(profile, { watched: readWatched() })
   }, [profile])
 
   const openChat = (event) => {

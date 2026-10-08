@@ -12,13 +12,6 @@
   font-family: var(--font-body);
 }
 
-/* Set while a breadcrumb row renders, so fixed-viewport layouts (the
-   lesson screen) can subtract its height. Matches .crumbs in
-   Breadcrumbs.module.css. */
-.withCrumbs {
-  --crumb-height: 2.25rem;
-}
-
 .main {
   flex: 1 0 auto;
   min-height: calc(100svh - var(--header-height));

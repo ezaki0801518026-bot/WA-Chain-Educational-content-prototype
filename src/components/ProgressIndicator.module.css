@@ -1,7 +1,0 @@
-.indicator {
-  font-size: var(--text-small);
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  font-variant-numeric: tabular-nums;
-  margin: 0 0 var(--space-2);
-}

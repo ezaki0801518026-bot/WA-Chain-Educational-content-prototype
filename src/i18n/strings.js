@@ -1,5 +1,5 @@
 // UI chrome strings only — lesson text, quiz questions/options/explanations,
-// and section titles/summaryPoints in data/lessons.json are never translated
+// and course content is never translated here.
 // here and always remain the original English.
 const strings = {
   en: {
@@ -14,7 +14,7 @@ const strings = {
     hubEyebrow: 'Online school · Washi & conservation',
     hubTitle: 'Know your paper.\nChoose with confidence.',
     hubLede:
-      'Why do two Japanese papers that look alike behave so differently?\nSee what gives each washi its character, and hold real samples in your hands.',
+      'Why do two Japanese papers that look alike behave so differently?\nSee what gives each washi its character. Sample sets you can hold in your hands are in preparation.',
     hubExploreTitle: 'What you can do here',
     hubHeroCaption1: 'Washing and loosening bundles of raw fibre in cold water',
     hubHeroCaption2: 'A metal screen that lets through only fibre refined to the set fineness',
@@ -774,7 +774,7 @@ const strings = {
     hubEyebrow: 'オンラインスクール · 和紙と文化財修復',
     hubTitle: '和紙を知り、\n確信を持って選ぶ。',
     hubLede:
-      '同じ「和紙」でも、なぜこれほどまでに風合いが異なるのでしょうか。\nそれぞれの和紙の個性を生み出す要素を紐解き、実際のサンプルを確かめて、確かな違いを体験してください。',
+      '同じ「和紙」でも、なぜこれほどまでに風合いが異なるのでしょうか。\nそれぞれの和紙の個性を生み出す要素を紐解きます。実物のサンプルで違いを確かめられる仕組みも準備中です。',
     hubExploreTitle: 'できること',
     hubHeroCaption1: '原料となる繊維の束を冷たい水で洗い、ほぐす',
     hubHeroCaption2: '規定の細さになった繊維のみが通ることのできる金属のフィルター',

@@ -6,6 +6,9 @@ WA-Chain（和紙と文化財修復のオンラインスクール）のウェブ
 
 ---
 
+
+> **2026-10-08 時点の注意:** テキスト教材（レッスン・クイズ・まとめ・セクション動画）はページもデータも削除済み。下の記述に残るものは過去の記録。現行の機能は「動画講義」「近日公開」「和紙マップ（準備中）」「単語辞書（準備中）」「文献リスト」「相談AI」「Study Tour（準備中）」。
+
 ## 0. 最初に読むもの
 
 | ファイル | 内容 | 鮮度 |
@@ -100,7 +103,7 @@ http://localhost:4173/#/news/<記事ID>
 | 和紙の単語辞書（ガワ） | `src/pages/DictionaryPage.jsx` ＋ `src/config/dictionary.js`。辞書本体は別の HTML。`public/dictionary/index.html` に置いて `ready: true` にすると iframe で表示（言語とテーマを `?lang=&theme=` で渡す）。未接続の間は「準備中」と用語辞典への案内 |
 | 文献リスト | `src/pages/ReadingListPage.jsx`、中身は `data/readingList.json`（11セクション・354件、2026-10-08 投入）。各項目: kind（book/catalogue/paper/report/glossary/standard/journal/newsletter/organisation/website/database/social/community/course/video/podcast）、language（en/ja-en/ja）、access（free/paid/library/members）、source（peer/public/society/specialist/industry/commercial）、note {ja, en}。元データは WA-Chain の `文献・媒体データベース_*.json`、変換は WA-Chain `_reading_tr/build.mjs`（英訳 out1-3.json と日本語メモの修正 notes_ja_fix.json を合流）。検索・言語チップ・セクションリンク・各セクション先頭6件＋「すべて表示」。リンクは http(s) を別タブ |
 | 講座ページ「Coming soon」の動画計画 | `data/upcoming.json`（No.・日英タイトル・象限＝level×kind・状態）。講座ページの一覧、アンケートの選択肢、サイト内検索が同じデータを読む。旧カリキュラム案（lessons.json の未公開セクション）はもう表示しない |
-| 当面出さないもの（2026-10-05 ユーザー指示） | テキスト教材（講座ページの「Available now」、ホームのおすすめ、サイト内検索、フッターから外した。ページとデータは残置）／料金プラン（ナビ・メニュー・タイル・フッター・検索・ルートから削除）。和紙マップ・単語辞書・Study Tour はホームのタイルで「準備中」 |
+| テキスト教材（2026-10-08 削除） | ユーザー指示「テキスト教材のページ：消す」。`#/lesson` `#/quiz` `#/summary` `#/video/<section>` のページ、それ専用の部品（StepView・SourceList・Breadcrumbs ほか）、`data/lessons.json`、セクション冒頭動画（public/video・functions/video）、レッスンを巡回する `npm run verify` を削除。旧URLは「ページが見つかりません」。**この文書のレッスン・クイズ・まとめ・セクションに関する記述は過去の記録**（git の履歴で戻せる）。料金プランも 2026-10-05 に削除済み |
 | 写真の幅別 WebP（`*.w480/w960/w1600.webp`）と一覧 `src/imageManifest.json` | `npm run images` が生成（sharp）。写真を足したら実行してコミット。`<img>` は `picture(path, sizes)`（`src/utils/asset.js`）で `srcset` を付ける。ビルドは生成しない |
 | チームのSNS | `src/config/social.js` |
 

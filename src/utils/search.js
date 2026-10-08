@@ -1,4 +1,3 @@
-import lessons from '../../data/lessons.json'
 import glossary from '../../data/glossary.json'
 import washi from '../../data/washiPapers.json'
 import upcoming from '../../data/upcoming.json'
@@ -39,28 +38,6 @@ function norm(value) {
 // either, whatever the query language.
 export function buildSearchIndex(t, lang = 'en') {
   const items = []
-
-  lessons.sections.forEach((section, index) => {
-    // The text lessons are not offered for now (course page, picks, search).
-    return
-    const parts = [
-      section.title,
-      section.description,
-      ...(section.topics || []),
-      ...(section.summaryPoints || []),
-      ...(section.steps || []).map((step) => step.heading),
-    ]
-    items.push({
-      type: 'section',
-      title: section.title,
-      subtitle: section.active
-        ? t('sectionLabel', { n: index + 1 })
-        : `${t('sectionLabel', { n: index + 1 })} · ${t('comingSoon')}`,
-      titleNorm: norm(section.title),
-      text: norm(parts.filter(Boolean).join(' ')),
-      route: section.active ? (section.video ? `/video/${section.id}` : `/lesson/${section.id}`) : '/',
-    })
-  })
 
   // The video plan (course page, "Coming soon"): found under either language.
   upcoming.videos.forEach((video) => {

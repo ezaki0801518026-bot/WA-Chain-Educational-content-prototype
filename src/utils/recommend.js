@@ -35,7 +35,7 @@ function score(traits, profile) {
 
 // watched: ids of lectures already finished (from progress/watch state), so
 // they fall to the end rather than being recommended again.
-export function recommend(profile, { watched = [], completed = [] } = {}) {
+export function recommend(profile, { watched = [] } = {}) {
   const videos = courses.courses.map((course) => {
     const { points, reason } = score(VIDEO_TRAITS[course.id] || {}, profile)
     return { kind: 'video', id: course.id, route: `/watch/${course.id}`, item: course, points: points - (watched.includes(course.id) ? 10 : 0), reason, done: watched.includes(course.id) }
