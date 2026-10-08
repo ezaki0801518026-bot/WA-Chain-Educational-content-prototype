@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `npx wrangler pages dev dist`. Never commit .dev.vars.
+ANTHROPIC_API_KEY=sk-ant-...
+# Password gate (off when these are missing):
+SITE_PASSWORDS=2026-11:password-for-november,2026-12:password-for-december
+SITE_GATE_SECRET=any-long-random-string
+# Optional: paths outside the gate (default: /about,/assets/,/images/,/favicon.svg,/manifest.webmanifest)
+# SITE_GATE_PUBLIC=/about,/assets/,/images/
