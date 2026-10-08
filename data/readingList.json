@@ -745,20 +745,6 @@
           }
         },
         {
-          "id": "WB14",
-          "title": "全国の和紙リンク集",
-          "titleEn": "Links to washi across Japan",
-          "kind": "website",
-          "language": "ja",
-          "access": "free",
-          "source": "commercial",
-          "url": "https://washi-shokunin.com/link/",
-          "note": {
-            "ja": "産地サイトのまとめ",
-            "en": "A collection of papermaking-region websites."
-          }
-        },
-        {
           "id": "OR08",
           "title": "その他の県公設試・旧試験場",
           "titleEn": "Other prefectural public research institutes and former experimental stations",
@@ -5075,5 +5061,5 @@
       ]
     }
   ],
-  "_source": "WA-Chain 文献・媒体データベース 2026-10-08 (354 entries). English titles and notes marked as drafts until confirmed."
+  "_source": "WA-Chain 文献・媒体データベース 2026-10-08 (353 entries). English titles and notes drafted by WA-Chain, accepted by the team on 2026-10-08."
 }
