@@ -29,7 +29,7 @@ const CORE = [
   { id: 'course', route: '/course', image: '/images/hero/ノルウェーで学ぶ様子.jpg' },
   { id: 'map', route: '/washi-map', image: '/images/hero/島根安部記念館の和紙.jpg', soon: true },
   { id: 'dictionary', route: '/dictionary', image: '/images/hero/紙の博物館.jpg', soon: true },
-  { id: 'reading', route: '/reading-list', image: '/images/hero/和紙の見本帳.jpg', soon: true },
+  { id: 'reading', route: '/reading-list', image: '/images/hero/和紙の見本帳.jpg' },
   { id: 'tour', route: '/tour', image: '/images/hero/和紙漉き体験.jpg', soon: true },
 ]
 

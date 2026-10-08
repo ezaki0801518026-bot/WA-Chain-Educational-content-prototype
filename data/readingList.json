@@ -1,4 +1,5065 @@
 {
   "_comment": "The reading list (#/reading-list): books, papers and websites, grouped into sections. Empty until the team's list is added; the page then shows 'in preparation'. Shape of one section: { id, title: {en, ja}, intro?: {en, ja}, items: [...] }. Shape of one item: { title (as published), titleEn? (an English title when the original is not English), authors? (string), year? (number), kind: book | paper | report | website | video, language: en | ja-en | ja, url? (https), note?: {en, ja} (one line: what it is good for) }. language: en = in English only, ja-en = in Japanese and English, ja = in Japanese only.",
-  "sections": []
+  "sections": [
+    {
+      "id": "general",
+      "title": {
+        "ja": "総合・データベース",
+        "en": "General hubs & databases"
+      },
+      "intro": {
+        "ja": "分野を横断して調べられる入口（データベース・総合サイト・学会／機関）。",
+        "en": "Ways into the field as a whole: databases, general sites, societies and institutions."
+      },
+      "items": [
+        {
+          "id": "JB32",
+          "title": "柳橋先生を偲んで：柳橋眞・和紙と漆：著作目録・略年譜",
+          "titleEn": "In Memory of Professor Yanagibashi: Yanagibashi Shin, Washi and Urushi: Bibliography and Brief Chronology",
+          "authors": "増田勝彦",
+          "year": "2016",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I027522943",
+          "note": {
+            "ja": "柳橋の小冊子・論文を網羅的に探す手がかり",
+            "en": "A starting point for a thorough search of Yanagibashi's booklets and papers."
+          }
+        },
+        {
+          "id": "DB01",
+          "title": "AATA Online",
+          "authors": "Getty Conservation Institute＋IIC",
+          "kind": "database",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.getty.edu/research-conservation/tools-databases/aata/",
+          "note": {
+            "ja": "物質文化遺産の保存に関する17万件超の抄録",
+            "en": "Over 170,000 abstracts on the conservation of material cultural heritage."
+          }
+        },
+        {
+          "id": "DB02",
+          "title": "CoOL（Conservation OnLine）",
+          "authors": "FAIC",
+          "kind": "database",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://cool.culturalheritage.org/",
+          "note": {
+            "ja": "JAIC旧号・Paper Conservation Catalog・BPG Annual・ConsDistList のアーカイブ（1987年〜）を所蔵",
+            "en": "Holds archives of back issues of JAIC, the Paper Conservation Catalog, the BPG Annual and ConsDistList (from 1987)."
+          }
+        },
+        {
+          "id": "DB06",
+          "title": "ジャパンサーチ",
+          "titleEn": "Japan Search",
+          "kind": "database",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://jpsearch.go.jp/",
+          "note": {
+            "ja": "横断検索（東文研も収録）",
+            "en": "Cross-collection search (includes the Tokyo National Research Institute for Cultural Properties)."
+          }
+        },
+        {
+          "id": "DB07",
+          "title": "国立国会図書館サーチ／リサーチ・ナビ（文化財の調べ方）",
+          "titleEn": "National Diet Library Search / Research Navi (How to Research Cultural Properties)",
+          "kind": "database",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/rnavi/humanities/heritage"
+        },
+        {
+          "id": "DB08",
+          "title": "東京文化財研究所 刊行物リポジトリ",
+          "titleEn": "Tokyo National Research Institute for Cultural Properties Publications Repository",
+          "kind": "database",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://tobunken.repo.nii.ac.jp/",
+          "note": {
+            "ja": "『選定保存技術 資料集』や在外日本古美術品の修復報告書（英文）など、全文が読める報告書が多い",
+            "en": "A rich source of full texts of many of the institute's reports."
+          }
+        },
+        {
+          "id": "DB09",
+          "title": "J-STAGE",
+          "kind": "database",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.jstage.jst.go.jp/",
+          "note": {
+            "ja": "『紙パ技協誌』『表面科学』『日本画像学会誌』を収録",
+            "en": "Includes the Japan TAPPI Journal, Hyōmen Kagaku (Surface Science) and the Journal of the Imaging Society of Japan."
+          }
+        },
+        {
+          "id": "WB02",
+          "title": "Conservation on Social Media",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://conservation-wiki.com/wiki/Conservation_on_Social_Media",
+          "note": {
+            "ja": "各団体のSNS一覧",
+            "en": "List of organisations' social media accounts."
+          }
+        },
+        {
+          "id": "WB03",
+          "title": "Accessing Conservation Literature",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://conservation-wiki.com/wiki/Accessing_Conservation_Literature",
+          "note": {
+            "ja": "文献アクセスの道案内",
+            "en": "Guide to accessing the literature."
+          }
+        },
+        {
+          "id": "WB05",
+          "title": "NYU Conservation Research Guide",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://guides.nyu.edu/conservation/databases-journals",
+          "note": {
+            "ja": "DB・雑誌のまとめ",
+            "en": "Overview of databases and journals."
+          }
+        },
+        {
+          "id": "WB06",
+          "title": "International Conservation Training",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "industry",
+          "note": {
+            "ja": "各国の保存修復教育の一覧",
+            "en": "List of conservation education programmes by country."
+          }
+        },
+        {
+          "id": "WB15",
+          "title": "稲葉政満 業績目録",
+          "titleEn": "Masamitsu Inaba: list of publications",
+          "kind": "website",
+          "language": "ja-en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://hozonkagaku.geidai.ac.jp/inaba_archievement.pdf",
+          "note": {
+            "ja": "和紙の保存性研究の網羅的書誌",
+            "en": "A comprehensive bibliography of research on the permanence of washi."
+          }
+        },
+        {
+          "id": "OR01",
+          "title": "東京文化財研究所（TOBUNKEN）",
+          "titleEn": "Tokyo National Research Institute for Cultural Properties (TOBUNKEN)",
+          "kind": "organisation",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/",
+          "note": {
+            "ja": "無形文化財・保存科学・修復技術・国際協力",
+            "en": "Intangible cultural properties, conservation science, conservation techniques and international cooperation."
+          }
+        },
+        {
+          "id": "OR18",
+          "title": "Getty Conservation Institute",
+          "kind": "organisation",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.getty.edu/conservation-institute/",
+          "note": {
+            "ja": "刊行物・研究",
+            "en": "Publications and research."
+          }
+        },
+        {
+          "id": "OR19",
+          "title": "ICCROM",
+          "kind": "organisation",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.iccrom.org/",
+          "note": {
+            "ja": "東京文化財研究所とともに国際研修「Japanese Paper Conservation（JPC）」を共催",
+            "en": "Co-organises the international course on Japanese paper conservation (JPC) with TOBUNKEN."
+          }
+        },
+        {
+          "id": "OR20",
+          "title": "AIC & FAIC",
+          "kind": "organisation",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.culturalheritage.org/",
+          "note": {
+            "ja": "BPG は AIC 最大の専門部会（会員1,180名超）",
+            "en": "BPG is AIC's largest specialty group (over 1,180 members)."
+          }
+        },
+        {
+          "id": "OR21",
+          "title": "IIC",
+          "kind": "organisation",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.iiconservation.org/about",
+          "note": {
+            "ja": "ニュース「News in Conservation」、学習プログラム「IIC LEARNING」を運営",
+            "en": "NiC (News in Conservation) and IIC LEARNING."
+          }
+        },
+        {
+          "id": "OR22",
+          "title": "Icon",
+          "kind": "organisation",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.icon.org.uk/",
+          "note": {
+            "ja": "Book & Paper Group は会議録・公開ブログ・学生向け資料を持つ",
+            "en": "The Book & Paper Group has conference proceedings, a public blog and resources for students."
+          }
+        },
+        {
+          "id": "OR23",
+          "title": "CAC-ACCR",
+          "kind": "organisation",
+          "language": "en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.cac-accr.ca/",
+          "note": {
+            "ja": "Instagram などの SNS も発信している",
+            "en": "Its social media account has a separate entry in this list."
+          }
+        },
+        {
+          "id": "OR24",
+          "title": "AICCM",
+          "kind": "organisation",
+          "language": "en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://aiccm.org.au/",
+          "note": {
+            "ja": "学会誌「AICCM Bulletin」、Book and Paper SIG を運営",
+            "en": "The AICCM Bulletin and the Book and Paper SIG."
+          }
+        },
+        {
+          "id": "OR27",
+          "title": "北米の学位課程",
+          "titleEn": "Degree programmes in North America",
+          "kind": "organisation",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ifa.nyu.edu/faculty/margaret-holben-ellis.html",
+          "note": {
+            "ja": "各課程が Instagram で発信している",
+            "en": "The Instagram accounts of each programme are also in this list."
+          }
+        },
+        {
+          "id": "OR28",
+          "title": "英国の課程",
+          "titleEn": "Programmes in the UK",
+          "kind": "organisation",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://www.westdean.ac.uk/blog/adapt-evolve",
+          "note": {
+            "ja": "West Dean は会議「Adapt & Evolve」の紹介ブログを公開",
+            "en": "West Dean has published a blog post introducing Adapt & Evolve."
+          }
+        },
+        {
+          "id": "OR29",
+          "title": "ANAGPIC",
+          "kind": "organisation",
+          "language": "en",
+          "source": "society"
+        },
+        {
+          "id": "SN08",
+          "title": "UCLA/Getty（@uclagetty_conservation）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.instagram.com/uclagetty_conservation/",
+          "note": {
+            "ja": "修復教育課程",
+            "en": "Conservation training programme."
+          }
+        },
+        {
+          "id": "SN09",
+          "title": "Winterthur–Delaware（@ud_artconservation）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.instagram.com/ud_artconservation/",
+          "note": {
+            "ja": "修復教育課程",
+            "en": "Conservation training programme."
+          }
+        },
+        {
+          "id": "SN10",
+          "title": "Buffalo State Art Conservation（@buffalostate_artconservation）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.instagram.com/buffalostate_artconservation/",
+          "note": {
+            "ja": "修復教育課程",
+            "en": "Conservation training programme."
+          }
+        },
+        {
+          "id": "SN15",
+          "title": "大型館の館公式アカウント（@britishlibrary）",
+          "titleEn": "Official accounts of major institutions (@britishlibrary)",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.bl.uk/",
+          "note": {
+            "ja": "Getty・BL・LoC・MFA・NMAA に紙修復部門専用の Instagram は見当たらない（断定は不可）",
+            "en": "No Instagram accounts dedicated to paper conservation were found for the Getty, the British Library, the Library of Congress, the MFA or the NMAA (this cannot be stated definitively)."
+          }
+        },
+        {
+          "id": "SN27",
+          "title": "東京文化財研究所（@tobunken_nich）",
+          "titleEn": "Tokyo National Research Institute for Cultural Properties (@tobunken_nich)",
+          "kind": "social",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/",
+          "note": {
+            "ja": "Webコンテンツ・催事・講演の告知",
+            "en": "Announcements of web content, events and lectures."
+          }
+        },
+        {
+          "id": "SN28",
+          "title": "Facebookページ（修復・和紙）",
+          "titleEn": "Facebook pages (conservation and washi)",
+          "kind": "social",
+          "language": "ja-en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.facebook.com/dendenkyo/"
+        },
+        {
+          "id": "SN30",
+          "title": "ハッシュタグ #ConsDiaries",
+          "titleEn": "Hashtag #ConsDiaries",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://conservation-wiki.com/wiki/Conservation_on_Social_Media",
+          "note": {
+            "ja": "保存修復コミュニティ統一のために作られた業界特化タグ",
+            "en": "A field-specific tag created to unite the conservation community."
+          }
+        },
+        {
+          "id": "PO04",
+          "title": "ひので和紙ラジオ",
+          "titleEn": "Hinode Washi Radio",
+          "kind": "podcast",
+          "language": "ja",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://podcasts.apple.com/us/podcast/%E3%81%B2%E3%81%AE%E3%81%A7%E5%92%8C%E7%B4%99%E3%83%A9%E3%82%B8%E3%82%AA/id6785222160",
+          "note": {
+            "ja": "13エピソード、最新2026-09-05",
+            "en": "13 episodes; latest 2026-09-05."
+          }
+        },
+        {
+          "id": "CM01",
+          "title": "Global Conservation Forum",
+          "kind": "community",
+          "language": "en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://cool.culturalheritage.org/byform/mailing-lists/cdl/",
+          "note": {
+            "ja": "2019年9月に移行",
+            "en": "Migrated in September 2019."
+          }
+        },
+        {
+          "id": "CM05",
+          "title": "ECPN（AIC 若手部会）Facebook グループ",
+          "titleEn": "ECPN (AIC's emerging professionals group) Facebook group",
+          "kind": "community",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://conservation-wiki.com/wiki/Conservation_on_Social_Media"
+        },
+        {
+          "id": "ED04",
+          "title": "AIC & FAIC Learning",
+          "kind": "course",
+          "language": "en",
+          "source": "society",
+          "url": "https://learning.culturalheritage.org/",
+          "note": {
+            "ja": "Yoshiyuki Nishio による屏風の解説動画を販売",
+            "en": "Sells the tutorial video on Japanese folding screens by Yoshiyuki Nishio."
+          }
+        },
+        {
+          "id": "CC08",
+          "title": "Japanese Paper Company",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial"
+        },
+        {
+          "id": "CC11",
+          "title": "Helen Hiebert Studio",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://helenhiebertstudio.com/books-about-japanese-paper/",
+          "note": {
+            "ja": "Barrett・Hughes・Buisson などの紹介",
+            "en": "Introduces Barrett, Hughes, Buisson and others."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regions",
+      "title": {
+        "ja": "産地",
+        "en": "Production areas"
+      },
+      "intro": {
+        "ja": "和紙の産地・産地施設・産地ごとの特徴を知るための資料。",
+        "en": "Papermaking regions, their facilities and what sets each region’s washi apart."
+      },
+      "items": [
+        {
+          "id": "JB05",
+          "title": "和紙の手帖：和紙の歴史・製法・用途・産地のすべて",
+          "titleEn": "Washi Handbook: Everything about the History, Manufacture, Uses and Papermaking Regions of Washi",
+          "authors": "全国手すき和紙連合会",
+          "year": "1988",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "industry",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002106362",
+          "note": {
+            "ja": "業界団体による入門書",
+            "en": "Introductory book by the industry association."
+          }
+        },
+        {
+          "id": "JB06",
+          "title": "和紙の手帖 2：産地の状況・和紙の本質から用途まで",
+          "titleEn": "Washi Handbook 2: From the State of the Papermaking Regions and the Nature of Washi to Its Uses",
+          "authors": "全国手すき和紙連合会",
+          "year": "1996",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "industry",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I024067556",
+          "note": {
+            "ja": "産地の現状と用途",
+            "en": "The current state of the papermaking regions, and uses of washi."
+          }
+        },
+        {
+          "id": "JB12",
+          "title": "産地別 すぐわかる和紙の見わけ方",
+          "titleEn": "Washi by Papermaking Region: An Easy Guide to Telling Papers Apart",
+          "authors": "久米康生",
+          "year": "2003",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000004272585",
+          "note": {
+            "ja": "産地ごとの見分け方を示す入門書",
+            "en": "Introductory guide to distinguishing washi by papermaking region."
+          }
+        },
+        {
+          "id": "JB14",
+          "title": "手すきの紙郷",
+          "titleEn": "Handmade Papermaking Regions",
+          "authors": "久米康生",
+          "year": "1978",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001379099",
+          "note": {
+            "ja": "全国の紙郷",
+            "en": "Papermaking regions throughout Japan."
+          }
+        },
+        {
+          "id": "JB16",
+          "title": "和紙の風土",
+          "titleEn": "Washi and Its Environment (Fūdo)",
+          "authors": "町田誠之",
+          "year": "1981",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001500187",
+          "note": {
+            "ja": "和紙と風土",
+            "en": "Washi in relation to climate and locality (fūdo)."
+          }
+        },
+        {
+          "id": "JB22",
+          "title": "和紙の旅：時と場所の道",
+          "titleEn": "Journeys of Washi: Paths through Time and Place",
+          "authors": "寿岳文章",
+          "year": "1973",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001142233"
+        },
+        {
+          "id": "JB23",
+          "title": "紙漉村旅日記",
+          "titleEn": "Travel Diary of Papermaking Villages",
+          "authors": "寿岳文章・寿岳しづ",
+          "year": "1944",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001815764",
+          "note": {
+            "ja": "戦前の全国紙漉き村の踏査記録",
+            "en": "Pre-war record of field visits to papermaking villages across Japan."
+          }
+        },
+        {
+          "id": "JB24",
+          "title": "日本の紙・紙漉村旅日記",
+          "titleEn": "Japanese Paper / Travel Diary of Papermaking Villages",
+          "authors": "寿岳文章・寿岳しづ",
+          "year": "1994",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002325815",
+          "note": {
+            "ja": "『日本の紙』と『紙漉村旅日記』の普及版を合わせた1冊",
+            "en": "A single volume combining the popular editions of Japanese Paper and Travel Diary of Papermaking Villages."
+          }
+        },
+        {
+          "id": "JB25",
+          "title": "和紙風土記",
+          "titleEn": "Washi Fudoki (A Regional Record of Washi)",
+          "authors": "寿岳文章",
+          "year": "1941",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001880698"
+        },
+        {
+          "id": "JB26",
+          "title": "和紙：風土・歴史・技法",
+          "titleEn": "Washi: Environment, History and Techniques",
+          "authors": "柳橋眞",
+          "year": "1981",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001542452",
+          "note": {
+            "ja": "柳橋の代表的な概説書",
+            "en": "The author's principal general survey."
+          }
+        },
+        {
+          "id": "JB34",
+          "title": "和紙のすばらしさ：日本・韓国・中国への製紙行脚",
+          "titleEn": "A Papermaking Pilgrimage to Japan, Korea and China",
+          "authors": "Dard Hunter、久米康生（訳）",
+          "year": "2009",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000010561941",
+          "note": {
+            "ja": "英語の古典の翻訳（原典は Dard Hunter『A Papermaking Pilgrimage to Japan, Korea and China』）",
+            "en": "Japanese translation of an English classic; the original is A Papermaking Pilgrimage to Japan, Korea and China."
+          }
+        },
+        {
+          "id": "EB06",
+          "title": "A Papermaking Pilgrimage to Japan, Korea and China",
+          "authors": "Dard Hunter",
+          "year": "1936",
+          "kind": "book",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://collections.lib.utah.edu/details?id=122412",
+          "note": {
+            "ja": "日韓中の紙見本貼込み",
+            "en": "Includes tipped-in paper samples from Japan, Korea and China."
+          }
+        },
+        {
+          "id": "EB09",
+          "title": "Handbook on the Art of Washi",
+          "authors": "All Japan Handmade Washi Association（全国手すき和紙連合会）",
+          "year": "1991",
+          "kind": "book",
+          "language": "en",
+          "access": "paid",
+          "source": "industry",
+          "url": "https://hiromipaper.com/products/handbook-on-the-art-of-washi",
+          "note": {
+            "ja": "Q&A形式で和紙・製法・歴史・地域差",
+            "en": "Question-and-answer format covering washi, its manufacture, history and regional differences."
+          }
+        },
+        {
+          "id": "EB22",
+          "title": "Paper Conservation and Paper Making Traditions in East Asia",
+          "authors": "UNESCO",
+          "year": "2015",
+          "kind": "book",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://webarchive.unesco.org/web/20160913051459/http://unesdoc.unesco.org/images/0024/002454/245494m.pdf",
+          "note": {
+            "ja": "北朝鮮・韓国・日本・モンゴル・中国から約12本",
+            "en": "About twelve papers from North Korea, South Korea, Japan, Mongolia and China."
+          }
+        },
+        {
+          "id": "NL03",
+          "title": "季刊和紙",
+          "titleEn": "Quarterly Washi",
+          "kind": "newsletter",
+          "language": "ja",
+          "access": "paid",
+          "source": "industry",
+          "url": "http://www.tesukiwashi.jp/p/zenwaren_books.htm",
+          "note": {
+            "ja": "季刊の定期刊行は休止中",
+            "en": "Regular quarterly publication is currently suspended."
+          }
+        },
+        {
+          "id": "RP14",
+          "title": "2007年 活路開拓・調査研究ビジョン報告書",
+          "titleEn": "2007 Report on Finding New Avenues: Survey and Research Vision",
+          "authors": "全国手すき和紙連合会",
+          "year": "2007",
+          "kind": "report",
+          "language": "ja",
+          "access": "paid",
+          "source": "industry",
+          "url": "http://www.tesukiwashi.jp/p/zenwaren_books.htm",
+          "note": {
+            "ja": "産地の課題（E-4・E-5）",
+            "en": "Challenges facing the papermaking regions."
+          }
+        },
+        {
+          "id": "DB05",
+          "title": "文化遺産オンライン",
+          "titleEn": "Cultural Heritage Online",
+          "authors": "文化庁",
+          "kind": "database",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://online.bunka.go.jp/heritages/detail/209300",
+          "note": {
+            "ja": "「装潢修理技術」（選定保存技術、1995年5月31日選定",
+            "en": "Entry for 'Sōkō conservation techniques' (a Selected Conservation Technique, selected on 31 May 1995)."
+          }
+        },
+        {
+          "id": "OR08",
+          "title": "その他の県公設試・旧試験場",
+          "titleEn": "Other prefectural public research institutes and former experimental stations",
+          "authors": "：福井県工業技術センター",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.pref.fukui.lg.jp/doc/chisangi/sangakukan/r1setsumeikai_d/fil/10.pdf"
+        },
+        {
+          "id": "OR10",
+          "title": "全国手すき和紙連合会（全和連）",
+          "titleEn": "National Federation of Handmade Washi (Zenwaren)",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "industry",
+          "url": "http://www.tesukiwashi.jp/",
+          "note": {
+            "ja": "1963年に松江市で創設",
+            "en": "Founded in Matsue in 1963."
+          }
+        },
+        {
+          "id": "OR13",
+          "title": "いの町紙の博物館",
+          "titleEn": "Ino Town Paper Museum",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "paid",
+          "source": "public",
+          "url": "https://kamihaku.com/",
+          "note": {
+            "ja": "1985年開館",
+            "en": "Opened in 1985."
+          }
+        },
+        {
+          "id": "OR14",
+          "title": "石州和紙会館",
+          "titleEn": "Sekishū Washi Hall",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "paid",
+          "source": "public",
+          "url": "https://www.sekishu-washikaikan.com/",
+          "note": {
+            "ja": "2008年10月開館",
+            "en": "Opened in October 2008."
+          }
+        },
+        {
+          "id": "OR15",
+          "title": "越前和紙の里",
+          "titleEn": "Echizen Washi Village",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "paid",
+          "source": "public",
+          "url": "https://www.echizenwashi.jp/",
+          "note": {
+            "ja": "紙の文化博物館・パピルス館・紙漉き体験（20〜40分）",
+            "en": "Museum of Paper Culture, Papyrus Hall and hands-on papermaking (20–40 minutes)."
+          }
+        },
+        {
+          "id": "OR16",
+          "title": "美濃和紙の里会館",
+          "titleEn": "Mino Washi Village Hall",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "paid",
+          "source": "public",
+          "url": "https://www.city.mino.gifu.jp/minogami/",
+          "note": {
+            "ja": "SNS は Facebook（MinoWashiPaperMuseum）のみサイトからリンク",
+            "en": "For social media, only Facebook (MinoWashiPaperMuseum) is linked from the website."
+          }
+        },
+        {
+          "id": "SN20",
+          "title": "越前和紙の里（@echizen.washi）",
+          "titleEn": "Echizen Washi Village (@echizen.washi)",
+          "kind": "social",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.echizenwashi.jp/",
+          "note": {
+            "ja": "産地の公式",
+            "en": "Official account of the papermaking region."
+          }
+        },
+        {
+          "id": "SN21",
+          "title": "いの町紙の博物館（@kami_haku）",
+          "titleEn": "Ino Town Paper Museum (@kami_haku)",
+          "kind": "social",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://kamihaku.com/"
+        },
+        {
+          "id": "SN23",
+          "title": "石州和紙会館（@washisekishu）",
+          "titleEn": "Sekishū Washi Hall (@washisekishu)",
+          "kind": "social",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.sekishu-washikaikan.com/"
+        },
+        {
+          "id": "VD18",
+          "title": "産地の小規模チャンネル（@HIDAKAWASHI）",
+          "titleEn": "Small channels from papermaking regions (@HIDAKAWASHI)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.youtube.com/@HIDAKAWASHI",
+          "note": {
+            "ja": "「越前和紙」「美濃和紙」「土佐和紙」「石州和紙」「細川紙」で検索しても大型の公式チャンネルはない（YouTube検索、2026-10-07）",
+            "en": "Searching for 'Echizen washi', 'Mino washi', 'Tosa washi', 'Sekishū washi' or 'Hosokawa-shi' turns up no large official channels (YouTube search, 2026-10-07)."
+          }
+        },
+        {
+          "id": "VD24",
+          "title": "越前和紙の紙漉き体験／福井の伝統工芸 越前和紙（YouTubeチャンネル）",
+          "titleEn": "Trying Echizen washi papermaking / Echizen washi, a traditional craft of Fukui (YouTube channel)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "commercial",
+          "note": {
+            "ja": "産地紹介",
+            "en": "An introduction to the papermaking region."
+          }
+        },
+        {
+          "id": "PO03",
+          "title": "紙について楽しく学ぶラジオ／Rethink Paper Project",
+          "titleEn": "Radio for Learning about Paper in a Fun Way / Rethink Paper Project",
+          "kind": "podcast",
+          "language": "ja",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://podcasts.apple.com/us/podcast/%E7%B4%99%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%A5%BD%E3%81%97%E3%81%8F%E5%AD%A6%E3%81%B6%E3%83%A9%E3%82%B8%E3%82%AA-rethink-paper-project/id1585898145",
+          "note": {
+            "ja": "208エピソード、最新2025-04-23で更新停止",
+            "en": "208 episodes; no updates since the latest, 2025-04-23."
+          }
+        }
+      ]
+    },
+    {
+      "id": "making",
+      "title": {
+        "ja": "製法",
+        "en": "Making washi"
+      },
+      "intro": {
+        "ja": "煮熟・叩解・ネリ・填料・乾燥など、和紙の作り方に関する資料。",
+        "en": "How washi is made: cooking, beating, neri, fillers, drying."
+      },
+      "items": [
+        {
+          "id": "JB07",
+          "title": "無形文化財記録 工芸技術編 3（手漉和紙：越前奉書・石州半紙・本美濃紙）",
+          "titleEn": "Records of Intangible Cultural Properties, Craft Techniques 3 (Handmade Washi: Echizen Hōsho, Sekishū Banshi, Hon-Minoshi)",
+          "authors": "文化庁",
+          "year": "1971",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001281582",
+          "note": {
+            "ja": "重要無形文化財の手漉和紙3技術を国が記録した公式記録",
+            "en": "Official government record of three handmade-washi techniques designated as Important Intangible Cultural Properties."
+          }
+        },
+        {
+          "id": "JB31",
+          "title": "美濃の紙漉き道具づくり",
+          "titleEn": "Making Papermaking Tools in Mino",
+          "authors": "柳橋眞",
+          "year": "1982",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001905044",
+          "note": {
+            "ja": "用具製作（E-3 道具を作る人）",
+            "en": "Tool making: the people who make papermaking tools."
+          }
+        },
+        {
+          "id": "JB36",
+          "title": "世界にほこる和紙",
+          "titleEn": "Washi: Japan's Pride before the World",
+          "year": "2021",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "commercial",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I031283791"
+        },
+        {
+          "id": "JB44",
+          "title": "和紙を科学する：製紙技術・繊維分析・文化財修復",
+          "titleEn": "The Science of Washi: Papermaking Technology, Fibre Analysis and the Conservation of Cultural Properties",
+          "authors": "大川昭典",
+          "year": "2024",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I033555564"
+        },
+        {
+          "id": "EB01",
+          "title": "Japanese Papermaking: Traditions, Tools, and Techniques",
+          "authors": "Timothy Barrett（付録 Winifred Lutz）",
+          "year": "1983",
+          "kind": "book",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://www.accartbooks.com/us/book/japanese-papermaking/datasheet/",
+          "note": {
+            "ja": "楮・三椏・雁皮の処理、ネリ、流し漉きの英語の標準書",
+            "en": "Standard English reference on processing kōzo, mitsumata and gampi, on neri, and on nagashi-zuki."
+          }
+        },
+        {
+          "id": "EB02",
+          "title": "Nagashizuki: The Japanese Craft of Hand Papermaking",
+          "authors": "Timothy Barrett",
+          "year": "1979",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://exhibitions.lib.udel.edu/things-arent-what-they-seem/exhibition-item/nagashizuki-the-japanese-craft-of-hand-papermaking/",
+          "note": {
+            "ja": "1975–77年の在日研究に基づく",
+            "en": "Based on the author's research in Japan in 1975–77."
+          }
+        },
+        {
+          "id": "EB03",
+          "title": "European Hand Papermaking: Traditions, Tools, and Techniques",
+          "authors": "Timothy Barrett",
+          "year": "2018",
+          "kind": "book",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://paper.lib.uiowa.edu/epm/",
+          "note": {
+            "ja": "日本と欧州の紙層形成を比べる材料",
+            "en": "Material for comparing sheet formation in Japan and Europe."
+          }
+        },
+        {
+          "id": "JN03",
+          "title": "紙パ技協誌",
+          "titleEn": "JAPAN TAPPI JOURNAL",
+          "authors": "紙パルプ技術協会",
+          "kind": "journal",
+          "language": "ja",
+          "access": "free",
+          "source": "peer",
+          "url": "https://www.jstage.jst.go.jp/browse/jtappij/-char/ja",
+          "note": {
+            "ja": "楮紙・薄美濃紙の湿潤強さに関する論文の掲載誌",
+            "en": "Journal in which the Japanese papers on the wet strength of kōzo paper and usumino paper were published."
+          }
+        },
+        {
+          "id": "PA01",
+          "title": "The Effect of Cooking Agents on Japanese Paper",
+          "authors": "Uyeda, T. T.、Saito, K.、Inaba, M.、Okawa, A.",
+          "year": "1999",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1515/rest.1999.20.3-4.119",
+          "note": {
+            "ja": "楮を木灰・ソーダ灰・石灰・苛性ソーダで煮熟比較",
+            "en": "Compares cooking kōzo with wood ash, soda ash, lime and caustic soda."
+          }
+        },
+        {
+          "id": "PA02",
+          "title": "The Effect of Cooking Agents on the Permanence of Washi (Part II)",
+          "authors": "Inaba, M.、Chen, G.、Uyeda, T. T.、Katsumata, K. S.、Okawa, A.",
+          "year": "2002",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1515/REST.2002.133",
+          "note": {
+            "ja": "正しくは2002年",
+            "en": "The correct year is 2002."
+          }
+        },
+        {
+          "id": "PA06",
+          "title": "Effect of Hemicellulose on the Wet Tensile Strength of Kozo Paper",
+          "authors": "Han, Z.、Kida, K.、Katsumata, K. S.、Handa, M.、Inaba, M.",
+          "year": "2023",
+          "kind": "paper",
+          "language": "en",
+          "access": "free",
+          "source": "peer",
+          "url": "https://www.mdpi.com/1420-3049/28/19/6996",
+          "note": {
+            "ja": "グルクロノキシランが湿潤引張強さに寄与",
+            "en": "Glucuronoxylan contributes to wet tensile strength."
+          }
+        },
+        {
+          "id": "PA07",
+          "title": "楮紙の湿潤強さへの煮熟方法の影響",
+          "titleEn": "Effect of Cooking Method on the Wet Strength of Kōzo Paper",
+          "authors": "韓知佑・半田昌規・貴田啓子・稲葉政満",
+          "year": "2020",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "peer",
+          "url": "https://hozonkagaku.geidai.ac.jp/inaba_archievement.pdf",
+          "note": {
+            "ja": "ヘミセルロースと楮紙の湿潤強さに関する英語論文の、日本語の先行研究",
+            "en": "Earlier Japanese-language study preceding the 2023 paper on hemicellulose and the wet tensile strength of kōzo paper."
+          }
+        },
+        {
+          "id": "PA08",
+          "title": "薄美濃紙の湿潤強さへの抄紙方法の影響",
+          "titleEn": "Effect of Sheet-Forming Method on the Wet Strength of Usumino Paper",
+          "authors": "稲葉政満ほか",
+          "year": "2019",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "peer",
+          "url": "https://hozonkagaku.geidai.ac.jp/inaba_archievement.pdf",
+          "note": {
+            "ja": "肌裏紙に使う薄美濃紙の強度",
+            "en": "Strength of the usumino paper used for first lining (hada-ura)."
+          }
+        },
+        {
+          "id": "PA21",
+          "title": "Neri: Colloidal Ingredient in Traditional Japanese Paper Production",
+          "authors": "Lorenz, S.、Rahm, A.、Lorenz, M.",
+          "year": "2012",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/20571682.2012.12462131",
+          "note": {
+            "ja": "ネリの英語論文（B-2）",
+            "en": "English-language paper on neri."
+          }
+        },
+        {
+          "id": "PA22",
+          "title": "Study Trip to Japan: Washi Manufacture – Seen Through Two Nordic Paper Conservator's Eyes",
+          "authors": "Journal of Paper Conservation 10(4): 7–21",
+          "year": "2009",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/20571682.2009.12462030",
+          "note": {
+            "ja": "北欧の修復士による産地訪問記",
+            "en": "Account by Nordic conservators of visits to papermaking regions."
+          }
+        },
+        {
+          "id": "PA56",
+          "title": "製紙に関する古代技術の研究（Ⅲ）―苧麻布・楮の臼搗による叩解―",
+          "titleEn": "Studies of Ancient Papermaking Techniques (III): Beating Ramie Cloth and Kōzo by Pounding in a Mortar",
+          "authors": "大川昭典・増田勝彦",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/24/24.html",
+          "note": {
+            "ja": "大川昭典の『保存科学』論文",
+            "en": "Ōkawa Akinori's paper in Hozon Kagaku (Science for Conservation)."
+          }
+        },
+        {
+          "id": "NL07",
+          "title": "かみさん通信",
+          "titleEn": "Kamisan Newsletter",
+          "authors": "高知県立紙産業技術センター メールニュース",
+          "kind": "newsletter",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.pref.kochi.lg.jp/doc/publication/",
+          "note": {
+            "ja": "問い合わせフォームから無料登録",
+            "en": "Free subscription via the enquiry form."
+          }
+        },
+        {
+          "id": "NL08",
+          "title": "Hand Papermaking magazine",
+          "kind": "newsletter",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://www.handpapermaking.org/publications/magazine",
+          "note": {
+            "ja": "実物の紙見本を綴じ込む",
+            "en": "Includes bound-in samples of actual paper."
+          }
+        },
+        {
+          "id": "NL09",
+          "title": "Bull & Branch",
+          "kind": "newsletter",
+          "language": "en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.northamericanhandpapermakers.org/",
+          "note": {
+            "ja": "Friends of Dard Hunter が1991–2008年に年3回刊行し、その後オンライン化（二次情報）",
+            "en": "Published three times a year by the Friends of Dard Hunter from 1991 to 2008, then moved online (secondary source)."
+          }
+        },
+        {
+          "id": "RP03",
+          "title": "高知県立紙産業技術センター報告",
+          "titleEn": "Reports of the Kōchi Prefectural Paper Industry Technology Centre",
+          "authors": "高知県立紙産業技術センター",
+          "year": "1996",
+          "kind": "report",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.pref.kochi.lg.jp/doc/publication/file_contents/report30.pdf",
+          "note": {
+            "ja": "第30号に技術相談「紙の繊維分析法」「文化財修復用和紙」、研修生受入れ「繊維組成検査中級研修 国宝修理装潢師連盟」（2024年8月・11月、各2名）",
+            "en": "No. 30 includes the technical consultation items 'Methods of fibre analysis of paper' and 'Washi for the conservation of cultural properties', and a trainee report, 'Intermediate training in fibre composition testing, Association for Conservation of National Treasures' (August and November 2024, two trainees each)."
+          }
+        },
+        {
+          "id": "RP04",
+          "title": "手漉和紙用具製作技術記録書",
+          "titleEn": "Technical Record of Tool-making for Handmade Washi",
+          "authors": "高知県立紙産業技術センター",
+          "kind": "report",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.pref.kochi.lg.jp/doc/publication/",
+          "note": {
+            "ja": "簀・桁など用具製作の記録（E-3）",
+            "en": "Record of the making of tools such as the su (screen) and keta (frame)."
+          }
+        },
+        {
+          "id": "RP16",
+          "title": "愛媛県産業技術研究所 紙産業技術センター 研究成果発表資料",
+          "titleEn": "Research Results Presentation Materials, Paper Industry Technology Centre, Ehime Prefectural Industrial Technology Institute",
+          "authors": "愛媛県産業技術研究所 紙産業技術センター",
+          "kind": "report",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.pref.ehime.jp/page/9338.html",
+          "note": {
+            "ja": "機能紙・CNF 中心で和紙・文化財の比重は小さい",
+            "en": "Centred on functional papers and CNF; washi and cultural properties have little weight."
+          }
+        },
+        {
+          "id": "OR07",
+          "title": "愛媛県産業技術研究所 紙産業技術センター",
+          "titleEn": "Ehime Prefectural Institute of Industrial Technology, Paper Industry Technology Centre",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.pref.ehime.jp/page/9338.html",
+          "note": {
+            "ja": "機能紙が中心。研究成果発表資料を公開",
+            "en": "Mainly functional papers; one of its reports is in this list."
+          }
+        },
+        {
+          "id": "OR26",
+          "title": "North American Hand Papermakers（NAHP）",
+          "kind": "organisation",
+          "language": "en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.northamericanhandpapermakers.org/",
+          "note": {
+            "ja": "毎年テーマを変えた年次会議、月次メールニュースレター（会員向け）、会報「Bull & Branch」、Resources on Papermaking、Hall of Papermaking Champions",
+            "en": "An annual conference with a different theme each year, a monthly email newsletter (for members), Bull & Branch, Resources on Papermaking and the Hall of Papermaking Champions."
+          }
+        },
+        {
+          "id": "SN24",
+          "title": "NAHP（@nahandpapermakers）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.northamericanhandpapermakers.org/"
+        },
+        {
+          "id": "SN25",
+          "title": "Hand Papermaking（@handpapermaking）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.handpapermaking.org/"
+        },
+        {
+          "id": "SN26",
+          "title": "Helen Hiebert（@helenhiebert）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://helenhiebertstudio.com/",
+          "note": {
+            "ja": "番組「Paper Talk」と Facebook グループ（ClubPaper）も運営",
+            "en": "Her podcast and Facebook group are also in this list."
+          }
+        },
+        {
+          "id": "VD11",
+          "title": "Awagami Factory（@AwagamiFactory）",
+          "kind": "video",
+          "language": "ja-en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.youtube.com/channel/UCEhXew9ti-orVQidaqaj2tQ",
+          "note": {
+            "ja": "阿波和紙の製造",
+            "en": "The making of Awa washi."
+          }
+        },
+        {
+          "id": "VD13",
+          "title": "TALAS（@TALASonline）",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.youtube.com/@TALASonline",
+          "note": {
+            "ja": "「手漉き楮和紙の作り方」「和紙で本の綴じ目を修復する」",
+            "en": "'How handmade kōzo washi is made' and 'Repairing a book's joint with washi'."
+          }
+        },
+        {
+          "id": "VD17",
+          "title": "Helen Hiebert（YouTubeチャンネル）",
+          "titleEn": "Helen Hiebert (YouTube channel)",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://helenhiebertstudio.com/",
+          "note": {
+            "ja": "紙づくり",
+            "en": "Papermaking."
+          }
+        },
+        {
+          "id": "VD21",
+          "title": "Corsoyard（YouTubeチャンネル）",
+          "titleEn": "Corsoyard (YouTube channel)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "commercial",
+          "note": {
+            "ja": "本美濃紙の紙づくり",
+            "en": "Papermaking of Hon-minoshi."
+          }
+        },
+        {
+          "id": "VD22",
+          "title": "手技TEWAZA「美濃和紙」（YouTubeチャンネル）",
+          "titleEn": "Tewaza (Handiwork): 'Mino Washi' (YouTube channel)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "industry",
+          "note": {
+            "ja": "公式シリーズ",
+            "en": "An official series."
+          }
+        },
+        {
+          "id": "VD23",
+          "title": "THE MAKING（210）和紙ができるまで（YouTubeチャンネル）",
+          "titleEn": "THE MAKING (210): How Washi Is Made (YouTube channel)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "commercial",
+          "note": {
+            "ja": "科学技術映像の定番",
+            "en": "A standard among science and technology films."
+          }
+        },
+        {
+          "id": "PO02",
+          "title": "Paper Talk",
+          "kind": "podcast",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://podcasts.apple.com/us/podcast/paper-talk/id1108636248",
+          "note": {
+            "ja": "161エピソード、最新2026-10-03",
+            "en": "161 episodes; latest 2026-10-03."
+          }
+        },
+        {
+          "id": "PO09",
+          "title": "Papermaker Podcast",
+          "kind": "podcast",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://podcasts.apple.com/us/podcast/papermaker-podcast/id998735073",
+          "note": {
+            "ja": "8回、最新2024-04",
+            "en": "8 episodes; latest 2024-04."
+          }
+        },
+        {
+          "id": "CM07",
+          "title": "ClubPaper／HelenHiebertPaperStudio",
+          "kind": "community",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://helenhiebertstudio.com/",
+          "note": {
+            "ja": "製紙側のコミュニティ",
+            "en": "A community on the papermaking side."
+          }
+        },
+        {
+          "id": "ED08",
+          "title": "Hiromi Paper ワークショップ",
+          "titleEn": "Hiromi Paper workshops",
+          "kind": "course",
+          "language": "en",
+          "access": "paid",
+          "source": "commercial",
+          "url": "https://hiromipaper.com/collections/workshops"
+        },
+        {
+          "id": "CC01",
+          "title": "Awagami Factory",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://awagami.com/",
+          "note": {
+            "ja": "藤森家が300年以上",
+            "en": "Run by the Fujimori family for more than 300 years."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fibres",
+      "title": {
+        "ja": "原料",
+        "en": "Raw fibres"
+      },
+      "intro": {
+        "ja": "楮・三椏・雁皮などの原料の性質・栽培・流通に関する資料。",
+        "en": "Kōzo, mitsumata, gampi and other fibres: their properties, cultivation and supply."
+      },
+      "items": [
+        {
+          "id": "JB09",
+          "title": "楮・三椏",
+          "titleEn": "Kōzo and Mitsumata",
+          "authors": "田中求・宍倉佐敏・富樫朗",
+          "year": "2018",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I028986837",
+          "note": {
+            "ja": "栽培から加工までを扱う原料本",
+            "en": "Book on the raw materials, from cultivation to processing."
+          }
+        },
+        {
+          "id": "JB28",
+          "title": "美濃の紙漉きから見た全国の楮原料",
+          "titleEn": "Kōzo Raw Materials across Japan, Seen from Mino Papermaking",
+          "authors": "柳橋眞",
+          "year": "1983",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001905043",
+          "note": {
+            "ja": "楮原料の全国比較",
+            "en": "Nationwide comparison of kōzo raw material."
+          }
+        },
+        {
+          "id": "JB29",
+          "title": "美濃紙の原材料",
+          "titleEn": "The Raw Materials of Mino Paper",
+          "authors": "柳橋眞・宮崎謙一",
+          "year": "1986",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001905041"
+        },
+        {
+          "id": "JB30",
+          "title": "那須楮の現状",
+          "titleEn": "The Current State of Nasu Kōzo",
+          "authors": "柳橋眞",
+          "year": "1987",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001927982",
+          "note": {
+            "ja": "修復用の楮として重視される那須楮の調査",
+            "en": "Survey of Nasu kōzo, which is highly valued for conservation use."
+          }
+        },
+        {
+          "id": "PA12",
+          "title": "Washi: Understanding Japanese Paper as a Material of Culture and Conservation",
+          "authors": "Prestowitz, B.、Katayama, Y.",
+          "year": "2018",
+          "kind": "paper",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://cool.culturalheritage.org/coolaic/sg/bpg/annual/v37/bpga37-13.pdf",
+          "note": {
+            "ja": "著者は Williamstown Art Conservation Center と Hiromi Paper",
+            "en": "The authors are from the Williamstown Art Conservation Center and Hiromi Paper."
+          }
+        },
+        {
+          "id": "PA15",
+          "title": "和紙の変遷と未来像",
+          "titleEn": "Washi: Its Changes over Time and a Vision for the Future",
+          "authors": "山下実",
+          "year": "2017",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.jstage.jst.go.jp/browse/jsssj/38/6/_contents/-char/ja",
+          "note": {
+            "ja": "3頁の短い記事",
+            "en": "A short three-page article."
+          }
+        },
+        {
+          "id": "RP15",
+          "title": "岐阜県産業技術総合センター 研究報告",
+          "titleEn": "Research Reports of the Gifu Prefectural Industrial Technology Centre",
+          "authors": "岐阜県産業技術総合センター",
+          "kind": "report",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.gitec.rd.pref.gifu.lg.jp/files/reports/2015/paper_2015_20.pdf",
+          "note": {
+            "ja": "旧 岐阜県紙業試験場（1928年設立）",
+            "en": "Formerly the Gifu Prefectural Paper Industry Experimental Station (founded 1928)."
+          }
+        },
+        {
+          "id": "DB03",
+          "title": "CAMEO",
+          "authors": "Museum of Fine Arts, Boston",
+          "kind": "database",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://cameo.mfa.org/",
+          "note": {
+            "ja": "材料事典",
+            "en": "Encyclopaedia of materials."
+          }
+        },
+        {
+          "id": "OR06",
+          "title": "岐阜県産業技術総合センター",
+          "titleEn": "Gifu Prefectural Comprehensive Industrial Technology Centre",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.gitec.rd.pref.gifu.lg.jp/files/reports/2015/paper_2015_20.pdf",
+          "note": {
+            "ja": "美濃楮・美濃和紙の研究（研究報告を公開）",
+            "en": "Research on Mino kōzo and Mino washi, including a report in this list."
+          }
+        },
+        {
+          "id": "CC02",
+          "title": "Hiromi Paper",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://hiromipaper.com/",
+          "note": {
+            "ja": "25年以上、職人と修復士・版画家をつなぐ",
+            "en": "For more than 25 years, has connected papermakers with conservators and printmakers."
+          }
+        },
+        {
+          "id": "CC05",
+          "title": "TALAS",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "note": {
+            "ja": "「ライスペーパー」誤称の訂正という切り口",
+            "en": "Framed around correcting the misnomer 'rice paper'."
+          }
+        }
+      ]
+    },
+    {
+      "id": "uses",
+      "title": {
+        "ja": "用途・選び方",
+        "en": "Uses and selection"
+      },
+      "intro": {
+        "ja": "和紙ごとの用途、代替、入手性、選び方に関する資料。",
+        "en": "What each washi is used for, substitutes, availability and how to choose."
+      },
+      "items": [
+        {
+          "id": "JB27",
+          "title": "手漉き和紙：暮らしを彩る和のこころ",
+          "titleEn": "Handmade Washi: The Japanese Spirit That Brightens Everyday Life",
+          "authors": "柳橋眞",
+          "year": "2004",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000007305818",
+          "note": {
+            "ja": "専門家による一般向け書",
+            "en": "Book for general readers by a specialist."
+          }
+        },
+        {
+          "id": "CT07",
+          "title": "金唐革紙と擬革紙",
+          "titleEn": "Kinkarakawa-shi (Gilt Leather Paper) and Imitation Leather Paper",
+          "authors": "久米康生",
+          "year": "2003",
+          "kind": "catalogue",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000009581440"
+        },
+        {
+          "id": "VD12",
+          "title": "The Japanese Paper Place Official（@the_jpp）",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.youtube.com/@the_jpp",
+          "note": {
+            "ja": "和紙の紹介",
+            "en": "Introductions to washi."
+          }
+        },
+        {
+          "id": "CC06",
+          "title": "Pigment Tokyo",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial"
+        },
+        {
+          "id": "CC07",
+          "title": "Moriki Paper",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial"
+        }
+      ]
+    },
+    {
+      "id": "makers",
+      "title": {
+        "ja": "生産者の声",
+        "en": "Makers' voices"
+      },
+      "intro": {
+        "ja": "紙漉き・原料生産者・道具づくりの人々の声と現状に関する資料。",
+        "en": "Papermakers, fibre growers and toolmakers: their voices and their situation today."
+      },
+      "items": [
+        {
+          "id": "SN16",
+          "title": "Awagami Factory（@awagami_factory）",
+          "kind": "social",
+          "language": "ja-en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://awagami.com/",
+          "note": {
+            "ja": "英語が日本語の約3.3倍という差は維持",
+            "en": "English still outweighs Japanese by a factor of about 3.3."
+          }
+        },
+        {
+          "id": "VD15",
+          "title": "Baumgartner Restoration（@BaumgartnerRestoration）",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.youtube.com/@BaumgartnerRestoration",
+          "note": {
+            "ja": "「Behind The Canvas S02E06 – Hidakawashi Washi Kozo」約12.5万回",
+            "en": "'Behind The Canvas S02E06 – Hidakawashi Washi Kozo', about 125,000 views."
+          }
+        },
+        {
+          "id": "VD20",
+          "title": "明日への扉 by アットホーム #121（YouTubeチャンネル）",
+          "titleEn": "Door to Tomorrow by at home #121 (YouTube channel)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "commercial",
+          "note": {
+            "ja": "職人ドキュメンタリー（E-1）",
+            "en": "A documentary on a craftsperson."
+          }
+        },
+        {
+          "id": "VD25",
+          "title": "【職人技】300人からたった2人に…23歳（YouTubeチャンネル）",
+          "titleEn": "[Craftsmanship] From 300 people down to just two... aged 23 (YouTube channel)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "commercial",
+          "note": {
+            "ja": "後継者問題の報道（E-4）",
+            "en": "A news report on the shortage of successors."
+          }
+        }
+      ]
+    },
+    {
+      "id": "appearance",
+      "title": {
+        "ja": "外観・質感",
+        "en": "Appearance and texture"
+      },
+      "intro": {
+        "ja": "透過光・反射光・顕微鏡像など、紙の見え方・手触りに関する資料。",
+        "en": "How paper looks and feels: transmitted and reflected light, micrographs, texture."
+      },
+      "items": [
+        {
+          "id": "CT06",
+          "title": "和紙と洋紙：その相違点と類似点",
+          "titleEn": "Washi and Western Paper: Their Differences and Similarities",
+          "authors": "紙の博物館",
+          "year": "2013",
+          "kind": "catalogue",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I025149812",
+          "note": {
+            "ja": "和紙と洋紙の比較",
+            "en": "Comparison of washi and Western paper."
+          }
+        },
+        {
+          "id": "PA71",
+          "title": "和紙の平衡含水率について―市販の楮紙および美濃紙における測定結果―",
+          "titleEn": "On the Equilibrium Moisture Content of Washi: Measurements on Commercial Kōzo Paper and Mino Paper",
+          "authors": "近藤修平ほか",
+          "year": "2026",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/65/MOKUZI65.html",
+          "note": {
+            "ja": "最新号の和紙論文",
+            "en": "Washi paper in the journal's latest issue."
+          }
+        },
+        {
+          "id": "CC09",
+          "title": "McClain's WASHI PAPER SAMPLE BOOK",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial"
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "title": {
+        "ja": "修復実践",
+        "en": "Conservation practice"
+      },
+      "intro": {
+        "ja": "裏打ち・折れ伏せ・繕い・表面処置など、修復技法と作業の実際。",
+        "en": "Conservation techniques in practice: lining, fold reinforcement, mending, surface treatment."
+      },
+      "items": [
+        {
+          "id": "JB45",
+          "title": "装潢文化財の保存修理：東洋絵画・書跡修理の現在",
+          "titleEn": "Conservation of Sōkō Cultural Properties: East Asian Painting and Calligraphy Conservation Today",
+          "authors": "国宝修理装潢師連盟",
+          "year": "2015",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "industry",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I026989534",
+          "note": {
+            "ja": "業界団体（国宝修理装潢師連盟）による現行の修理実務の解説。研究者の原典と合わせて読むとよい",
+            "en": "Best cited as the professional association's account of current practice, used alongside primary sources by researchers."
+          }
+        },
+        {
+          "id": "JB47",
+          "title": "日本の表装と修理",
+          "titleEn": "Mounting and Conservation in Japan",
+          "authors": "岩崎奈緒子・中野慎之・森道彦・横内裕人",
+          "year": "2020",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I030330248",
+          "note": {
+            "ja": "研究者による日本絵画の表装と修理の学術書",
+            "en": "Scholarly book by researchers on the mounting and conservation of Japanese paintings."
+          }
+        },
+        {
+          "id": "JB48",
+          "title": "古文書修補六十年：和装本の修補と造本",
+          "titleEn": "Sixty Years of Repairing Historical Documents: The Repair and Binding of Japanese-Style Books",
+          "authors": "遠藤諦之輔",
+          "year": "1987",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001871274",
+          "note": {
+            "ja": "古文書・和装本修補の古典的実務書",
+            "en": "Classic practical manual on the repair of historical documents and Japanese-bound books."
+          }
+        },
+        {
+          "id": "JB50",
+          "title": "表具のしおり：表装の歴史と技法",
+          "titleEn": "A Guide to Hyōgu: The History and Techniques of Mounting",
+          "authors": "山本元",
+          "year": "1993",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002285433",
+          "note": {
+            "ja": "表具師による表具書の古典",
+            "en": "Classic book on mounting by a professional mounter."
+          }
+        },
+        {
+          "id": "JB51",
+          "title": "京表具のすすめ",
+          "titleEn": "An Invitation to Kyoto Mounting (Kyō-hyōgu)",
+          "authors": "宇佐美直八",
+          "year": "1991",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002145378",
+          "note": {
+            "ja": "宇佐美松鶴堂の当主による京表具の入門書",
+            "en": "Introduction to Kyoto-style mounting by the head of Usami Shōkakudō."
+          }
+        },
+        {
+          "id": "JB53",
+          "title": "イラスト表装・表具入門",
+          "titleEn": "Illustrated Introduction to Mounting (Hyōsō and Hyōgu)",
+          "authors": "表装表具研究会",
+          "year": "1994",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "commercial",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000003068103",
+          "note": {
+            "ja": "一般向け入門書",
+            "en": "Introductory book for general readers."
+          }
+        },
+        {
+          "id": "CT02",
+          "title": "文化財修理の最先端：文化財保存修理所開所40周年記念 特別企画",
+          "titleEn": "The Cutting Edge of Cultural Property Conservation: Special Exhibition Marking the 40th Anniversary of the Conservation Studio for Cultural Properties",
+          "authors": "京都国立博物館",
+          "year": "2020",
+          "kind": "catalogue",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I031188932",
+          "note": {
+            "ja": "修理展の図録として最も充実",
+            "en": "The most comprehensive exhibition catalogue among conservation exhibitions."
+          }
+        },
+        {
+          "id": "CT03",
+          "title": "特集陳列 博物館と文化財修理",
+          "titleEn": "Special Display: Museums and the Conservation of Cultural Properties",
+          "authors": "九州国立博物館",
+          "year": "2008",
+          "kind": "catalogue",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000010005583",
+          "note": {
+            "ja": "文化財保存修復施設開設3周年記念",
+            "en": "Marks the third anniversary of the opening of the museum's conservation facilities."
+          }
+        },
+        {
+          "id": "CT08",
+          "title": "表装の愉しみ：ある表具師のものがたり",
+          "titleEn": "The Pleasures of Mounting: The Story of a Mounter",
+          "authors": "泉屋博古館",
+          "year": "2023",
+          "kind": "catalogue",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I033167024",
+          "note": {
+            "ja": "表具師に焦点を当てた展覧会",
+            "en": "Exhibition focusing on the mounter (hyōgu-shi)."
+          }
+        },
+        {
+          "id": "CT09",
+          "title": "美の装い表具展：絵画を活かす伝統の技",
+          "titleEn": "Dressing Beauty: Hyōgu Exhibition: Traditional Techniques That Bring Paintings to Life",
+          "authors": "名都美術館・陽光堂",
+          "year": "2021",
+          "kind": "catalogue",
+          "language": "ja",
+          "access": "library",
+          "source": "industry",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I032080796",
+          "note": {
+            "ja": "業界の協力による美術館図録",
+            "en": "Museum exhibition catalogue produced with the cooperation of the mounting trade."
+          }
+        },
+        {
+          "id": "EB10",
+          "title": "Japanese Scroll Paintings: A Handbook of Mounting Techniques",
+          "authors": "Masako Koyano",
+          "year": "1979",
+          "kind": "book",
+          "language": "en",
+          "access": "paid",
+          "source": "society",
+          "url": "https://www.culturalheritage.org/publications/books-periodicals/shop/japanese-scroll-paintings-a-handbook-of-mounting-techniques",
+          "note": {
+            "ja": "英語で検証できた唯一の装潢ハンドブック（45年以上前）",
+            "en": "The only English-language sōkō handbook we could verify (published more than 45 years ago)."
+          }
+        },
+        {
+          "id": "EB11",
+          "title": "Curatorial Care of Works of Art on Paper",
+          "authors": "Anne F. Clapp",
+          "year": "1987",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://libcat.library.tamu.edu/Record/in00000579756",
+          "note": {
+            "ja": "補修・平滑化・マット装・保管の古典的手引き",
+            "en": "Classic guide to repair, flattening, mat mounting and storage."
+          }
+        },
+        {
+          "id": "EB14",
+          "title": "Paper Conservation Catalog",
+          "authors": "AIC Book and Paper Group",
+          "year": "1984",
+          "kind": "book",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://cool.culturalheritage.org/coolaic/sg/bpg/pcc/",
+          "note": {
+            "ja": "Humidification・Mending 章",
+            "en": "See the Humidification and Mending chapters."
+          }
+        },
+        {
+          "id": "EB15",
+          "title": "Conservation of Books",
+          "authors": "Abigail Bainbridge",
+          "year": "2023",
+          "kind": "book",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://www.nhbs.com/conservation-of-books",
+          "note": {
+            "ja": "第5章 \"East-Asian Bindings\"",
+            "en": "Chapter 5, \"East-Asian Bindings\"."
+          }
+        },
+        {
+          "id": "EB18",
+          "title": "Conservation of Far Eastern Art Objects",
+          "authors": "東京国立文化財研究所",
+          "year": "1980",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/english/contents_sympo.html",
+          "note": {
+            "ja": "14本＋討議",
+            "en": "Fourteen papers plus discussions."
+          }
+        },
+        {
+          "id": "EB19",
+          "title": "The Conservation of Far Eastern Art",
+          "authors": "John S. Mills, Perry Smith、Kazuo Yamasaki",
+          "year": "1988",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "society",
+          "url": "https://library.vangoghmuseum.nl/Details/fullCatalogue/300011071",
+          "note": {
+            "ja": "Crossref では Studies in Conservation 33(sup1) として登録",
+            "en": "Registered in Crossref as Studies in Conservation 33 (sup1)."
+          }
+        },
+        {
+          "id": "EB20",
+          "title": "An Unbroken History: Conserving East Asian Works of Art and Heritage",
+          "authors": "Austin Nevin ほか",
+          "year": "2015",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "society",
+          "url": "https://archetype.co.uk/our-titles/iic-2014-hong-kong-congress-an-unbroken-history/?id=232",
+          "note": {
+            "ja": "IIC 2014 香港大会",
+            "en": "IIC 2014 Hong Kong Congress."
+          }
+        },
+        {
+          "id": "JN08",
+          "title": "AIC Book and Paper Group Annual",
+          "authors": "AIC BPG",
+          "kind": "journal",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.culturalheritage.org/groups/book-paper-group/bpg-annual",
+          "note": {
+            "ja": "発表論文集で査読付きとは限らない",
+            "en": "Collected conference papers; not necessarily peer-reviewed."
+          }
+        },
+        {
+          "id": "JN09",
+          "title": "Journal of the Institute of Conservation",
+          "kind": "journal",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://www.icon.org.uk/resources/journal-of-the-institute-of-conservation.html",
+          "note": {
+            "ja": "The Paper Conservator の論文は DOI 10.1080/03094227. から引ける",
+            "en": "Articles from The Paper Conservator can be found by the DOI prefix 10.1080/03094227, including several in this list."
+          }
+        },
+        {
+          "id": "JN11",
+          "title": "Journal of Paper Conservation",
+          "kind": "journal",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://oapublishing.mpdl.mpg.de/journals/Record/Taylor%20&%20Francis-YJPC",
+          "note": {
+            "ja": "DOI接頭辞 10.1080/20571682（2011–15）、10.1080/18680860（2016–）",
+            "en": "DOI prefixes 10.1080/20571682 (2011–15) and 10.1080/18680860 (2016 onwards)."
+          }
+        },
+        {
+          "id": "PA19",
+          "title": "Toning Japanese tissue papers: An international survey of paper conservation practitioners",
+          "authors": "Soleymani, S.、Ireland, T.、McNevin, D.",
+          "year": "2015",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/10344233.2015.1126990",
+          "note": {
+            "ja": "補修紙の調色の国際調査",
+            "en": "International survey on toning repair paper."
+          }
+        },
+        {
+          "id": "PA35",
+          "title": "Changes in the peel strength between the painting and first lining papers in Japanese scroll model samples",
+          "authors": "Lee, K.、Enomae, T.、Inaba, M.",
+          "year": "2025",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1016/j.ijadhadh.2024.103875"
+        },
+        {
+          "id": "PA41",
+          "title": "A dry method for removing the backing papers from Japanese paintings",
+          "authors": "Oka, I.（岡岩太郎）",
+          "year": "1988",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "society",
+          "url": "https://doi.org/10.1179/sic.1988.33.1.69",
+          "note": {
+            "ja": "IIC 京都",
+            "en": "IIC Kyoto Congress."
+          }
+        },
+        {
+          "id": "PA42",
+          "title": "Japanese Print Conservation – An Overview",
+          "authors": "Keyes, K.",
+          "year": "1988",
+          "kind": "paper",
+          "language": "en",
+          "access": "library",
+          "source": "society",
+          "url": "https://conservation-wiki.com/wiki/BPG_Asian_Papers",
+          "note": {
+            "ja": "浮世絵版画の修復",
+            "en": "Conservation of ukiyo-e prints."
+          }
+        },
+        {
+          "id": "PA43",
+          "title": "Mounting techniques for Asian silk paintings and calligraphy using two colours of lining paper",
+          "authors": "Gao、Hsiao",
+          "year": "2014",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "society",
+          "url": "https://doi.org/10.1179/204705814x13975704319794",
+          "note": {
+            "ja": "二色の裏打紙",
+            "en": "Lining paper in two colours."
+          }
+        },
+        {
+          "id": "PA46",
+          "title": "Mounting and Conservation of Japanese Painting",
+          "authors": "Ann Yonemura",
+          "year": "1996",
+          "kind": "paper",
+          "language": "en",
+          "access": "library",
+          "source": "public",
+          "url": "https://archive.asia.si.edu/research/dcsr/eapcs.asp",
+          "note": {
+            "ja": "Freer／Sackler 系で最も近い出版物",
+            "en": "The closest available publication from the Freer/Sackler."
+          }
+        },
+        {
+          "id": "PA48",
+          "title": "Remoistenable Tissue Preparation and its Practical Aspects",
+          "authors": "Pataki, A.",
+          "year": "2009",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1515/rest.004",
+          "note": {
+            "ja": "リモイスタブル・ティッシュ（頁は Crossref 未登録）",
+            "en": "Remoistenable tissue (page numbers not registered in Crossref)."
+          }
+        },
+        {
+          "id": "PA49",
+          "title": "Repair on Iron Gall Ink with Remoistenable Tissue",
+          "authors": "van Velzen, B.",
+          "year": "2011",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/20571682.2011.12462097",
+          "note": {
+            "ja": "鉄胆インク",
+            "en": "Iron gall ink."
+          }
+        },
+        {
+          "id": "PA50",
+          "title": "Berlin Tissue: It's Worth Every Penny!",
+          "authors": "JPC 12(2): 35–36",
+          "year": "2011",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/20571682.2011.12462096",
+          "note": {
+            "ja": "楮＋三椏混合のベルリン・ティッシュ",
+            "en": "Berlin tissue, a blend of kōzo and mitsumata."
+          }
+        },
+        {
+          "id": "PA51",
+          "title": "Leaf Casting – The Mechanical Repair of Paper Artefacts",
+          "authors": "Blunn, D.、Petherbridge, G.",
+          "year": "1976",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/03094227.1976.9638478",
+          "note": {
+            "ja": "リーフキャスティング",
+            "en": "Leaf casting."
+          }
+        },
+        {
+          "id": "PA52",
+          "title": "Adapting a Japanese Facing Technique to the Treatment of an American Landscape Plan",
+          "authors": "Nichols, K. J.、Uyeda, T.",
+          "year": "2022",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/18680860.2022.2032536"
+        },
+        {
+          "id": "PA53",
+          "title": "A Local Mending Technique for Japanese Screens",
+          "authors": "Hendry、Baines",
+          "year": "2018",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/18680860.2018.1667124",
+          "note": {
+            "ja": "屏風の部分補修",
+            "en": "Local repair of folding screens."
+          }
+        },
+        {
+          "id": "PA54",
+          "title": "装潢文化財の保存修理",
+          "titleEn": "Conservation and Repair of Sōkō Cultural Properties",
+          "authors": "大林賢太郎",
+          "year": "2014",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.jstage.jst.go.jp/article/isj/53/4/53_273/_article/-char/ja",
+          "note": {
+            "ja": "書籍『装潢文化財の保存修理』と同じ題の論文",
+            "en": "Article with the same title as a book entry in this list."
+          }
+        },
+        {
+          "id": "PA55",
+          "title": "〔研究速報〕漉嵌機の和紙修理への応用",
+          "titleEn": "[Research Note] Application of a Leaf-Casting Machine (Sukihame-ki) to Washi Repair",
+          "authors": "増田勝彦",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/15/15.html",
+          "note": {
+            "ja": "リーフキャスティング（機械による紙の欠損補填）の日本側の資料",
+            "en": "Leaf casting; the Japanese counterpart to the Blunn and Petherbridge paper."
+          }
+        },
+        {
+          "id": "PA59",
+          "title": "装こう技術における酵素利用の可能性について",
+          "titleEn": "On the Potential Use of Enzymes in Sōkō Techniques",
+          "authors": "竹上幸宏・君嶋隆幸・岡岩太郎・木川りか・川野邊渉",
+          "year": "1998",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/37/37.html"
+        },
+        {
+          "id": "PA64",
+          "title": "三軸織物・紙貼合シートの特性―紙本絹本文化財の裏打を想定して―",
+          "titleEn": "Properties of Triaxial Woven Fabric–Paper Laminated Sheets: For the Lining of Cultural Properties on Paper and Silk",
+          "authors": "加藤雅人ほか",
+          "year": "2011",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/50/MOKUZI50.html",
+          "note": {
+            "ja": "裏打材料",
+            "en": "Lining materials."
+          }
+        },
+        {
+          "id": "PA66",
+          "title": "津波等海水に浸水した紙資料のスクウェルチ・ドライイング法",
+          "titleEn": "Squelch Drying of Paper Materials Immersed in Seawater from Tsunamis and Other Causes",
+          "authors": "小野寺裕子ほか",
+          "year": "2014",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://hozonkagaku.geidai.ac.jp/inaba_archievement.pdf",
+          "note": {
+            "ja": "被災紙資料",
+            "en": "Disaster-damaged paper materials."
+          }
+        },
+        {
+          "id": "PA67",
+          "title": "増裏打ち作業における古糊と打刷毛の接着効果について",
+          "titleEn": "On the Adhesive Effect of Furunori and the Beating Brush (Uchibake) in Second Lining (Mashi-ura)",
+          "authors": "岡泰央ほか",
+          "year": "2015",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/54/MOKUZI54.html"
+        },
+        {
+          "id": "PA68",
+          "title": "デンプン糊で裏打ちされる文化財へのα-アミラーゼ適用方法に関する検討",
+          "titleEn": "A Study of Methods for Applying α-Amylase to Cultural Properties Lined with Starch Paste",
+          "authors": "早川典子ほか",
+          "year": "2023",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/62/MOKUZI62.html",
+          "note": {
+            "ja": "裏打ちを外す",
+            "en": "Removing linings."
+          }
+        },
+        {
+          "id": "RP01",
+          "title": "表具の科学：特別研究「軸装等の保存及び修復技術に関する科学的研究」報告書",
+          "titleEn": "The Science of Hyōgu: Report of the Special Research Project 'Scientific Research on Preservation and Restoration Techniques for Scroll Mountings and Related Formats'",
+          "authors": "東京国立文化財研究所",
+          "year": "1977",
+          "kind": "report",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001320949",
+          "note": {
+            "ja": "表装を科学で扱った最初期の基本文献",
+            "en": "One of the earliest key references to treat mounting scientifically."
+          }
+        },
+        {
+          "id": "RP05",
+          "title": "日本絵画の修復：先端と伝統",
+          "titleEn": "Conservation of Japanese Paintings: Cutting Edge and Tradition",
+          "authors": "東京文化財研究所",
+          "year": "2011",
+          "kind": "report",
+          "language": "ja-en",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000011184003",
+          "note": {
+            "ja": "2009年11月12–14日の国際研究集会（15講演）",
+            "en": "International symposium held 12–14 November 2009 (15 presentations)."
+          }
+        },
+        {
+          "id": "RP07",
+          "title": "選定保存技術 資料集（平成28年度版）／A Guidebook for Selected Conservation Techniques (2016 edition)",
+          "titleEn": "Selected Conservation Techniques: Source Book (2016 edition) / A Guidebook for Selected Conservation Techniques (2016 edition)",
+          "authors": "東京文化財研究所",
+          "year": "2017",
+          "kind": "report",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://tobunken.repo.nii.ac.jp/records/9082",
+          "note": {
+            "ja": "全項目日英見開き",
+            "en": "Every entry is presented in Japanese and English on facing pages."
+          }
+        },
+        {
+          "id": "RP08",
+          "title": "在外日本古美術品保存修復協力事業 修復報告書（英文）",
+          "titleEn": "Conservation Reports of the Cooperative Programme for the Conservation of Japanese Art Objects Overseas (English edition)",
+          "authors": "東京文化財研究所",
+          "year": "1991",
+          "kind": "report",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://tobunken.repo.nii.ac.jp/records/5565",
+          "note": {
+            "ja": "欧米・カナダ・豪州の美術館の約360点に協力",
+            "en": "Cooperation on about 360 works in museums in Europe, the United States, Canada and Australia."
+          }
+        },
+        {
+          "id": "RP09",
+          "title": "国宝修理装潢師連盟の公開資料",
+          "titleEn": "Published Materials of the Association for Conservation of National Treasures",
+          "authors": "国宝修理装潢師連盟",
+          "kind": "report",
+          "language": "ja",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.kokuhoshuri.or.jp/",
+          "note": {
+            "ja": "料紙繊維データベース作成・補修紙製作研修などの事業も告知されている（要約情報）",
+            "en": "Also announces projects such as a database of fibres in historical papers and training in making repair paper (from summary information)."
+          }
+        },
+        {
+          "id": "RP10",
+          "title": "装潢修理技術：美術工芸品を守る伝統の技",
+          "titleEn": "Sōkō Conservation Techniques: Traditional Skills that Protect Works of Fine and Applied Art",
+          "authors": "文化庁",
+          "year": "2021",
+          "kind": "report",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I032017380",
+          "note": {
+            "ja": "選定保存技術の紹介冊子",
+            "en": "Booklet introducing this Selected Conservation Technique."
+          }
+        },
+        {
+          "id": "RP11",
+          "title": "東アジア紙文化財保存修理シンポジウム報告書",
+          "titleEn": "Report of the Symposium on the Conservation of East Asian Paper Cultural Properties",
+          "authors": "九州国立博物館",
+          "year": "2008",
+          "kind": "report",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I025542068",
+          "note": {
+            "ja": "日中韓の紙文化財修理（I-5）",
+            "en": "Conservation of paper cultural properties in Japan, China and Korea."
+          }
+        },
+        {
+          "id": "RP12",
+          "title": "九州国立博物館文化財修理報告",
+          "titleEn": "Kyushu National Museum Conservation Reports",
+          "authors": "九州国立博物館",
+          "year": "2019",
+          "kind": "report",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I034826084",
+          "note": {
+            "ja": "個別事例を引くときの一次資料（I-1）",
+            "en": "Primary source for citing individual cases."
+          }
+        },
+        {
+          "id": "TR01",
+          "title": "JPC（国際研修「紙の保存と修復」）実施報告",
+          "titleEn": "Report on JPC (International Course 'Conservation and Restoration of Paper')",
+          "authors": "ICCROM＋東京文化財研究所",
+          "year": "2017",
+          "kind": "report",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/materials/ekatudo/819096.html",
+          "note": {
+            "ja": "2019年は33か国71件の応募から10名",
+            "en": "In 2019, 10 participants were selected from 71 applications from 33 countries."
+          }
+        },
+        {
+          "id": "TR02",
+          "title": "ワークショップ「紙本・絹本文化財の保存と修復」報告書",
+          "titleEn": "Report of the Workshop 'Conservation and Restoration of Cultural Properties on Paper and Silk'",
+          "authors": "東京文化財研究所",
+          "year": "2016",
+          "kind": "report",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I028282913",
+          "note": {
+            "ja": "海外向けワークショップの記録",
+            "en": "Record of a workshop for overseas participants."
+          }
+        },
+        {
+          "id": "TR03",
+          "title": "国宝修理装潢師連盟 定期研修会報告集",
+          "titleEn": "Collected Reports of the Regular Training Seminars of the Association for Conservation of National Treasures",
+          "authors": "国宝修理装潢師連盟",
+          "kind": "report",
+          "language": "ja",
+          "access": "library",
+          "source": "industry",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I033512329",
+          "note": {
+            "ja": "第30回定期研修会（2026/11/20）のテーマは「鑑賞と保存の基礎知識－文化財料紙への視点－」",
+            "en": "The theme of the 30th regular seminar (20 November 2026) is 'Basic knowledge for appreciation and preservation: perspectives on the papers of cultural properties'."
+          }
+        },
+        {
+          "id": "WB01",
+          "title": "AIC Wiki／Book and Paper Group Wiki",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://conservation-wiki.com/wiki/Book_and_Paper_Group_Wiki",
+          "note": {
+            "ja": "検査・記録・処置・保管・展示",
+            "en": "Examination, documentation, treatment, storage and exhibition."
+          }
+        },
+        {
+          "id": "WB08",
+          "title": "An Introduction to Mounting Japanese Paintings",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://asia.si.edu/whats-on/blog/posts/an-introduction-to-mounting-japanese-paintings",
+          "note": {
+            "ja": "日本絵画の表装入門",
+            "en": "Introduction to mounting Japanese paintings."
+          }
+        },
+        {
+          "id": "WB09",
+          "title": "East Asian Painting Conservation Studio",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://archive.asia.si.edu/research/dcsr/eapcs.asp",
+          "note": {
+            "ja": "米国の東アジア絵画修復スタジオ",
+            "en": "East Asian painting conservation studio in the United States."
+          }
+        },
+        {
+          "id": "WB10",
+          "title": "One of a kind: Hirayama conservation studio",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.britishmuseum.org/blog/one-kind-hirayama-conservation-studio",
+          "note": {
+            "ja": "1994年開設の平山スタジオ",
+            "en": "The Hirayama Studio, opened in 1994."
+          }
+        },
+        {
+          "id": "OR03",
+          "title": "国宝修理装潢師連盟（ACNT）",
+          "titleEn": "Federation of Sōkō Conservators for National Treasures (ACNT)",
+          "kind": "organisation",
+          "language": "ja-en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.kokuhoshuri.or.jp/",
+          "note": {
+            "ja": "選定保存技術「装潢修理技術」の保存団体（1995年認定、京都）",
+            "en": "The preservation body for the Selected Conservation Technique 'sōkō repair techniques' (recognised 1995, Kyoto)."
+          }
+        },
+        {
+          "id": "OR09",
+          "title": "文化庁 選定保存技術（制度・保存団体一覧）",
+          "titleEn": "Agency for Cultural Affairs: Selected Conservation Techniques (the system and a list of preservation bodies)",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.bunka.go.jp/koho_hodo_oshirase/hodohappyo/pdf/94409501_01.pdf",
+          "note": {
+            "ja": "装潢修理技術と「装潢修理材料・用具製作」（伝伝協）の保存団体を掲載",
+            "en": "Lists the preservation bodies for sōkō repair techniques and for 'production of sōkō repair materials and tools' (Dendenkyō)."
+          }
+        },
+        {
+          "id": "OR25",
+          "title": "IADA",
+          "kind": "organisation",
+          "language": "en",
+          "access": "members",
+          "source": "society",
+          "url": "https://www.facebook.com/IADAConservation/",
+          "note": {
+            "ja": "学会誌「Journal of Paper Conservation」を発行",
+            "en": "Journal of Paper Conservation."
+          }
+        },
+        {
+          "id": "OR30",
+          "title": "岡墨光堂",
+          "titleEn": "Oka Bokkōdō",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.bokkodo.co.jp/",
+          "note": {
+            "ja": "装潢工房で SNS をサイトからリンクしている例",
+            "en": "An example of a sōkō studio that links its social media from its website."
+          }
+        },
+        {
+          "id": "OR31",
+          "title": "株式会社文化財保存",
+          "titleEn": "Bunkazai Hozon Co., Ltd.",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.bunkazaihozon.co.jp/",
+          "note": {
+            "ja": "いずれもサイトに SNS リンクなし",
+            "en": "None of these link to social media from their websites."
+          }
+        },
+        {
+          "id": "SN05",
+          "title": "Bodleian Conservation & Collection Care（@bodleianconservation）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.bodleian.ox.ac.uk/about/libraries/our-work/conservation"
+        },
+        {
+          "id": "SN06",
+          "title": "Met Paper Conservation（@metpaperconservation）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.instagram.com/metpaperconservation/",
+          "note": {
+            "ja": "メトロポリタン美術館の紙修復部門",
+            "en": "The paper conservation department of the Metropolitan Museum of Art."
+          }
+        },
+        {
+          "id": "SN07",
+          "title": "NYU Libraries Preservation（@nyupreservation）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.instagram.com/nyupreservation/"
+        },
+        {
+          "id": "SN11",
+          "title": "Graphic Conservation Company（@graphicconservation）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.instagram.com/graphicconservation/",
+          "note": {
+            "ja": "紙・羊皮紙作品の修復工房",
+            "en": "A conservation studio for works on paper and parchment."
+          }
+        },
+        {
+          "id": "SN12",
+          "title": "Lydia Powell Paper Conservation（@paperrestoration）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.instagram.com/paperrestoration/",
+          "note": {
+            "ja": "個人修復士",
+            "en": "Independent conservator."
+          }
+        },
+        {
+          "id": "VD02",
+          "title": "ACNT国宝修理装こう師連盟（@acnt324）",
+          "titleEn": "ACNT Federation of Sōkō Conservators for National Treasures (@acnt324)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.youtube.com/@acnt324",
+          "note": {
+            "ja": "装潢文化財の修理に関する動画",
+            "en": "Videos on the conservation of sōkō cultural properties."
+          }
+        },
+        {
+          "id": "VD03",
+          "title": "国立国会図書館（@nationaldietlibraryjapan4964）",
+          "titleEn": "National Diet Library (@nationaldietlibraryjapan4964)",
+          "kind": "video",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.youtube.com/@nationaldietlibraryjapan4964",
+          "note": {
+            "ja": "「Conservation of Paper Materials: Minor Repair 1/6〜6/6」（和紙と澱粉糊の簡易補修、英語字幕）",
+            "en": "'Conservation of Paper Materials: Minor Repair 1/6–6/6' (simple repairs with washi and starch paste, English subtitles)."
+          }
+        },
+        {
+          "id": "VD04",
+          "title": "東京国立博物館（@TokyoNationalMuseum）",
+          "titleEn": "Tokyo National Museum (@TokyoNationalMuseum)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.youtube.com/@TokyoNationalMuseum",
+          "note": {
+            "ja": "オンラインギャラリートーク「掛軸の修理と補修紙の作製について」",
+            "en": "Online gallery talk 'Conserving hanging scrolls and making repair paper'."
+          }
+        },
+        {
+          "id": "VD05",
+          "title": "京都国立博物館（@KyotoNationalMuseum）",
+          "titleEn": "Kyoto National Museum (@KyotoNationalMuseum)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.youtube.com/@KyotoNationalMuseum",
+          "note": {
+            "ja": "「文化財修理の最先端」（絹本絵画の修理）",
+            "en": "'The Cutting Edge of Cultural Property Conservation' (conservation of paintings on silk)."
+          }
+        },
+        {
+          "id": "VD06",
+          "title": "Smithsonian NMAA（@NatAsianArt）",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.youtube.com/@NatAsianArt",
+          "note": {
+            "ja": "「The Living Tradition of Japanese Scroll Mounting」「Mounting Japanese Paintings, Piece by Piece」「East Asian P…",
+            "en": "'The Living Tradition of Japanese Scroll Mounting', 'Mounting Japanese Paintings, Piece by Piece', 'East Asian P…'"
+          }
+        },
+        {
+          "id": "VD07",
+          "title": "The British Museum（@britishmuseum）",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.youtube.com/@britishmuseum",
+          "note": {
+            "ja": "「日本の掛軸絵画の修復｜喜多川歌麿作『遊女』」約22.7万回",
+            "en": "'Conserving a Japanese hanging scroll painting: Courtesan by Kitagawa Utamaro', about 227,000 views."
+          }
+        },
+        {
+          "id": "VD14",
+          "title": "Graphic Conservation Company（@GraphicConservationCo）",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.youtube.com/@GraphicConservationCo",
+          "note": {
+            "ja": "「Japanese tissue repair」",
+            "en": "'Japanese tissue repair'."
+          }
+        },
+        {
+          "id": "VD16",
+          "title": "いの町紙の博物館（YouTubeチャンネル）",
+          "titleEn": "Ino Town Paper Museum (YouTube channel)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.youtube.com/channel/UCyEaYVSWAyJvRjFCR_0S0sQ",
+          "note": {
+            "ja": "「紙の修復 Restauro della carta」",
+            "en": "'Paper Conservation (Restauro della carta)'."
+          }
+        },
+        {
+          "id": "VD19",
+          "title": "The Japanese Folding Screen: A Tutorial Video by Yoshiyuki Nishio（YouTubeチャンネル）",
+          "titleEn": "The Japanese Folding Screen: A Tutorial Video by Yoshiyuki Nishio (YouTube channel)",
+          "authors": "AIC/FAIC",
+          "kind": "video",
+          "language": "en",
+          "source": "society",
+          "url": "https://learning.culturalheritage.org/products/the-japanese-folding-screen-a-tutorial-video-by-yoshiyuki-nishio",
+          "note": {
+            "ja": "屏風の構造と修復のチュートリアル",
+            "en": "A tutorial on the structure and conservation of folding screens."
+          }
+        },
+        {
+          "id": "PO08",
+          "title": "Bookbinding Now",
+          "kind": "podcast",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://podcasts.apple.com/us/podcast/bookbinding-now/id422356973",
+          "note": {
+            "ja": "50回、最新2021-11（休止）",
+            "en": "50 episodes; latest 2021-11 (on hiatus)."
+          }
+        },
+        {
+          "id": "CM02",
+          "title": "AIC Book and Paper Group コミュニティ",
+          "titleEn": "AIC Book and Paper Group community",
+          "kind": "community",
+          "language": "en",
+          "access": "members",
+          "source": "society",
+          "url": "https://community.culturalheritage.org/groups/book-paper-group",
+          "note": {
+            "ja": "会員1,180名超",
+            "en": "Over 1,180 members."
+          }
+        },
+        {
+          "id": "CM03",
+          "title": "Icon Book & Paper Group",
+          "kind": "community",
+          "language": "en",
+          "access": "members",
+          "source": "society",
+          "url": "https://www.icon.org.uk/groups-and-networks/special-interest-groups/book-paper.html"
+        },
+        {
+          "id": "CM04",
+          "title": "The Book & Paper Gathering",
+          "kind": "community",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://thebookandpapergathering.org/about/",
+          "note": {
+            "ja": "2010年創設、英・加の修復士が運営",
+            "en": "Founded in 2010; run by conservators in the UK and Canada."
+          }
+        },
+        {
+          "id": "CM06",
+          "title": "Reddit",
+          "kind": "community",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://gummysearch.com/r/bookbinding/",
+          "note": {
+            "ja": "規模は二次情報（reddit.com は自動取得不可）",
+            "en": "Size figures are from secondary sources (reddit.com could not be accessed automatically)."
+          }
+        },
+        {
+          "id": "ED01",
+          "title": "Conservation of Paper Materials: Minor Repair",
+          "authors": "国立国会図書館",
+          "kind": "course",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.ndl.go.jp/en/library/training/remote",
+          "note": {
+            "ja": "和紙と澱粉糊による簡易補修",
+            "en": "Simple repairs with washi and starch paste."
+          }
+        },
+        {
+          "id": "ED02",
+          "title": "JPC：International Course on Japanese Paper Conservation",
+          "authors": "ICCROM＋東京文化財研究所",
+          "kind": "course",
+          "language": "en",
+          "access": "paid",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/kokusen/en/?p=23161",
+          "note": {
+            "ja": "JPC 2026 は8月24日〜9月11日、東京、定員10名、実務経験5年以上",
+            "en": "JPC 2026 runs from 24 August to 11 September in Tokyo; 10 places; at least five years of professional experience required."
+          }
+        },
+        {
+          "id": "ED03",
+          "title": "ワークショップ「日本の紙と絹の文化財の保存修復」",
+          "titleEn": "Workshop 'Conservation of Japanese Cultural Properties on Paper and Silk'",
+          "authors": "東京文化財研究所",
+          "kind": "course",
+          "language": "ja-en",
+          "access": "members",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/materials/ekatudo/206021.html",
+          "note": {
+            "ja": "基礎・応用コース",
+            "en": "Basic and advanced courses."
+          }
+        },
+        {
+          "id": "ED09",
+          "title": "Rita Udina Conservation Courses",
+          "kind": "course",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://www.ritaudina.com/en/conservation-courses/",
+          "note": {
+            "ja": "紙・書籍修復（補填・ウェット処置等）",
+            "en": "Paper and book conservation (infilling, wet treatments and more)."
+          }
+        },
+        {
+          "id": "ED10",
+          "title": "Repairing Leather Bindings with Japanese Tissue Paper",
+          "kind": "course",
+          "language": "en",
+          "access": "paid",
+          "source": "industry",
+          "url": "https://guildofbookworkers.org/civicrm/event/info?id=198",
+          "note": {
+            "ja": "和紙による革装本の補修",
+            "en": "Repairing leather bindings with washi."
+          }
+        }
+      ]
+    },
+    {
+      "id": "knowledge",
+      "title": {
+        "ja": "修復知識・分析・用語",
+        "en": "Conservation knowledge, analysis and terms"
+      },
+      "intro": {
+        "ja": "保存科学、繊維同定・pH・強度、劣化、用語集など修復の根拠となる知識。",
+        "en": "The knowledge behind conservation: conservation science, fibre identification, pH, strength, deterioration, glossaries."
+      },
+      "items": [
+        {
+          "id": "JB02",
+          "title": "和紙文化辞典",
+          "titleEn": "Dictionary of Washi Culture",
+          "authors": "久米康生",
+          "year": "1995",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002544905",
+          "note": {
+            "ja": "久米康生『和紙文化研究事典』の前身にあたる辞典とみられる（関係は推定）",
+            "en": "Appears to be the forerunner of the author's 2012 encyclopedia of washi culture (relationship inferred)."
+          }
+        },
+        {
+          "id": "JB03",
+          "title": "必携 古典籍・古文書料紙事典",
+          "titleEn": "Essential Encyclopedia of the Papers of Classical Books and Historical Documents",
+          "authors": "宍倉佐敏",
+          "year": "2011",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000011240622",
+          "note": {
+            "ja": "料紙判定の事典",
+            "en": "Reference work for identifying the papers (ryōshi) of books and documents."
+          }
+        },
+        {
+          "id": "JB43",
+          "title": "紙のレンズがひらく古典籍・絵画の世界",
+          "titleEn": "The World of Classical Books and Paintings Opened Up through the Lens of Paper",
+          "authors": "江南和幸・佐藤悟・横井孝",
+          "year": "2023",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I033140880",
+          "note": {
+            "ja": "料紙の科学分析",
+            "en": "Scientific analysis of the papers used in books and paintings."
+          }
+        },
+        {
+          "id": "JB49",
+          "title": "紙と本の保存科学",
+          "titleEn": "Conservation Science of Paper and Books",
+          "authors": "園田直子",
+          "year": "2009",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000010623812",
+          "note": {
+            "ja": "紙資料と書籍の保存科学",
+            "en": "Conservation science of paper materials and books."
+          }
+        },
+        {
+          "id": "JB52",
+          "title": "図書館・文書館における環境管理",
+          "titleEn": "Environmental Management in Libraries and Archives",
+          "authors": "稲葉政満",
+          "year": "2001",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002996459",
+          "note": {
+            "ja": "保存環境",
+            "en": "Storage environment."
+          }
+        },
+        {
+          "id": "CT04",
+          "title": "ミュージアムサイエンス：東京国立博物館コレクションの保存と修理",
+          "titleEn": "Museum Science: Preservation and Conservation of the Tokyo National Museum Collection",
+          "authors": "東京国立博物館",
+          "year": "2002",
+          "kind": "catalogue",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000004026698",
+          "note": {
+            "ja": "東博の保存・修理の年報的冊子",
+            "en": "Annual-report-style booklet on preservation and conservation at the Tokyo National Museum."
+          }
+        },
+        {
+          "id": "EB12",
+          "title": "The Care of Prints and Drawings",
+          "authors": "Margaret Holben Ellis",
+          "year": "2017",
+          "kind": "book",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://library.holycross.edu/Record/eres_ocn965770586",
+          "note": {
+            "ja": "学芸員・登録担当・修復士向け",
+            "en": "For curators, registrars and conservators."
+          }
+        },
+        {
+          "id": "EB13",
+          "title": "Paper and Water: A Guide for Conservators",
+          "authors": "Gerhard Banik、Irene Brückle",
+          "year": "2011",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://archetype.co.uk/our-titles/paper-and-water/?id=277",
+          "note": {
+            "ja": "湿潤処置の物理・化学（裏打ち・加湿の基礎）",
+            "en": "Physics and chemistry of aqueous treatments (the basis of lining and humidification)."
+          }
+        },
+        {
+          "id": "EB16",
+          "title": "Paper Conservation: Decisions & Compromises",
+          "authors": "Lieve Watteeuw、Christa Hofmann",
+          "year": "2013",
+          "kind": "book",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://webarchiv.onb.ac.at/web/20130503101231/http://www.onb.ac.at/files/ICOM-CC_Vienna_2013.pdf",
+          "note": {
+            "ja": "近年の概観",
+            "en": "A recent overview."
+          }
+        },
+        {
+          "id": "JN01",
+          "title": "保存科学",
+          "titleEn": "Science for Conservation",
+          "authors": "東京文化財研究所 保存科学研究センター",
+          "kind": "journal",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pub/cosery_s/consery_s.html",
+          "note": {
+            "ja": "65号PDFは2026-04-02公開",
+            "en": "The PDF of issue 65 was released on 2 April 2026."
+          }
+        },
+        {
+          "id": "JN02",
+          "title": "文化財保存修復学会誌（古文化財之科学）",
+          "titleEn": "Journal of the Japan Society for the Conservation of Cultural Property (Kobunkazai no Kagaku, 'Science of Ancient Cultural Properties')",
+          "authors": "文化財保存修復学会",
+          "kind": "journal",
+          "language": "ja",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://www.jsccp.or.jp/journal/index.html",
+          "note": {
+            "ja": "Web は目次と要旨のみ",
+            "en": "Only tables of contents and abstracts are available online."
+          }
+        },
+        {
+          "id": "JN04",
+          "title": "表面科学",
+          "titleEn": "Surface Science",
+          "authors": "日本表面科学会",
+          "kind": "journal",
+          "language": "ja",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.jstage.jst.go.jp/browse/jsssj/38/6/_contents/-char/ja",
+          "note": {
+            "ja": "山下2017「和紙の変遷と未来像」の掲載誌",
+            "en": "Journal in which Yamashita's 2017 article on washi was published."
+          }
+        },
+        {
+          "id": "JN05",
+          "title": "Restaurator",
+          "kind": "journal",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://www.degruyterbrill.com/journal/key/rest/html",
+          "note": {
+            "ja": "図書館・文書館資料と紙作品の保存に特化",
+            "en": "Specialises in the conservation of library and archive materials and works on paper."
+          }
+        },
+        {
+          "id": "JN06",
+          "title": "Studies in Conservation",
+          "authors": "IIC",
+          "kind": "journal",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://www.iiconservation.org/about",
+          "note": {
+            "ja": "IIC 会議のプレプリントも sup 号として収録",
+            "en": "Also publishes IIC congress preprints as supplementary issues."
+          }
+        },
+        {
+          "id": "JN07",
+          "title": "Journal of the American Institute for Conservation（JAIC）",
+          "authors": "AIC",
+          "kind": "journal",
+          "language": "en",
+          "access": "free",
+          "source": "peer",
+          "url": "https://cool.culturalheritage.org/jaic/"
+        },
+        {
+          "id": "JN10",
+          "title": "AICCM Bulletin",
+          "authors": "AICCM",
+          "kind": "journal",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://aiccm.org.au/national-news/aiccm-bulletin-update",
+          "note": {
+            "ja": "豪州とアジア太平洋の文化財",
+            "en": "Cultural heritage of Australia and the Asia-Pacific region."
+          }
+        },
+        {
+          "id": "JN12",
+          "title": "完全OA誌群",
+          "titleEn": "Fully Open-Access Journals",
+          "kind": "journal",
+          "language": "en",
+          "access": "free",
+          "source": "peer",
+          "url": "https://doi.org/10.1186/s40494-021-00560-x",
+          "note": {
+            "ja": "ヘミセルロースやリグニンと紙の保存性、機械漉き和紙に関する英語論文の掲載誌",
+            "en": "Journals in which several of the papers in this list were published."
+          }
+        },
+        {
+          "id": "PA03",
+          "title": "Permanence of washi (Japanese paper)",
+          "authors": "Inaba, M.、Sugisita, R.",
+          "year": "1988",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "society",
+          "url": "https://doi.org/10.1179/sic.1988.33.1.1",
+          "note": {
+            "ja": "ドーサが劣化に与える影響",
+            "en": "Effect of dōsa on deterioration."
+          }
+        },
+        {
+          "id": "PA04",
+          "title": "Permanence of Washi (Japanese Paper) (Part II)",
+          "authors": "Inaba, M.、Sugisita, R.",
+          "year": "1990",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://link.springer.com/article/10.1557/PROC-185-799?error=cookies_not_supported&code=449acbde-887f-42a5-88ca-32f510795220",
+          "note": {
+            "ja": "稲葉業績目録は刊行年を1991と記載",
+            "en": "Inaba's list of publications gives the year as 1991."
+          }
+        },
+        {
+          "id": "PA05",
+          "title": "Gamma Irradiation of Washi. Part 2",
+          "authors": "El-Esseily, A.-S.、Inaba, M.",
+          "year": "2004",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1515/REST.2004.40",
+          "note": {
+            "ja": "セルロースの重合度と結晶化度の変化",
+            "en": "Changes in the degree of polymerisation and crystallinity of cellulose."
+          }
+        },
+        {
+          "id": "PA09",
+          "title": "Influence of lignin content in cellulose pulp on paper durability",
+          "authors": "Małachowska, E. ほか",
+          "year": "2020",
+          "kind": "paper",
+          "language": "en",
+          "access": "free",
+          "source": "peer",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7673017/",
+          "note": {
+            "ja": "劣化の主因は酸性抄紙による酸性化",
+            "en": "The main cause of deterioration is acidification from acidic papermaking."
+          }
+        },
+        {
+          "id": "PA17",
+          "title": "Japanese Paper and Hyōgu",
+          "authors": "Masuda, K.",
+          "year": "1985",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/03094227.1985.9638467",
+          "note": {
+            "ja": "増田勝彦の英語の基本論文",
+            "en": "A fundamental English-language paper by Masuda Katsuhiko."
+          }
+        },
+        {
+          "id": "PA23",
+          "title": "The Identification of Oriental Paper-Making Fibres",
+          "authors": "Collings, T.、Milner, D.",
+          "year": "1978",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/03094227.1978.9638509",
+          "note": {
+            "ja": "繊維同定の英語の古典",
+            "en": "A classic English-language reference on fibre identification."
+          }
+        },
+        {
+          "id": "PA24",
+          "title": "Characterization of Japanese Papers Using Energy-dispersive X-ray Spectrometry",
+          "authors": "Koestler, R. J.、Indictor, N.、Fiske, B.",
+          "year": "1992",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1515/rest.1992.13.2.58",
+          "note": {
+            "ja": "巻は13(2)",
+            "en": "Volume and issue: 13(2)."
+          }
+        },
+        {
+          "id": "PA25",
+          "title": "Fourier Transform Infrared Analysis of Some Japanese Papers",
+          "authors": "Calvini, P.、Gorassini, A.、Chiggiato, R.",
+          "year": "2006",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1515/REST.2006.81",
+          "note": {
+            "ja": "FTIR による和紙分析",
+            "en": "Analysis of washi by FTIR."
+          }
+        },
+        {
+          "id": "PA26",
+          "title": "Analytical characterization of East Asian handmade papers",
+          "authors": "Han, B.、Vial, J.、Inaba, M.、Sablier, M.",
+          "year": "2017",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1016/j.jaap.2017.08.013",
+          "note": {
+            "ja": "Py-GCxGC/MS と多変量解析",
+            "en": "Py-GC×GC/MS and multivariate analysis."
+          }
+        },
+        {
+          "id": "PA27",
+          "title": "Rapid identification of bast fibers in ancient handmade papers…",
+          "authors": "Han, B. ほか",
+          "year": "2022",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1007/s10570-022-04924-9",
+          "note": {
+            "ja": "リグニン単量体による靭皮繊維の迅速同定",
+            "en": "Rapid identification of bast fibres using lignin monomers."
+          }
+        },
+        {
+          "id": "PA28",
+          "title": "Non-Destructive Species Discrimination of Japanese Bast Fibers",
+          "authors": "Zhou, Y.、Ohyanagi, Y.、Iwata, A.、Shibazaki, K.、Murakami, K.",
+          "year": "2026",
+          "kind": "paper",
+          "language": "en",
+          "access": "free",
+          "source": "peer",
+          "url": "https://doi.org/10.3390/ndt4020015",
+          "note": {
+            "ja": "誌名は NDT（Heritage・Polymers ではない）",
+            "en": "Published in NDT (not Heritage or Polymers)."
+          }
+        },
+        {
+          "id": "PA29",
+          "title": "Interpretable Non-Destructive Discrimination of Japanese Bast Fibers via Micro-Hyperspectral Imaging",
+          "authors": "Zhou、Shibazaki、Ohyanagi、Iwata",
+          "year": "2026",
+          "kind": "paper",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://sciforum.net/paper/32664",
+          "note": {
+            "ja": "PCA では分離が限られ、LDA で明確に分類",
+            "en": "PCA gave only limited separation, whereas LDA classified the fibres clearly."
+          }
+        },
+        {
+          "id": "PA30",
+          "title": "Bast Fibers",
+          "authors": "Ilvessalo-Pfäffli, M.-S.",
+          "year": "1995",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://doi.org/10.1007/978-3-662-07212-7_9",
+          "note": {
+            "ja": "Melbourne大・CAMEO の繊維寸法の共通の元とみられるアトラス",
+            "en": "Atlas that appears to be the common source of the fibre dimensions given by the University of Melbourne and CAMEO."
+          }
+        },
+        {
+          "id": "PA31",
+          "title": "古文書料紙の分類",
+          "titleEn": "Classification of the Papers of Historical Documents",
+          "authors": "高島晶彦",
+          "kind": "paper",
+          "language": "ja-en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.eajrs.net/files/happyo/takashima_akihiko_19.pdf",
+          "note": {
+            "ja": "透過光顕微鏡で主原料・非繊維物質・填料・密度を見分ける",
+            "en": "Uses transmitted-light microscopy to distinguish the main raw material, non-fibrous substances, fillers and density."
+          }
+        },
+        {
+          "id": "PA32",
+          "title": "JIS P 8120（紙，板紙及びパルプ－繊維組成試験方法）／TAPPI T-401（Graff C-stain）",
+          "titleEn": "JIS P 8120 (Paper, Paperboard and Pulp – Test Method for Fibre Composition) / TAPPI T-401 (Graff C-stain)",
+          "kind": "standard",
+          "language": "ja-en",
+          "access": "paid",
+          "source": "public",
+          "url": "https://webdesk.jsa.or.jp/link/lib/jis2022/index/jishb22-61.pdf",
+          "note": {
+            "ja": "古文書料紙の鑑別でも C染色液と NaOH 膨潤が使われる（富山大リポジトリの要約",
+            "en": "C-stain and NaOH swelling are also used to identify the papers of historical documents (from an abstract in the University of Toyama repository)."
+          }
+        },
+        {
+          "id": "PA33",
+          "title": "Effect of Lining Papers on the Permanence of Painting Papers in Japanese Scroll Paintings During Moist Heat Ageing",
+          "authors": "Lee, K.、Enomae, T.、Inaba, M.",
+          "year": "2021",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/00393630.2020.1870363",
+          "note": {
+            "ja": "「裏打紙が本紙の永続性に影響する」の最も直接的な査読済み根拠",
+            "en": "The most direct peer-reviewed evidence that lining paper affects the permanence of the original paper."
+          }
+        },
+        {
+          "id": "PA34",
+          "title": "Comparison of Degradation Behaviour of the Painting Paper in Japanese Scrolls for Moist Heat and Sealed Tube Ageing Methods",
+          "authors": "Lee, K.、Enomae, T.、Inaba, M.",
+          "year": "2021",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://hozonkagaku.geidai.ac.jp/inaba_archievement.pdf",
+          "note": {
+            "ja": "加速劣化法の比較",
+            "en": "Comparison of accelerated ageing methods."
+          }
+        },
+        {
+          "id": "PA36",
+          "title": "The Effect of Iron Ions from Prussian Blue Pigment on the Deterioration of Japanese Paper",
+          "authors": "Kida, K.、Potthast, A.、Inaba, M.、Hayakawa, N.",
+          "year": "2015",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1515/res-2015-0009",
+          "note": {
+            "ja": "顔料由来の鉄イオンと劣化",
+            "en": "Iron ions from pigments and paper deterioration."
+          }
+        },
+        {
+          "id": "PA37",
+          "title": "和紙の劣化に及ぼすドウサの影響",
+          "titleEn": "The Effect of Dōsa on the Deterioration of Washi",
+          "authors": "稲葉政満・杉下龍一郎",
+          "year": "1986",
+          "kind": "paper",
+          "language": "ja",
+          "access": "library",
+          "source": "peer",
+          "url": "https://hozonkagaku.geidai.ac.jp/inaba_archievement.pdf",
+          "note": {
+            "ja": "和紙の保存性に関する英語論文（Permanence of washi）の日本語原報",
+            "en": "The original Japanese paper behind two related English-language entries in this list."
+          }
+        },
+        {
+          "id": "PA38",
+          "title": "和紙の保存性",
+          "titleEn": "The durability of washi",
+          "authors": "稲葉政満",
+          "year": "2011",
+          "kind": "paper",
+          "language": "ja-en",
+          "access": "library",
+          "source": "public",
+          "url": "https://hozonkagaku.geidai.ac.jp/inaba_archievement.pdf",
+          "note": {
+            "ja": "日英両方で読める保存性の総説",
+            "en": "Review of washi permanence, readable in both Japanese and English."
+          }
+        },
+        {
+          "id": "PA39",
+          "title": "和紙の特徴と保存性に関する研究",
+          "titleEn": "Studies on the Characteristics and Permanence of Washi",
+          "authors": "稲葉政満",
+          "year": "2017",
+          "kind": "paper",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://hozonkagaku.geidai.ac.jp/inaba_archievement.pdf",
+          "note": {
+            "ja": "保存性研究の総説",
+            "en": "Review of research on permanence."
+          }
+        },
+        {
+          "id": "PA40",
+          "title": "The manufacture and use of Japanese wheat starch adhesives in the treatment of Far Eastern pictorial art",
+          "authors": "Wills, P.",
+          "year": "1984",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "society",
+          "url": "https://doi.org/10.1179/sic.1984.29.supplement-1.123",
+          "note": {
+            "ja": "IIC パリ1984",
+            "en": "IIC Paris Congress, 1984."
+          }
+        },
+        {
+          "id": "PA45",
+          "title": "Japanese Scroll Paintings",
+          "authors": "Miura, S.、Koyano, M.",
+          "year": "1982",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.2307/1505995"
+        },
+        {
+          "id": "PA47",
+          "title": "The Presentation and Preservation of Chinese Scroll Paintings",
+          "authors": "Camille Schmitt",
+          "year": "2013",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "public",
+          "url": "https://conservation-wiki.com/wiki/BPG_East_Asian_Scrolls",
+          "note": {
+            "ja": "中国掛軸の展示と保存",
+            "en": "Display and preservation of Chinese hanging scrolls."
+          }
+        },
+        {
+          "id": "PA57",
+          "title": "フリアー美術館所蔵絵画料紙の繊維分析",
+          "titleEn": "Fibre Analysis of the Papers of Paintings in the Freer Gallery of Art",
+          "authors": "増田勝彦",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/32/32.html",
+          "note": {
+            "ja": "海外コレクションの料紙分析",
+            "en": "Analysis of the papers in an overseas collection."
+          }
+        },
+        {
+          "id": "PA58",
+          "title": "藩札料紙について",
+          "titleEn": "On the Paper of Hansatsu (Domain Paper Money)",
+          "authors": "増田勝彦・大川昭典・稲葉政満",
+          "year": "1998",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/37/37.html",
+          "note": {
+            "ja": "繊維分析と原料",
+            "en": "Fibre analysis and raw materials."
+          }
+        },
+        {
+          "id": "PA60",
+          "title": "古糊の物性と化学組成に関する基礎的研究",
+          "titleEn": "Fundamental Study of the Physical Properties and Chemical Composition of Furunori (Aged Paste)",
+          "authors": "早川典子ほか",
+          "year": "2002",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/41/41.html",
+          "note": {
+            "ja": "古糊の科学的根拠の基本文献",
+            "en": "Key reference for the scientific basis of furunori."
+          }
+        },
+        {
+          "id": "PA61",
+          "title": "古糊生成過程の生物学的考察―物性値との関連において―",
+          "titleEn": "A Biological Study of the Furunori Production Process: In Relation to Its Physical Properties",
+          "authors": "木川りかほか",
+          "year": "2002",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/41/41.html"
+        },
+        {
+          "id": "PA62",
+          "title": "燻蒸剤・忌避剤などが和紙の酸性度と色彩に及ぼす影響",
+          "titleEn": "Effects of Fumigants, Repellents and Similar Agents on the Acidity and Colour of Washi",
+          "authors": "佐野千絵ほか",
+          "year": "2004",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/43/MOKUZI43.html"
+        },
+        {
+          "id": "PA63",
+          "title": "昭和初期和紙の褐色斑からの真菌分離および蛍光に関する報告",
+          "titleEn": "Report on the Isolation of Fungi from Brown Spots on Early Shōwa-period Washi and on Their Fluorescence",
+          "authors": "吉川也志保・木川りか・関正純",
+          "year": "2009",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/48/MOKUZI48.html"
+        },
+        {
+          "id": "PA65",
+          "title": "典籍類に使用された「豆糊」に関する赤外分光分析",
+          "titleEn": "Infrared Spectroscopic Analysis of 'Mamenori' (Bean Paste) Used in Classical Books",
+          "authors": "早川典子",
+          "year": "2014",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/53/MOKUZI53.html",
+          "note": {
+            "ja": "接着剤",
+            "en": "Adhesives."
+          }
+        },
+        {
+          "id": "PA69",
+          "title": "デジタルマイクロスコープによる３次元計測値の補正方法について",
+          "titleEn": "On a Method for Correcting Three-Dimensional Measurements Taken with a Digital Microscope",
+          "authors": "山田祐子ほか",
+          "year": "2023",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/62/MOKUZI62.html"
+        },
+        {
+          "id": "PA70",
+          "title": "植物繊維の同定―大麻・苧麻の識別―",
+          "titleEn": "Identification of Plant Fibres: Distinguishing Hemp from Ramie",
+          "authors": "菊池理予ほか",
+          "year": "2024",
+          "kind": "paper",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.tobunken.go.jp/ccr/pdf/63/MOKUZI63.html",
+          "note": {
+            "ja": "靭皮繊維一般の同定",
+            "en": "Useful for identifying bast fibres in general."
+          }
+        },
+        {
+          "id": "NL04",
+          "title": "月刊文化財",
+          "titleEn": "Monthly Cultural Properties",
+          "kind": "newsletter",
+          "language": "ja",
+          "access": "paid",
+          "source": "commercial",
+          "url": "https://www.fujisan.co.jp/product/789/b/2790022/",
+          "note": {
+            "ja": "文化財総合月刊誌",
+            "en": "General monthly magazine on cultural properties."
+          }
+        },
+        {
+          "id": "NL05",
+          "title": "文化財の虫菌害",
+          "titleEn": "Insect and Fungal Damage to Cultural Properties",
+          "authors": "文化財虫菌害研究所",
+          "kind": "newsletter",
+          "language": "ja",
+          "access": "members",
+          "source": "specialist",
+          "url": "https://www.bunchuken.or.jp/information/organ/",
+          "note": {
+            "ja": "No.52〜91のバックナンバー頁",
+            "en": "Back-issue page for Nos. 52–91."
+          }
+        },
+        {
+          "id": "NL10",
+          "title": "News in Conservation（NiC）",
+          "authors": "IIC",
+          "kind": "newsletter",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://iiconservation.org/publications/nic?page=1",
+          "note": {
+            "ja": "非会員も無料で全号を遡れる唯一の国際会報",
+            "en": "The only international newsletter whose full run of back issues is free to access, including for non-members."
+          }
+        },
+        {
+          "id": "NL11",
+          "title": "AIC News",
+          "authors": "AIC",
+          "kind": "newsletter",
+          "language": "en",
+          "access": "members",
+          "source": "society",
+          "url": "https://www.culturalheritage.org/resources/resources-for-conservation-professionals/publications/aic-news",
+          "note": {
+            "ja": "会員3,500人超に配布",
+            "en": "Distributed to more than 3,500 members."
+          }
+        },
+        {
+          "id": "NL12",
+          "title": "Icon News → Iconnect Magazine",
+          "authors": "Institute of Conservation",
+          "kind": "newsletter",
+          "language": "en",
+          "access": "members",
+          "source": "society",
+          "url": "https://www.icon.org.uk/resource/look-out-for-icon-s-new-member-magazine.html",
+          "note": {
+            "ja": "Icon News は2005〜2022年、最終号は2022年10月の第103号",
+            "en": "Icon News ran from 2005 to 2022; the final issue was No. 103, October 2022."
+          }
+        },
+        {
+          "id": "NL13",
+          "title": "Paper Conservation News",
+          "authors": "IIC-UK Paper Group → IPC",
+          "kind": "newsletter",
+          "language": "en",
+          "access": "library",
+          "source": "society",
+          "url": "https://collections.britishart.yale.edu/print/alma:9971448633408651/2/0",
+          "note": {
+            "ja": "終刊",
+            "en": "Ceased publication."
+          }
+        },
+        {
+          "id": "RP06",
+          "title": "伝統的日本画修復材料への科学的アプローチ：近年の動向",
+          "titleEn": "Scientific Approaches to Traditional Materials for the Conservation of Japanese Paintings: Recent Trends",
+          "authors": "東京文化財研究所",
+          "year": "2006",
+          "kind": "report",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000009415011"
+        },
+        {
+          "id": "RP13",
+          "title": "科研費研究報告",
+          "titleEn": "Grant-in-Aid for Scientific Research (KAKENHI) Report",
+          "authors": "稲葉政満・増田勝彦",
+          "year": "1998",
+          "kind": "report",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000007062562",
+          "note": {
+            "ja": "シーボルト和紙は江戸期の和紙見本（パークス・コレクションと並ぶ）",
+            "en": "The Siebold washi are Edo-period washi samples, comparable to another sample collection in this list."
+          }
+        },
+        {
+          "id": "GL01",
+          "title": "紙の保存・修復に関する用語集：英独中韓蒙日併記",
+          "titleEn": "Glossary of Paper Conservation and Restoration: English, German, Chinese, Korean, Mongolian and Japanese",
+          "authors": "Goethe-Institut",
+          "year": "2015",
+          "kind": "glossary",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.goethe.de/resources/files/pdf51/Glossar_Papierrestaurierung_Japanisch3.pdf",
+          "note": {
+            "ja": "400語超（改訂版500語超）",
+            "en": "Over 400 terms (over 500 in the revised edition)."
+          }
+        },
+        {
+          "id": "GL02",
+          "title": "JAANUS",
+          "kind": "glossary",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.aisf.or.jp/~jaanus/deta/h/hyougu.htm",
+          "note": {
+            "ja": "日本美術・建築用語の英文辞典",
+            "en": "English-language dictionary of terms in Japanese art and architecture."
+          }
+        },
+        {
+          "id": "GL03",
+          "title": "MAU Art & Design Glossary",
+          "authors": "武蔵野美術大学",
+          "kind": "glossary",
+          "language": "ja-en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://art-design-glossary.musabi.ac.jp/kumohada-mashi-kumohada-hemp-paper/",
+          "note": {
+            "ja": "「Paper (as Material or Medium)」「Japanese Painting」カテゴリ",
+            "en": "See the categories 'Paper (as Material or Medium)' and 'Japanese Painting'."
+          }
+        },
+        {
+          "id": "GL04",
+          "title": "BPG Glossary of Terms",
+          "authors": "American Institute for Conservation (AIC)",
+          "kind": "glossary",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://conservation-wiki.com/wiki/BPG_Glossary_of_Terms",
+          "note": {
+            "ja": "\"Japanese paper\" は1項目のみ",
+            "en": "Has only a single entry for 'Japanese paper'."
+          }
+        },
+        {
+          "id": "GL05",
+          "title": "BPG East Asian Scrolls",
+          "authors": "American Institute for Conservation (AIC)",
+          "kind": "glossary",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://conservation-wiki.com/wiki/BPG_East_Asian_Scrolls",
+          "note": {
+            "ja": "用語節は中国の掛軸・巻子の図解PDF2点のみで日本の用語図なし",
+            "en": "The terminology section consists only of two illustrated PDFs on Chinese hanging scrolls and handscrolls, with no diagrams of Japanese terms."
+          }
+        },
+        {
+          "id": "GL06",
+          "title": "表具の事典",
+          "titleEn": "Dictionary of Hyōgu",
+          "authors": "京表具協同組合連合会",
+          "year": "2010",
+          "kind": "glossary",
+          "language": "ja",
+          "access": "library",
+          "source": "industry",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000010821367",
+          "note": {
+            "ja": "表具の用語と技法",
+            "en": "Mounting terms and techniques."
+          }
+        },
+        {
+          "id": "DB10",
+          "title": "Papermaking Fibres",
+          "kind": "database",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://cultural-conservation.unimelb.edu.au/PapermakingFibres/",
+          "note": {
+            "ja": "繊維図譜（Bast Fibers）に由来する可能性がある",
+            "en": "Possibly derived from the Ilvessalo-Pfäffli fibre atlas."
+          }
+        },
+        {
+          "id": "WB11",
+          "title": "Getty Paper Conservation",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.getty.edu/museum/paper-conservation/",
+          "note": {
+            "ja": "部門ページ",
+            "en": "Department page."
+          }
+        },
+        {
+          "id": "WB12",
+          "title": "米国議会図書館 Preservation（Care, Handling and Storage）",
+          "titleEn": "Library of Congress Preservation (Care, Handling and Storage)",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.loc.gov/preservation/care/",
+          "note": {
+            "ja": "C2C Care を案内",
+            "en": "Directs readers to C2C Care."
+          }
+        },
+        {
+          "id": "WB13",
+          "title": "Paper conservation by using Japanese paper (washi)",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.ifla.org/paper-conservation-by-using-japanese-paper-washi/"
+        },
+        {
+          "id": "OR02",
+          "title": "文化財保存修復学会（JSCCP）",
+          "titleEn": "Japan Society for the Conservation of Cultural Property (JSCCP)",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.jsccp.or.jp/",
+          "note": {
+            "ja": "1995年に古文化財科学研究会から改称",
+            "en": "Renamed in 1995 from the Society for Scientific Research on Ancient Cultural Properties (Kobunkazai Kagaku Kenkyūkai)."
+          }
+        },
+        {
+          "id": "OR05",
+          "title": "高知県立紙産業技術センター",
+          "titleEn": "Kōchi Prefectural Paper Industry Technology Centre",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.pref.kochi.lg.jp/soshiki/150000/151406/",
+          "note": {
+            "ja": "『和紙の研究』、紙産業技術センター報告、用具製作技術の記録書、「かみさん通信」などを公開",
+            "en": "Publishes several of the reports and a newsletter included in this list."
+          }
+        },
+        {
+          "id": "SN01",
+          "title": "IIC（@iiconservation）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.iiconservation.org/about"
+        },
+        {
+          "id": "SN02",
+          "title": "Icon（@conservators_uk）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.icon.org.uk/",
+          "note": {
+            "ja": "Instagram は2022年初めに開設、数か月で1,000フォロワー",
+            "en": "Instagram account opened in early 2022 and reached 1,000 followers within a few months."
+          }
+        },
+        {
+          "id": "SN03",
+          "title": "CAC-ACCR（@cac_accr）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.instagram.com/cac_accr/"
+        },
+        {
+          "id": "SN04",
+          "title": "AIC & FAIC（@conservators）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.culturalheritage.org/",
+          "note": {
+            "ja": "AIC は X から撤退し Instagram・Facebook・LinkedIn・Bluesky・YouTube へ誘導",
+            "en": "AIC has left X and directs followers to Instagram, Facebook, LinkedIn, Bluesky and YouTube."
+          }
+        },
+        {
+          "id": "SN13",
+          "title": "The C Word Podcast（@the_c_word_podcast）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.instagram.com/the_c_word_podcast/",
+          "note": {
+            "ja": "ポッドキャスト「The C Word」の公式アカウント",
+            "en": "The podcast itself has a separate entry in this list."
+          }
+        },
+        {
+          "id": "VD08",
+          "title": "Getty Museum（@gettymuseum）",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.getty.edu/museum/paper-conservation/",
+          "note": {
+            "ja": "Getty Paper Conservation ページから再生リストへリンク",
+            "en": "The Getty Paper Conservation page links to its playlists."
+          }
+        },
+        {
+          "id": "VD09",
+          "title": "AIC & FAIC（@aiconservation）",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.youtube.com/user/aiconservation",
+          "note": {
+            "ja": "学会講演・ウェビナー",
+            "en": "Conference lectures and webinars."
+          }
+        },
+        {
+          "id": "VD10",
+          "title": "Icon（@IconTheInstituteofConservation）",
+          "kind": "video",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://www.youtube.com/channel/UCZcVX9I_DaxGKGSpg8byfTQ"
+        },
+        {
+          "id": "PO01",
+          "title": "The C Word: The Conservators' Podcast",
+          "kind": "podcast",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://podcasts.apple.com/us/podcast/the-c-word-m4a-feed/id1206536304",
+          "note": {
+            "ja": "ホスト Jenny Mathiasson ほか",
+            "en": "Hosted by Jenny Mathiasson and others."
+          }
+        },
+        {
+          "id": "PO07",
+          "title": "The Private Project: An Art Conservation Podcast",
+          "kind": "podcast",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://podcasts.apple.com/us/podcast/the-private-project-an-art-conservation-podcast/id1637249875",
+          "note": {
+            "ja": "14回、最新2023-10",
+            "en": "14 episodes; latest 2023-10."
+          }
+        },
+        {
+          "id": "ED05",
+          "title": "Connecting to Collections Care（C2C Care）",
+          "kind": "course",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://connectingtocollections.org/",
+          "note": {
+            "ja": "無料の月次ウェビナー、アーカイブ175回超、会員・非会員とも無料",
+            "en": "Free monthly webinars with an archive of over 175 sessions; free for members and non-members alike."
+          }
+        },
+        {
+          "id": "ED06",
+          "title": "NEDCC",
+          "kind": "course",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://www.nedcc.org/",
+          "note": {
+            "ja": "無料のWeb資料、研修、出版、24時間365日の災害支援",
+            "en": "Free online resources, training, publications and round-the-clock disaster assistance."
+          }
+        },
+        {
+          "id": "ED07",
+          "title": "IIC LEARNING",
+          "kind": "course",
+          "language": "en",
+          "source": "society",
+          "url": "https://www.iiconservation.org/about"
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "title": {
+        "ja": "歴史・倫理・国内外比較",
+        "en": "History, ethics and comparisons"
+      },
+      "intro": {
+        "ja": "料紙史・和紙史、修復の歴史・倫理、日本と海外の違い。",
+        "en": "The history of writing papers and of washi, the history and ethics of conservation, Japan compared with elsewhere."
+      },
+      "items": [
+        {
+          "id": "JB01",
+          "title": "和紙文化研究事典",
+          "titleEn": "Encyclopedia of Washi Culture Studies",
+          "authors": "久米康生",
+          "year": "2012",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I024016182",
+          "note": {
+            "ja": "和紙文化の歴史・製法・紙郷（産地）・用語の事典",
+            "en": "Encyclopedia of washi culture covering its history, manufacture, papermaking regions and terminology."
+          }
+        },
+        {
+          "id": "JB04",
+          "title": "紙の文化事典",
+          "titleEn": "Encyclopedia of Paper Culture",
+          "authors": "尾鍋史彦・伊部京子・松倉紀男・丸尾敏雄",
+          "year": "2006",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000008118333",
+          "note": {
+            "ja": "和紙・洋紙を含む紙文化全般の事典",
+            "en": "Encyclopedia of paper culture in general, covering both washi and Western paper."
+          }
+        },
+        {
+          "id": "JB08",
+          "title": "和紙の歴史：製法と原材料の変遷",
+          "titleEn": "The History of Washi: Changes in Manufacture and Raw Materials",
+          "authors": "宍倉佐敏",
+          "year": "2006",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000008361927",
+          "note": {
+            "ja": "製法と原料の時代的変化",
+            "en": "How manufacture and raw materials changed over time."
+          }
+        },
+        {
+          "id": "JB10",
+          "title": "和紙つくりの歴史と技法",
+          "titleEn": "The History and Techniques of Washi Making",
+          "authors": "久米康生",
+          "year": "2008",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000009359921",
+          "note": {
+            "ja": "製紙の歴史と技法",
+            "en": "History and techniques of papermaking."
+          }
+        },
+        {
+          "id": "JB11",
+          "title": "和紙の源流：東洋手すき紙の多彩な伝統",
+          "titleEn": "The Sources of Washi: The Diverse Traditions of Handmade Paper in the East",
+          "authors": "久米康生",
+          "year": "2004",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000007542014",
+          "note": {
+            "ja": "東アジアの手漉き紙の伝統",
+            "en": "Handmade paper traditions of East Asia."
+          }
+        },
+        {
+          "id": "JB13",
+          "title": "和紙文化誌",
+          "titleEn": "A Cultural History of Washi",
+          "authors": "久米康生",
+          "year": "1990",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002071064",
+          "note": {
+            "ja": "和紙文化の通史",
+            "en": "General history of washi culture."
+          }
+        },
+        {
+          "id": "JB15",
+          "title": "和紙の道しるべ：その歴史と化学",
+          "titleEn": "A Guide to Washi: Its History and Chemistry",
+          "authors": "町田誠之",
+          "year": "2000",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002869781",
+          "note": {
+            "ja": "和紙史を化学の視点から論じる",
+            "en": "Discusses the history of washi from a chemical perspective."
+          }
+        },
+        {
+          "id": "JB17",
+          "title": "和紙の伝統",
+          "titleEn": "The Tradition of Washi",
+          "authors": "町田誠之",
+          "year": "1984",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001774244"
+        },
+        {
+          "id": "JB18",
+          "title": "紙と日本文化",
+          "titleEn": "Paper and Japanese Culture",
+          "authors": "町田誠之",
+          "year": "1989",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002068435"
+        },
+        {
+          "id": "JB19",
+          "title": "平安京の紙屋紙",
+          "titleEn": "Kamiya-gami of the Heian Capital",
+          "authors": "町田誠之",
+          "year": "2009",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000010082398",
+          "note": {
+            "ja": "平安期の官営製紙「紙屋院」の紙",
+            "en": "Paper of the Kamiya-in, the state papermaking office of the Heian period."
+          }
+        },
+        {
+          "id": "JB20",
+          "title": "回想の和紙",
+          "titleEn": "Recollections of Washi",
+          "authors": "町田誠之・紙の博物館",
+          "year": "2009",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000010414509"
+        },
+        {
+          "id": "JB21",
+          "title": "日本の紙",
+          "titleEn": "Japanese Paper",
+          "authors": "寿岳文章",
+          "year": "1967",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001090685",
+          "note": {
+            "ja": "日本歴史学会編の叢書に入る和紙史の古典的通史",
+            "en": "Classic general history of washi, published in a series edited by the Japanese Society of Historical Research (Nihon Rekishi Gakkai)."
+          }
+        },
+        {
+          "id": "JB33",
+          "title": "手漉紙史の研究",
+          "titleEn": "Studies in the History of Handmade Paper",
+          "authors": "関義城",
+          "year": "1976",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001142235",
+          "note": {
+            "ja": "手漉紙史の古典的研究",
+            "en": "Classic study of the history of handmade paper."
+          }
+        },
+        {
+          "id": "JB35",
+          "title": "紙―昨日・今日・明日：日本・紙アカデミー25年の軌跡",
+          "titleEn": "Paper: Yesterday, Today and Tomorrow: 25 Years of the Japan Paper Academy",
+          "authors": "日本紙アカデミー",
+          "year": "2013",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "industry",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I024826026"
+        },
+        {
+          "id": "JB37",
+          "title": "古文書の研究：料紙論・筆跡論",
+          "titleEn": "Studies of Historical Documents: On Paper (Ryōshi) and Handwriting",
+          "authors": "湯山賢一",
+          "year": "2017",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I028046989",
+          "note": {
+            "ja": "料紙論の軸になる単著",
+            "en": "The core single-author work for the study of document papers (ryōshi)."
+          }
+        },
+        {
+          "id": "JB38",
+          "title": "古文書料紙論叢",
+          "titleEn": "Collected Essays on the Papers of Historical Documents",
+          "authors": "湯山賢一",
+          "year": "2017",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I028295846",
+          "note": {
+            "ja": "料紙研究の大規模論文集",
+            "en": "Large collection of essays on the study of document papers."
+          }
+        },
+        {
+          "id": "JB39",
+          "title": "文化財学の課題：和紙文化の継承",
+          "titleEn": "Issues in Cultural Property Studies: Passing On Washi Culture",
+          "authors": "湯山賢一",
+          "year": "2006",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000008159036",
+          "note": {
+            "ja": "和紙文化をどう継承するか",
+            "en": "How washi culture can be passed on."
+          }
+        },
+        {
+          "id": "JB40",
+          "title": "文化財と古文書学：筆跡論",
+          "titleEn": "Cultural Properties and the Study of Historical Documents: On Handwriting",
+          "authors": "湯山賢一",
+          "year": "2009",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000010228924"
+        },
+        {
+          "id": "JB41",
+          "title": "紙の日本史：古典と絵巻物が伝える文化遺産",
+          "titleEn": "A Japanese History of Paper: Cultural Heritage Handed Down in Classical Texts and Picture Scrolls",
+          "authors": "池田寿",
+          "year": "2017",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I028191417",
+          "note": {
+            "ja": "古典籍・絵巻物の紙の歴史",
+            "en": "History of the paper of classical books and picture scrolls."
+          }
+        },
+        {
+          "id": "JB42",
+          "title": "料紙と書：東アジア書道史の世界",
+          "titleEn": "Paper and Calligraphy: The World of East Asian Calligraphic History",
+          "authors": "島谷弘幸",
+          "year": "2014",
+          "kind": "book",
+          "language": "ja",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I025388008"
+        },
+        {
+          "id": "JB46",
+          "title": "装潢史",
+          "titleEn": "A History of Sōkō",
+          "authors": "渡邊明義・岡興造・石川登志雄",
+          "year": "2011",
+          "kind": "book",
+          "language": "ja",
+          "access": "library",
+          "source": "industry",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000011298609",
+          "note": {
+            "ja": "美術品の保存・修復の歴史（NDL件名）",
+            "en": "History of the conservation and restoration of works of art (National Diet Library subject heading)."
+          }
+        },
+        {
+          "id": "CT05",
+          "title": "海を渡った江戸の和紙：パークス・コレクション展",
+          "titleEn": "Edo-Period Washi That Crossed the Sea: The Parkes Collection Exhibition",
+          "authors": "紙の博物館",
+          "year": "1994",
+          "kind": "catalogue",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000002324465",
+          "note": {
+            "ja": "1871年に英国へ渡った和紙見本の展示図録",
+            "en": "Exhibition catalogue of washi samples that went to Britain in 1871."
+          }
+        },
+        {
+          "id": "EB04",
+          "title": "Washi: The World of Japanese Paper",
+          "authors": "Sukey Hughes",
+          "year": "1978",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://libcat.library.tamu.edu/Record/in00000321467",
+          "note": {
+            "ja": "和紙約100種を図版つきで記述する唯一の英語概説",
+            "en": "The only English-language survey describing about 100 kinds of washi, with illustrations."
+          }
+        },
+        {
+          "id": "EB05",
+          "title": "Papermaking: The History and Technique of an Ancient Craft",
+          "authors": "Dard Hunter",
+          "year": "1978",
+          "kind": "book",
+          "language": "en",
+          "access": "paid",
+          "source": "specialist",
+          "url": "https://www.cca.qc.ca/en/search/details/library/publication/04077165",
+          "note": {
+            "ja": "世界の製紙史の古典",
+            "en": "Classic history of papermaking worldwide."
+          }
+        },
+        {
+          "id": "EB07",
+          "title": "Old Papermaking in China and Japan",
+          "authors": "Dard Hunter",
+          "year": "1932",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://omeka.library.kent.edu/special-collections/items/show/9218",
+          "note": {
+            "ja": "1923年の別書 Old Papermaking と混同しないこと",
+            "en": "Not to be confused with the separate 1923 book Old Papermaking."
+          }
+        },
+        {
+          "id": "EB08",
+          "title": "A Life of Ts'ai Lung and Japanese Paper-Making",
+          "authors": "Kiyofusa Narita（成田潔英）",
+          "year": "1980",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "public",
+          "url": "https://papermuseum.jp/en/about/the-first-director-kiyofusa-narita/",
+          "note": {
+            "ja": "著者は紙の博物館初代館長",
+            "en": "The author was the first director of the Paper Museum."
+          }
+        },
+        {
+          "id": "EB17",
+          "title": "Chinese Pictorial Art as Viewed by the Connoisseur",
+          "authors": "R. H. van Gulik",
+          "year": "1958",
+          "kind": "book",
+          "language": "en",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://sotherans.co.uk/products/gulik-robert-van-chinese-pictorial-art-as-viewed-by-the-connoisseur-notes-on-the-means-and-methods-of-traditional-chinese-connoisseurship-of-pictorial-art-based-upon-a-study-of-the-art-of-mounting-scrolls-in-china-and-japan",
+          "note": {
+            "ja": "中国・日本の装裱技法を詳述した英語の古典",
+            "en": "English classic describing Chinese and Japanese mounting techniques in detail."
+          }
+        },
+        {
+          "id": "PA14",
+          "title": "Japanese paper: History, development and use in Western paper conservation",
+          "authors": "Mizumura, M.、Kubo, T.、Moriki, T.",
+          "year": "2015",
+          "kind": "paper",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://cool.culturalheritage.org/coolaic/sg/bpg/annual/v37/bpga37-13.pdf",
+          "note": {
+            "ja": "西洋の紙修復での和紙利用の歴史（I-5 国内外比較）",
+            "en": "History of the use of washi in Western paper conservation (comparing Japan and abroad)."
+          }
+        },
+        {
+          "id": "PA18",
+          "title": "Developments in paper conservation in Japan",
+          "authors": "Masuda, K.",
+          "year": "2001",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/03094227.2001.9638677",
+          "note": {
+            "ja": "日本の紙修復の展開と海外への普及（I-5）",
+            "en": "The development of paper conservation in Japan and its spread abroad."
+          }
+        },
+        {
+          "id": "PA44",
+          "title": "Conservation and Mounting of Eastern Pictorial Art: A Bibliography of Western Language Publications",
+          "authors": "Bennett",
+          "year": "1985",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/03094227.1985.9638470",
+          "note": {
+            "ja": "1985年時点の西洋語文献目録",
+            "en": "Bibliography of Western-language publications as of 1985."
+          }
+        },
+        {
+          "id": "NL01",
+          "title": "百万塔",
+          "titleEn": "Hyakumantō (One Million Pagodas)",
+          "authors": "紙の博物館",
+          "kind": "newsletter",
+          "language": "ja",
+          "access": "paid",
+          "source": "public",
+          "url": "https://www.papermuseum.jp/ja/guide/periodicals/",
+          "note": {
+            "ja": "NDLでは1892年金港堂刊の同名別誌がヒットするので発行者で絞る",
+            "en": "The NDL catalogue also returns an unrelated journal of the same name published by Kinkōdō in 1892, so filter by publisher."
+          }
+        },
+        {
+          "id": "NL02",
+          "title": "和紙文化研究",
+          "titleEn": "Studies in Washi Culture",
+          "kind": "newsletter",
+          "language": "ja",
+          "access": "members",
+          "source": "society",
+          "url": "https://washiken.sakura.ne.jp/admission/",
+          "note": {
+            "ja": "バックナンバーと著者別目録をサイトで公開",
+            "en": "Back issues and an author index are available on the website."
+          }
+        },
+        {
+          "id": "DB04",
+          "title": "国指定文化財等データベース",
+          "titleEn": "Database of Nationally Designated Cultural Properties",
+          "authors": "文化庁",
+          "kind": "database",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://kunishitei.bunka.go.jp/",
+          "note": {
+            "ja": "指定文化財の検索",
+            "en": "Search for designated cultural properties."
+          }
+        },
+        {
+          "id": "WB07",
+          "title": "A Conservator Abroad: Paper Conservation in Japan",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "note": {
+            "ja": "米国修復士の在日研修記（I-5）",
+            "en": "An American conservator's account of training in Japan."
+          }
+        },
+        {
+          "id": "OR11",
+          "title": "和紙文化研究会",
+          "titleEn": "Washi Culture Research Society",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "society",
+          "url": "https://washiken.sakura.ne.jp/",
+          "note": {
+            "ja": "「◆和紙情報」で発信",
+            "en": "Shares news through its '◆Washi Information' section."
+          }
+        },
+        {
+          "id": "OR12",
+          "title": "紙の博物館",
+          "titleEn": "Paper Museum",
+          "kind": "organisation",
+          "language": "ja-en",
+          "access": "free",
+          "source": "public",
+          "url": "https://papermuseum.jp/",
+          "note": {
+            "ja": "1950年に王子で開設、1998年に飛鳥山へ",
+            "en": "Opened in Ōji in 1950; moved to Asukayama in 1998."
+          }
+        },
+        {
+          "id": "OR17",
+          "title": "Robert C. Williams Museum of Papermaking",
+          "kind": "organisation",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://paper.gatech.edu/washi/washi-history-japanese-papermaking",
+          "note": {
+            "ja": "世界最大級の紙コレクション（書籍7,000点超、透かし・紙・道具など1万点超）",
+            "en": "One of the world's largest paper collections (over 7,000 books; over 10,000 watermarks, papers, tools and other items)."
+          }
+        },
+        {
+          "id": "SN14",
+          "title": "Smithsonian NMAA（@natasianart）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.instagram.com/natasianart/",
+          "note": {
+            "ja": "館公式（アジア美術全般）",
+            "en": "Official museum account (Asian art in general)."
+          }
+        },
+        {
+          "id": "SN22",
+          "title": "紙の博物館（王子）（@papermuseum_tokyo）",
+          "titleEn": "Paper Museum (Ōji) (@papermuseum_tokyo)",
+          "kind": "social",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://papermuseum.jp/"
+        },
+        {
+          "id": "PO05",
+          "title": "Getty Art + Ideas",
+          "kind": "podcast",
+          "language": "en",
+          "access": "free",
+          "source": "public",
+          "url": "https://podcasts.apple.com/us/podcast/getty-art-ideas/id1125550898",
+          "note": {
+            "ja": "219エピソード、最新2026-10-06",
+            "en": "219 episodes; latest 2026-10-06."
+          }
+        },
+        {
+          "id": "PO06",
+          "title": "Rare Book School",
+          "kind": "podcast",
+          "language": "en",
+          "access": "free",
+          "source": "specialist",
+          "url": "https://podcasts.apple.com/us/podcast/rare-book-school/id1038093728",
+          "note": {
+            "ja": "449エピソード、最新2026-07-23",
+            "en": "449 episodes; latest 2026-07-23."
+          }
+        }
+      ]
+    },
+    {
+      "id": "conservation-washi",
+      "title": {
+        "ja": "修復用和紙",
+        "en": "Washi for conservation"
+      },
+      "intro": {
+        "ja": "修復に使う和紙の種類・保管・選び方に関する資料。",
+        "en": "The kinds of washi used in conservation, how to store them and how to choose them."
+      },
+      "items": [
+        {
+          "id": "CT01",
+          "title": "和紙：文化財を支える日本の紙：ユネスコ無形文化遺産登録記念特集展示",
+          "titleEn": "Washi: The Japanese Paper That Supports Cultural Properties: Special Exhibition Commemorating Its Inscription as UNESCO Intangible Cultural Heritage",
+          "authors": "奈良国立博物館",
+          "year": "2015",
+          "kind": "catalogue",
+          "language": "ja",
+          "access": "library",
+          "source": "public",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I026232723",
+          "note": {
+            "ja": "2015年1月27日〜3月15日の特集展示の小冊子",
+            "en": "Booklet for the special exhibition held from 27 January to 15 March 2015."
+          }
+        },
+        {
+          "id": "EB21",
+          "title": "Adapt & Evolve 2015: East Asian Materials and Techniques in Western Conservation",
+          "authors": "Icon Book、Paper Group",
+          "year": "2017",
+          "kind": "book",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://culture360.asef.org/news-events/publication-east-asian-materials-and-techniques-in-western-conservation/",
+          "note": {
+            "ja": "東アジアの紙と接着剤を西洋の修復で使う主題そのもの",
+            "en": "Directly addresses the use of East Asian papers and adhesives in Western conservation."
+          }
+        },
+        {
+          "id": "PA10",
+          "title": "Machine Made Oriental Papers in Western Paper Conservation",
+          "authors": "Nicholson, K.、Page, S.",
+          "year": "1988",
+          "kind": "paper",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://cool.culturalheritage.org/coolaic/sg/bpg/annual/v07/bpga07-08.pdf",
+          "note": {
+            "ja": "機械抄き5種と手漉き5種の引張強さ（縦横）と湿潤伸縮を比較",
+            "en": "Compares tensile strength (machine and cross directions) and wet expansion of five machine-made and five handmade papers."
+          }
+        },
+        {
+          "id": "PA11",
+          "title": "A Study of the Quality of Japanese Papers Used in Conservation",
+          "authors": "Murphy, S. B.、Rempel, S.",
+          "year": "1985",
+          "kind": "paper",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://cool.culturalheritage.org/coolaic/sg/bpg/annual/v04/bp04-08.html",
+          "note": {
+            "ja": "米国4業者49点＋東京 Paper Nao の手漉き21点・機械抄き14点＝計84点",
+            "en": "84 samples in total: 49 from four US suppliers plus 21 handmade and 14 machine-made papers from Paper Nao, Tokyo."
+          }
+        },
+        {
+          "id": "PA13",
+          "title": "Modern machine-made washi and the implications for contemporary conservation practices",
+          "authors": "Colbourne, J.、Hori, M.",
+          "year": "2015",
+          "kind": "paper",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://researchportal.northumbria.ac.uk/en/publications/modern-machinemade-washi-and-the-implications-for-contemporary-co/"
+        },
+        {
+          "id": "PA16",
+          "title": "Modern Japanese paper: machine-made, wood pulp and non-native fibers",
+          "authors": "Mizumura, M.、Moriki, T.",
+          "year": "2017",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "society",
+          "url": "https://cool.culturalheritage.org/coolaic/sg/bpg/annual/v37/bpga37-13.pdf",
+          "note": {
+            "ja": "輸入原料・木材パルプ混入（C-5 輸入楮）",
+            "en": "Imported raw materials and the admixture of wood pulp (imported kōzo)."
+          }
+        },
+        {
+          "id": "PA20",
+          "title": "Effects of Plant Dyes, Watercolors and Acrylic Paints on the Colorfastness of Japanese Tissue Papers",
+          "authors": "Soleymani ほか",
+          "year": "2016",
+          "kind": "paper",
+          "language": "en",
+          "access": "paid",
+          "source": "peer",
+          "url": "https://doi.org/10.1080/01971360.2015.1103101",
+          "note": {
+            "ja": "調色材の堅牢度と黴への感受性",
+            "en": "Colourfastness of toning materials and their susceptibility to mould."
+          }
+        },
+        {
+          "id": "NL06",
+          "title": "伝伝協だより",
+          "titleEn": "Dendenkyō Newsletter",
+          "authors": "伝統技術伝承者協会",
+          "kind": "newsletter",
+          "language": "ja",
+          "access": "members",
+          "source": "industry",
+          "url": "https://www.dendenkyo.or.jp/topics",
+          "note": {
+            "ja": "Web公開の形跡なし",
+            "en": "No sign of online publication."
+          }
+        },
+        {
+          "id": "RP02",
+          "title": "和紙の研究：歴史・製法・用具・文化財修復",
+          "titleEn": "Studies of Washi: History, Manufacture, Tools and the Conservation of Cultural Properties",
+          "authors": "増田勝彦",
+          "year": "2003",
+          "kind": "report",
+          "language": "ja",
+          "access": "library",
+          "source": "specialist",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000007513256",
+          "note": {
+            "ja": "修復用和紙を正面から扱ったほぼ唯一の本",
+            "en": "Almost the only book to deal directly with washi for conservation."
+          }
+        },
+        {
+          "id": "WB04",
+          "title": "BPG Asian Papers",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "society",
+          "url": "https://conservation-wiki.com/wiki/BPG_Asian_Papers",
+          "note": {
+            "ja": "アジアの紙に関する文献目録",
+            "en": "Bibliography on Asian papers."
+          }
+        },
+        {
+          "id": "OR04",
+          "title": "伝統技術伝承者協会（伝伝協）",
+          "titleEn": "Association for the Transmission of Traditional Techniques (Dendenkyō)",
+          "kind": "organisation",
+          "language": "ja",
+          "access": "free",
+          "source": "industry",
+          "url": "https://www.dendenkyo.or.jp/",
+          "note": {
+            "ja": "2010年9月設立の一般社団法人、事務局は京都（株式会社光影堂気付）",
+            "en": "A general incorporated association founded in September 2010; secretariat in Kyoto (c/o Kōeidō Co., Ltd.)."
+          }
+        },
+        {
+          "id": "SN17",
+          "title": "The Japanese Paper Place（@thejppofficial）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.instagram.com/thejppofficial/"
+        },
+        {
+          "id": "SN18",
+          "title": "Hiromi Paper（@hiromipaper）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://hiromipaper.com/",
+          "note": {
+            "ja": "投稿数が少なく濃度が高い運用",
+            "en": "Posts infrequently, with dense content."
+          }
+        },
+        {
+          "id": "SN19",
+          "title": "Washi Arts（@washiarts）",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.washiarts.com/conservation-and-repair"
+        },
+        {
+          "id": "SN29",
+          "title": "LinkedIn 企業ページ",
+          "titleEn": "LinkedIn company pages",
+          "kind": "social",
+          "language": "en",
+          "access": "free",
+          "source": "commercial"
+        },
+        {
+          "id": "VD01",
+          "title": "東京文化財研究所／TOBUNKEN（@tobunkennich）",
+          "titleEn": "Tokyo National Research Institute for Cultural Properties / TOBUNKEN (@tobunkennich)",
+          "kind": "video",
+          "language": "ja",
+          "access": "free",
+          "source": "public",
+          "url": "https://www.youtube.com/@tobunkennich",
+          "note": {
+            "ja": "「伝統材料と道具のひみつ −宇陀紙編−」「文化財修理と『布海苔の重要性』」",
+            "en": "'Secrets of Traditional Materials and Tools: Uda-gami' and 'Cultural Property Conservation and the Importance of Funori'."
+          }
+        },
+        {
+          "id": "ED11",
+          "title": "Understanding Asian Papers and their Applications in Paper Conservation",
+          "authors": "Smithsonian Libraries",
+          "kind": "course",
+          "language": "en",
+          "source": "public",
+          "url": "https://library.si.edu/event/understanding-asian-papers-and-their-applications-paper-conservation",
+          "note": {
+            "ja": "出版物としての論文集はない",
+            "en": "No proceedings were published."
+          }
+        },
+        {
+          "id": "CC03",
+          "title": "Washi Arts",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://www.washiarts.com/conservation-and-repair",
+          "note": {
+            "ja": "楮の繊維長10–15mm などを解説",
+            "en": "Explains points such as the fibre length of kōzo (10–15 mm)."
+          }
+        },
+        {
+          "id": "CC04",
+          "title": "The Japanese Paper Place",
+          "kind": "website",
+          "language": "en",
+          "access": "free",
+          "source": "commercial",
+          "url": "https://montecristomagazine.com/business/canadian-stocks-widest-range-japanese-paper-world",
+          "note": {
+            "ja": "取扱い和紙の等級を公開",
+            "en": "Publishes the grades of the washi it stocks."
+          }
+        },
+        {
+          "id": "CC10",
+          "title": "Mulberry Paper and More",
+          "kind": "website",
+          "language": "en",
+          "access": "paid",
+          "source": "commercial",
+          "note": {
+            "ja": "「Mitsumata Heavy Tissue」などを保存グレード（無漂白・無苛性ソーダ・無填料）として販売",
+            "en": "Sells papers such as 'Mitsumata Heavy Tissue' as conservation grade (unbleached, no caustic soda, no fillers)."
+          }
+        }
+      ]
+    }
+  ],
+  "_source": "WA-Chain 文献・媒体データベース 2026-10-08 (353 entries). English titles and notes drafted by WA-Chain, accepted by the team on 2026-10-08."
 }

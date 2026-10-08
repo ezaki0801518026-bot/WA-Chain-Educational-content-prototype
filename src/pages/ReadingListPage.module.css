@@ -50,15 +50,53 @@
   text-wrap: pretty;
 }
 
-/* Language filter and the count, on one line where there is room. */
+/* Search, then the language filter and the count. */
+.tools {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 48rem;
+  margin-bottom: var(--space-5);
+}
+
+.search {
+  max-width: 30rem;
+}
+
 .filters {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3) var(--space-4);
+}
+
+/* The sections, as links that scroll to them, with their counts. */
+.index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
   max-width: 48rem;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-10);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-separator);
+  font-size: var(--text-small);
+  line-height: var(--lh-small);
+}
+
+.indexLink {
+  text-align: left;
+}
+
+.indexLink span {
+  color: var(--color-text-secondary);
+}
+
+.more {
+  margin-top: var(--space-2);
+  font-size: var(--text-small);
+  padding: var(--space-2) 0;
+  min-height: 2.75rem;
 }
 
 .chips {
