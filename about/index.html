@@ -2,6 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- The same site is also built to GitHub Pages (github.io). Visitors there are
+         sent to the one address, wa-chain.org, keeping the page they asked for. -->
+    <script>
+      if (location.hostname.endsWith(".github.io")) {
+        location.replace('https://wa-chain.org/about/' + location.search + location.hash)
+      }
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>WA-Chain — ミッション・活動実績・チーム紹介</title>
