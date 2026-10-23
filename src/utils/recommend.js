@@ -9,8 +9,7 @@ import courses from '../../data/courses.json'
 // picked, so the page can show the reason instead of a black box.
 
 const VIDEO_TRAITS = {
-  'kozo-provenance': { interest: ['sourcing'], level: ['some', 'using'], field: [] },
-  'three-fibers': { interest: ['choosing', 'science'], level: ['new', 'some', 'using'], field: ['paper', 'painting', 'books'] },
+  'hands-on-fibres': { interest: ['choosing', 'science'], level: ['new', 'some', 'using'], field: ['paper', 'painting', 'books'] },
 }
 
 const PLACE_TRAITS = {

@@ -25,6 +25,24 @@
 // - robots.txt answers "Disallow: /" while the gate is on.
 // - /__gate/logout clears the pass.
 
+// ── 1. One address: the production pages.dev address goes to wa-chain.org ──
+// (branch previews and wa-chain.org itself are left alone)
+
+const CANONICAL = 'https://wa-chain.org'
+const OLD_HOST = 'wa-chain-educational-content-prototype.pages.dev'
+
+async function oneAddress({ request, next }) {
+  const url = new URL(request.url)
+  if (url.hostname === OLD_HOST) {
+    // 308 keeps a POST a POST (an open chat tab on the old address); pages get 301.
+    const status = request.method === 'GET' || request.method === 'HEAD' ? 301 : 308
+    return Response.redirect(`${CANONICAL}${url.pathname}${url.search}`, status)
+  }
+  return next()
+}
+
+// ── 2. The password gate (off until SITE_PASSWORDS and SITE_GATE_SECRET are set) ──
+
 const COOKIE = 'wa_gate'
 const DEFAULT_PUBLIC = ['/about', '/assets/', '/images/', '/favicon.svg', '/manifest.webmanifest']
 
@@ -170,7 +188,7 @@ input[type=password]:focus-visible{outline:2px solid var(--focus);outline-offset
   })
 }
 
-export async function onRequest(context) {
+async function passwordGate(context) {
   const { request, env, next } = context
   // Off unless both variables are there.
   if (!env.SITE_PASSWORDS || !env.SITE_GATE_SECRET) return next()
@@ -210,3 +228,6 @@ export async function onRequest(context) {
   if (wantsPage(request)) return signInPage({ back: url.pathname + url.search })
   return new Response(JSON.stringify({ code: 'locked' }), { status: 401, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } })
 }
+
+// Cloudflare Pages runs these in order: redirect old addresses first, then the gate.
+export const onRequest = [oneAddress, passwordGate]
