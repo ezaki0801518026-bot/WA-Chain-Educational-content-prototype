@@ -432,7 +432,14 @@ BASE_PATH=/WA-Site/ npm run build
 
 ---
 
-## 10.7 ★相談AIチャットボット（Claude Sonnet 5）
+## 10.7 ★相談AIチャットボット（Claude Sonnet 5）— **2026-11 に廃止**
+
+> ⛔ **廃止済み（2026-11-26）。** `functions/api/chat.js` は API キーを読まず、Claude を呼ばない。
+> `GET /api/chat` は **410**（`{"code":"retired","ready":false,"retired":true}`）を返し、`POST` も 410。
+> 画面は 405 を受け取ったときだけ AI を出すので（`ChatPage.jsx`。`ready: false` も AI なし扱い）、
+> 今は常に「質問をメールでチームに送る」フォームになる。Cloudflare の Secret `ANTHROPIC_API_KEY` は削除し、
+> Anthropic Console のキーも無効にする（どちらも管理画面での作業）。**元に戻すときは git の履歴から
+> `functions/api/chat.js` を戻し、新しいキーを作る。** 以下は廃止前の記録。
 
 `#/chat` の「専門家に相談する」。**Cloudflare でのみ動く**（GitHub Pages には Functions がないため、
 そちらでは自動的に従来の「質問をメールでチームに送る」フォームにフォールバックする）。
