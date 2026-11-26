@@ -272,7 +272,9 @@ function ChatPage() {
     fetch(ENDPOINT, { method: 'GET' })
       .then((response) => (response.status === 405 ? response.json() : null))
       .then((data) => {
-        if (!cancelled) setAssistant(data?.code === 'method_not_allowed')
+        // `ready: false` means the endpoint is there but has no assistant
+        // behind it, so treat it like a static host.
+        if (!cancelled) setAssistant(data?.code === 'method_not_allowed' && data?.ready !== false)
       })
       .catch(() => {
         if (!cancelled) setAssistant(false)
